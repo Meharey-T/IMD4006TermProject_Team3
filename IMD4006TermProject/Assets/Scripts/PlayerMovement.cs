@@ -6,6 +6,10 @@ public class PlayerMovement : MonoBehaviour
 {
 
     [SerializeField] private float speed;
+
+    public float horizontalSpeed = 2.0f;
+    public float verticalSpeed = 2.0f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -16,6 +20,7 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         Move();
+        //Turn();
     }
 
     void Move()
@@ -24,5 +29,14 @@ public class PlayerMovement : MonoBehaviour
         float translationX = Input.GetAxis("Horizontal") * speed;
 
         transform.Translate(translationX, 0, translationZ);
+    }
+
+    void Turn()
+    {
+        
+        float h = horizontalSpeed * Input.GetAxis("Mouse X");
+        float v = verticalSpeed * Input.GetAxis("Mouse Y");
+        transform.Rotate(-v, h, 0);
+        
     }
 }
