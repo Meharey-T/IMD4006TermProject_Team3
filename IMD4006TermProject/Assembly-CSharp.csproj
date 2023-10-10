@@ -61,8 +61,10 @@
     <Compile Include="Assets\Scripts\AddGameObjectToRuntimeSet.cs" />
     <Compile Include="Assets\Scripts\RuntimeSet.cs" />
     <Compile Include="Assets\Scripts\Enemy.cs" />
+    <Compile Include="Assets\Scripts\Treasure.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
     <Compile Include="Assets\Scripts\GameObjectRuntimeSet.cs" />
+    <Compile Include="Assets\Scripts\TreasureStats.cs" />
     <Compile Include="Assets\Scripts\Interactable.cs" />
     <Compile Include="Assets\Scripts\PlayerMovement.cs" />
   </ItemGroup>

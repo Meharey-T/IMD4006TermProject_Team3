@@ -14,10 +14,11 @@ GameObject:
   - component: {fileID: 324653781318766349}
   - component: {fileID: 2470467102808570007}
   - component: {fileID: 8119222909303267219}
+  - component: {fileID: 2804899937358383756}
   - component: {fileID: 8051184390951101051}
   m_Layer: 0
   m_Name: Coin
-  m_TagString: Coin
+  m_TagString: Treasure
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -135,6 +136,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca8ed7a9220361c4c930c67cc74feb18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2804899937358383756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6718891474831228264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7b9645a3b3db294286b02d4fe556463, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  treasureStats: {fileID: 11400000, guid: c1b1558b39160ac4e83e8481bd642d75, type: 2}
 --- !u!54 &8051184390951101051
 Rigidbody:
   m_ObjectHideFlags: 0

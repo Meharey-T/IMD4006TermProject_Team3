@@ -34,10 +34,16 @@ public class Player : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         //Coin pickup
-        if(other.gameObject.tag == "Coin")
+        if(other.gameObject.tag == "Treasure")
         {
-            Debug.Log("Found a coin");
-            coinCount++;
+            Debug.Log("Found treasure");
+            //Figure out what kind of treasure we just found, act accordingly
+            coinCount += other.GetComponent<Treasure>().treasureStats.coinValue;
+            if (other.GetComponent<Treasure>().treasureStats.finalChest)
+            {
+                Debug.Log("Player has won");
+                StartCoroutine(OnPlayerWon());
+            }
             //Remove the coin from the scene
             other.GetComponent<Interactable>().Die();
             coinCountTxt.text = "Coin Count: " + coinCount;
@@ -50,8 +56,6 @@ public class Player : MonoBehaviour
             if (lives <= 0)
             {
                 Debug.Log("Player has lost");
-                centralTxt.text = "You died";
-                centralTxt.enabled = true;
                 StartCoroutine(OnPlayerLoss());
             }
         }
@@ -59,7 +63,17 @@ public class Player : MonoBehaviour
 
     IEnumerator OnPlayerLoss()
     {
+        centralTxt.text = "You died";
+        centralTxt.enabled = true;
         yield return new WaitForSeconds(2f);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    IEnumerator OnPlayerWon()
+    {
+        centralTxt.text = "You won! \n You got " + coinCount + " coins!";
+        centralTxt.enabled = true;
+        yield return new WaitForSeconds(5f);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
