@@ -143,7 +143,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83440a0907079ea48898a581fafbf151, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameObjectRuntimeSet: {fileID: 0}
+  gameObjectRuntimeSet: {fileID: 11400000, guid: 84c32e22a9bdcce4a8458a34eb520691, type: 2}
 --- !u!54 &6980516414668979213
 Rigidbody:
   m_ObjectHideFlags: 0
