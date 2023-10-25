@@ -1,5 +1,4 @@
 {"msg":"init","dagFile":"Library/Bee/1900b0aE.dag","targets":["ScriptAssemblies"]}
-{"msg":"removeStaleOutputFailed","file":"Library\\Bee\\artifacts\\1900b0aE.dag\\Unity.TestTools.CodeCoverage.Editor.OpenCover.Mono.Reflection.UnityAdditionalFile.txt"}
 {"msg":"enqueueNode","enqueuedNodeAnnotation":"ScriptAssemblies","enqueuedNodeIndex":6}
 {"msg":"enqueueNode","enqueuedNodeAnnotation":"MovedFromExtractor Library/Bee/artifacts/mvdfrm/UnityEditor.Graphs.dll_EA3CDE809314D81A.mvfrm","enqueuedNodeIndex":5,"enqueueingNodeAnnotation":"ScriptAssemblies","enqueueingNodeIndex":6}
 {"msg":"enqueueNode","enqueuedNodeAnnotation":"MovedFromExtractor Library/Bee/artifacts/mvdfrm/UnityEditor.CoreModule.dll_E14715CA9E5235E8.mvfrm","enqueuedNodeIndex":7,"enqueueingNodeAnnotation":"ScriptAssemblies","enqueueingNodeIndex":6}
@@ -249,3 +248,12 @@
 {"msg":"enqueueNode","enqueuedNodeAnnotation":"MovedFromExtractorCombine Library/Bee/artifacts/1900b0aE.dag/Assembly-CSharp.dll.mvfrm","enqueuedNodeIndex":213,"enqueueingNodeAnnotation":"Csc Library/Bee/artifacts/1900b0aE.dag/Assembly-CSharp.dll (+2 others)","enqueueingNodeIndex":205}
 {"msg":"enqueueNode","enqueuedNodeAnnotation":"WriteText Library/Bee/artifacts/1900b0aE.dag/Assembly-CSharp.dll.mvfrm.rsp","enqueuedNodeIndex":212,"enqueueingNodeAnnotation":"MovedFromExtractorCombine Library/Bee/artifacts/1900b0aE.dag/Assembly-CSharp.dll.mvfrm","enqueueingNodeIndex":213}
 {"msg":"enqueueNode","enqueuedNodeAnnotation":"CopyFiles Library/ScriptAssemblies/Assembly-CSharp.pdb","enqueuedNodeIndex":249,"enqueueingNodeAnnotation":"ScriptAssemblies","enqueueingNodeIndex":6}
+{"msg":"nodeRetryBuild","annotation":"Csc Library/Bee/artifacts/1900b0aE.dag/Assembly-CSharp.dll (+2 others)","index":205}
+{"msg":"runNodeAction","annotation":"Csc Library/Bee/artifacts/1900b0aE.dag/Assembly-CSharp.dll (+2 others)","displayName":"Csc Assembly-CSharp","index":205}
+{"msg":"noderesult","processed_node_count":245,"number_of_nodes_ever_queued":249,"annotation":"Csc Library/Bee/artifacts/1900b0aE.dag/Assembly-CSharp.dll (+2 others)","index":205,"exitcode":0,"outputfile":"Library\\Bee\\artifacts\\1900b0aE.dag\\Assembly-CSharp.dll","stdout":"Assets\\Scripts\\Enemy.cs(19,10): warning CS0414: The field 'Enemy.toFollow' is assigned but its value is never used"}
+{"msg":"inputSignatureChanged","annotation":"CopyFiles Library/ScriptAssemblies/Assembly-CSharp.pdb","index":249,"changes":[{"key":"FileList","value":["Library\\Bee\\artifacts\\1900b0aE.dag\\Assembly-CSharp.pdb"],"oldvalue":[],"dependency":"explicit"}]}
+{"msg":"runNodeAction","annotation":"CopyFiles Library/ScriptAssemblies/Assembly-CSharp.pdb","displayName":"Copying Assembly-CSharp.pdb","index":249}
+{"msg":"noderesult","processed_node_count":246,"number_of_nodes_ever_queued":249,"annotation":"CopyFiles Library/ScriptAssemblies/Assembly-CSharp.pdb","index":249,"exitcode":0,"outputfile":"Library\\ScriptAssemblies\\Assembly-CSharp.pdb"}
+{"msg":"inputSignatureChanged","annotation":"CopyFiles Library/ScriptAssemblies/Assembly-CSharp.dll","index":248,"changes":[{"key":"FileList","value":["Library\\Bee\\artifacts\\1900b0aE.dag\\Assembly-CSharp.dll"],"oldvalue":[],"dependency":"explicit"}]}
+{"msg":"runNodeAction","annotation":"CopyFiles Library/ScriptAssemblies/Assembly-CSharp.dll","displayName":"Copying Assembly-CSharp.dll","index":248}
+{"msg":"noderesult","processed_node_count":247,"number_of_nodes_ever_queued":249,"annotation":"CopyFiles Library/ScriptAssemblies/Assembly-CSharp.dll","index":248,"exitcode":0,"outputfile":"Library\\ScriptAssemblies\\Assembly-CSharp.dll"}

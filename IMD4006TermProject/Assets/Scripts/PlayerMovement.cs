@@ -7,28 +7,42 @@ public class PlayerMovement : MonoBehaviour
 {
     public CharacterController controller;
     public Transform cam;
+    [SerializeField] private GameObject rotator;
+    public Vector2 turnMinMax = new Vector2(-40, 85);
 
-    //Rigidbody rb;
     //How fast we run. Set to serialized for easy access in the inspector
-    [SerializeField] private float speed;
+    [SerializeField] private float baseSpeed;
+    [SerializeField] private float sprintSpeed;
+    [SerializeField] private float sneakSpeed;
+    [SerializeField] private float currentSpeed;
+    [SerializeField] private float speedSmoothVelocity;
+    [SerializeField] private float speedSmoothTime;
     [SerializeField] private float jumpAmount;
+    float targetSpeed;
+
+    bool isWalking = true;
+    bool isSprinting;
+    bool isSneaking;
 
     private float gravityValue = -9.81f;
 
     public bool groundedPlayer = true;
     private Vector3 playerVelocity;
 
-    public float turnSmoothTime = 0.1f;
+    //Turning variables
+    public float turnSpeed;
     float turnSmoothVelocity;
+    float turnSmoothTime = 0.2f;
+    public Vector2 turn = new Vector2(-180, 0);
 
     //Stuff for rotation speed
-    public float horizontalSpeed = 2.0f;
-    public float verticalSpeed = 2.0f;
+    //public float horizontalSpeed = 2.0f;
+    //public float verticalSpeed = 2.0f;
 
     // Start is called before the first frame update
     void Start()
     {
-        //Cursor.lockState = CursorLockMode.Locked;
+        Cursor.lockState = CursorLockMode.Locked;
         //rb = GetComponent<Rigidbody>();
     }
 
@@ -37,16 +51,17 @@ public class PlayerMovement : MonoBehaviour
     {
         groundedPlayer = controller.isGrounded;
         Move();
-        //Commented this out because it doesn't quite work how I wanted but it's close. Uncomment to see how it works
-        //Turn();
+        Turn();
         //Jump();
     }
 
     void Move()
     {
         //Accesses the basic movement controls. This works with WASD and also controller joysticks
+        
         float translationZ = Input.GetAxisRaw("Vertical");// * speed;
         float translationX = Input.GetAxisRaw("Horizontal");// * speed;
+        //Vector2 translateDir = new Vector2(translationX, translationZ).normalized;
 
         //Move according to current movement axis
         //transform.Translate(translationX, 0, translationZ);
@@ -57,33 +72,48 @@ public class PlayerMovement : MonoBehaviour
             playerVelocity.y = 0f;
         }
 
-        if (direction.magnitude >= 0.1f)
+        //Handles rotating if player is moving
+        if (direction != Vector3.zero)
         {
-            float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
-            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
-            transform.rotation = Quaternion.Euler(0f, angle, 0f);
-
-            Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
-            controller.Move(moveDir.normalized * speed * Time.deltaTime);
+            float targetRotation = Mathf.Atan2(direction.x, direction.y) * Mathf.Rad2Deg + rotator.transform.eulerAngles.y;
+            transform.eulerAngles = Vector3.up * Mathf.SmoothDampAngle(transform.eulerAngles.y, targetRotation, ref turnSmoothVelocity, turnSmoothTime);
         }
+        //If player presses jump, jump
         if(Input.GetButtonDown("Jump") /*&& groundedPlayer */)
         {
             playerVelocity.y += Mathf.Sqrt(jumpAmount * -3.0f * gravityValue);
+            //controller.Move().
         }
+        //Factor velocity into up and down motion while jumping
         playerVelocity.y += gravityValue * Time.deltaTime;
-        controller.Move(playerVelocity * Time.deltaTime);
+        //Actually start calculating movement speed
+        if (isWalking)
+        {
+            targetSpeed = baseSpeed;
+        }
+        else if (isSprinting)
+        {
+            targetSpeed = sprintSpeed;
+        }
+        else if (isSneaking)
+        {
+            targetSpeed = sneakSpeed;
+        }
+        targetSpeed = targetSpeed * direction.magnitude;
+        currentSpeed = Mathf.SmoothDamp(currentSpeed, targetSpeed, ref speedSmoothVelocity, speedSmoothTime);
+        transform.Translate(transform.forward * currentSpeed * Time.deltaTime, Space.World);
+        //controller.Move(playerVelocity * Time.deltaTime);
     }
 
-    /*
     void Turn()
     {
-        //If we assigned this to the camera instead of the player I think it might work better, but I'm not sure if forward movement would update properly
-        float h = horizontalSpeed * Input.GetAxis("Mouse X");
-        float v = verticalSpeed * Input.GetAxis("Mouse Y");
-        transform.Rotate(-v, h, 0);
+        //Rotate the central rotation piece based on mouse position
+        turn.x += Input.GetAxis("Mouse X") * turnSpeed;
+        turn.y += Input.GetAxis("Mouse Y") * turnSpeed;
+        turn.y = Mathf.Clamp(turn.y, turnMinMax.x, turnMinMax.y);
+        rotator.transform.localRotation = Quaternion.Euler(-turn.y, turn.x, 0);
         
     }
-    */
 
     /*
     void Jump()
