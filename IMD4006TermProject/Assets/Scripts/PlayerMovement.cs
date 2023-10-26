@@ -5,7 +5,7 @@ using UnityEngine;
 //Functionality for player movement, rotation, orientation, etc
 public class PlayerMovement : MonoBehaviour
 {
-    public CharacterController controller;
+    //public CharacterController controller;
     public Transform cam;
     [SerializeField] private GameObject rotator;
     public Vector2 turnMinMax = new Vector2(-40, 85);
@@ -35,38 +35,29 @@ public class PlayerMovement : MonoBehaviour
     float turnSmoothTime = 0.2f;
     public Vector2 turn = new Vector2(-180, 0);
 
-    //Stuff for rotation speed
-    //public float horizontalSpeed = 2.0f;
-    //public float verticalSpeed = 2.0f;
-
     // Start is called before the first frame update
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
-        //rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        groundedPlayer = controller.isGrounded;
         Move();
         Turn();
-        //Jump();
     }
 
     void Move()
     {
         //Accesses the basic movement controls. This works with WASD and also controller joysticks
-        
         float translationZ = Input.GetAxisRaw("Vertical");// * speed;
         float translationX = Input.GetAxisRaw("Horizontal");// * speed;
-        //Vector2 translateDir = new Vector2(translationX, translationZ).normalized;
 
         //Move according to current movement axis
-        //transform.Translate(translationX, 0, translationZ);
         Vector3 direction = new Vector3(translationX, 0f, translationZ).normalized;
 
+        //Ensures the player stops moving up or down when on the ground
         if (groundedPlayer && playerVelocity.y < 0)
         {
             playerVelocity.y = 0f;
@@ -82,11 +73,11 @@ public class PlayerMovement : MonoBehaviour
         if(Input.GetButtonDown("Jump") /*&& groundedPlayer */)
         {
             playerVelocity.y += Mathf.Sqrt(jumpAmount * -3.0f * gravityValue);
-            //controller.Move().
         }
         //Factor velocity into up and down motion while jumping
         playerVelocity.y += gravityValue * Time.deltaTime;
-        //Actually start calculating movement speed
+
+        //Set the movement speed based on movement mode
         if (isWalking)
         {
             targetSpeed = baseSpeed;
@@ -99,9 +90,42 @@ public class PlayerMovement : MonoBehaviour
         {
             targetSpeed = sneakSpeed;
         }
+
+        //Start calculating the walk speed
         targetSpeed = targetSpeed * direction.magnitude;
         currentSpeed = Mathf.SmoothDamp(currentSpeed, targetSpeed, ref speedSmoothVelocity, speedSmoothTime);
-        transform.Translate(transform.forward * currentSpeed * Time.deltaTime, Space.World);
+        
+        //Handles moving in multiple directions
+        if(translationZ > 0f && translationX == 0f)
+        {
+            transform.Translate(transform.forward * currentSpeed * Time.deltaTime, Space.World);
+        } else if(translationZ > 0f && translationX != 0f)
+        {
+            transform.Translate(transform.forward * currentSpeed/2 * Time.deltaTime, Space.World);
+        }
+        if(translationZ < 0 && translationX == 0f)
+        {
+            transform.Translate(-transform.forward * currentSpeed * Time.deltaTime, Space.World);
+        } else if (translationZ < 0f && translationX != 0f)
+        {
+            transform.Translate(-transform.forward * currentSpeed / 2 * Time.deltaTime, Space.World);
+        }
+
+        if (translationX > 0f && translationZ == 0f)
+        {
+            transform.Translate(transform.forward * currentSpeed * Time.deltaTime, Space.World);
+        }else if (translationX > 0f && translationZ != 0f)
+        {
+            transform.Translate(transform.forward * currentSpeed / 2 * Time.deltaTime, Space.World);
+        }
+        if (translationX < 0f && translationZ == 0f)
+        {
+            transform.Translate(transform.forward * currentSpeed * Time.deltaTime, Space.World);
+        }else if (translationX < 0f && translationZ != 0f)
+        {
+            transform.Translate(transform.forward * currentSpeed / 2 * Time.deltaTime, Space.World);
+        }
+
         //controller.Move(playerVelocity * Time.deltaTime);
     }
 
@@ -111,17 +135,7 @@ public class PlayerMovement : MonoBehaviour
         turn.x += Input.GetAxis("Mouse X") * turnSpeed;
         turn.y += Input.GetAxis("Mouse Y") * turnSpeed;
         turn.y = Mathf.Clamp(turn.y, turnMinMax.x, turnMinMax.y);
-        rotator.transform.localRotation = Quaternion.Euler(-turn.y, turn.x, 0);
+        rotator.transform.rotation = Quaternion.Euler(-turn.y, turn.x, 0);
         
     }
-
-    /*
-    void Jump()
-    {
-        if (Input.GetButtonDown("Jump")){
-            Debug.Log("Jump!");
-            
-        }
-    }
-    */
 }
