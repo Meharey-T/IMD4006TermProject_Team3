@@ -58,15 +58,24 @@
     <Analyzer Include="C:\Program Files\Unity 2022.3.8f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Behaviour Trees\Decorator.cs" />
+    <Compile Include="Assets\Scripts\Behaviour Trees\Composite.cs" />
     <Compile Include="Assets\Scripts\AddGameObjectToRuntimeSet.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
     <Compile Include="Assets\Scripts\RuntimeSet.cs" />
     <Compile Include="Assets\Scripts\GameObjectRuntimeSet.cs" />
     <Compile Include="Assets\Scripts\Enemy.cs" />
+    <Compile Include="Assets\Scripts\Behaviour Trees\Selector.cs" />
+    <Compile Include="Assets\Scripts\Behaviour Trees\BehaviourTree.cs" />
     <Compile Include="Assets\Scripts\TreasureStats.cs" />
     <Compile Include="Assets\Scripts\Interactable.cs" />
+    <Compile Include="Assets\Scripts\Behaviour Trees\BTCondition.cs" />
+    <Compile Include="Assets\Scripts\Behaviour Trees\Inverter.cs" />
+    <Compile Include="Assets\Scripts\Behaviour Trees\BTNode.cs" />
     <Compile Include="Assets\Scripts\Treasure.cs" />
+    <Compile Include="Assets\Scripts\Behaviour Trees\Timer.cs" />
     <Compile Include="Assets\Scripts\PlayerMovement.cs" />
+    <Compile Include="Assets\Scripts\Behaviour Trees\Sequence.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
