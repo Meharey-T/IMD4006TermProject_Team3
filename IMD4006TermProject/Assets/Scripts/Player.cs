@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 //Player script holds the model (stats) and main functionality for Player
 public class Player : MonoBehaviour
@@ -14,10 +15,14 @@ public class Player : MonoBehaviour
 
     public TMPro.TextMeshProUGUI coinCountTxt;
     public TMPro.TextMeshProUGUI centralTxt;
+    public GameObject P_LivesCount;
 
     [SerializeField] int coinCount = 0;
 
     int lives = 3;
+
+    [SerializeField] Texture i_health;
+    [SerializeField] Texture i_hurt;
 
     // Start is called before the first frame update
     void Start()
@@ -34,8 +39,23 @@ public class Player : MonoBehaviour
            SetTrap();
             Debug.Log("setTrap");
         }
-     
+        UpdateLives();
         
+    }
+
+    void UpdateLives()
+    {
+        int livesMissing = 3 - lives;
+        for(int i = 0; i < 3; i++)
+        {
+            P_LivesCount.transform.GetChild(i).GetComponentInChildren<RawImage>().texture = i_health;
+        }
+        for(int i = livesMissing; i > 0; i--)
+        {
+            Debug.Log(i);
+            Debug.Log(livesMissing);
+            P_LivesCount.transform.GetChild(3-i).GetComponentInChildren<RawImage>().texture = i_hurt;
+        }
     }
 
     //Check for collisions
