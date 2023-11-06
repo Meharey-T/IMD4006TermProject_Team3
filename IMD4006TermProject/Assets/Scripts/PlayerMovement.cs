@@ -40,10 +40,13 @@ public class PlayerMovement : MonoBehaviour
 
     private Vector3 playerVelocity;
 
+    private CapsuleCollider groundDetector;
+
     // Start is called before the first frame update
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
+        groundDetector = GetComponent<CapsuleCollider>();
     }
 
     // Update is called once per frame
@@ -62,6 +65,10 @@ public class PlayerMovement : MonoBehaviour
         //Move according to current movement axis
         Vector3 direction = new Vector3(translationX, 0f, translationZ).normalized;
 
+
+        //Factor velocity into up and down motion while jumping
+        playerVelocity.y += gravityValue * Time.deltaTime;
+
         //Ensures the player stops moving up or down when on the ground
         if (groundedPlayer && playerVelocity.y < 0)
         {
@@ -74,13 +81,13 @@ public class PlayerMovement : MonoBehaviour
             float targetRotation = Mathf.Atan2(direction.x, direction.y) * Mathf.Rad2Deg + rotator.transform.eulerAngles.y;
             transform.eulerAngles = Vector3.up * Mathf.SmoothDampAngle(transform.eulerAngles.y, targetRotation, ref turnSmoothVelocity, turnSmoothTime);
         }
+
         //If player presses jump, jump
-        if(Input.GetButtonDown("Jump") /*&& groundedPlayer */)
+        if(Input.GetButtonDown("Jump") && groundedPlayer)
         {
             playerVelocity.y += Mathf.Sqrt(jumpAmount * -3.0f * gravityValue);
         }
-        //Factor velocity into up and down motion while jumping
-        playerVelocity.y += gravityValue * Time.deltaTime;
+        
 
         //Start calculating the walk speed
         targetSpeed = modalSpeed * direction.magnitude;
@@ -117,7 +124,7 @@ public class PlayerMovement : MonoBehaviour
             transform.Translate(transform.forward * currentSpeed / 2 * Time.deltaTime, Space.World);
         }
 
-        //controller.Move(playerVelocity * Time.deltaTime);
+        transform.Translate(playerVelocity * Time.deltaTime);
     }
     
     void Turn()
@@ -131,26 +138,22 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        //Needs to make sure the trigger is the capsule collider
-        //Check if the trigger is the ground
-        //Change grounded to yes
-        /*
-        if (other)
+        //Layer 7 is ground
+        //Only the capsule collider should be able to trigger on a ground object
+        if (other.gameObject.layer == 7)
         {
             groundedPlayer = true;
         }
-        */
+        
     }
 
     private void OnTriggerExit(Collider other)
     {
-        //Change grounded to false if they leave the ground collider
-        /*
-         * if(other){
-         *  groundedPlayer = false;
-         * }
-         * 
-         * */
+        //Layer 7 is ground
+        if (other.gameObject.layer == 7)
+        {
+            groundedPlayer = false;
+        }
     }
 
     public float getBaseSpeed()
