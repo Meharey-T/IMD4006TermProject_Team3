@@ -38,8 +38,6 @@ public class Player : MonoBehaviour
         
     }
 
-
-  
     //Check for collisions
     private void OnTriggerEnter(Collider other)
     {
