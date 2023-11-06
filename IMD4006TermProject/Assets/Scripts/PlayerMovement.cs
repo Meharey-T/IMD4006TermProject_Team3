@@ -119,7 +119,7 @@ public class PlayerMovement : MonoBehaviour
 
         //controller.Move(playerVelocity * Time.deltaTime);
     }
-
+    
     void Turn()
     {
         //Rotate the central rotation piece based on mouse position
@@ -127,6 +127,30 @@ public class PlayerMovement : MonoBehaviour
         turn.y += Input.GetAxis("Mouse Y") * turnSpeed;
         turn.y = Mathf.Clamp(turn.y, turnMinMax.x, turnMinMax.y);
         rotator.transform.rotation = Quaternion.Euler(-turn.y, turn.x, 0);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        //Needs to make sure the trigger is the capsule collider
+        //Check if the trigger is the ground
+        //Change grounded to yes
+        /*
+        if (other)
+        {
+            groundedPlayer = true;
+        }
+        */
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        //Change grounded to false if they leave the ground collider
+        /*
+         * if(other){
+         *  groundedPlayer = false;
+         * }
+         * 
+         * */
     }
 
     public float getBaseSpeed()

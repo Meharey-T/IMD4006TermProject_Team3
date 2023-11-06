@@ -9,7 +9,8 @@ public class WalkAction : FSMAction
     {
         PlayerMovement player = stateMachine.GetComponent<PlayerMovement>();
         player.setModalSpeed(player.getBaseSpeed());
-        //Change player sound collision radius
+        SphereCollider soundRadius = stateMachine.GetComponent<SphereCollider>();
+        soundRadius.radius = 5;
         //Change player animation
         //Change player footstep sounds
     }

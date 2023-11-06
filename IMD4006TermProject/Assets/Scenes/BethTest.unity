@@ -2573,7 +2573,7 @@ GameObject:
   - component: {fileID: 1807002482}
   - component: {fileID: 1807002481}
   - component: {fileID: 1807002486}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3146,18 +3146,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 3974088492691103330, guid: 9b2247beea61b504a8712748b7939d1e, type: 3}
-      propertyPath: baseSpeed
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 3974088492691103330, guid: 9b2247beea61b504a8712748b7939d1e, type: 3}
-      propertyPath: sprintSpeed
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 4866927312394548160, guid: 9b2247beea61b504a8712748b7939d1e, type: 3}
-      propertyPath: _initialState
-      value: 
-      objectReference: {fileID: 11400000, guid: 6bbdf4cf141905448819c04121307c98, type: 2}
     - target: {fileID: 8233892006867537294, guid: 9b2247beea61b504a8712748b7939d1e, type: 3}
       propertyPath: centralTxt
       value: 

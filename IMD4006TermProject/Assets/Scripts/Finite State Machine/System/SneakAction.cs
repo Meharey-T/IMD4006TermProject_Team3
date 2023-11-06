@@ -9,7 +9,8 @@ public class SneakAction : FSMAction
     {
         PlayerMovement player = stateMachine.GetComponent<PlayerMovement>();
         player.setModalSpeed(player.getSneakSpeed());
-        //Change player sound collision radius
+        SphereCollider soundRadius = stateMachine.GetComponent<SphereCollider>();
+        soundRadius.radius = 2f;
         //Change player animation
         //Change player footstep sounds
     }
