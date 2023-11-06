@@ -11,29 +11,34 @@ public class PlayerMovement : MonoBehaviour
     public Vector2 turnMinMax = new Vector2(-40, 85);
 
     //How fast we run. Set to serialized for easy access in the inspector
+    [Header("Movement speeds")]
     [SerializeField] private float baseSpeed;
     [SerializeField] private float sprintSpeed;
     [SerializeField] private float sneakSpeed;
-    [SerializeField] private float currentSpeed;
-    [SerializeField] private float speedSmoothVelocity;
-    [SerializeField] private float speedSmoothTime;
-    [SerializeField] private float jumpAmount;
-    float targetSpeed;
 
-    bool isWalking = true;
-    bool isSprinting;
-    bool isSneaking;
+    //Moving doesn't happen at perfect instant snaps
+    [Header("Smoothing settings")]
+    private float speedSmoothVelocity;
+    [SerializeField] private float speedSmoothTime;
+    private float modalSpeed;
+    private float currentSpeed;
+    private float targetSpeed;
+
+    //Affects our jump variables
+    [Header("Jump feel")]
+    [SerializeField] private float jumpAmount;
+    public bool groundedPlayer = true;
+
+    //Affects how fast the player turns, how they can turn
+    [Header("Turning feel")]
+    private Vector2 turn = new Vector2(-180, 0);
+    [SerializeField] private float turnSpeed;
+    private float turnSmoothVelocity;
+    [SerializeField] private float turnSmoothTime;
 
     private float gravityValue = -9.81f;
 
-    public bool groundedPlayer = true;
     private Vector3 playerVelocity;
-
-    //Turning variables
-    public float turnSpeed;
-    float turnSmoothVelocity;
-    float turnSmoothTime = 0.2f;
-    public Vector2 turn = new Vector2(-180, 0);
 
     // Start is called before the first frame update
     void Start()
@@ -77,22 +82,8 @@ public class PlayerMovement : MonoBehaviour
         //Factor velocity into up and down motion while jumping
         playerVelocity.y += gravityValue * Time.deltaTime;
 
-        //Set the movement speed based on movement mode
-        if (isWalking)
-        {
-            targetSpeed = baseSpeed;
-        }
-        else if (isSprinting)
-        {
-            targetSpeed = sprintSpeed;
-        }
-        else if (isSneaking)
-        {
-            targetSpeed = sneakSpeed;
-        }
-
         //Start calculating the walk speed
-        targetSpeed = targetSpeed * direction.magnitude;
+        targetSpeed = modalSpeed * direction.magnitude;
         currentSpeed = Mathf.SmoothDamp(currentSpeed, targetSpeed, ref speedSmoothVelocity, speedSmoothTime);
         
         //Handles moving in multiple directions
@@ -136,6 +127,25 @@ public class PlayerMovement : MonoBehaviour
         turn.y += Input.GetAxis("Mouse Y") * turnSpeed;
         turn.y = Mathf.Clamp(turn.y, turnMinMax.x, turnMinMax.y);
         rotator.transform.rotation = Quaternion.Euler(-turn.y, turn.x, 0);
-        
+    }
+
+    public float getBaseSpeed()
+    {
+        return baseSpeed;
+    }
+
+    public float getSprintSpeed()
+    {
+        return sprintSpeed;
+    }
+
+    public float getSneakSpeed()
+    {
+        return sneakSpeed;
+    }
+
+    public void setModalSpeed(float speed)
+    {
+        modalSpeed = speed;
     }
 }

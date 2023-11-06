@@ -3148,20 +3148,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3974088492691103330, guid: 9b2247beea61b504a8712748b7939d1e, type: 3}
       propertyPath: baseSpeed
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3974088492691103330, guid: 9b2247beea61b504a8712748b7939d1e, type: 3}
-      propertyPath: sneakSpeed
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3974088492691103330, guid: 9b2247beea61b504a8712748b7939d1e, type: 3}
       propertyPath: sprintSpeed
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
-    - target: {fileID: 3974088492691103330, guid: 9b2247beea61b504a8712748b7939d1e, type: 3}
-      propertyPath: speedSmoothTime
-      value: 0.1
-      objectReference: {fileID: 0}
+    - target: {fileID: 4866927312394548160, guid: 9b2247beea61b504a8712748b7939d1e, type: 3}
+      propertyPath: _initialState
+      value: 
+      objectReference: {fileID: 11400000, guid: 6bbdf4cf141905448819c04121307c98, type: 2}
     - target: {fileID: 8233892006867537294, guid: 9b2247beea61b504a8712748b7939d1e, type: 3}
       propertyPath: centralTxt
       value: 
@@ -3176,7 +3172,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8627968276628479127, guid: 9b2247beea61b504a8712748b7939d1e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8627968276628479127, guid: 9b2247beea61b504a8712748b7939d1e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3210,8 +3206,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 4305670924040945924, guid: 9b2247beea61b504a8712748b7939d1e, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

@@ -61,21 +61,35 @@
     <Compile Include="Assets\Scripts\Behaviour Trees\Decorator.cs" />
     <Compile Include="Assets\Scripts\Behaviour Trees\Composite.cs" />
     <Compile Include="Assets\Scripts\AddGameObjectToRuntimeSet.cs" />
+    <Compile Include="Assets\Scripts\Finite State Machine\System\SneakKeyReleased.cs" />
+    <Compile Include="Assets\Scripts\Finite State Machine\System\SneakAction.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
     <Compile Include="Assets\Scripts\RuntimeSet.cs" />
     <Compile Include="Assets\Scripts\GameObjectRuntimeSet.cs" />
+    <Compile Include="Assets\Scripts\Finite State Machine\System\WalkAction.cs" />
+    <Compile Include="Assets\Scripts\Finite State Machine\BaseStateMachine.cs" />
+    <Compile Include="Assets\Scripts\Finite State Machine\Decision.cs" />
     <Compile Include="Assets\Scripts\Enemy.cs" />
     <Compile Include="Assets\Scripts\Behaviour Trees\Selector.cs" />
     <Compile Include="Assets\Scripts\Behaviour Trees\BehaviourTree.cs" />
     <Compile Include="Assets\Scripts\TreasureStats.cs" />
+    <Compile Include="Assets\Scripts\Finite State Machine\System\SprintKeyReleased.cs" />
+    <Compile Include="Assets\Scripts\Finite State Machine\RemainInState.cs" />
+    <Compile Include="Assets\Scripts\Finite State Machine\System\SneakKeyIsDown.cs" />
     <Compile Include="Assets\Scripts\Interactable.cs" />
     <Compile Include="Assets\Scripts\Behaviour Trees\BTCondition.cs" />
+    <Compile Include="Assets\Scripts\Finite State Machine\Transition.cs" />
+    <Compile Include="Assets\Scripts\Finite State Machine\BaseState.cs" />
     <Compile Include="Assets\Scripts\Behaviour Trees\Inverter.cs" />
     <Compile Include="Assets\Scripts\Behaviour Trees\BTNode.cs" />
     <Compile Include="Assets\Scripts\Treasure.cs" />
+    <Compile Include="Assets\Scripts\Finite State Machine\FSMAction.cs" />
     <Compile Include="Assets\Scripts\Behaviour Trees\Timer.cs" />
+    <Compile Include="Assets\Scripts\Finite State Machine\System\SprintKeyIsDown.cs" />
+    <Compile Include="Assets\Scripts\Finite State Machine\System\SprintAction.cs" />
     <Compile Include="Assets\Scripts\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\Behaviour Trees\Sequence.cs" />
+    <Compile Include="Assets\Scripts\Finite State Machine\State.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
