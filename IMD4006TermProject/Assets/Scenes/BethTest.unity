@@ -2538,17 +2538,10 @@ PrefabInstance:
       propertyPath: playerObj
       value: 
       objectReference: {fileID: 1134914435}
-    - target: {fileID: 6342565627775331475, guid: fc36094b6ad9c274a85ea013917130da, type: 3}
-      propertyPath: enemyMeshAgent
-      value: 
-      objectReference: {fileID: 1646081054}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5390299953698405908, guid: fc36094b6ad9c274a85ea013917130da, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1646081054}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc36094b6ad9c274a85ea013917130da, type: 3}
 --- !u!1 &1435497000
 GameObject:
@@ -2927,33 +2920,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1631048076}
   m_CullTransparentMesh: 1
---- !u!1 &1646081048 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5390299953698405908, guid: fc36094b6ad9c274a85ea013917130da, type: 3}
-  m_PrefabInstance: {fileID: 1413742671}
-  m_PrefabAsset: {fileID: 0}
---- !u!195 &1646081054
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1646081048}
-  m_Enabled: 1
-  m_AgentTypeID: 0
-  m_Radius: 0.5
-  m_Speed: 3.5
-  m_Acceleration: 8
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 2
-  m_BaseOffset: 0
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
 --- !u!4 &1646081060 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3244511995126677998, guid: fc36094b6ad9c274a85ea013917130da, type: 3}
@@ -3780,6 +3746,14 @@ PrefabInstance:
     - target: {fileID: 3974088492691103330, guid: 9b2247beea61b504a8712748b7939d1e, type: 3}
       propertyPath: jumpAmount
       value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3974088492691103330, guid: 9b2247beea61b504a8712748b7939d1e, type: 3}
+      propertyPath: turnSmoothTime
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 3974088492691103330, guid: 9b2247beea61b504a8712748b7939d1e, type: 3}
+      propertyPath: speedSmoothTime
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 8233892006867537294, guid: 9b2247beea61b504a8712748b7939d1e, type: 3}
       propertyPath: i_hurt

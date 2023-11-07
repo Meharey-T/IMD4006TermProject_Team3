@@ -52,8 +52,6 @@ public class Player : MonoBehaviour
         }
         for(int i = livesMissing; i > 0; i--)
         {
-            Debug.Log(i);
-            Debug.Log(livesMissing);
             P_LivesCount.transform.GetChild(3-i).GetComponentInChildren<RawImage>().texture = i_hurt;
         }
     }

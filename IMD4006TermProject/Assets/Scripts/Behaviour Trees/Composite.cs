@@ -8,10 +8,8 @@ public abstract class Composite : BTNode
 {
     protected int CurrentChildIndex = 0;
 
-    protected Composite(string displayName, List<BTNode> childNodes) : base(displayName, childNodes)
+    protected Composite(List<BTNode> childNodes) : base(childNodes)
     {
-        Name = displayName;
-
         children.AddRange(childNodes);
     }
 }

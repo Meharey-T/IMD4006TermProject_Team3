@@ -69,12 +69,16 @@
     <Compile Include="Assets\Scripts\Finite State Machine\System\WalkAction.cs" />
     <Compile Include="Assets\Scripts\Finite State Machine\BaseStateMachine.cs" />
     <Compile Include="Assets\Scripts\Finite State Machine\Decision.cs" />
+    <Compile Include="Assets\Scripts\Behaviour Trees\Systems\EnemyBaseTree.cs" />
     <Compile Include="Assets\Scripts\Enemy.cs" />
     <Compile Include="Assets\Scripts\Behaviour Trees\Selector.cs" />
     <Compile Include="Assets\Scripts\Behaviour Trees\BehaviourTree.cs" />
+    <Compile Include="Assets\Scripts\Behaviour Trees\Tree.cs" />
     <Compile Include="Assets\Scripts\TreasureStats.cs" />
     <Compile Include="Assets\Scripts\Finite State Machine\System\SprintKeyReleased.cs" />
     <Compile Include="Assets\Scripts\Finite State Machine\RemainInState.cs" />
+    <Compile Include="Assets\Scripts\Behaviour Trees\Systems\GoToWaypoint.cs" />
+    <Compile Include="Assets\Scripts\Behaviour Trees\Systems\CheckIfInRange.cs" />
     <Compile Include="Assets\Scripts\Finite State Machine\System\SneakKeyIsDown.cs" />
     <Compile Include="Assets\Scripts\Interactable.cs" />
     <Compile Include="Assets\Scripts\Behaviour Trees\BTCondition.cs" />

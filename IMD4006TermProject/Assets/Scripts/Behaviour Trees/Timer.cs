@@ -12,7 +12,7 @@ public class Timer : Decorator
     private float m_TimeToWait;
 
     public Timer(float timeToWait, List<BTNode> childNode, bool useFixedTime = false) :
-        base($"Timer for {timeToWait}", childNode)
+        base(childNode)
     {
         m_UseFixedTime = useFixedTime;
         m_TimeToWait = timeToWait;

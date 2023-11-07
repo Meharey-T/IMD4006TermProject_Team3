@@ -7,7 +7,7 @@ using BehaviourTree;
 //If no key, bash door down instead of unlocking, for instance
 public class Inverter : Decorator
 {
-    public Inverter(string displayName, List<BTNode> childNode) : base(displayName, childNode) { }
+    public Inverter(List<BTNode> childNode) : base(childNode) { }
 
     protected override void OnReset() { }
     protected override NodeState OnRun()

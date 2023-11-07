@@ -17,9 +17,17 @@ public abstract class BTNode
 
     private Dictionary<string, object> _dataContext = new Dictionary<string, object>();
 
-    protected BTNode(string name, List<BTNode> children)
+    protected BTNode()
     {
-        //I'm not sure if we need to add something here to allow this to work
+        parent = null;
+    }
+
+    protected BTNode(List<BTNode> children)
+    {
+        foreach(BTNode child in children)
+        {
+            _Attach(child);
+        }
     }
 
     public virtual NodeState Run()
@@ -42,26 +50,13 @@ public abstract class BTNode
         OnReset();
     }
 
-    protected abstract NodeState OnRun();
-    protected abstract void OnReset();
-
-   
-
-    public BTNode(List<BTNode> children)
-    {
-        foreach (BTNode child in children)
-        {
-            _Attach(child);
-        }
-    }
-
     private void _Attach(BTNode node)
     {
         node.parent = this;
         children.Add(node);
     }
 
-    public virtual NodeState Evaluate() => NodeState.FAILURE;
+    //public virtual NodeState Evaluate() => NodeState.FAILURE;
 
     public void SetData(string key, object value)
     {
@@ -103,6 +98,9 @@ public abstract class BTNode
         }
         return false;
     }
+
+    protected abstract NodeState OnRun();
+    protected abstract void OnReset();
 
     /*
     public void ToList(List<BTNode> results)

@@ -7,9 +7,8 @@ using BehaviourTree;
 //Includes inverter and timer classes
 public abstract class Decorator : BTNode
 {
-    public Decorator(string displayName, List<BTNode> node) : base(displayName, node)
+    public Decorator(List<BTNode> node) : base(node)
     {
-        Name = displayName;
         children.AddRange(node);
     }
 }

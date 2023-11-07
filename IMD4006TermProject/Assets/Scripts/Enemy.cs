@@ -22,8 +22,6 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
-
         waypointRadius = 5;
         enemyMeshAgent = GetComponent<NavMeshAgent>();
         playerObj = GameObject.FindGameObjectWithTag("Player");
@@ -33,6 +31,7 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        /*
         float distance = Vector3.Distance(enemyMeshAgent.transform.position, playerObj.transform.position);
         if (distance <= 4f)
         {
@@ -44,6 +43,7 @@ public class Enemy : MonoBehaviour
             Patroling();
             toFollow = false;
         }
+        */
 
     }
 
@@ -82,10 +82,6 @@ public class Enemy : MonoBehaviour
         float waypointZ = Random.Range(-waypointRadius, waypointRadius);
         float waypointX = Random.Range(-waypointRadius, waypointRadius);
         nextWaypointPos.Set(waypointX, 1f, waypointZ);
-
-
-
-
     }
     private void Following()
     {

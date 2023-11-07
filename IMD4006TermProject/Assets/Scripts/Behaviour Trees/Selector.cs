@@ -5,7 +5,7 @@ using BehaviourTree;
 
 public class Selector : Composite
 {
-    public Selector(string displayName, List<BTNode> childNodes) : base(displayName, childNodes) { }
+    public Selector(List<BTNode> childNodes) : base(childNodes) { }
 
     protected override NodeState OnRun()
     {

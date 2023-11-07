@@ -4,8 +4,8 @@ using UnityEngine;
 
 public abstract class BTCondition : BTNode
 {
-    public BTCondition(string name, List<BTNode> children) : base(name, children)
+    public BTCondition()
     {
-        Name = name;
+        
     }
 }

@@ -7,7 +7,7 @@ using BehaviourTree;
 //If any elements in the sequence fail, the sequence fails
 public class Sequence : Composite
 {
-    public Sequence(string displayName, List<BTNode> childNodes) : base(displayName, childNodes) { }
+    public Sequence(List<BTNode> childNodes) : base(childNodes) { }
 
     protected override NodeState OnRun()
     {
