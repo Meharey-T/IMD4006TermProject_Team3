@@ -11,6 +11,8 @@ public class SneakAction : FSMAction
         player.setModalSpeed(player.getSneakSpeed());
         SphereCollider soundRadius = stateMachine.GetComponent<SphereCollider>();
         soundRadius.radius = 2f;
+        player.gameObject.layer = 9;
+        player.GetComponent<Player>().indicator.text = "";
         //Change player animation
         //Change player footstep sounds
     }

@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
 
     public TMPro.TextMeshProUGUI coinCountTxt;
     public TMPro.TextMeshProUGUI centralTxt;
+    public TMPro.TextMeshProUGUI indicator;
     public GameObject P_LivesCount;
 
     [SerializeField] int coinCount = 0;
@@ -23,6 +24,9 @@ public class Player : MonoBehaviour
 
     [SerializeField] Texture i_health;
     [SerializeField] Texture i_hurt;
+
+    public bool inRangeOfHideable = false;
+    public Vector3 nearestHideable;
 
     // Start is called before the first frame update
     void Start()
@@ -84,6 +88,21 @@ public class Player : MonoBehaviour
                 Debug.Log("Player has lost");
                 StartCoroutine(OnPlayerLoss());
             }
+        }
+
+        if(other.GetComponent<Hideable>() != null)
+        {
+            inRangeOfHideable = true;
+            nearestHideable = other.GetComponent<Hideable>().transform.position;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.GetComponent<Hideable>() != null)
+        {
+            inRangeOfHideable = false;
+            
         }
     }
 

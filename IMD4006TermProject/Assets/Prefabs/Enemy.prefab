@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 777709022246518782}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -61,8 +61,8 @@ Transform:
   m_GameObject: {fileID: 3405676636752625266}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.003, y: 1.8, z: 0.147}
-  m_LocalScale: {x: 0.6, y: 0.6, z: 0.5}
+  m_LocalPosition: {x: -0.003, y: 1.777, z: 0.233}
+  m_LocalScale: {x: 0.65, y: 0.65, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8163657043169438236}
@@ -144,8 +144,8 @@ Transform:
   m_GameObject: {fileID: 4350831369353630879}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.8, z: 0}
-  m_LocalScale: {x: 0.75, y: 0.75, z: 0.75}
+  m_LocalPosition: {x: 0, y: 1.777, z: 0}
+  m_LocalScale: {x: 0.9, y: 0.9, z: 0.9}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8163657043169438236}
@@ -254,6 +254,8 @@ MonoBehaviour:
   enemyMeshAgent: {fileID: 0}
   playerObj: {fileID: 0}
   Waypoints: []
+  hearsPlayer: 0
+  lastLocationHeard: {x: 0, y: 0, z: 0}
 --- !u!114 &1649365884774819529
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -388,8 +390,8 @@ Transform:
   m_GameObject: {fileID: 5793278640553058720}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: 0}
-  m_LocalScale: {x: 0.6, y: 2, z: 0.6}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.75, y: 2.75, z: 0.75}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8163657043169438236}

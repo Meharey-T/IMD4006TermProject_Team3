@@ -20,7 +20,7 @@ public class CheckIfInRange : BTCondition
     {
         playerPos = player.transform.position;
         distance = Vector3.Distance(agent.transform.position, playerPos);
-        if (distance <= 5f)
+        if (distance <= 5f && player.gameObject.layer == 9)
         {
             Debug.Log("Spotted player");
             return NodeState.SUCCESS;

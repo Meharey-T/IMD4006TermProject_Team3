@@ -23,6 +23,7 @@ public class TaskCheckOutSound : BTNode
         if (waypointDistance < 1)
         {
             state = NodeState.SUCCESS;
+            thisActor.hearsPlayer = false;
             //NewPatrolPoint();
         }
         else if (waypointDistance >= 1)

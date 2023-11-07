@@ -11,6 +11,8 @@ public class SprintAction : FSMAction
         player.setModalSpeed(player.getSprintSpeed());
         SphereCollider soundRadius = stateMachine.GetComponent<SphereCollider>();
         soundRadius.radius = 9;
+        player.gameObject.layer = 9;
+        player.GetComponent<Player>().indicator.text = "";
         //Change player animation
         //Change player footstep sounds
     }

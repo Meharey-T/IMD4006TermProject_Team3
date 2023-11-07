@@ -101,12 +101,12 @@ public class Enemy : MonoBehaviour
          this.GetComponent<Interactable>().Die();
         }
 
-        if(other.gameObject.tag == "Player" && other.GetType() == typeof(BoxCollider))
+        if(other.gameObject.layer == 9 && other.GetType() == typeof(BoxCollider))
         {
             other.GetComponent<Player>().OnPlayerLoseLife();
         }
 
-        if(other.gameObject.tag == "Player" && other.GetType() == typeof(SphereCollider))
+        if(other.gameObject.layer == 9 && other.GetType() == typeof(SphereCollider))
         {
             hearsPlayer = true;
             lastLocationHeard = other.transform.position;
@@ -115,7 +115,7 @@ public class Enemy : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.tag == "Player" && other.GetType() == typeof(SphereCollider))
+        if (other.gameObject.tag == "player" && other.GetType() == typeof(SphereCollider))
         {
             hearsPlayer = false;
             lastLocationHeard = other.transform.position;
