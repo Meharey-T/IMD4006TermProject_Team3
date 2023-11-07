@@ -85,16 +85,16 @@ public class Player : MonoBehaviour
                 StartCoroutine(OnPlayerLoss());
             }
         }
+    }
 
-         if(other.gameObject.tag == "Enemy")
+    public void OnPlayerLoseLife()
+    {
+        Debug.Log("Hit an Enemy");
+        lives--;
+        if (lives <= 0)
         {
-            Debug.Log("Hit an Enemy");
-            lives--;
-            if (lives <= 0)
-            {
-                Debug.Log("Player has lost a life");
-                StartCoroutine(OnPlayerLoss());
-            }
+            Debug.Log("Player has lost a life");
+            StartCoroutine(OnPlayerLoss());
         }
     }
 

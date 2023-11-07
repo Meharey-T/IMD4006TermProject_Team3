@@ -16,7 +16,8 @@ public class Enemy : MonoBehaviour
     Vector3 nextWaypointPos;
 
 
-    bool toFollow = false;
+    public bool hearsPlayer = false;
+    public Vector3 lastLocationHeard;
 
 
     // Start is called before the first frame update
@@ -99,7 +100,27 @@ public class Enemy : MonoBehaviour
         {
          this.GetComponent<Interactable>().Die();
         }
+
+        if(other.gameObject.tag == "Player" && other.GetType() == typeof(BoxCollider))
+        {
+            other.GetComponent<Player>().OnPlayerLoseLife();
+        }
+
+        if(other.gameObject.tag == "Player" && other.GetType() == typeof(SphereCollider))
+        {
+            hearsPlayer = true;
+            lastLocationHeard = other.transform.position;
+        }
       }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.tag == "Player" && other.GetType() == typeof(SphereCollider))
+        {
+            hearsPlayer = false;
+            lastLocationHeard = other.transform.position;
+        }
+    }
 
 
 }
