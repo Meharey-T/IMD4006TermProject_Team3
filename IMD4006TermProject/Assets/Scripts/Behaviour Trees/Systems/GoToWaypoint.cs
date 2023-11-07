@@ -23,6 +23,7 @@ public class GoToWaypoint : BTNode
     {
         BTTransform = transform;
         navigator = enemyAgent;
+        nextWaypointPos = targetPos;
     }
 
     protected override NodeState OnRun()
@@ -34,15 +35,15 @@ public class GoToWaypoint : BTNode
         {
             Debug.Log("Reached waypoint");
             state = NodeState.SUCCESS;
+            NewPatrolPoint();
         }
         else if (waypointDistance >= 1)
         {
             navigator.SetDestination(nextWaypointPos);
             //NewPatrolPoint();
             // Debug.Log("going to new position");
-
+            state = NodeState.RUNNING;
         }
-        state = NodeState.RUNNING;
         return state;
     }
 
