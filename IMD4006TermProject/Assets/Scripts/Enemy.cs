@@ -103,7 +103,7 @@ public class Enemy : MonoBehaviour
 
         if(other.gameObject.layer == 9 && other.GetType() == typeof(BoxCollider))
         {
-            other.GetComponent<Player>().OnPlayerLoseLife();
+            other.GetComponentInParent<Player>().OnPlayerLoseLife();
         }
 
         if(other.gameObject.layer == 9 && other.GetType() == typeof(SphereCollider))
