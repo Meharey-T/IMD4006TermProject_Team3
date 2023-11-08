@@ -18,7 +18,6 @@ namespace UnityEngine.EventSystems
     /// <example>
     /// There are two ways to intercept events: You could extend EventTrigger, and override the functions for the events you are interested in intercepting; as shown in this example:
     /// <code>
-    /// <![CDATA[
     /// using UnityEngine;
     /// using UnityEngine.EventSystems;
     ///
@@ -109,11 +108,9 @@ namespace UnityEngine.EventSystems
     ///         Debug.Log("OnUpdateSelected called.");
     ///     }
     /// }
-    /// ]]>
-    ///</code>
+    /// </code>
     /// or you can specify individual delegates:
     /// <code>
-    /// <![CDATA[
     /// using UnityEngine;
     /// using UnityEngine.EventSystems;
     ///
@@ -134,8 +131,7 @@ namespace UnityEngine.EventSystems
     ///         Debug.Log("OnPointerDownDelegate called.");
     ///     }
     /// }
-    /// ]]>
-    ///</code>
+    /// </code>
     /// </example>
     public class EventTrigger :
         MonoBehaviour,
@@ -211,7 +207,9 @@ namespace UnityEngine.EventSystems
 
         private void Execute(EventTriggerType id, BaseEventData eventData)
         {
-            for (int i = 0; i < triggers.Count; ++i)
+            var triggerCount = triggers.Count;
+
+            for (int i = 0, imax = triggers.Count; i < imax; ++i)
             {
                 var ent = triggers[i];
                 if (ent.eventID == id && ent.callback != null)
