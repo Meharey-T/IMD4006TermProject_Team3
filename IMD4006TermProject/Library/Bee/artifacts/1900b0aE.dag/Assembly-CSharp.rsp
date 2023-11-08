@@ -381,6 +381,7 @@
 "Assets/Scripts/Interactable.cs"
 "Assets/Scripts/Player.cs"
 "Assets/Scripts/PlayerMovement.cs"
+"Assets/Scripts/PlayerPickup.cs"
 "Assets/Scripts/PlayerTriggerHandle.cs"
 "Assets/Scripts/RuntimeSet.cs"
 "Assets/Scripts/Treasure.cs"
