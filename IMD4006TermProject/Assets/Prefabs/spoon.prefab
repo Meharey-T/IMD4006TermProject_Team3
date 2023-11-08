@@ -112,7 +112,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83440a0907079ea48898a581fafbf151, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameObjectRuntimeSet: {fileID: 0}
+  gameObjectRuntimeSet: {fileID: 11400000, guid: d5d554d024a4ebf46b647a5f3dfe2e0f, type: 2}
 --- !u!114 &119299622753381541
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -137,4 +137,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7b9645a3b3db294286b02d4fe556463, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  treasureStats: {fileID: 0}
+  treasureStats: {fileID: 11400000, guid: a90091dde9d2c8944a0d4c6028b185c4, type: 2}
