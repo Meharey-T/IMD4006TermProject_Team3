@@ -12,7 +12,10 @@ public class HideAction : FSMAction
         SphereCollider soundRadius = stateMachine.GetComponentInChildren<SphereCollider>();
         soundRadius.radius = 0;
         player.gameObject.layer = 8;
-        stateMachine.GetComponent<Player>().previousPosition = player.transform.position;
+        if(stateMachine.GetComponent<Player>().previousPosition == new Vector3(0, 0, 0))
+        {
+            stateMachine.GetComponent<Player>().previousPosition = new Vector3(player.transform.position.x, player.transform.position.y + 0.2f, player.transform.position.z);
+        }
         player.transform.position = player.GetComponent<Player>().nearestHideable;
         player.GetComponent<Player>().indicator.text = "Hiding";
         //Change player animation

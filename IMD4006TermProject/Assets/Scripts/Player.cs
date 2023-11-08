@@ -34,6 +34,7 @@ public class Player : MonoBehaviour
     {
         coinCountTxt.text = "Coin Count: 0";
         centralTxt.enabled = false;
+        previousPosition = new Vector3(0, 0, 0);
     }
 
     // Update is called once per frame
