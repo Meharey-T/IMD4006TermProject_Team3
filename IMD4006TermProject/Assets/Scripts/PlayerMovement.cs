@@ -54,6 +54,23 @@ public class PlayerMovement : MonoBehaviour
     {
         Move();
         Turn();
+        Reset();
+    }
+
+    private void LateUpdate()
+    {
+        if (this.gameObject.transform.position.y < 0)
+        {
+            this.transform.position = new Vector3(this.transform.position.x, 0, this.transform.position.z);
+        }
+    }
+
+    private void Reset()
+    {
+        if (Input.GetKeyDown("r"))
+        {
+            this.transform.position = new Vector3(0, 0, 0);
+        }
     }
 
     void Move()
