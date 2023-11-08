@@ -4,7 +4,7 @@ using UnityEngine;
 using BehaviourTree;
 using UnityEngine.AI;
 
-public class EnemyBaseTree : Tree
+public class EnemyBaseTree : BTree
 {
     private Transform[] Waypoints;
     private float waypointRadius = 5;
