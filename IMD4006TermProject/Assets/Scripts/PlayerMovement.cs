@@ -46,7 +46,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
-        groundDetector = GetComponent<CapsuleCollider>();
+        groundDetector = GetComponentInChildren<CapsuleCollider>();
     }
 
     // Update is called once per frame
@@ -85,7 +85,7 @@ public class PlayerMovement : MonoBehaviour
         //If player presses jump, jump
         if(Input.GetButtonDown("Jump") && groundedPlayer)
         {
-            playerVelocity.y += Mathf.Sqrt(jumpAmount * -3.0f * gravityValue);
+            playerVelocity.y += Mathf.Sqrt(jumpAmount * 3.0f);
         }
         
 
@@ -134,26 +134,6 @@ public class PlayerMovement : MonoBehaviour
         turn.y += Input.GetAxis("Mouse Y") * turnSpeed;
         turn.y = Mathf.Clamp(turn.y, turnMinMax.x, turnMinMax.y);
         rotator.transform.rotation = Quaternion.Euler(-turn.y, turn.x, 0);
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        //Layer 7 is ground
-        //Only the capsule collider should be able to trigger on a ground object
-        if (other.gameObject.layer == 7)
-        {
-            groundedPlayer = true;
-        }
-        
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        //Layer 7 is ground
-        if (other.gameObject.layer == 7)
-        {
-            groundedPlayer = false;
-        }
     }
 
     public float getBaseSpeed()

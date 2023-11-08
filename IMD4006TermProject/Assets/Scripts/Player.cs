@@ -11,14 +11,14 @@ public class Player : MonoBehaviour
     public GameObjectRuntimeSet coinSet;
     public GameObjectRuntimeSet enemySet;
     public GameObject trapObj;
-    
+    public GameObject colliderHolder;
 
     public TMPro.TextMeshProUGUI coinCountTxt;
     public TMPro.TextMeshProUGUI centralTxt;
     public TMPro.TextMeshProUGUI indicator;
     public GameObject P_LivesCount;
 
-    [SerializeField] int coinCount = 0;
+    [SerializeField]public  int coinCount = 0;
 
     int lives = 3;
 
@@ -27,6 +27,7 @@ public class Player : MonoBehaviour
 
     public bool inRangeOfHideable = false;
     public Vector3 nearestHideable;
+    public Vector3 previousPosition;
 
     // Start is called before the first frame update
     void Start()
@@ -58,52 +59,7 @@ public class Player : MonoBehaviour
         {
             P_LivesCount.transform.GetChild(3-i).GetComponentInChildren<RawImage>().texture = i_hurt;
         }
-    }
-
-    //Check for collisions
-    private void OnTriggerEnter(Collider other)
-    {
-        //Coin pickup
-        if(other.gameObject.tag == "Treasure")
-        {
-            Debug.Log("Found treasure");
-            //Figure out what kind of treasure we just found, act accordingly
-            coinCount += other.GetComponent<Treasure>().treasureStats.coinValue;
-            if (other.GetComponent<Treasure>().treasureStats.finalChest)
-            {
-                Debug.Log("Player has won");
-                StartCoroutine(OnPlayerWon());
-            }
-            //Remove the coin from the scene
-            other.GetComponent<Interactable>().Die();
-            coinCountTxt.text = "Coin Count: " + coinCount;
-        }
-
-        if(other.gameObject.tag == "Obstacle")
-        {
-            Debug.Log("Hit an obstacle");
-            lives--;
-            if (lives <= 0)
-            {
-                Debug.Log("Player has lost");
-                StartCoroutine(OnPlayerLoss());
-            }
-        }
-
-        if(other.GetComponent<Hideable>() != null)
-        {
-            inRangeOfHideable = true;
-            nearestHideable = other.GetComponent<Hideable>().transform.position;
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.GetComponent<Hideable>() != null)
-        {
-            inRangeOfHideable = false;
-            
-        }
+        //colliderHolder.transform.position = this.gameObject.transform.GetChild(1).position;
     }
 
     public void OnPlayerLoseLife()
@@ -123,7 +79,7 @@ public class Player : MonoBehaviour
     
     }
 
-    IEnumerator OnPlayerLoss()
+    public IEnumerator OnPlayerLoss()
     {
         centralTxt.text = "You died";
         centralTxt.enabled = true;
@@ -131,7 +87,7 @@ public class Player : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
-    IEnumerator OnPlayerWon()
+    public IEnumerator OnPlayerWon()
     {
         centralTxt.text = "You won! \n You got " + coinCount + " coins!";
         centralTxt.enabled = true;

@@ -9,7 +9,7 @@ public class SneakAction : FSMAction
     {
         PlayerMovement player = stateMachine.GetComponent<PlayerMovement>();
         player.setModalSpeed(player.getSneakSpeed());
-        SphereCollider soundRadius = stateMachine.GetComponent<SphereCollider>();
+        SphereCollider soundRadius = stateMachine.GetComponentInChildren<SphereCollider>();
         soundRadius.radius = 2f;
         player.gameObject.layer = 9;
         player.GetComponent<Player>().indicator.text = "";

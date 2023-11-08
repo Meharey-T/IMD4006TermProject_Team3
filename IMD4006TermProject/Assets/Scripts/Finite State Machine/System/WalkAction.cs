@@ -9,7 +9,12 @@ public class WalkAction : FSMAction
     {
         PlayerMovement player = stateMachine.GetComponent<PlayerMovement>();
         player.setModalSpeed(player.getBaseSpeed());
-        SphereCollider soundRadius = stateMachine.GetComponent<SphereCollider>();
+        SphereCollider soundRadius = stateMachine.GetComponentInChildren<SphereCollider>();
+        if(stateMachine.GetComponent<Player>().previousPosition != new Vector3(0, 0, 0))
+        {
+            stateMachine.transform.position = stateMachine.GetComponent<Player>().previousPosition;
+            stateMachine.GetComponent<Player>().previousPosition = new Vector3(0, 0, 0);
+        }
         soundRadius.radius = 5;
         player.gameObject.layer = 9;
         player.GetComponent<Player>().indicator.text = "";
