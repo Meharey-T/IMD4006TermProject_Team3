@@ -15,7 +15,7 @@ C:/Users/warri/OneDrive - Carleton University/IMD4006A_Advanced_Game_Design_and_
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-63878
+50342
 Successfully changed project path to: C:/Users/warri/OneDrive - Carleton University/IMD4006A_Advanced_Game_Design_and_Development/IMD4006TermProject_Team3/IMD4006TermProject_Team3/IMD4006TermProject
 C:/Users/warri/OneDrive - Carleton University/IMD4006A_Advanced_Game_Design_and_Development/IMD4006TermProject_Team3/IMD4006TermProject_Team3/IMD4006TermProject
 [UnityMemory] Configuration Parameters - Can be set up in boot.config
@@ -49,12 +49,12 @@ C:/Users/warri/OneDrive - Carleton University/IMD4006A_Advanced_Game_Design_and_
     "memorysetup-temp-allocator-size-cloud-worker=32768"
     "memorysetup-temp-allocator-size-gi-baking-worker=262144"
     "memorysetup-temp-allocator-size-gfx=262144"
-Player connection [32832] Host "[IP] 10.5.0.2 [Port] 0 [Flags] 2 [Guid] 1032591630 [EditorId] 1032591630 [Version] 1048832 [Id] WindowsEditor(7,LAPTOP-S35E210D) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined multi-casting on [225.0.0.222:54997]...
+Player connection [34356] Host "[IP] 10.5.0.2 [Port] 0 [Flags] 2 [Guid] 929290026 [EditorId] 929290026 [Version] 1048832 [Id] WindowsEditor(7,LAPTOP-S35E210D) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined multi-casting on [225.0.0.222:54997]...
 
-Player connection [32832] Host "[IP] 10.5.0.2 [Port] 0 [Flags] 2 [Guid] 1032591630 [EditorId] 1032591630 [Version] 1048832 [Id] WindowsEditor(7,LAPTOP-S35E210D) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined alternative multi-casting on [225.0.0.222:34997]...
+Player connection [34356] Host "[IP] 10.5.0.2 [Port] 0 [Flags] 2 [Guid] 929290026 [EditorId] 929290026 [Version] 1048832 [Id] WindowsEditor(7,LAPTOP-S35E210D) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined alternative multi-casting on [225.0.0.222:34997]...
 
 [Physics::Module] Initialized MultithreadedJobDispatcher with 15 workers.
-Refreshing native plugins compatible for Editor in 3.89 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 7.49 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2022.3.8f1 (b5eafc012955)
 [Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2022.3.8f1/Editor/Data/Resources/UnitySubsystems
@@ -70,46 +70,46 @@ Initialize mono
 Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2022.3.8f1/Editor/Data/Managed'
 Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2022.3.8f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
 Mono config path = 'C:/Program Files/Unity/Hub/Editor/2022.3.8f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56492
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56128
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2022.3.8f1/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2022.3.8f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.005968 seconds.
-- Loaded All Assemblies, in  0.564 seconds
+Registered in 0.005839 seconds.
+- Loaded All Assemblies, in  0.316 seconds
 Native extension for WindowsStandalone target not found
 Native extension for WebGL target not found
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  0.249 seconds
-Domain Reload Profiling: 812ms
-	BeginReloadAssembly (230ms)
+- Finished resetting the current domain, in  0.233 seconds
+Domain Reload Profiling: 548ms
+	BeginReloadAssembly (100ms)
 		ExecutionOrderSort (0ms)
 		DisableScriptedObjects (0ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
 		CreateAndSetChildDomain (1ms)
-	RebuildCommonClasses (52ms)
-	RebuildNativeTypeToScriptingClass (14ms)
-	initialDomainReloadingComplete (65ms)
-	LoadAllAssembliesAndSetupDomain (201ms)
-		LoadAssemblies (226ms)
+	RebuildCommonClasses (31ms)
+	RebuildNativeTypeToScriptingClass (10ms)
+	initialDomainReloadingComplete (51ms)
+	LoadAllAssembliesAndSetupDomain (124ms)
+		LoadAssemblies (98ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (199ms)
-			TypeCache.Refresh (198ms)
-				TypeCache.ScanAssembly (183ms)
+		AnalyzeDomain (122ms)
+			TypeCache.Refresh (121ms)
+				TypeCache.ScanAssembly (109ms)
 			ScanForSourceGeneratedMonoScriptInfo (0ms)
 			ResolveRequiredComponents (0ms)
-	FinalizeReload (249ms)
+	FinalizeReload (233ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (196ms)
+		SetupLoadedEditorAssemblies (178ms)
 			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (9ms)
-			SetLoadedEditorAssemblies (6ms)
+			InitializePlatformSupportModulesInManaged (10ms)
+			SetLoadedEditorAssemblies (5ms)
 			RefreshPlugins (0ms)
 			BeforeProcessingInitializeOnLoad (2ms)
-			ProcessInitializeOnLoadAttributes (129ms)
-			ProcessInitializeOnLoadMethodAttributes (50ms)
+			ProcessInitializeOnLoadAttributes (118ms)
+			ProcessInitializeOnLoadMethodAttributes (44ms)
 			AfterProcessingInitializeOnLoad (0ms)
 			EditorAssembliesLoaded (0ms)
 		ExecutionOrderSort2 (0ms)
@@ -127,8 +127,8 @@ DirectoryNotFoundException: Could not find a part of the path "C:\Users\warri\On
   at UnityEditor.AssemblyValidation.LoadAssemblyDefinitions (System.String[] assemblyPaths, System.String[] searchPaths) [0x00048] in <35c0e5f206594d2fa707969117964d70>:0 
   at UnityEditor.AssemblyValidation.ValidateAssemblies (System.String[] assemblyPaths, System.Boolean enableLogging) [0x00007] in <35c0e5f206594d2fa707969117964d70>:0 
 
-- Loaded All Assemblies, in  0.454 seconds
-Refreshing native plugins compatible for Editor in 1.82 ms, found 2 plugins.
+- Loaded All Assemblies, in  0.345 seconds
+Refreshing native plugins compatible for Editor in 1.85 ms, found 2 plugins.
 Native extension for WindowsStandalone target not found
 Native extension for WebGL target not found
 System.TypeInitializationException: The type initializer for 'Unity.Cloud.Collaborate.ToolbarButton' threw an exception. ---> System.IO.DirectoryNotFoundException: Could not find a part of the path "C:\Users\warri\OneDrive - Carleton University\IMD4006A_Advanced_Game_Design_and_Development\IMD4006TermProject_Team3\IMD4006TermProject_Team3\IMD4006TermProject\Library\PackageCache\com.unity.collab-proxy@2.0.7\Lib\Editor\PlasticSCM\localization\plastic-gui.en.txt"
@@ -150,94 +150,48 @@ UnityEngine.Debug:LogError (object)
 UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
 
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  0.542 seconds
-Domain Reload Profiling: 994ms
-	BeginReloadAssembly (163ms)
+- Finished resetting the current domain, in  0.428 seconds
+Domain Reload Profiling: 772ms
+	BeginReloadAssembly (131ms)
 		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (6ms)
+		DisableScriptedObjects (4ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (25ms)
-	RebuildCommonClasses (34ms)
-	RebuildNativeTypeToScriptingClass (9ms)
-	initialDomainReloadingComplete (50ms)
-	LoadAllAssembliesAndSetupDomain (196ms)
-		LoadAssemblies (185ms)
+		CreateAndSetChildDomain (24ms)
+	RebuildCommonClasses (28ms)
+	RebuildNativeTypeToScriptingClass (8ms)
+	initialDomainReloadingComplete (37ms)
+	LoadAllAssembliesAndSetupDomain (139ms)
+		LoadAssemblies (135ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (103ms)
-			TypeCache.Refresh (92ms)
-				TypeCache.ScanAssembly (79ms)
+		AnalyzeDomain (75ms)
+			TypeCache.Refresh (65ms)
+				TypeCache.ScanAssembly (54ms)
 			ScanForSourceGeneratedMonoScriptInfo (8ms)
 			ResolveRequiredComponents (2ms)
-	FinalizeReload (542ms)
+	FinalizeReload (429ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (398ms)
+		SetupLoadedEditorAssemblies (298ms)
 			LogAssemblyErrors (0ms)
 			InitializePlatformSupportModulesInManaged (6ms)
 			SetLoadedEditorAssemblies (5ms)
 			RefreshPlugins (0ms)
-			BeforeProcessingInitializeOnLoad (50ms)
-			ProcessInitializeOnLoadAttributes (301ms)
-			ProcessInitializeOnLoadMethodAttributes (29ms)
-			AfterProcessingInitializeOnLoad (6ms)
+			BeforeProcessingInitializeOnLoad (42ms)
+			ProcessInitializeOnLoadAttributes (222ms)
+			ProcessInitializeOnLoadMethodAttributes (19ms)
+			AfterProcessingInitializeOnLoad (4ms)
 			EditorAssembliesLoaded (0ms)
 		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (10ms)
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.07 seconds
-Refreshing native plugins compatible for Editor in 2.19 ms, found 2 plugins.
+		AwakeInstancesAfterBackupRestoration (6ms)
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.05 seconds
+Refreshing native plugins compatible for Editor in 2.06 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 1444 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 21 unused Assets / (53.8 KB). Loaded Objects now: 1913.
-Memory consumption went from 80.7 MB to 80.7 MB.
-Total: 3.095700 ms (FindLiveObjects: 0.168900 ms CreateObjectMapping: 0.094900 ms MarkObjects: 2.731700 ms  DeleteObjects: 0.099200 ms)
+Unloading 21 unused Assets / (53.8 KB). Loaded Objects now: 1914.
+Memory consumption went from 81.1 MB to 81.0 MB.
+Total: 3.998500 ms (FindLiveObjects: 0.182500 ms CreateObjectMapping: 0.044000 ms MarkObjects: 3.672000 ms  DeleteObjects: 0.098800 ms)
 
-AssetImportParameters requested are different than current active one (requested -> active):
-  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
-  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
-  custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
-  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
-  custom:video-codec-MediaFoundation-h265: 746d11721c4dcdbdad8f713fa42b33f4 -> 
-  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
-  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
-  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
-========================================================================
-Received Import Request.
-  Time since last request: 24542.400817 seconds.
-  path: Assets/Visual Assets/Models/Torch.fbx
-  artifactKey: Guid(b0e4d7476f82b4944aedc76d46671e44) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Visual Assets/Models/Torch.fbx using Guid(b0e4d7476f82b4944aedc76d46671e44) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '04dbb10d8cd76eeae67209a71ac2bf67') in 0.170332 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 10
-========================================================================
-Received Import Request.
-  Time since last request: 0.000017 seconds.
-  path: Assets/Visual Assets/Models/Barrel.fbx
-  artifactKey: Guid(bd3c1b43c8e241b46981c2c37a39b760) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Visual Assets/Models/Barrel.fbx using Guid(bd3c1b43c8e241b46981c2c37a39b760) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f8e9bce31d48a22d6d59930755f34673') in 0.024494 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 9
-========================================================================
-Received Import Request.
-  Time since last request: 0.000030 seconds.
-  path: Assets/Visual Assets/Models/Chest.fbx
-  artifactKey: Guid(96f9683dc40dd0942acf2ce2b6690d6f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Visual Assets/Models/Chest.fbx using Guid(96f9683dc40dd0942acf2ce2b6690d6f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2f9c7a0bb10fbd3c87229e22c3e8bb49') in 0.032100 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 10
-========================================================================
-Received Prepare
-Refreshing native plugins compatible for Editor in 1.99 ms, found 2 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 1 unused Assets / (0.8 KB). Loaded Objects now: 1958.
-Memory consumption went from 59.3 MB to 59.3 MB.
-Total: 3.111500 ms (FindLiveObjects: 0.203600 ms CreateObjectMapping: 0.080300 ms MarkObjects: 2.804300 ms  DeleteObjects: 0.022600 ms)
-
-Prepare: number of updated asset objects reloaded= 0
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
   custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
@@ -254,65 +208,49 @@ AssetImportParameters requested are different than current active one (requested
   custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
 ========================================================================
 Received Import Request.
-  Time since last request: 105.286142 seconds.
-  path: Assets/Visual Assets/Models/woodTrim.fbx
-  artifactKey: Guid(b94a5793b5148e348a3d89a264c91d1d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Visual Assets/Models/woodTrim.fbx using Guid(b94a5793b5148e348a3d89a264c91d1d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2869438831bf95c2e6147c62a707ac8f') in 0.021875 seconds
+  Time since last request: 25052.342933 seconds.
+  path: Assets/Visual Assets/Models/woodBeam 1.fbx
+  artifactKey: Guid(81f0e061f96f9ba47a35e5e322570534) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Visual Assets/Models/woodBeam 1.fbx using Guid(81f0e061f96f9ba47a35e5e322570534) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '272c079223891af13fcd8db57d978d7f') in 0.134410 seconds
 Number of updated asset objects reloaded before import = 0
 Number of asset objects unloaded after import = 8
 ========================================================================
 Received Import Request.
-  Time since last request: 0.023358 seconds.
-  path: Assets/Visual Assets/Models/coinGold.fbx
-  artifactKey: Guid(1c01fd889fe19884aa51712bf9549a88) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Visual Assets/Models/coinGold.fbx using Guid(1c01fd889fe19884aa51712bf9549a88) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bd68c0a5d84bc57c3d4a69d6fac41c97') in 0.232652 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 8
-========================================================================
-Received Import Request.
-  Time since last request: 0.000018 seconds.
-  path: Assets/Visual Assets/Models/wall.fbx
-  artifactKey: Guid(ef76f9fa1ec773641a15aba24973bd18) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Visual Assets/Models/wall.fbx using Guid(ef76f9fa1ec773641a15aba24973bd18) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd350adb072a6e86f7cbd330d711e6d15') in 0.020636 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 8
-========================================================================
-Received Import Request.
-  Time since last request: 0.000034 seconds.
-  path: Assets/Visual Assets/Models/ground.fbx
-  artifactKey: Guid(3a228d4d66de7ae45ac50474d2ae39de) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Visual Assets/Models/ground.fbx using Guid(3a228d4d66de7ae45ac50474d2ae39de) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2a3d4dbde2be8e928df65589b5af5f30') in 0.019611 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 8
-========================================================================
-Received Import Request.
-  Time since last request: 5.991219 seconds.
-  path: Assets/Visual Assets/Materials/Blue.mat
-  artifactKey: Guid(9c375c9ca54614140a79da480e97b108) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Visual Assets/Materials/Blue.mat using Guid(9c375c9ca54614140a79da480e97b108) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5df2d472840db2bffe321a84ea06836e') in 0.024700 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 1
-========================================================================
-Received Import Request.
-  Time since last request: 0.000016 seconds.
-  path: Assets/Visual Assets/Materials/walls.mat
-  artifactKey: Guid(854e7c889f7a821479657caa623c03bd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Visual Assets/Materials/walls.mat using Guid(854e7c889f7a821479657caa623c03bd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dfc520a131cb5199a2d78a05d1e85bdf') in 0.013709 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 1
-========================================================================
-Received Import Request.
-  Time since last request: 11.391720 seconds.
-  path: Assets/Visual Assets/Materials/textureWood.jpg
-  artifactKey: Guid(93528c26f3a6dbc4694bc7926df1ba19) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Visual Assets/Materials/textureWood.jpg using Guid(93528c26f3a6dbc4694bc7926df1ba19) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '39265579144ab9a4c89a17c1999e6084') in 0.024793 seconds
+  Time since last request: 10.700061 seconds.
+  path: Assets/Visual Assets/Materials/textureWoodDarker.jpg
+  artifactKey: Guid(9e3a963a68c4a90478b97026a1c98959) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Visual Assets/Materials/textureWoodDarker.jpg using Guid(9e3a963a68c4a90478b97026a1c98959) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e9b44661e3509bb76278f91f675e5e17') in 0.036894 seconds
 Number of updated asset objects reloaded before import = 0
 Number of asset objects unloaded after import = 2
 ========================================================================
 Received Import Request.
-  Time since last request: 21.113212 seconds.
-  path: Assets/Visual Assets/Models/wall.fbx
-  artifactKey: Guid(ef76f9fa1ec773641a15aba24973bd18) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Visual Assets/Models/wall.fbx using Guid(ef76f9fa1ec773641a15aba24973bd18) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e5f2ea4f7ee21c5027afaebfbfb5c0a4') in 0.027012 seconds
+  Time since last request: 14.266162 seconds.
+  path: Assets/Visual Assets/Models/woodBeam.fbx
+  artifactKey: Guid(03458d5edfc69914b966cfbf9f4197d6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Visual Assets/Models/woodBeam.fbx using Guid(03458d5edfc69914b966cfbf9f4197d6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '807584ce0aeced01247845971c156317') in 0.031013 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 9
+========================================================================
+Received Import Request.
+  Time since last request: 1306.573826 seconds.
+  path: Assets/Visual Assets/Models/woodBeam.fbx
+  artifactKey: Guid(03458d5edfc69914b966cfbf9f4197d6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Visual Assets/Models/woodBeam.fbx using Guid(03458d5edfc69914b966cfbf9f4197d6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e74660b20a25559aa3e936bb45d19484') in 0.032799 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 9
+========================================================================
+Received Import Request.
+  Time since last request: 585.182206 seconds.
+  path: Assets/Visual Assets/Models/woodBeam.fbx
+  artifactKey: Guid(03458d5edfc69914b966cfbf9f4197d6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Visual Assets/Models/woodBeam.fbx using Guid(03458d5edfc69914b966cfbf9f4197d6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9c57e249816e69dbd96aea8cb236cb88') in 0.032952 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 9
+========================================================================
+Received Import Request.
+  Time since last request: 0.000030 seconds.
+  path: Assets/Visual Assets/Models/wallHole.fbx
+  artifactKey: Guid(21cc5f9eb347c7b45b08918d0c830027) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Visual Assets/Models/wallHole.fbx using Guid(21cc5f9eb347c7b45b08918d0c830027) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '21c54d3d073005c1535e6323472b4316') in 0.043052 seconds
 Number of updated asset objects reloaded before import = 0
 Number of asset objects unloaded after import = 9
