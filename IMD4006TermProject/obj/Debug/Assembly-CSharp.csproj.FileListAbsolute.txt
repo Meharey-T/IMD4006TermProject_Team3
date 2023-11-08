@@ -1,2 +1,0 @@
-C:\Users\Apple's Laptop\Documents\5th Year - 1st Sem\GameDev\Final Project\IMD4006TermProject_Team3\IMD4006TermProject_Team3\IMD4006TermProject\obj\Debug\Assembly-CSharp.csproj.AssemblyReference.cache
-C:\Users\Apple's Laptop\Documents\5th Year - 1st Sem\GameDev\Final Project\IMD4006TermProject_Team3\IMD4006TermProject_Team3\IMD4006TermProject\obj\Debug\Assembly-CSharp.csproj.CoreCompileInputs.cache
