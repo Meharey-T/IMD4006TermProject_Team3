@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7682791935692376751}
   - component: {fileID: 1993127460517857512}
   - component: {fileID: 1776784791351423634}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -106,7 +106,7 @@ GameObject:
   - component: {fileID: 4866927312394548160}
   - component: {fileID: 2969555230874370300}
   - component: {fileID: 7605686264673151187}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -150,7 +150,8 @@ MonoBehaviour:
   sprintSpeed: 8
   sneakSpeed: 1.5
   speedSmoothTime: 0.1
-  jumpAmount: 45
+  jumpAmount: 25
+  gravityScale: 2
   groundedPlayer: 1
   turnSpeed: 1.5
   turnSmoothTime: 0.1
@@ -240,7 +241,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 0.5, y: 1, z: 0.5}
-  m_Center: {x: 0, y: 0.36, z: 0}
+  m_Center: {x: 0, y: 0.35, z: 0}
 --- !u!1 &3689557309857060794
 GameObject:
   m_ObjectHideFlags: 0
@@ -255,7 +256,7 @@ GameObject:
   - component: {fileID: 5482248351544238605}
   - component: {fileID: 6169961355931190917}
   - component: {fileID: 4706644818466002382}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -366,7 +367,7 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.15
-  m_Height: 0.5
+  m_Height: 0.4
   m_Direction: 1
   m_Center: {x: 0, y: -0.1, z: 0}
 --- !u!114 &4706644818466002382
@@ -390,7 +391,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1505608511897711532}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Rotator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -422,7 +423,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6835656179430388971}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Geometry
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -458,7 +459,7 @@ GameObject:
   - component: {fileID: 8524189144391303533}
   - component: {fileID: 6446577754304937}
   - component: {fileID: 5715992331477376019}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -541,7 +542,7 @@ GameObject:
   - component: {fileID: 3058378144856690977}
   - component: {fileID: 1338265874351361524}
   - component: {fileID: 4737786746827519934}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -624,7 +625,7 @@ GameObject:
   - component: {fileID: 2119117778174994815}
   - component: {fileID: 6154923407480328795}
   - component: {fileID: 4888697882710647751}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Face
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -67,7 +67,7 @@ public class TaskRandomWander : BTNode
     private bool TestPoint(Vector3 proposedWaypoint)
     {
         NavMeshHit hit;
-        return NavMesh.SamplePosition(proposedWaypoint, out hit, 1.0f, NavMesh.AllAreas);
+        return NavMesh.SamplePosition(proposedWaypoint, out hit, 1f, NavMesh.AllAreas);
     }
 
     protected override void OnReset() { }
