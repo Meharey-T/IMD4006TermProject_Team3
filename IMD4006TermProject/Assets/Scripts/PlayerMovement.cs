@@ -5,7 +5,7 @@ using UnityEngine;
 //Functionality for player movement, rotation, orientation, etc
 public class PlayerMovement : MonoBehaviour
 {
-    //public CharacterController controller;
+    //Camera related values
     public Transform cam;
     [SerializeField] private GameObject rotator;
     public Vector2 turnMinMax = new Vector2(-40, 85);
@@ -16,7 +16,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float sprintSpeed;
     [SerializeField] private float sneakSpeed;
 
-    //Moving doesn't happen at perfect instant snaps
+    //Values for modifying movement speeds
     [Header("Smoothing settings")]
     private float speedSmoothVelocity;
     [SerializeField] private float speedSmoothTime;
@@ -27,6 +27,8 @@ public class PlayerMovement : MonoBehaviour
     //Affects our jump variables
     [Header("Jump feel")]
     [SerializeField] private float jumpAmount;
+    [SerializeField] private float gravityScale;
+    Vector3 jumpVector;
     public bool groundedPlayer = true;
 
     //Affects how fast the player turns, how they can turn
@@ -40,13 +42,17 @@ public class PlayerMovement : MonoBehaviour
 
     private Vector3 playerVelocity;
 
+    //Component references
     private CapsuleCollider groundDetector;
+    private Rigidbody rb;
 
     // Start is called before the first frame update
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
         groundDetector = GetComponentInChildren<CapsuleCollider>();
+        rb = GetComponent<Rigidbody>();
+        jumpVector = new Vector3(0, jumpAmount, 0);
     }
 
     // Update is called once per frame
@@ -59,6 +65,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void LateUpdate()
     {
+        rb.AddForce(Physics.gravity * (gravityScale - 1) * rb.mass);
         if (this.gameObject.transform.position.y < 0)
         {
             this.transform.position = new Vector3(this.transform.position.x, 0, this.transform.position.z);
@@ -84,13 +91,15 @@ public class PlayerMovement : MonoBehaviour
 
 
         //Factor velocity into up and down motion while jumping
-        playerVelocity.y += gravityValue * Time.deltaTime;
+        //playerVelocity.y += gravityValue * Time.deltaTime;
 
         //Ensures the player stops moving up or down when on the ground
+        /*
         if (groundedPlayer && playerVelocity.y < 0)
         {
             playerVelocity.y = 0f;
         }
+        */
 
         //Handles rotating if player is moving
         if (direction != Vector3.zero)
@@ -102,7 +111,7 @@ public class PlayerMovement : MonoBehaviour
         //If player presses jump, jump
         if(Input.GetButtonDown("Jump") && groundedPlayer)
         {
-            playerVelocity.y += Mathf.Sqrt(jumpAmount * 3.0f);
+            rb.AddForce(Vector3.up * jumpAmount, ForceMode.Impulse);
         }
         
 
@@ -141,7 +150,7 @@ public class PlayerMovement : MonoBehaviour
             transform.Translate(transform.forward * currentSpeed / 2 * Time.deltaTime, Space.World);
         }
 
-        transform.Translate(playerVelocity * Time.deltaTime);
+        //transform.Translate(playerVelocity * Time.deltaTime);
     }
     
     void Turn()
