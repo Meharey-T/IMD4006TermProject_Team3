@@ -7,7 +7,7 @@ public class SneakKeyIsDown : Decision
 {
     public override bool Decide(BaseStateMachine stateMachine)
     {
-        if (Input.GetKeyDown(KeyCode.LeftControl))
+        if (Input.GetKeyDown("c"))
         {
             return true;
         }

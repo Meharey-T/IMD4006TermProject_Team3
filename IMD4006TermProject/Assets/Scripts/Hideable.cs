@@ -11,6 +11,7 @@ public class Hideable : MonoBehaviour
     Color[] m_mainColour;
     Color[] m_brightenedColour;
     MeshRenderer m_renderer;
+    [SerializeField] GameObjectRuntimeSet player;
 
     private void Start()
     {
@@ -36,11 +37,17 @@ public class Hideable : MonoBehaviour
 
     private void OnMouseOver()
     {
-        for (int i = 0; i < m_renderer.materials.Length; i++)
+        //There will only ever be one player so we can be sure they'll be at index 0
+        float distance = Vector3.Distance(this.transform.position, player.Items[0].transform.position);
+        if (distance < 3)
         {
-            m_renderer.materials[i].color = m_brightenedColour[i];
+            player.Items[0].GetComponent<Player>().inRangeOfHideable = true;
+            player.Items[0].GetComponent<Player>().selectedHideable = this.transform.position;
+            for (int i = 0; i < m_renderer.materials.Length; i++)
+            {
+                m_renderer.materials[i].color = m_brightenedColour[i];
+            }
         }
-
     }
 
     private void OnMouseExit()

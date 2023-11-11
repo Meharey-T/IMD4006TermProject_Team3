@@ -11,7 +11,7 @@ public class Enemy : MonoBehaviour
     Vector3 enemyFollowTarget;
 
     //patroling 
-    public Transform[] Waypoints;
+    public List<GameObject> Waypoints;
     float waypointRadius;
     Vector3 nextWaypointPos;
 
@@ -32,82 +32,28 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        /*
-        float distance = Vector3.Distance(enemyMeshAgent.transform.position, playerObj.transform.position);
-        if (distance <= 4f)
-        {
-            toFollow = true;
-            Following();
-        }
-        else if (distance > 4f)
-        {
-            Patroling();
-            toFollow = false;
-        }
-        */
-
+        
     }
 
-    private void Patroling()
-    {
-
-
-        float waypointDistance = Vector3.Distance(enemyMeshAgent.transform.position, nextWaypointPos);
-
-
-        if (waypointDistance < 1)
-        {
-            NewPatrolPoint();
-            //Debug.Log("Finding new position");
-
-        }
-        else if (waypointDistance >= 1)
-        {
-            enemyMeshAgent.SetDestination(nextWaypointPos);
-           // Debug.Log("going to new position");
-
-        }
-
-
-
-       // Debug.Log(nextWaypointPos);
-
-       // Debug.Log("patroling");
-
-    }
-
-
-
-    private void NewPatrolPoint()
-    {
-        float waypointZ = Random.Range(-waypointRadius, waypointRadius);
-        float waypointX = Random.Range(-waypointRadius, waypointRadius);
-        nextWaypointPos.Set(waypointX, 1f, waypointZ);
-    }
-    private void Following()
-    {
-        enemyMeshAgent.SetDestination(playerObj.transform.position);
-       // Debug.Log("chasing");
-
-        //enemyFollowTarget = gameObject.transform.position + (playerObj.transform.position - gameObject.transform.position) * 0.001f;
-        // gameObject.transform.position = enemyFollowTarget;
-
-    }
      private void OnTriggerEnter(Collider other)
     {
-        //Coin pickup
+        //Handles enemies running into traps
         if(other.gameObject.tag == "Trap")
         {
          this.GetComponent<Interactable>().Die();
         }
 
+        //Handles if they run into the player while they're not hiding
+        //Only collides with the actual player geometry
         if(other.gameObject.layer == 9 && other.GetType() == typeof(BoxCollider))
         {
+            //Player will lose a life
             other.GetComponentInParent<Player>().OnPlayerLoseLife();
         }
-
+        //Handles if they fall into the radius of the player projected sound
         if(other.gameObject.layer == 9 && other.GetType() == typeof(SphereCollider))
         {
+            //Sets them to alert and sets a value to their location heard, allowing them to pursue the source of the sound
             hearsPlayer = true;
             lastLocationHeard = other.transform.position;
         }
@@ -115,8 +61,10 @@ public class Enemy : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
+        //If they exit the range of where they can currently hear the player, sets it accordingly
         if (other.gameObject.tag == "player" && other.GetType() == typeof(SphereCollider))
         {
+            //They can no longer hear the player, and the place they last heard them stops changing
             hearsPlayer = false;
             lastLocationHeard = other.transform.position;
         }

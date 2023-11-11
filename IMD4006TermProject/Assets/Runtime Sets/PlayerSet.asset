@@ -9,6 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3521cb497237fe54c9adf16b4d38c004, type: 3}
-  m_Name: SneakKeyIsDown
+  m_Script: {fileID: 11500000, guid: eb841830f97a8924b9151aa334b6779b, type: 3}
+  m_Name: PlayerSet
   m_EditorClassIdentifier: 
+  Items: []

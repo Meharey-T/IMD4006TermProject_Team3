@@ -4,26 +4,28 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class TaskRandomWander : BTNode
+public class TaskPointWander : BTNode
 {
     Transform BTTransform;
     Vector3 nextWaypointPos;
     NavMeshAgent navigator;
     float waypointRadius;
+    GameObject waypoint;
 
-    public TaskRandomWander(Transform transform, float waypointRadius, NavMeshAgent enemyAgent)
+    public TaskPointWander(Transform transform, GameObject waypoint,  float waypointRadius, NavMeshAgent enemyAgent)
     {
         this.waypointRadius = waypointRadius;
+        NewPatrolPoint();
         BTTransform = transform;
         navigator = enemyAgent;
-        NewPatrolPoint();
+        this.waypoint = waypoint;
     }
 
     protected override NodeState OnRun()
     {
         float waypointDistance = Vector3.Distance(BTTransform.position, nextWaypointPos);
 
-        if (navigator.pathStatus == NavMeshPathStatus.PathInvalid)
+        if(navigator.pathStatus == NavMeshPathStatus.PathInvalid)
         {
             NewPatrolPoint();
         }
@@ -46,15 +48,15 @@ public class TaskRandomWander : BTNode
     {
         float waypointZ = Random.Range(-waypointRadius, waypointRadius);
         float waypointX = Random.Range(-waypointRadius, waypointRadius);
-        Vector3 proposedWaypoint = new Vector3(waypointX + BTTransform.position.x, 1, waypointZ + BTTransform.position.z);
+        Vector3 proposedWaypoint = new Vector3(waypointX + waypoint.transform.position.x, 1, waypointZ + waypoint.transform.position.z);
 
         while (!TestPoint(proposedWaypoint))
         {
             waypointZ = Random.Range(-waypointRadius, waypointRadius);
             waypointX = Random.Range(-waypointRadius, waypointRadius);
-            proposedWaypoint = new Vector3(waypointX + BTTransform.position.x, 1, waypointZ + BTTransform.position.z);
+            proposedWaypoint = new Vector3(waypointX + waypoint.transform.position.x, 1, waypointZ + waypoint.transform.position.z);
         }
-            nextWaypointPos.Set(waypointX + BTTransform.position.x, 1, waypointZ + BTTransform.position.z);
+        nextWaypointPos.Set(waypointX + waypoint.transform.position.x, 1f, waypointZ + waypoint.transform.position.z);
     }
 
     private bool TestPoint(Vector3 proposedWaypoint)
@@ -64,5 +66,4 @@ public class TaskRandomWander : BTNode
     }
 
     protected override void OnReset() { }
-
 }

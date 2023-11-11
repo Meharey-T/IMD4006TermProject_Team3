@@ -26,7 +26,7 @@ public class Player : MonoBehaviour
     [SerializeField] Texture i_hurt;
 
     public bool inRangeOfHideable = false;
-    public Vector3 nearestHideable;
+    public Vector3 selectedHideable;
     public Vector3 previousPosition;
 
     // Start is called before the first frame update

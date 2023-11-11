@@ -39,11 +39,13 @@ public class PlayerTriggerHandle : MonoBehaviour
             player.OnPlayerLoseLife();
         }
 
+        /*
         if (other.GetComponent<Hideable>() != null)
         {
             player.inRangeOfHideable = true;
             player.nearestHideable = other.GetComponent<Hideable>().transform.position;
         }
+        */
 
         //Layer 7 is ground
         //Only the capsule collider should be able to trigger on a ground object
@@ -55,11 +57,14 @@ public class PlayerTriggerHandle : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
+        /*
         if (other.GetComponent<Hideable>() != null)
         {
             player.inRangeOfHideable = false;
 
         }
+        */
+
         //Layer 7 is ground
         if (other.gameObject.layer == 7)
         {

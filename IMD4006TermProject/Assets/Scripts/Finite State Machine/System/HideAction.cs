@@ -16,7 +16,7 @@ public class HideAction : FSMAction
         {
             stateMachine.GetComponent<Player>().previousPosition = new Vector3(player.transform.position.x, player.transform.position.y + 0.2f, player.transform.position.z);
         }
-        player.transform.position = player.GetComponent<Player>().nearestHideable;
+        player.transform.position = player.GetComponent<Player>().selectedHideable;
         player.GetComponent<Player>().indicator.text = "Hiding";
         //Change player animation
     }
