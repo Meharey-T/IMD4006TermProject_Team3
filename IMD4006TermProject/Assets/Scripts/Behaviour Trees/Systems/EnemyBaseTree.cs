@@ -28,7 +28,7 @@ public class EnemyBaseTree : BTree
             new Sequence(new List<BTNode>
             {
                 //Start by checking if player is in range to be chased
-                new CheckIfInRange(enemyMeshAgent, player),
+                new CheckIfVisible(enemyMeshAgent, player),
                 //Set a waypoint to pursue the player
                 new TaskChasePlayer(transform, enemyMeshAgent, player)
             }),

@@ -4,13 +4,13 @@ using UnityEngine;
 using BehaviourTree;
 using UnityEngine.AI;
 
-public class CheckIfInRange : BTCondition
+public class CheckIfVisible : BTCondition
 {
     Player player;
     NavMeshAgent agent;
     Vector3 playerPos;
     float distance;
-    public CheckIfInRange(NavMeshAgent checkingAgent, Player player)
+    public CheckIfVisible(NavMeshAgent checkingAgent, Player player)
     {
         agent = checkingAgent;
         this.player = player;
@@ -18,14 +18,14 @@ public class CheckIfInRange : BTCondition
 
     protected override NodeState OnRun()
     {
-        playerPos = player.transform.position;
-        distance = Vector3.Distance(agent.transform.position, playerPos);
-        if (distance <= 5f && player.gameObject.layer == 9)
+        //playerPos = player.transform.position;
+        //distance = Vector3.Distance(agent.transform.position, playerPos);
+        if (agent.GetComponent<Enemy>().seesPlayer)
         {
             Debug.Log("Spotted player");
             return NodeState.SUCCESS;
         }
-        else if (distance > 5f)
+        else if (!agent.GetComponent<Enemy>().seesPlayer)
         {
             Debug.Log("Doesn't see player");
             return NodeState.FAILURE;

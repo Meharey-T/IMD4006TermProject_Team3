@@ -27,11 +27,11 @@ public class TaskChasePlayer : BTNode
             state = NodeState.SUCCESS;
             //NewPatrolPoint();
         }
-        else if(waypointDistance >= 6)
+        else if(!transform.GetComponent<Enemy>().seesPlayer)
         {
             state = NodeState.FAILURE;
         }
-        else if (waypointDistance >= 1 && waypointDistance < 6)
+        else if (waypointDistance >= 1 && transform.GetComponent<Enemy>().seesPlayer)
         {
             agent.SetDestination(player.transform.position);
             //NewPatrolPoint();

@@ -10,12 +10,19 @@ public class Enemy : MonoBehaviour
     public GameObject playerObj;
     Vector3 enemyFollowTarget;
 
-    //patroling 
+    //patrolling 
     public List<GameObject> Waypoints;
     float waypointRadius;
     Vector3 nextWaypointPos;
 
+    //Related to detection/seeing
+    public bool seesPlayer = false;
+    public Vector3 lastLocationSeen;
+    public float detectionRadius;
+    [Range(0, 360)]
+    public float viewAngle;
 
+    //Related to detection/hearing
     public bool hearsPlayer = false;
     public Vector3 lastLocationHeard;
 
@@ -32,7 +39,50 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        StartCoroutine(FOVRoutine());
+    }
+
+    private IEnumerator FOVRoutine()
+    {
+        WaitForSeconds wait = new WaitForSeconds(0.2f);
+
+        while (true)
+        {
+            yield return wait;
+            FieldOfViewCheck();
+        }
+    }
+
+    //From tutorial https://www.youtube.com/watch?v=j1-OyLo77ss
+    private void FieldOfViewCheck()
+    {
+        //Physics.OverlapSphere gets all of the colliders around the source in a certain radius, and looks for specific collision layers
+        //We're using it to check for players in a certain range
+        Collider[] rangeChecks = Physics.OverlapSphere(transform.position, detectionRadius, LayerMask.GetMask("Player"));
+
+        //If the length is more than 0, we got something
+        if(rangeChecks.Length != 0)
+        {
+            //
+            Transform target = rangeChecks[0].transform;
+            Vector3 directionToTarget = (target.position - transform.position).normalized;
+
+            if (Vector3.Angle(transform.forward, directionToTarget) < viewAngle / 2)
+            {
+                float distanceToTarget = Vector3.Distance(transform.position, target.position);
+
+                if (!Physics.Raycast(transform.position, directionToTarget, distanceToTarget, LayerMask.GetMask("Ground")))
+                {
+                    seesPlayer = true;
+                }
+                else seesPlayer = false;
+            }
+            else seesPlayer = false;
+        }
+        else if (seesPlayer)
+        {
+            seesPlayer = false;
+        }
     }
 
      private void OnTriggerEnter(Collider other)
