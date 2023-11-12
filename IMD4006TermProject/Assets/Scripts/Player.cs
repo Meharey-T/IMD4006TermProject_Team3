@@ -58,6 +58,7 @@ public class Player : MonoBehaviour
 
     void CheckDetection()
     {
+        //If the player is hiding, that's the level of detection we want to display
         if(this.GetComponent<BaseStateMachine>().CurrentState.name != "Hiding")
         {
             bool playerIsHeard = false;
@@ -65,10 +66,7 @@ public class Player : MonoBehaviour
             //We have to iterate through all enemies
             for (int i = 0; i < enemySet.Items.Count; i++)
             {
-                if (playerIsSeen)
-                {
-                    break;
-                }
+                //not using an else/if since these are not mutually exclusive
                 if (enemySet.Items[i].GetComponent<Enemy>().hearsPlayer)
                 {
                     playerIsHeard = true;
@@ -76,16 +74,20 @@ public class Player : MonoBehaviour
                 if (enemySet.Items[i].GetComponent<Enemy>().seesPlayer)
                 {
                     playerIsSeen = true;
+                    break;
                 }
             }
+            //If we've gone through the whole loop and nobody detects the player, we set to undetected
             if(!playerIsHeard && !playerIsSeen)
             {
                 indicator.transform.GetComponent<RawImage>().texture = i_undetected;
             }
+            //if at least one heard the player, we can set to heard
             if (playerIsHeard)
             {
                 indicator.transform.GetComponent<RawImage>().texture = i_alerted;
             }
+            //if at least one saw the player, we set to saw, overwrite heard
             if (playerIsSeen)
             {
                 indicator.transform.GetComponent<RawImage>().texture = i_spotted;

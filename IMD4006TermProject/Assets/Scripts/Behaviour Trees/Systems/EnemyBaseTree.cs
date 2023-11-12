@@ -30,7 +30,11 @@ public class EnemyBaseTree : BTree
                 //Start by checking if player is in range to be chased
                 new CheckIfVisible(enemyMeshAgent, player),
                 //Set a waypoint to pursue the player
-                new TaskChasePlayer(transform, enemyMeshAgent, player)
+                new TaskChasePlayer(transform, enemyMeshAgent, player),
+                //Set this so that it looks around if chasing the player fails
+                //new Inverter()
+                //If they lose the player, check area first before moving on
+                new TaskCheckArea(transform)
             }),
             //Check out sounds they've heard
             new Sequence(new List<BTNode>
@@ -38,8 +42,9 @@ public class EnemyBaseTree : BTree
                 //Start by seeing if the enemy can currently hear the player
                 new CheckIfPlayerAudible(enemy),
                 //Then have them go to the location they last heard the player
-                new TaskCheckOutSound(enemy, enemyMeshAgent)
+                new TaskCheckOutSound(enemy, enemyMeshAgent),
                 //We might add a short task for them to spend a certain amount of time looking around
+                new TaskCheckArea(transform)
             }),
             //Start idle patrol sequence
             new TaskRandomWander(transform, waypointRadius, enemyMeshAgent),
