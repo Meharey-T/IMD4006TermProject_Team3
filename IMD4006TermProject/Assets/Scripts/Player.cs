@@ -15,8 +15,9 @@ public class Player : MonoBehaviour
 
     public TMPro.TextMeshProUGUI coinCountTxt;
     public TMPro.TextMeshProUGUI centralTxt;
-    public TMPro.TextMeshProUGUI indicator;
+    //public TMPro.TextMeshProUGUI indicator;
     public GameObject P_LivesCount;
+    public GameObject indicator;
 
     [SerializeField]public  int coinCount = 0;
 
@@ -24,6 +25,11 @@ public class Player : MonoBehaviour
 
     [SerializeField] Texture i_health;
     [SerializeField] Texture i_hurt;
+
+    [SerializeField] Texture i_undetected;
+    [SerializeField] Texture i_alerted;
+    [SerializeField] Texture i_spotted;
+    [SerializeField] Texture i_undetectable;
 
     public bool inRangeOfHideable = false;
     public Vector3 selectedHideable;
@@ -46,6 +52,49 @@ public class Player : MonoBehaviour
             Debug.Log("setTrap");
         }
         UpdateLives();
+        CheckDetection();
+        
+    }
+
+    void CheckDetection()
+    {
+        if(this.GetComponent<BaseStateMachine>().CurrentState.name != "Hiding")
+        {
+            bool playerIsHeard = false;
+            bool playerIsSeen = false;
+            //We have to iterate through all enemies
+            for (int i = 0; i < enemySet.Items.Count; i++)
+            {
+                if (playerIsSeen)
+                {
+                    break;
+                }
+                if (enemySet.Items[i].GetComponent<Enemy>().hearsPlayer)
+                {
+                    playerIsHeard = true;
+                }
+                if (enemySet.Items[i].GetComponent<Enemy>().seesPlayer)
+                {
+                    playerIsSeen = true;
+                }
+            }
+            if(!playerIsHeard && !playerIsSeen)
+            {
+                indicator.transform.GetComponent<RawImage>().texture = i_undetected;
+            }
+            if (playerIsHeard)
+            {
+                indicator.transform.GetComponent<RawImage>().texture = i_alerted;
+            }
+            if (playerIsSeen)
+            {
+                indicator.transform.GetComponent<RawImage>().texture = i_spotted;
+            }
+        }
+        else
+        {
+            indicator.transform.GetComponent<RawImage>().texture = i_undetectable;
+        }
         
     }
 
@@ -60,7 +109,6 @@ public class Player : MonoBehaviour
         {
             P_LivesCount.transform.GetChild(3-i).GetComponentInChildren<RawImage>().texture = i_hurt;
         }
-        //colliderHolder.transform.position = this.gameObject.transform.GetChild(1).position;
     }
 
     public void OnPlayerLoseLife()

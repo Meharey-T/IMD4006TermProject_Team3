@@ -106,6 +106,7 @@ GameObject:
   - component: {fileID: 4866927312394548160}
   - component: {fileID: 2969555230874370300}
   - component: {fileID: 7605686264673151187}
+  - component: {fileID: 8717395456014033637}
   m_Layer: 9
   m_Name: Player
   m_TagString: Player
@@ -178,8 +179,12 @@ MonoBehaviour:
   coinCount: 0
   i_health: {fileID: 2800000, guid: a0de6ffdab9e70b46a50b34fc0f1b518, type: 3}
   i_hurt: {fileID: 2800000, guid: b58578bba5ca38b43ac326e65467cd23, type: 3}
+  i_undetected: {fileID: 2800000, guid: df2896df036658a489929bf80e696584, type: 3}
+  i_alerted: {fileID: 2800000, guid: 1dc4fc6bcde61b74880065044a4f311d, type: 3}
+  i_spotted: {fileID: 2800000, guid: 8630a5f140ca83e458f907baf4a6bd0a, type: 3}
+  i_undetectable: {fileID: 2800000, guid: bf7c9798845efd84fb8fd5bc9f294db3, type: 3}
   inRangeOfHideable: 0
-  nearestHideable: {x: 0, y: 0, z: 0}
+  selectedHideable: {x: 0, y: 0, z: 0}
   previousPosition: {x: 0, y: 0, z: 0}
 --- !u!114 &4866927312394548160
 MonoBehaviour:
@@ -242,6 +247,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.5, y: 1, z: 0.5}
   m_Center: {x: 0, y: 0.35, z: 0}
+--- !u!114 &8717395456014033637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3029518513293088732}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83440a0907079ea48898a581fafbf151, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameObjectRuntimeSet: {fileID: 11400000, guid: e5c5e5b1523d0cd489322f27271bcd69, type: 2}
 --- !u!1 &3689557309857060794
 GameObject:
   m_ObjectHideFlags: 0
@@ -258,7 +276,7 @@ GameObject:
   - component: {fileID: 4706644818466002382}
   m_Layer: 9
   m_Name: Collider
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -304,7 +322,7 @@ Rigidbody:
   m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 80
-  m_CollisionDetection: 1
+  m_CollisionDetection: 3
 --- !u!65 &5812801543989991954
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -12,7 +12,7 @@ public class SneakAction : FSMAction
         SphereCollider soundRadius = stateMachine.GetComponentInChildren<SphereCollider>();
         soundRadius.radius = 2f;
         player.gameObject.layer = 9;
-        player.GetComponent<Player>().indicator.text = "";
+        //player.GetComponent<Player>().indicator.text = "";
         //Change player animation
         //Change player footstep sounds
     }

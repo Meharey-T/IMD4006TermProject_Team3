@@ -17,7 +17,7 @@ public class WalkAction : FSMAction
         }
         soundRadius.radius = 5;
         player.gameObject.layer = 9;
-        player.GetComponent<Player>().indicator.text = "";
+        //player.GetComponent<Player>().indicator.text = "";
         //Change player animation
         //Change player footstep sounds
     }
