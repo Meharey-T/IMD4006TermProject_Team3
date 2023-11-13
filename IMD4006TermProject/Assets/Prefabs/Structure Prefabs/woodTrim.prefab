@@ -52,6 +52,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: woodTrim
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b94a5793b5148e348a3d89a264c91d1d, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -4,6 +4,14 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+/*
+ * To set the Player prefab up please do the following:
+ * Drag the "CoinCount" text object from the UI to the "Coin Count Txt" slot on this script
+ * Drag the "CentralText" text object from the UI to the "Central Txt" slot on this script
+ * Drag the "Lives Panel" game object from the UI to the "P_Lives Count" slot on this script
+ * Drag the "DetectionIcon" game object from the UI to the "Indicator" slot on this script
+ * It should run. I will see in the future if I can actually make this simpler.
+ */
 //Player script holds the model (stats) and main functionality for Player
 public class Player : MonoBehaviour
 {
@@ -32,6 +40,7 @@ public class Player : MonoBehaviour
     [SerializeField] Texture i_undetectable;
 
     public bool inRangeOfHideable = false;
+    public bool hiding = false;
     public Vector3 selectedHideable;
     public Vector3 previousPosition;
 

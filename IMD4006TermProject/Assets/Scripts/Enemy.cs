@@ -3,7 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-
+/*
+ * When creating a new enemy for a scene please do the following:
+ * Drag the player instance in the scene into the Player Obj slot on this script
+ * That's it, it should run
+ * Check this script again later as it may get more complicated
+ */
 public class Enemy : MonoBehaviour
 {
     public NavMeshAgent enemyMeshAgent;

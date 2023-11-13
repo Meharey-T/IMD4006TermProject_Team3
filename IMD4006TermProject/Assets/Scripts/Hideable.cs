@@ -42,12 +42,21 @@ public class Hideable : MonoBehaviour
         if (distance < 3)
         {
             player.Items[0].GetComponent<Player>().inRangeOfHideable = true;
-            player.Items[0].GetComponent<Player>().selectedHideable = this.transform.position;
+            if(player.Items[0].GetComponent<Player>().hiding == false)
+            {
+                player.Items[0].GetComponent<Player>().selectedHideable = this.transform.position;
+            }
             for (int i = 0; i < m_renderer.materials.Length; i++)
             {
                 m_renderer.materials[i].color = m_brightenedColour[i];
             }
         }
+        /*
+        else
+        {
+            player.Items[0].GetComponent<Player>().inRangeOfHideable = false;
+        }
+        */
     }
 
     private void OnMouseExit()
@@ -56,5 +65,6 @@ public class Hideable : MonoBehaviour
         {
             m_renderer.materials[i].color = m_mainColour[i];
         }
+        player.Items[0].GetComponent<Player>().inRangeOfHideable = false;
     }
 }

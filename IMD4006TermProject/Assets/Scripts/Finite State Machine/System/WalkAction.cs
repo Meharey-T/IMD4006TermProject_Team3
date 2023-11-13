@@ -14,6 +14,7 @@ public class WalkAction : FSMAction
         {
             stateMachine.transform.position = stateMachine.GetComponent<Player>().previousPosition;
             stateMachine.GetComponent<Player>().previousPosition = new Vector3(0, 0, 0);
+            stateMachine.GetComponent<Player>().hiding = false;
         }
         soundRadius.radius = 5;
         player.gameObject.layer = 9;
