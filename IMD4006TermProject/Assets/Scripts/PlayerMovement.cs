@@ -61,11 +61,14 @@ public class PlayerMovement : MonoBehaviour
         Move();
         Turn();
         Reset();
+        Jump();
     }
 
     private void LateUpdate()
     {
+        //Adds a higher downward force on the player, helps jump feel more snappy
         rb.AddForce(Physics.gravity * (gravityScale - 1) * rb.mass);
+        //Failsafe to keep the player on the level and not falling through the floor
         if (this.gameObject.transform.position.y < 0)
         {
             this.transform.position = new Vector3(this.transform.position.x, 0, this.transform.position.z);
@@ -89,31 +92,12 @@ public class PlayerMovement : MonoBehaviour
         //Move according to current movement axis
         Vector3 direction = new Vector3(translationX, 0f, translationZ).normalized;
 
-
-        //Factor velocity into up and down motion while jumping
-        //playerVelocity.y += gravityValue * Time.deltaTime;
-
-        //Ensures the player stops moving up or down when on the ground
-        /*
-        if (groundedPlayer && playerVelocity.y < 0)
-        {
-            playerVelocity.y = 0f;
-        }
-        */
-
         //Handles rotating if player is moving
         if (direction != Vector3.zero)
         {
             float targetRotation = Mathf.Atan2(direction.x, direction.y) * Mathf.Rad2Deg + rotator.transform.eulerAngles.y;
             transform.eulerAngles = Vector3.up * Mathf.SmoothDampAngle(transform.eulerAngles.y, targetRotation, ref turnSmoothVelocity, turnSmoothTime);
         }
-
-        //If player presses jump, jump
-        if(Input.GetButtonDown("Jump") && groundedPlayer)
-        {
-            rb.AddForce(Vector3.up * jumpAmount, ForceMode.Impulse);
-        }
-        
 
         //Start calculating the walk speed
         targetSpeed = modalSpeed * direction.magnitude;
@@ -160,6 +144,15 @@ public class PlayerMovement : MonoBehaviour
         turn.y += Input.GetAxis("Mouse Y") * turnSpeed;
         turn.y = Mathf.Clamp(turn.y, turnMinMax.x, turnMinMax.y);
         rotator.transform.rotation = Quaternion.Euler(-turn.y, turn.x, 0);
+    }
+
+    void Jump()
+    {
+        //If player presses jump, jump
+        if (Input.GetButtonDown("Jump") && groundedPlayer)
+        {
+            rb.AddForce(Vector3.up * jumpAmount, ForceMode.Impulse);
+        }
     }
 
     public float getBaseSpeed()
