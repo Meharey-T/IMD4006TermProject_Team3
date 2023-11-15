@@ -10,7 +10,7 @@ public class TaskFollowPatrol : BTNode
 
     Transform BTTransform;
     //Vector3 nextWaypointPos;
-    NavMeshAgent navigator;
+    NavMeshAgent agent;
     List<GameObject> waypointList;
     int waypointIndex;
 
@@ -18,7 +18,7 @@ public class TaskFollowPatrol : BTNode
     {
         this.waypointList = waypointList;
         BTTransform = transform;
-        navigator = enemyAgent;
+        agent = enemyAgent;
         waypointIndex = 0;
     }
 
@@ -26,6 +26,10 @@ public class TaskFollowPatrol : BTNode
     {
         float waypointDistance = Vector3.Distance(BTTransform.position, waypointList[waypointIndex].transform.position);
 
+        if (agent.GetComponent<Enemy>().seesPlayer || agent.GetComponent<Enemy>().hearsPlayer)
+        {
+            state = NodeState.FAILURE;
+        }
 
         if (waypointDistance < 1)
         {
@@ -35,7 +39,7 @@ public class TaskFollowPatrol : BTNode
         }
         else if (waypointDistance >= 1)
         {
-            navigator.SetDestination(waypointList[waypointIndex].transform.position);
+            agent.SetDestination(waypointList[waypointIndex].transform.position);
             //NewPatrolPoint();
             // Debug.Log("going to new position");
             state = NodeState.RUNNING;

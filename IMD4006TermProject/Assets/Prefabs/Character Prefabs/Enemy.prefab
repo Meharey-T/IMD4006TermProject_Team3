@@ -251,9 +251,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c621e556146eb14fbc1cb91416233b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyMeshAgent: {fileID: 0}
+  enemyMeshAgent: {fileID: 8698764733734139346}
   playerObj: {fileID: 0}
   Waypoints: []
+  seesPlayer: 0
+  lastLocationSeen: {x: 0, y: 0, z: 0}
+  detectionRadius: 20
+  viewAngle: 120
   hearsPlayer: 0
   lastLocationHeard: {x: 0, y: 0, z: 0}
 --- !u!114 &1649365884774819529

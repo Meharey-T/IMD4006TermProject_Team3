@@ -25,6 +25,11 @@ public class TaskPointWander : BTNode
     {
         float waypointDistance = Vector3.Distance(BTTransform.position, nextWaypointPos);
 
+        if(navigator.GetComponent<Enemy>().seesPlayer || navigator.GetComponent<Enemy>().hearsPlayer)
+        {
+            state = NodeState.FAILURE;
+        }
+
         if(navigator.pathStatus == NavMeshPathStatus.PathInvalid)
         {
             NewPatrolPoint();
