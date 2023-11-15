@@ -14,6 +14,7 @@ public class Enemy : MonoBehaviour
     public NavMeshAgent enemyMeshAgent;
     public GameObject playerObj;
     Vector3 enemyFollowTarget;
+    public Vector3 startingPos;
 
     //patrolling 
     public List<GameObject> Waypoints;
@@ -39,6 +40,7 @@ public class Enemy : MonoBehaviour
         enemyMeshAgent = GetComponent<NavMeshAgent>();
         playerObj = GameObject.FindGameObjectWithTag("Player");
         Debug.Log("The player's position is " + playerObj.transform.position);
+        startingPos = transform.position;
     }
 
     // Update is called once per frame

@@ -9,8 +9,8 @@ public class SprintAction : FSMAction
     {
         PlayerMovement player = stateMachine.GetComponent<PlayerMovement>();
         player.setModalSpeed(player.getSprintSpeed());
-        SphereCollider soundRadius = stateMachine.GetComponentInChildren<SphereCollider>();
-        soundRadius.radius = 9;
+        player.turnSmoothTime = player.turnSmoothTimeSlow;
+        stateMachine.GetComponent<PlayerMovement>().currentSoundRadius = stateMachine.GetComponent<PlayerMovement>().sprintSoundRadius;
         player.gameObject.layer = 9;
         //player.GetComponent<Player>().indicator.text = "";
         //Change player animation

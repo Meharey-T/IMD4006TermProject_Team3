@@ -36,16 +36,26 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 turn = new Vector2(-180, 0);
     [SerializeField] private float turnSpeed;
     private float turnSmoothVelocity;
-    [SerializeField] private float turnSmoothTime;
+    [SerializeField] public float turnSmoothTime;
+    public float turnSmoothTimeSnappy = 0.05f;
+    public float turnSmoothTimeSlow = 0.5f;
+
+    //Sound settings
+    public float sneakSoundRadius = 1;
+    public float walkSoundRadius = 5;
+    public float sprintSoundRadius = 9;
+    public float currentSoundRadius = 5;
 
     //Component references
     private Rigidbody rb;
+    private SphereCollider soundRadius;
 
     // Start is called before the first frame update
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
         rb = GetComponent<Rigidbody>();
+        soundRadius = this.GetComponentInChildren<SphereCollider>();
         //jumpVector = new Vector3(0, jumpAmount, 0);
     }
 
@@ -56,6 +66,7 @@ public class PlayerMovement : MonoBehaviour
         Turn();
         Reset();
         Jump();
+        ResolveSoundRadius();
     }
 
     //Fixed update should be roughly the same no matter what your framerate is
@@ -89,7 +100,7 @@ public class PlayerMovement : MonoBehaviour
         float translationZ = Input.GetAxisRaw("Vertical");
         float translationX = Input.GetAxisRaw("Horizontal");
 
-        //Debug.Log(translationZ + ", " + translationX);
+        Debug.Log(translationZ + ", " + translationX);
 
         //Set player direction vector based on the axis they are moving in
         Vector3 direction = new Vector3(translationX, 0f, translationZ).normalized;
@@ -97,14 +108,16 @@ public class PlayerMovement : MonoBehaviour
         //Handles rotating if player is moving into the direction they're traveling to
         if (direction != Vector3.zero)
         {
-            float targetRotation = Mathf.Atan2(direction.x, direction.y) * Mathf.Rad2Deg + rotator.transform.eulerAngles.y;
-            //Debug.Log(targetRotation);
+            //Try LookAt function ... player.LookAt(target transform, upward vector world)
+            float targetRotation = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + rotator.transform.eulerAngles.y;
+            Debug.Log(targetRotation);
             transform.eulerAngles = Vector3.up * Mathf.SmoothDampAngle(transform.eulerAngles.y, targetRotation, ref turnSmoothVelocity, turnSmoothTime);
         }
         //Start calculating the walk speed
         targetSpeed = modalSpeed * direction.magnitude;
         currentSpeed = Mathf.SmoothDamp(currentSpeed, targetSpeed, ref speedSmoothVelocity, speedSmoothTime);
 
+       
         //Handles moving in multiple directions
         ResolveDirectionalMovement(translationX, translationZ);
     }
@@ -136,25 +149,30 @@ public class PlayerMovement : MonoBehaviour
 
         //Block for right-side motion, X axis
         //If X is positive and no movement front or back
+        
         if (translationX > 0f && translationZ == 0f)
         {
             transform.Translate(transform.forward * currentSpeed * Time.deltaTime, Space.World);
         }
         //If X is positive and yes movement front or back
-        else if (translationX > 0f && translationZ != 0f)
+        
+        else  if (translationX > 0f && translationZ != 0f)
         {
             transform.Translate(transform.forward * currentSpeed / 2 * Time.deltaTime, Space.World);
         }
+        
         //If X is negative and no movement front or back
         if (translationX < 0f && translationZ == 0f)
         {
             transform.Translate(transform.forward * currentSpeed * Time.deltaTime, Space.World);
         }
         //If X is negative and yes movement front or back
+        
         else if (translationX < 0f && translationZ != 0f)
         {
             transform.Translate(transform.forward * currentSpeed / 2 * Time.deltaTime, Space.World);
         }
+        
     }
     
     void Turn()
@@ -173,6 +191,12 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.AddForce(Vector3.up * jumpAmount, ForceMode.Impulse);
         }
+    }
+
+    private void ResolveSoundRadius()
+    {
+        //When we add more sound functionality we're going to put a multiplier on this base on the surface you're traveling over
+        soundRadius.radius = currentSoundRadius;
     }
 
     public float getBaseSpeed()

@@ -9,8 +9,8 @@ public class SneakAction : FSMAction
     {
         PlayerMovement player = stateMachine.GetComponent<PlayerMovement>();
         player.setModalSpeed(player.getSneakSpeed());
-        SphereCollider soundRadius = stateMachine.GetComponentInChildren<SphereCollider>();
-        soundRadius.radius = 2f;
+        player.turnSmoothTime = player.turnSmoothTimeSnappy;
+        stateMachine.GetComponent<PlayerMovement>().currentSoundRadius = stateMachine.GetComponent<PlayerMovement>().sneakSoundRadius;
         player.gameObject.layer = 9;
         //player.GetComponent<Player>().indicator.text = "";
         //Change player animation

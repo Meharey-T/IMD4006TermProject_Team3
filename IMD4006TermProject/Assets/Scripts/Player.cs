@@ -15,6 +15,8 @@ using UnityEngine.UI;
 //Player script holds the model (stats) and main functionality for Player
 public class Player : MonoBehaviour
 {
+    [SerializeField] private Vector3 startingPos;
+
     //Reference to our manager objects/lists
     public GameObjectRuntimeSet coinSet;
     public GameObjectRuntimeSet enemySet;
@@ -130,6 +132,21 @@ public class Player : MonoBehaviour
         {
             Debug.Log("Player has lost a life");
             StartCoroutine(OnPlayerLoss());
+        }
+        else
+        {
+            ResetPositions();
+        }
+    }
+
+    private void ResetPositions()
+    {
+        this.transform.position = startingPos;
+        foreach (GameObject enemy in enemySet.Items)
+        {
+            enemy.transform.position = enemy.GetComponent<Enemy>().startingPos;
+            enemy.GetComponent<Enemy>().seesPlayer = false;
+            enemy.GetComponent<Enemy>().hearsPlayer = false;
         }
     }
 
