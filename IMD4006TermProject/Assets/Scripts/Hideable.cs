@@ -40,7 +40,7 @@ public class Hideable : MonoBehaviour
         //There will only ever be one player so we can be sure they'll be at index 0
         float distance = Vector3.Distance(this.transform.position, player.Items[0].transform.position);
         if (distance < 3)
-        {
+        { 
             player.Items[0].GetComponent<Player>().inRangeOfHideable = true;
             if(player.Items[0].GetComponent<Player>().hiding == false)
             {

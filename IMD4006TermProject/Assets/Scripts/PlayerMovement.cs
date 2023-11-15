@@ -126,12 +126,12 @@ public class PlayerMovement : MonoBehaviour
         //If Z is negative and no sideways movement
         if (translationZ < 0 && translationX == 0f)
         {
-            transform.Translate(-transform.forward * currentSpeed * Time.deltaTime, Space.World);
+            transform.Translate(-transform.forward* currentSpeed * Time.deltaTime, Space.World) ;
         }
         //If Z is negative and moving sideways
         else if (translationZ < 0f && translationX != 0f)
         {
-            transform.Translate(-transform.forward * currentSpeed / 2 * Time.deltaTime, Space.World);
+            transform.Translate(transform.forward * currentSpeed / 2 * Time.deltaTime, Space.World);
         }
 
         //Block for right-side motion, X axis

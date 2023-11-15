@@ -7,7 +7,7 @@ public class PlayerPickup : MonoBehaviour
 
     [SerializeField] private LayerMask PickupMask;
     [SerializeField] private Camera PlayerCamera;
-
+    private Player player;
     [SerializeField] private Transform PlayerCameraTransform;
     [SerializeField] private Transform PickupTarget;
     [SerializeField] private float PickupRange;
@@ -15,6 +15,7 @@ public class PlayerPickup : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        player = GetComponentInParent<Player>();
 
     }
 
@@ -46,25 +47,50 @@ public class PlayerPickup : MonoBehaviour
 
 
 
-            {
-                // Vector3 mousePos  = Input.mousePosition;
-                //raycaster to ceck what the player has selected
-                Ray CamRay = PlayerCamera.ScreenPointToRay(new Vector3(0.5F, 0.5F, 0F));
 
+            // Vector3 mousePos  = Input.mousePosition;
+            //raycaster to ceck what the player has selected
+            // Ray CamRay = PlayerCamera.ScreenPointToRay(new Vector3(0.5F, 0.5F, 0F));
 
-                //if so assign the rigid body we create to the target object + diable it's gravity
-                // if (Physics.Raycast(CamRay, out RaycastHit HitInfo, PickupRange, PickupMask))
+            //Rays from the camera 0 represents the bottom or left and 1 represents the top or right of the view).
+            Ray CamRay = PlayerCamera.ViewportPointToRay(new Vector3(0.5F, 0.65F, 0F));
 
-                if (Physics.Raycast(PlayerCameraTransform.position, PlayerCameraTransform.forward, out RaycastHit HitInfo, PickupRange, PickupMask))
+            //if so assign the rigid body we create to the target object + diable it's gravity
+            //if (Physics.Raycast(CamRay, out RaycastHit HitInfo, PickupRange, PickupMask))
 
+            { 
+                //if (Physics.Raycast(PlayerCameraTransform.position, PlayerCameraTransform.forward, out RaycastHit HitInfo, PickupRange, PickupMask))
+                if (Physics.Raycast(CamRay, out RaycastHit HitInfo, PickupRange, PickupMask))
                 {
                     CurrentObj = HitInfo.rigidbody;
                     CurrentObj.useGravity = false;
-                    CurrentObj.drag = 5;
+                    CurrentObj.isKinematic = false;
+                   CurrentObj.drag = 5;
                     Debug.Log(HitInfo);
 
-                    if (CurrentObj.tag == "Treasure")
+                    if (CurrentObj.gameObject.tag == "Treasure")
                     {
+
+
+                        Debug.Log("Found treasure");
+
+
+                        Debug.Log("Found treasure");
+                        //Figure out what kind of treasure we just found, act accordingly
+                        player.coinCount += CurrentObj.GetComponent<Treasure>().treasureStats.coinValue;
+                        if (CurrentObj.GetComponent<Treasure>().treasureStats.finalChest)
+                        {
+                            Debug.Log("Player has won");
+                            StartCoroutine(player.OnPlayerWon());
+                        }
+                        //Remove the coin from the scene
+                        CurrentObj.GetComponent<Interactable>().Die();
+                        player.coinCountTxt.text = "Coin Count: " + player.coinCount;
+
+                        /*
+
+
+
                         Debug.Log("Found treasure");
                         //Figure out what kind of treasure we just found, act accordingly
                         //  this.coinCount += CurrentObj.GetComponent<Treasure>().treasureStats.coinValue;
@@ -76,7 +102,7 @@ public class PlayerPickup : MonoBehaviour
                         //Remove the coin from the scene
                         CurrentObj.GetComponent<Interactable>().Die();
                         //  coinCountTxt.text = "Coin Count: " + coinCount;
-
+                        */
                         Debug.Log("this is treasure");
                     }
 
@@ -89,8 +115,12 @@ public class PlayerPickup : MonoBehaviour
 
 
 
+
+
             }
         }
+
+
 
 
     }
@@ -101,15 +131,33 @@ public class PlayerPickup : MonoBehaviour
         if (CurrentObj)
         {
 
-            // Vector3 DirectionToPoint = PickupTarget.position - CurrentObj.position;
-           //float DistanceToPoint = DirectionToPoint.magnitude;
-            //CurrentObj.velocity = DirectionToPoint * 12f * DistanceToPoint;
+            Vector3 DirectionToPoint = PickupTarget.position - CurrentObj.position ;
+           float DistanceToPoint = DirectionToPoint.magnitude;
+            CurrentObj.velocity = DirectionToPoint * 12f * DistanceToPoint;
 
-           float lerpSpeed = 10f;
-           Vector3 newPos = Vector3.Lerp(transform.position, PickupTarget.position, Time.deltaTime * lerpSpeed);
-           CurrentObj.MovePosition(newPos);
+          //float lerpSpeed = 10f;
+           //Vector3 newPos = Vector3.Lerp(transform.position, PickupTarget.position, Time.deltaTime * lerpSpeed);
+          // CurrentObj.MovePosition(newPos);
 
         }
+
+    }
+
+
+    private void OnMouseOver()
+    {
+
+        print("you are hovering over treasure");
+
+
+        if (CurrentObj)
+        
+        {
+            print("you are aaaaaa treasure");
+
+
+        }
+
 
     }
 }
