@@ -2971,12 +2971,20 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 3974088492691103330, guid: 9b2247beea61b504a8712748b7939d1e, type: 3}
+      propertyPath: baseSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3974088492691103330, guid: 9b2247beea61b504a8712748b7939d1e, type: 3}
       propertyPath: jumpAmount
       value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 3974088492691103330, guid: 9b2247beea61b504a8712748b7939d1e, type: 3}
       propertyPath: gravityScale
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3974088492691103330, guid: 9b2247beea61b504a8712748b7939d1e, type: 3}
+      propertyPath: turnSmoothTime
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 8233892006867537294, guid: 9b2247beea61b504a8712748b7939d1e, type: 3}
       propertyPath: indicator
@@ -2994,6 +3002,14 @@ PrefabInstance:
       propertyPath: coinCountTxt
       value: 
       objectReference: {fileID: 1726535312}
+    - target: {fileID: 8233892006867537294, guid: 9b2247beea61b504a8712748b7939d1e, type: 3}
+      propertyPath: startingPos.y
+      value: 0.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 8233892006867537294, guid: 9b2247beea61b504a8712748b7939d1e, type: 3}
+      propertyPath: startingPos.z
+      value: 8.64
+      objectReference: {fileID: 0}
     - target: {fileID: 8627968276628479127, guid: 9b2247beea61b504a8712748b7939d1e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

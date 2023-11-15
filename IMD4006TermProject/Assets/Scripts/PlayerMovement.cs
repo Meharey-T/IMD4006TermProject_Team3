@@ -100,7 +100,7 @@ public class PlayerMovement : MonoBehaviour
         float translationZ = Input.GetAxisRaw("Vertical");
         float translationX = Input.GetAxisRaw("Horizontal");
 
-        Debug.Log(translationZ + ", " + translationX);
+        //Debug.Log(translationZ + ", " + translationX);
 
         //Set player direction vector based on the axis they are moving in
         Vector3 direction = new Vector3(translationX, 0f, translationZ).normalized;
@@ -110,7 +110,7 @@ public class PlayerMovement : MonoBehaviour
         {
             //Try LookAt function ... player.LookAt(target transform, upward vector world)
             float targetRotation = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + rotator.transform.eulerAngles.y;
-            Debug.Log(targetRotation);
+            //Debug.Log(targetRotation);
             transform.eulerAngles = Vector3.up * Mathf.SmoothDampAngle(transform.eulerAngles.y, targetRotation, ref turnSmoothVelocity, turnSmoothTime);
         }
         //Start calculating the walk speed
@@ -139,7 +139,7 @@ public class PlayerMovement : MonoBehaviour
         //If Z is negative and no sideways movement
         if (translationZ < 0 && translationX == 0f)
         {
-            transform.Translate(-transform.forward* currentSpeed * Time.deltaTime, Space.World) ;
+            transform.Translate(transform.forward* currentSpeed * Time.deltaTime, Space.World) ;
         }
         //If Z is negative and moving sideways
         else if (translationZ < 0f && translationX != 0f)

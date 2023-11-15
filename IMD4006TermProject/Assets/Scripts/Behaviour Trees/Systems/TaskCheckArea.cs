@@ -35,12 +35,19 @@ public class TaskCheckArea : BTNode
             state = NodeState.RUNNING;
         }
         */
+        if (BTTransform.GetComponent<Enemy>().seesPlayer || BTTransform.GetComponent<Enemy>().hearsPlayer)
+        {
+            state = NodeState.FAILURE;
+        }
         Vector3 turnToPoint = CreateTurnToPoint();
+        /*
         Vector3 direction = (turnToPoint - BTTransform.position).normalized;
         Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0f, direction.z));
         BTTransform.rotation = Quaternion.Slerp(BTTransform.rotation, lookRotation, Time.deltaTime * 5f);
         //turnCount++;
         Debug.Log(turnCount);
+        */
+        BTTransform.LookAt(turnToPoint);
         state = NodeState.SUCCESS;
         return state;
     }
