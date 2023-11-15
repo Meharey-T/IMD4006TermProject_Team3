@@ -17,7 +17,7 @@ public class TaskCheckArea : BTNode
 
     protected override NodeState OnRun()
     {
-        
+        /*
         if (turnCount == 3)
         {
             Debug.Log("Looked around 3 times");
@@ -34,6 +34,14 @@ public class TaskCheckArea : BTNode
             Debug.Log(turnCount);
             state = NodeState.RUNNING;
         }
+        */
+        Vector3 turnToPoint = CreateTurnToPoint();
+        Vector3 direction = (turnToPoint - BTTransform.position).normalized;
+        Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0f, direction.z));
+        BTTransform.rotation = Quaternion.Slerp(BTTransform.rotation, lookRotation, Time.deltaTime * 5f);
+        //turnCount++;
+        Debug.Log(turnCount);
+        state = NodeState.SUCCESS;
         return state;
     }
 

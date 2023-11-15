@@ -8,14 +8,14 @@ public class TaskRandomWander : BTNode
 {
     Transform BTTransform;
     Vector3 nextWaypointPos;
-    NavMeshAgent navigator;
+    NavMeshAgent agent;
     float waypointRadius;
 
     public TaskRandomWander(Transform transform, float waypointRadius, NavMeshAgent enemyAgent)
     {
         this.waypointRadius = waypointRadius;
         BTTransform = transform;
-        navigator = enemyAgent;
+        agent = enemyAgent;
         NewPatrolPoint();
     }
 
@@ -23,7 +23,12 @@ public class TaskRandomWander : BTNode
     {
         float waypointDistance = Vector3.Distance(BTTransform.position, nextWaypointPos);
 
-        if (navigator.pathStatus == NavMeshPathStatus.PathInvalid)
+        if (agent.GetComponent<Enemy>().seesPlayer || agent.GetComponent<Enemy>().hearsPlayer)
+        {
+            state = NodeState.FAILURE;
+        }
+
+        if (agent.pathStatus == NavMeshPathStatus.PathInvalid)
         {
             NewPatrolPoint();
         }
@@ -36,7 +41,7 @@ public class TaskRandomWander : BTNode
         }
         else if (waypointDistance >= 1)
         {
-            navigator.SetDestination(nextWaypointPos);
+            agent.SetDestination(nextWaypointPos);
             state = NodeState.RUNNING;
         }
         return state;

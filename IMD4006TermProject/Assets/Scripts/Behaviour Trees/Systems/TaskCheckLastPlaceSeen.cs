@@ -4,12 +4,12 @@ using UnityEngine;
 using BehaviourTree;
 using UnityEngine.AI;
 
-public class TaskCheckOutSound : BTNode
+public class TaskCheckLastPlaceSeen : BTNode
 {
     NavMeshAgent agent;
     Enemy thisActor;
 
-    public TaskCheckOutSound(Enemy enemy, NavMeshAgent enemyMeshAgent)
+    public TaskCheckLastPlaceSeen(Enemy enemy, NavMeshAgent enemyMeshAgent)
     {
         thisActor = enemy;
         agent = enemyMeshAgent;
@@ -17,9 +17,10 @@ public class TaskCheckOutSound : BTNode
 
     protected override NodeState OnRun()
     {
-        float waypointDistance = Vector3.Distance(thisActor.transform.position, thisActor.lastLocationHeard);
+        float waypointDistance = Vector3.Distance(thisActor.transform.position, thisActor.lastLocationSeen);
 
-        if (agent.GetComponent<Enemy>().seesPlayer)
+        //Quickly abort this script if they hear or see the player; we want them to jump to the appropriate behaviours
+        if (agent.GetComponent<Enemy>().seesPlayer || agent.GetComponent<Enemy>().hearsPlayer)
         {
             state = NodeState.FAILURE;
         }
@@ -27,12 +28,11 @@ public class TaskCheckOutSound : BTNode
         if (waypointDistance < 1)
         {
             state = NodeState.SUCCESS;
-            thisActor.hearsPlayer = false;
-            //NewPatrolPoint();
+            //thisActor.hearsPlayer = false;
         }
         else if (waypointDistance >= 1)
         {
-            agent.SetDestination(thisActor.lastLocationHeard);
+            agent.SetDestination(thisActor.lastLocationSeen);
             state = NodeState.RUNNING;
         }
         return state;

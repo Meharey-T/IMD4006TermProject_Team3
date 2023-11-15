@@ -174,8 +174,8 @@ MonoBehaviour:
   colliderHolder: {fileID: 3689557309857060794}
   coinCountTxt: {fileID: 0}
   centralTxt: {fileID: 0}
-  indicator: {fileID: 0}
   P_LivesCount: {fileID: 0}
+  indicator: {fileID: 0}
   coinCount: 0
   i_health: {fileID: 2800000, guid: a0de6ffdab9e70b46a50b34fc0f1b518, type: 3}
   i_hurt: {fileID: 2800000, guid: b58578bba5ca38b43ac326e65467cd23, type: 3}
@@ -184,6 +184,7 @@ MonoBehaviour:
   i_spotted: {fileID: 2800000, guid: 8630a5f140ca83e458f907baf4a6bd0a, type: 3}
   i_undetectable: {fileID: 2800000, guid: bf7c9798845efd84fb8fd5bc9f294db3, type: 3}
   inRangeOfHideable: 0
+  hiding: 0
   selectedHideable: {x: 0, y: 0, z: 0}
   previousPosition: {x: 0, y: 0, z: 0}
 --- !u!114 &4866927312394548160
