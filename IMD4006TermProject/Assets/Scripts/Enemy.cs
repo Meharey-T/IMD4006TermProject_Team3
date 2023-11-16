@@ -13,16 +13,14 @@ public class Enemy : MonoBehaviour
 {
     public NavMeshAgent enemyMeshAgent;
     public GameObject playerObj;
-    Vector3 enemyFollowTarget;
     public Vector3 startingPos;
 
     //patrolling 
     public List<GameObject> Waypoints;
-    float waypointRadius;
-    Vector3 nextWaypointPos;
 
     //Related to detection/seeing
     public bool seesPlayer = false;
+    public bool sawPlayer = false;
     public Vector3 lastLocationSeen;
     public float detectionRadius;
     [Range(0, 360)]
@@ -30,13 +28,13 @@ public class Enemy : MonoBehaviour
 
     //Related to detection/hearing
     public bool hearsPlayer = false;
+    public bool heardPlayer = false;
     public Vector3 lastLocationHeard;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        waypointRadius = 5;
         enemyMeshAgent = GetComponent<NavMeshAgent>();
         playerObj = GameObject.FindGameObjectWithTag("Player");
         Debug.Log("The player's position is " + playerObj.transform.position);
@@ -49,6 +47,7 @@ public class Enemy : MonoBehaviour
         StartCoroutine(FOVRoutine());
     }
 
+    //Reduces call count as this kind of behaviour can be a little computationally expensive
     private IEnumerator FOVRoutine()
     {
         WaitForSeconds wait = new WaitForSeconds(0.2f);
@@ -89,6 +88,7 @@ public class Enemy : MonoBehaviour
         else if (seesPlayer)
         {
             seesPlayer = false;
+            sawPlayer = true;
         }
     }
 
@@ -112,6 +112,7 @@ public class Enemy : MonoBehaviour
         {
             //Sets them to alert and sets a value to their location heard, allowing them to pursue the source of the sound
             hearsPlayer = true;
+            heardPlayer = false;
             lastLocationHeard = other.transform.position;
         }
       }
@@ -123,6 +124,7 @@ public class Enemy : MonoBehaviour
         {
             //They can no longer hear the player, and the place they last heard them stops changing
             hearsPlayer = false;
+            heardPlayer = true;
             lastLocationHeard = other.transform.position;
         }
     }

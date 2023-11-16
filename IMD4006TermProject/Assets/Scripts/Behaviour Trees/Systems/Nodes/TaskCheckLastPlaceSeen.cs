@@ -25,11 +25,13 @@ public class TaskCheckLastPlaceSeen : BTNode
             state = NodeState.FAILURE;
         }
 
+        //If they arrive at the destination we want them to stop, go back to regular behaviours
         if (waypointDistance < 1)
         {
             state = NodeState.SUCCESS;
-            //thisActor.hearsPlayer = false;
+            thisActor.sawPlayer = false;
         }
+        //If they haven't reached the waypoint yet, keep running
         else if (waypointDistance >= 1)
         {
             agent.SetDestination(thisActor.lastLocationSeen);

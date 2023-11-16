@@ -8,7 +8,6 @@ public class TaskCheckArea : BTNode
 {
     Transform BTTransform;
     int waypointRadius = 1;
-    int turnCount = 0;
 
     public TaskCheckArea(Transform transform)
     {
@@ -17,28 +16,13 @@ public class TaskCheckArea : BTNode
 
     protected override NodeState OnRun()
     {
-        /*
-        if (turnCount == 3)
-        {
-            Debug.Log("Looked around 3 times");
-            state = NodeState.SUCCESS;
-            turnCount = 0;
-        }
-        else if (turnCount < 3)
-        {
-            Vector3 turnToPoint = CreateTurnToPoint();
-            Vector3 direction = (turnToPoint - BTTransform.position).normalized;
-            Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0f, direction.z));
-            BTTransform.rotation = Quaternion.Slerp(BTTransform.rotation, lookRotation, Time.deltaTime * 5f);
-            turnCount++;
-            Debug.Log(turnCount);
-            state = NodeState.RUNNING;
-        }
-        */
+        //If we see or hear the player, we stop doing this right away
         if (BTTransform.GetComponent<Enemy>().seesPlayer || BTTransform.GetComponent<Enemy>().hearsPlayer)
         {
             state = NodeState.FAILURE;
         }
+
+        //Make a random point to turn towards
         Vector3 turnToPoint = CreateTurnToPoint();
         /*
         Vector3 direction = (turnToPoint - BTTransform.position).normalized;
@@ -47,16 +31,18 @@ public class TaskCheckArea : BTNode
         //turnCount++;
         Debug.Log(turnCount);
         */
-        BTTransform.LookAt(turnToPoint);
+
+        //Turn towards it
+        BTTransform.LookAt(turnToPoint, Vector3.up);
         state = NodeState.SUCCESS;
         return state;
     }
 
     private Vector3 CreateTurnToPoint()
     {
-        float waypointZ = Random.Range(0, waypointRadius);
-        float waypointX = Random.Range(0, waypointRadius);
-        Vector3 proposedWaypoint = new Vector3(waypointX, 0, waypointZ);
+        float waypointZ = Random.Range(-waypointRadius, waypointRadius);
+        float waypointX = Random.Range(-waypointRadius, waypointRadius);
+        Vector3 proposedWaypoint = new Vector3(waypointX + BTTransform.position.x, this.BTTransform.position.y, waypointZ + BTTransform.position.z);
         return proposedWaypoint;
     }
 

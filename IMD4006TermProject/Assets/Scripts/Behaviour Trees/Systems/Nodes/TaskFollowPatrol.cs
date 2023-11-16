@@ -26,22 +26,23 @@ public class TaskFollowPatrol : BTNode
     {
         float waypointDistance = Vector3.Distance(BTTransform.position, waypointList[waypointIndex].transform.position);
 
+        //If at some point we can see or hear the player, stop what we're doing and switch to that instead
         if (agent.GetComponent<Enemy>().seesPlayer || agent.GetComponent<Enemy>().hearsPlayer)
         {
             state = NodeState.FAILURE;
         }
 
+        //If we've reached the current waypoint, succeed and move to the next one
         if (waypointDistance < 1)
         {
             Debug.Log("Reached waypoint");
             waypointIndex++;
             state = NodeState.SUCCESS;
         }
+        //If we're not there yet, keep going
         else if (waypointDistance >= 1)
         {
             agent.SetDestination(waypointList[waypointIndex].transform.position);
-            //NewPatrolPoint();
-            // Debug.Log("going to new position");
             state = NodeState.RUNNING;
         }
         return state;

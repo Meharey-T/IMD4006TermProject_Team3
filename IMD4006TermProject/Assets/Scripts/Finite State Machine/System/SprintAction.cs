@@ -12,7 +12,6 @@ public class SprintAction : FSMAction
         player.turnSmoothTime = player.turnSmoothTimeSlow;
         stateMachine.GetComponent<PlayerMovement>().currentSoundRadius = stateMachine.GetComponent<PlayerMovement>().sprintSoundRadius;
         player.gameObject.layer = 9;
-        //player.GetComponent<Player>().indicator.text = "";
         //Change player animation
         //Change player footstep sounds
     }

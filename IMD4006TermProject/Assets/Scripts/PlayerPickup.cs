@@ -39,15 +39,6 @@ public class PlayerPickup : MonoBehaviour
 
             }
 
-
-
-
-
-
-
-
-
-
             // Vector3 mousePos  = Input.mousePosition;
             //raycaster to ceck what the player has selected
             // Ray CamRay = PlayerCamera.ScreenPointToRay(new Vector3(0.5F, 0.5F, 0F));
@@ -105,18 +96,7 @@ public class PlayerPickup : MonoBehaviour
                         */
                         Debug.Log("this is treasure");
                     }
-
-
-
-
-
-
                 }
-
-
-
-
-
             }
         }
 
@@ -147,7 +127,7 @@ public class PlayerPickup : MonoBehaviour
     private void OnMouseOver()
     {
 
-        print("you are hovering over treasure");
+        //print("you are hovering over treasure");
 
 
         if (CurrentObj)

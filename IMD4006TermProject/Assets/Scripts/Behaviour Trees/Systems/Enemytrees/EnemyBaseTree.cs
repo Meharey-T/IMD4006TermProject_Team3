@@ -41,12 +41,14 @@ public class EnemyBaseTree : BTree
                 new TaskChasePlayer(transform, enemyMeshAgent, player),
                 //Set this so that it looks around if chasing the player fails
                 new Inverter(CheckIfVisibleList),
+                new CheckIfPlayerSeen(enemyMeshAgent, player),
                 //path to the last place they saw them first
                 new TaskCheckLastPlaceSeen(enemy, enemyMeshAgent),
                 //Then stop and look around
                 new TaskCheckArea(transform),
                 new Timer(1.5f, CheckAreaList),
-                new Timer(1.5f, CheckAreaList)
+                new Timer(1.5f, CheckAreaList),
+                new TaskClearDetection(enemy, enemyMeshAgent)
             }),
             //Check out sounds they've heard
             new Sequence(new List<BTNode>
@@ -59,6 +61,7 @@ public class EnemyBaseTree : BTree
                 new TaskCheckArea(transform),
                 new Timer(1f, CheckAreaList),
                 new Timer(1f, CheckAreaList),
+                new TaskClearDetection(enemy, enemyMeshAgent)
                 //new TaskCheckArea(transform)
             }),
             //Start idle patrol sequence

@@ -4,13 +4,14 @@ using UnityEngine;
 using BehaviourTree;
 using UnityEngine.AI;
 
-public class CheckIfVisible : BTCondition
+//Check if we've seen the player
+public class CheckIfPlayerSeen : BTCondition
 {
     Player player;
     NavMeshAgent agent;
     Vector3 playerPos;
     float distance;
-    public CheckIfVisible(NavMeshAgent checkingAgent, Player player)
+    public CheckIfPlayerSeen(NavMeshAgent checkingAgent, Player player)
     {
         agent = checkingAgent;
         this.player = player;
@@ -18,14 +19,12 @@ public class CheckIfVisible : BTCondition
 
     protected override NodeState OnRun()
     {
-        //playerPos = player.transform.position;
-        //distance = Vector3.Distance(agent.transform.position, playerPos);
-        if (agent.GetComponent<Enemy>().seesPlayer)
+        if (agent.GetComponent<Enemy>().sawPlayer)
         {
             Debug.Log("Spotted player");
             return NodeState.SUCCESS;
         }
-        else if (!agent.GetComponent<Enemy>().seesPlayer)
+        else if (!agent.GetComponent<Enemy>().sawPlayer)
         {
             Debug.Log("Doesn't see player");
             return NodeState.FAILURE;

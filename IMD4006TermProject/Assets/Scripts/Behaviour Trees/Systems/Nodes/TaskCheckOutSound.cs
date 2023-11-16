@@ -19,17 +19,19 @@ public class TaskCheckOutSound : BTNode
     {
         float waypointDistance = Vector3.Distance(thisActor.transform.position, thisActor.lastLocationHeard);
 
+        //If we see the player, don't worry about what we heard, chase them
         if (agent.GetComponent<Enemy>().seesPlayer)
         {
             state = NodeState.FAILURE;
         }
 
+        //If they reach the waypoint and don't see anything, go back to regular behaviours
         if (waypointDistance < 1)
         {
             state = NodeState.SUCCESS;
-            thisActor.hearsPlayer = false;
-            //NewPatrolPoint();
+            thisActor.heardPlayer = false;
         }
+        //If they haven't reached it, keep going
         else if (waypointDistance >= 1)
         {
             agent.SetDestination(thisActor.lastLocationHeard);
