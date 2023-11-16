@@ -8,11 +8,11 @@ FBXHeaderExtension:  {
 		Version: 1000
 		Year: 2023
 		Month: 11
-		Day: 7
-		Hour: 21
-		Minute: 5
-		Second: 31
-		Millisecond: 506
+		Day: 15
+		Hour: 18
+		Minute: 21
+		Second: 32
+		Millisecond: 322
 	}
 	Creator: "FBX SDK/FBX Plugins version 2020.2.3"
 	OtherFlags:  {
@@ -31,21 +31,21 @@ FBXHeaderExtension:  {
 			Comment: ""
 		}
 		Properties70:  {
-			P: "DocumentUrl", "KString", "Url", "", "C:\Users\warri\OneDrive - Carleton University\IMD4006A_Advanced_Game_Design_and_Development\Game4006\scenes\spoon.fbx"
-			P: "SrcDocumentUrl", "KString", "Url", "", "C:\Users\warri\OneDrive - Carleton University\IMD4006A_Advanced_Game_Design_and_Development\Game4006\scenes\spoon.fbx"
+			P: "DocumentUrl", "KString", "Url", "", "C:\Users\warri\OneDrive - Carleton University\IMD4006A_Advanced_Game_Design_and_Development\Game4006\assets\spoon.fbx"
+			P: "SrcDocumentUrl", "KString", "Url", "", "C:\Users\warri\OneDrive - Carleton University\IMD4006A_Advanced_Game_Design_and_Development\Game4006\assets\spoon.fbx"
 			P: "Original", "Compound", "", ""
 			P: "Original|ApplicationVendor", "KString", "", "", "Autodesk"
 			P: "Original|ApplicationName", "KString", "", "", "Maya"
 			P: "Original|ApplicationVersion", "KString", "", "", "2022"
-			P: "Original|DateTime_GMT", "DateTime", "", "", "08/11/2023 02:05:31.506"
-			P: "Original|FileName", "KString", "", "", "C:\Users\warri\OneDrive - Carleton University\IMD4006A_Advanced_Game_Design_and_Development\Game4006\scenes\spoon.fbx"
+			P: "Original|DateTime_GMT", "DateTime", "", "", "15/11/2023 23:21:32.321"
+			P: "Original|FileName", "KString", "", "", "C:\Users\warri\OneDrive - Carleton University\IMD4006A_Advanced_Game_Design_and_Development\Game4006\assets\spoon.fbx"
 			P: "LastSaved", "Compound", "", ""
 			P: "LastSaved|ApplicationVendor", "KString", "", "", "Autodesk"
 			P: "LastSaved|ApplicationName", "KString", "", "", "Maya"
 			P: "LastSaved|ApplicationVersion", "KString", "", "", "2022"
-			P: "LastSaved|DateTime_GMT", "DateTime", "", "", "08/11/2023 02:05:31.506"
-			P: "Original|ApplicationActiveProject", "KString", "", "", "C:\Users\warri\OneDrive - Carleton University\IMD4006A_Advanced_Game_Design_and_Development\Game4006\scenes"
-			P: "Original|ApplicationNativeFile", "KString", "", "", "C:\Users\warri\OneDrive - Carleton University\IMD4006A_Advanced_Game_Design_and_Development\Game4006\scenes\collectables.ma"
+			P: "LastSaved|DateTime_GMT", "DateTime", "", "", "15/11/2023 23:21:32.321"
+			P: "Original|ApplicationActiveProject", "KString", "", "", "C:\Users\warri\OneDrive - Carleton University\IMD4006A_Advanced_Game_Design_and_Development\Game4006\assets"
+			P: "Original|ApplicationNativeFile", "KString", "", "", "C:\Users\warri\OneDrive - Carleton University\IMD4006A_Advanced_Game_Design_and_Development\Game4006\scenes\collectables.0003.ma"
 		}
 	}
 }
@@ -80,7 +80,7 @@ GlobalSettings:  {
 
 Documents:  {
 	Count: 1
-	Document: 2765913923136, "", "Scene" {
+	Document: 2495627503712, "", "Scene" {
 		Properties70:  {
 			P: "SourceObject", "object", "", ""
 			P: "ActiveAnimStackName", "KString", "", "", "Take 001"
@@ -100,7 +100,7 @@ References:  {
 
 Definitions:  {
 	Version: 100
-	Count: 8
+	Count: 6
 	ObjectType: "GlobalSettings" {
 		Count: 1
 	}
@@ -147,38 +147,30 @@ Definitions:  {
 	}
 	ObjectType: "Material" {
 		Count: 1
-		PropertyTemplate: "FbxSurfaceMaterial" {
+		PropertyTemplate: "FbxSurfacePhong" {
 			Properties70:  {
-				P: "ShadingModel", "KString", "", "", "Unknown"
+				P: "ShadingModel", "KString", "", "", "Phong"
 				P: "MultiLayer", "bool", "", "",0
-			}
-		}
-	}
-	ObjectType: "Implementation" {
-		Count: 1
-		PropertyTemplate: "FbxImplementation" {
-			Properties70:  {
-				P: "ShaderLanguage", "KString", "", "", "MentalRaySL"
-				P: "ShaderLanguageVersion", "KString", "", "", ""
-				P: "RenderAPI", "KString", "", "", "MentalRay"
-				P: "RenderAPIVersion", "KString", "", "", ""
-				P: "RootBindingName", "KString", "", "", ""
-				P: "Constants", "Compound", "", ""
-			}
-		}
-	}
-	ObjectType: "BindingTable" {
-		Count: 1
-		PropertyTemplate: "FbxBindingTable" {
-			Properties70:  {
-				P: "TargetName", "KString", "", "", ""
-				P: "TargetType", "KString", "", "", ""
-				P: "CodeAbsoluteURL", "KString", "XRefUrl", "", ""
-				P: "CodeRelativeURL", "KString", "XRefUrl", "", ""
-				P: "CodeTAG", "KString", "", "", "shader"
-				P: "DescAbsoluteURL", "KString", "XRefUrl", "", ""
-				P: "DescRelativeURL", "KString", "XRefUrl", "", ""
-				P: "DescTAG", "KString", "", "", "shader"
+				P: "EmissiveColor", "Color", "", "A",0,0,0
+				P: "EmissiveFactor", "Number", "", "A",1
+				P: "AmbientColor", "Color", "", "A",0.2,0.2,0.2
+				P: "AmbientFactor", "Number", "", "A",1
+				P: "DiffuseColor", "Color", "", "A",0.8,0.8,0.8
+				P: "DiffuseFactor", "Number", "", "A",1
+				P: "Bump", "Vector3D", "Vector", "",0,0,0
+				P: "NormalMap", "Vector3D", "Vector", "",0,0,0
+				P: "BumpFactor", "double", "Number", "",1
+				P: "TransparentColor", "Color", "", "A",0,0,0
+				P: "TransparencyFactor", "Number", "", "A",0
+				P: "DisplacementColor", "ColorRGB", "Color", "",0,0,0
+				P: "DisplacementFactor", "double", "Number", "",1
+				P: "VectorDisplacementColor", "ColorRGB", "Color", "",0,0,0
+				P: "VectorDisplacementFactor", "double", "Number", "",1
+				P: "SpecularColor", "Color", "", "A",0.2,0.2,0.2
+				P: "SpecularFactor", "Number", "", "A",1
+				P: "ShininessExponent", "Number", "", "A",20
+				P: "ReflectionColor", "Color", "", "A",0,0,0
+				P: "ReflectionFactor", "Number", "", "A",1
 			}
 		}
 	}
@@ -266,7 +258,15 @@ Definitions:  {
 ;------------------------------------------------------------------
 
 Objects:  {
-	Geometry: 2765159345344, "Geometry::", "Mesh" {
+	Geometry: 2498088442832, "Geometry::", "Mesh" {
+		Smoothness: 3
+		PreviewDivisionLevels: 2
+		RenderDivisionLevels: 2
+		DisplaySubdivisions: 0
+		BoundaryRule: 1
+		PreserveBorders: 0
+		PreserveHardEdges: 0
+		PropagateEdgeHardness: 0
 		Vertices: *288 {
 			a: -34.1500549316406,3.64710521697998,1.94865095615387,-34.1500549316406,3.64710521697998,-1.94865095615387,-39.5686569213867,2.87552356719971,-6.36033582687378,-39.5686569213867,2.87552356719971,6.36033582687378,-46.701530456543,2.56960296630859,-7.11963510513306,-46.701530456543,2.56960296630859,7.11963510513306,-54.1646308898926,3.30085968971252,-5.48410224914551,-54.1646308898926,3.30085968971252,5.48410224914551,-58.650074005127,4.35599422454834,-2.30170822143555,-58.650074005127,4.35599422454834,2.30170822143555,-30.9128303527832,5.61353540420532,0,-34.1500549316406,3.64710521697998,0,-39.5686569213867,2.87552356719971,0,-46.701530456543,2.56960296630859,0,-54.1646308898926,3.30085968971252,0,-58.650074005127,4.35599422454834,0,-54.6774253845215,0.675915718078613,0,-46.7668495178223,-0.493466377258301,0,-39.7068939208984,0.250251770019531,0,-31.0566844940186,2.03180837631226,0,30.9723892211914,-0.45953631401062,0,31.1162452697754,3.12219071388245,0,-29.2287368774414,5.54589557647705,0,-29.3725757598877,1.96416759490967,0,-31.0248947143555,2.82333326339722,2.74204754829407,-31.0566844940186,2.03180837631226,1.91059863567352,-29.3407726287842,2.75600719451904,2.74204754829407,-29.3725757598877,1.96416759490967,1.94956958293915,-30.9486980438232,4.72049522399902,2.74204754829407,-31.1880512237549,5.44635486602783,1.84828734397888,-29.2605228424072,4.75405502319336,2.74204754829407,-29.2287254333496,5.54589509963989,1.94956958293915,-30.9486980438232,4.72049522399902,-2.74204754829407,-31.1880512237549,5.44635486602783,-1.84828734397888,-29.2287254333496,5.54589509963989,-1.94956958293915,-29.2605228424072,4.75405502319336,-2.74204754829407,-31.0248947143555,2.82333326339722,-2.74204754829407,-31.0566844940186,2.03180837631226,-1.91059863567352,-29.3407726287842,2.75600719451904,-2.74204754829407,-29.3725757598877,1.96416759490967,-1.94956958293915,31.0844421386719,2.33035111427307,2.74204754829407,30.9085350036621,3.13053321838379,1.94956958293915,32.7561874389648,3.05632400512695,0.907769620418549,
 33.5162239074707,2.23268055915833,1.37088680267334,31.0041923522949,0.33230322599411,-2.74204754829407,30.7646770477295,-0.451193749904633,-1.94956958293915,32.6123275756836,-0.525403261184692,-0.907770335674286,33.4359703063965,0.234632357954979,-1.37088680267334,-39.662109375,1.3652149438858,-8.94995880126953,-39.6948394775391,0.550327062606812,-8.16274929046631,-39.662109375,1.3652149438858,8.94995880126953,-39.6948623657227,0.54970645904541,8.14586734771729,-39.5976524353027,2.97005987167358,8.94995880126953,-39.5576820373535,3.62439250946045,7.86895751953125,-39.5976524353027,2.97005987167358,-8.94995880126953,-39.5576820373535,3.62439250946045,-7.86895751953125,-46.7076454162598,0.980584740638733,-10.0184087753296,-46.7404632568359,0.163499817252159,-9.24207210540771,-46.7076454162598,0.980584740638733,10.0184087753296,-46.7404632568359,0.163499817252159,9.24207210540771,-46.6360092163086,2.76424217224121,10.0184087753296,-46.6300964355469,3.390221118927,9.05233669281006,-46.6360092163086,2.76424217224121,-10.0184087753296,-46.6300964355469,3.390221118927,-9.05233669281006,-54.6325302124023,1.7936794757843,-7.71696472167969,-54.6655769348145,0.970920562744141,-6.91926002502441,-54.6325302124023,1.7936794757843,7.71696472167969,-54.6655769348145,0.970920562744141,6.91926002502441,-54.567798614502,3.40543866157532,7.71696472167969,-54.3580474853516,3.99998497962952,6.69817352294922,-54.567798614502,3.40543866157532,-7.71696472167969,-54.3580474853516,3.99998497962952,-6.69817352294922,-60.0576477050781,2.61496663093567,-2.84997940063477,-60.7453918457031,3.55733132362366,-3.23885345458984,-60.0947303771973,2.62603688240051,2.87009215354919,-60.7453918457031,3.55733132362366,3.23885345458984,-60.746696472168,3.52486896514893,0,-60.1179618835449,2.59711098670959,0,-60.6879463195801,4.9875545501709,3.23885345458984,-59.642276763916,5.38527870178223,2.77115488052368,-59.642276763916,5.38527870178223,-2.77115488052368,-60.6879463195801,4.9875545501709,-3.23885345458984,-59.6405258178711,5.38346529006958,0,-60.6880493164063,4.9850378036499,0,
@@ -338,7 +338,7 @@ Objects:  {
 			}
 		}
 	}
-	Model: 2766282047840, "Model::geo_spoon", "Mesh" {
+	Model: 2497954400576, "Model::geo_spoon", "Mesh" {
 		Version: 232
 		Properties70:  {
 			P: "RotationPivot", "Vector3D", "Vector", "",3.2612801348364e-15,-0.493466377258297,0
@@ -352,170 +352,28 @@ Objects:  {
 		Shading: T
 		Culling: "CullingOff"
 	}
-	Material: 2767342049792, "Material::silverMetal_txt", "" {
+	Material: 2497950349472, "Material::silver_txt", "" {
 		Version: 102
-		ShadingModel: "unknown"
+		ShadingModel: "phong"
 		MultiLayer: 0
 		Properties70:  {
-			P: "Maya", "Compound", "", ""
-			P: "Maya|TypeId", "int", "Integer", "",1138001
-			P: "Maya|outAlpha", "float", "", "",0
-			P: "Maya|normalCamera", "Vector3D", "Vector", "",1,1,1
-			P: "Maya|aiEnableMatte", "bool", "", "",0
-			P: "Maya|aiMatteColor", "Vector3D", "Vector", "",0,0,0
-			P: "Maya|aiMatteColorA", "float", "", "",0
-			P: "Maya|base", "float", "", "",1
-			P: "Maya|baseColor", "Vector3D", "Vector", "",0.47651007771492,0.47651007771492,0.47651007771492
-			P: "Maya|diffuseRoughness", "float", "", "",0
-			P: "Maya|specular", "float", "", "",0
-			P: "Maya|specularColor", "Vector3D", "Vector", "",1,1,1
-			P: "Maya|specularRoughness", "float", "", "",0.2
-			P: "Maya|specularIOR", "float", "", "",1.52
-			P: "Maya|specularAnisotropy", "float", "", "",0.5
-			P: "Maya|specularRotation", "float", "", "",0
-			P: "Maya|metalness", "float", "", "",1
-			P: "Maya|transmission", "float", "", "",0
-			P: "Maya|transmissionColor", "Vector3D", "Vector", "",1,1,1
-			P: "Maya|transmissionDepth", "float", "", "",0
-			P: "Maya|transmissionScatter", "Vector3D", "Vector", "",0,0,0
-			P: "Maya|transmissionScatterAnisotropy", "float", "", "",0
-			P: "Maya|transmissionDispersion", "float", "", "",0
-			P: "Maya|transmissionExtraRoughness", "float", "", "",0
-			P: "Maya|transmitAovs", "bool", "", "",0
-			P: "Maya|subsurface", "float", "", "",0
-			P: "Maya|subsurfaceColor", "Vector3D", "Vector", "",1,1,1
-			P: "Maya|subsurfaceRadius", "Vector3D", "Vector", "",1,1,1
-			P: "Maya|subsurfaceScale", "float", "", "",1
-			P: "Maya|subsurfaceAnisotropy", "float", "", "",0
-			P: "Maya|subsurfaceType", "enum", "", "",1
-			P: "Maya|sheen", "float", "", "",0
-			P: "Maya|sheenColor", "Vector3D", "Vector", "",1,1,1
-			P: "Maya|sheenRoughness", "float", "", "",0.3
-			P: "Maya|thinWalled", "bool", "", "",0
-			P: "Maya|tangent", "Vector3D", "Vector", "",0,0,0
-			P: "Maya|coat", "float", "", "",0
-			P: "Maya|coatColor", "Vector3D", "Vector", "",1,1,1
-			P: "Maya|coatRoughness", "float", "", "",0.1
-			P: "Maya|coatIOR", "float", "", "",1
-			P: "Maya|coatAnisotropy", "float", "", "",0
-			P: "Maya|coatRotation", "float", "", "",0
-			P: "Maya|coatNormal", "Vector3D", "Vector", "",0,0,0
-			P: "Maya|thinFilmThickness", "float", "", "",0
-			P: "Maya|thinFilmIOR", "float", "", "",1.5
-			P: "Maya|emission", "float", "", "",0
-			P: "Maya|emissionColor", "Vector3D", "Vector", "",1,1,1
-			P: "Maya|opacity", "Vector3D", "Vector", "",1,1,1
-			P: "Maya|caustics", "bool", "", "",0
-			P: "Maya|internalReflections", "bool", "", "",1
-			P: "Maya|exitToBackground", "bool", "", "",0
-			P: "Maya|indirectDiffuse", "float", "", "",1
-			P: "Maya|indirectSpecular", "float", "", "",1
-			P: "Maya|dielectricPriority", "int", "Integer", "",0
-			P: "Maya|aovId1", "KString", "", "", ""
-			P: "Maya|id1", "Vector3D", "Vector", "",0,0,0
-			P: "Maya|aovId2", "KString", "", "", ""
-			P: "Maya|id2", "Vector3D", "Vector", "",0,0,0
-			P: "Maya|aovId3", "KString", "", "", ""
-			P: "Maya|id3", "Vector3D", "Vector", "",0,0,0
-			P: "Maya|aovId4", "KString", "", "", ""
-			P: "Maya|id4", "Vector3D", "Vector", "",0,0,0
-			P: "Maya|aovId5", "KString", "", "", ""
-			P: "Maya|id5", "Vector3D", "Vector", "",0,0,0
-			P: "Maya|aovId6", "KString", "", "", ""
-			P: "Maya|id6", "Vector3D", "Vector", "",0,0,0
-			P: "Maya|aovId7", "KString", "", "", ""
-			P: "Maya|id7", "Vector3D", "Vector", "",0,0,0
-			P: "Maya|aovId8", "KString", "", "", ""
-			P: "Maya|id8", "Vector3D", "Vector", "",0,0,0
-			P: "Maya|normalCameraUsedAs", "int", "Integer", "",0
-			P: "Maya|normalCameraFactor", "double", "Number", "",0
+			P: "AmbientColor", "Color", "", "A",0,0,0
+			P: "DiffuseColor", "Color", "", "A",0.5,0.5,0.5
+			P: "DiffuseFactor", "Number", "", "A",0.800000011920929
+			P: "TransparencyFactor", "Number", "", "A",1
+			P: "SpecularColor", "Color", "", "A",1,1,1
+			P: "ShininessExponent", "Number", "", "A",50
+			P: "ReflectionFactor", "Number", "", "A",0.5
+			P: "Emissive", "Vector3D", "Vector", "",0,0,0
+			P: "Ambient", "Vector3D", "Vector", "",0,0,0
+			P: "Diffuse", "Vector3D", "Vector", "",0.400000005960464,0.400000005960464,0.400000005960464
+			P: "Specular", "Vector3D", "Vector", "",1,1,1
+			P: "Shininess", "double", "Number", "",50
+			P: "Opacity", "double", "Number", "",1
+			P: "Reflectivity", "double", "Number", "",0
 		}
 	}
-	Implementation: 2766759922208, "Implementation::silverMetal_txt_Implementation", "" {
-		Version: 100
-		Properties70:  {
-			P: "ShaderLanguage", "KString", "", "", "AiOSL"
-			P: "RenderAPI", "KString", "", "", "ARNOLD_SHADER_ID"
-			P: "RenderAPIVersion", "KString", "", "", "5.0"
-			P: "RootBindingName", "KString", "", "", "root"
-		}
-	}
-	BindingTable: 2767343321504, "BindingTable::root 35", "" {
-		Version: 100
-		Properties70:  {
-			P: "TargetName", "KString", "", "", "root"
-			P: "TargetType", "KString", "", "", "shader"
-		}
-		Entry: "Maya|specularIOR", "FbxPropertyEntry", "specularIOR", "FbxSemanticEntry"
-		Entry: "Maya|aiEnableMatte", "FbxPropertyEntry", "aiEnableMatte", "FbxSemanticEntry"
-		Entry: "Maya|id5", "FbxPropertyEntry", "id5", "FbxSemanticEntry"
-		Entry: "Maya|emission", "FbxPropertyEntry", "emission", "FbxSemanticEntry"
-		Entry: "Maya|thinFilmThickness", "FbxPropertyEntry", "thinFilmThickness", "FbxSemanticEntry"
-		Entry: "Maya|sheenColor", "FbxPropertyEntry", "sheenColor", "FbxSemanticEntry"
-		Entry: "Maya|aovId2", "FbxPropertyEntry", "aovId2", "FbxSemanticEntry"
-		Entry: "Maya|sheen", "FbxPropertyEntry", "sheen", "FbxSemanticEntry"
-		Entry: "Maya|transmissionDepth", "FbxPropertyEntry", "transmissionDepth", "FbxSemanticEntry"
-		Entry: "Maya|transmissionColor", "FbxPropertyEntry", "transmissionColor", "FbxSemanticEntry"
-		Entry: "Maya|specularColor", "FbxPropertyEntry", "specularColor", "FbxSemanticEntry"
-		Entry: "Maya|id4", "FbxPropertyEntry", "id4", "FbxSemanticEntry"
-		Entry: "Maya|aiMatteColor", "FbxPropertyEntry", "aiMatteColor", "FbxSemanticEntry"
-		Entry: "Maya|sheenRoughness", "FbxPropertyEntry", "sheenRoughness", "FbxSemanticEntry"
-		Entry: "Maya|exitToBackground", "FbxPropertyEntry", "exitToBackground", "FbxSemanticEntry"
-		Entry: "Maya|tangent", "FbxPropertyEntry", "tangent", "FbxSemanticEntry"
-		Entry: "Maya|metalness", "FbxPropertyEntry", "metalness", "FbxSemanticEntry"
-		Entry: "Maya|id7", "FbxPropertyEntry", "id7", "FbxSemanticEntry"
-		Entry: "Maya|baseColor", "FbxPropertyEntry", "baseColor", "FbxSemanticEntry"
-		Entry: "Maya|base", "FbxPropertyEntry", "base", "FbxSemanticEntry"
-		Entry: "Maya|id2", "FbxPropertyEntry", "id2", "FbxSemanticEntry"
-		Entry: "Maya|indirectSpecular", "FbxPropertyEntry", "indirectSpecular", "FbxSemanticEntry"
-		Entry: "Maya|coatNormal", "FbxPropertyEntry", "coatNormal", "FbxSemanticEntry"
-		Entry: "Maya|coatRoughness", "FbxPropertyEntry", "coatRoughness", "FbxSemanticEntry"
-		Entry: "Maya|subsurfaceType", "FbxPropertyEntry", "subsurfaceType", "FbxSemanticEntry"
-		Entry: "Maya|transmissionExtraRoughness", "FbxPropertyEntry", "transmissionExtraRoughness", "FbxSemanticEntry"
-		Entry: "Maya|specular", "FbxPropertyEntry", "specular", "FbxSemanticEntry"
-		Entry: "Maya|aovId7", "FbxPropertyEntry", "aovId7", "FbxSemanticEntry"
-		Entry: "Maya|aovId6", "FbxPropertyEntry", "aovId6", "FbxSemanticEntry"
-		Entry: "Maya|caustics", "FbxPropertyEntry", "caustics", "FbxSemanticEntry"
-		Entry: "Maya|subsurfaceScale", "FbxPropertyEntry", "subsurfaceScale", "FbxSemanticEntry"
-		Entry: "Maya|specularAnisotropy", "FbxPropertyEntry", "specularAnisotropy", "FbxSemanticEntry"
-		Entry: "Maya|diffuseRoughness", "FbxPropertyEntry", "diffuseRoughness", "FbxSemanticEntry"
-		Entry: "Maya|aiMatteColorA", "FbxPropertyEntry", "aiMatteColorA", "FbxSemanticEntry"
-		Entry: "Maya|aovId4", "FbxPropertyEntry", "aovId4", "FbxSemanticEntry"
-		Entry: "Maya|aovId3", "FbxPropertyEntry", "aovId3", "FbxSemanticEntry"
-		Entry: "Maya|internalReflections", "FbxPropertyEntry", "internalReflections", "FbxSemanticEntry"
-		Entry: "Maya|transmissionDispersion", "FbxPropertyEntry", "transmissionDispersion", "FbxSemanticEntry"
-		Entry: "Maya|dielectricPriority", "FbxPropertyEntry", "dielectricPriority", "FbxSemanticEntry"
-		Entry: "Maya|transmission", "FbxPropertyEntry", "transmission", "FbxSemanticEntry"
-		Entry: "Maya|id8", "FbxPropertyEntry", "id8", "FbxSemanticEntry"
-		Entry: "Maya|outAlpha", "FbxPropertyEntry", "outAlpha", "FbxSemanticEntry"
-		Entry: "Maya|emissionColor", "FbxPropertyEntry", "emissionColor", "FbxSemanticEntry"
-		Entry: "Maya|subsurfaceAnisotropy", "FbxPropertyEntry", "subsurfaceAnisotropy", "FbxSemanticEntry"
-		Entry: "Maya|subsurface", "FbxPropertyEntry", "subsurface", "FbxSemanticEntry"
-		Entry: "Maya|specularRoughness", "FbxPropertyEntry", "specularRoughness", "FbxSemanticEntry"
-		Entry: "Maya|coatColor", "FbxPropertyEntry", "coatColor", "FbxSemanticEntry"
-		Entry: "Maya|aovId5", "FbxPropertyEntry", "aovId5", "FbxSemanticEntry"
-		Entry: "Maya|transmissionScatterAnisotropy", "FbxPropertyEntry", "transmissionScatterAnisotropy", "FbxSemanticEntry"
-		Entry: "Maya|indirectDiffuse", "FbxPropertyEntry", "indirectDiffuse", "FbxSemanticEntry"
-		Entry: "Maya|coatIOR", "FbxPropertyEntry", "coatIOR", "FbxSemanticEntry"
-		Entry: "Maya|specularRotation", "FbxPropertyEntry", "specularRotation", "FbxSemanticEntry"
-		Entry: "Maya|coatRotation", "FbxPropertyEntry", "coatRotation", "FbxSemanticEntry"
-		Entry: "Maya|transmitAovs", "FbxPropertyEntry", "transmitAovs", "FbxSemanticEntry"
-		Entry: "Maya|aovId1", "FbxPropertyEntry", "aovId1", "FbxSemanticEntry"
-		Entry: "Maya|coat", "FbxPropertyEntry", "coat", "FbxSemanticEntry"
-		Entry: "Maya|thinWalled", "FbxPropertyEntry", "thinWalled", "FbxSemanticEntry"
-		Entry: "Maya|id6", "FbxPropertyEntry", "id6", "FbxSemanticEntry"
-		Entry: "Maya|id1", "FbxPropertyEntry", "id1", "FbxSemanticEntry"
-		Entry: "Maya|opacity", "FbxPropertyEntry", "opacity", "FbxSemanticEntry"
-		Entry: "Maya|thinFilmIOR", "FbxPropertyEntry", "thinFilmIOR", "FbxSemanticEntry"
-		Entry: "Maya|aovId8", "FbxPropertyEntry", "aovId8", "FbxSemanticEntry"
-		Entry: "Maya|coatAnisotropy", "FbxPropertyEntry", "coatAnisotropy", "FbxSemanticEntry"
-		Entry: "Maya|subsurfaceRadius", "FbxPropertyEntry", "subsurfaceRadius", "FbxSemanticEntry"
-		Entry: "Maya|normalCamera", "FbxPropertyEntry", "normalCamera", "FbxSemanticEntry"
-		Entry: "Maya|subsurfaceColor", "FbxPropertyEntry", "subsurfaceColor", "FbxSemanticEntry"
-		Entry: "Maya|transmissionScatter", "FbxPropertyEntry", "transmissionScatter", "FbxSemanticEntry"
-		Entry: "Maya|id3", "FbxPropertyEntry", "id3", "FbxSemanticEntry"
-	}
-	AnimationStack: 2767227830448, "AnimStack::Take 001", "" {
+	AnimationStack: 2497220313312, "AnimStack::Take 001", "" {
 		Properties70:  {
 			P: "LocalStart", "KTime", "Time", "",1924423250
 			P: "LocalStop", "KTime", "Time", "",230930790000
@@ -523,7 +381,7 @@ Objects:  {
 			P: "ReferenceStop", "KTime", "Time", "",230930790000
 		}
 	}
-	AnimationLayer: 2767079559552, "AnimLayer::BaseLayer", "" {
+	AnimationLayer: 2497949411648, "AnimLayer::BaseLayer", "" {
 	}
 }
 
@@ -533,22 +391,16 @@ Objects:  {
 Connections:  {
 	
 	;Model::geo_spoon, Model::RootNode
-	C: "OO",2766282047840,0
+	C: "OO",2497954400576,0
 	
 	;AnimLayer::BaseLayer, AnimStack::Take 001
-	C: "OO",2767079559552,2767227830448
-	
-	;Material::silverMetal_txt, Implementation::silverMetal_txt_Implementation
-	C: "OO",2767342049792,2766759922208
-	
-	;BindingTable::root 35, Implementation::silverMetal_txt_Implementation
-	C: "OO",2767343321504,2766759922208
+	C: "OO",2497949411648,2497220313312
 	
 	;Geometry::, Model::geo_spoon
-	C: "OO",2765159345344,2766282047840
+	C: "OO",2498088442832,2497954400576
 	
-	;Material::silverMetal_txt, Model::geo_spoon
-	C: "OO",2767342049792,2766282047840
+	;Material::silver_txt, Model::geo_spoon
+	C: "OO",2497950349472,2497954400576
 }
 ;Takes section
 ;----------------------------------------------------
