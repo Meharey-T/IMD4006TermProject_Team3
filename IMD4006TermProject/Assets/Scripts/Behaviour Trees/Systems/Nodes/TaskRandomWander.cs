@@ -53,12 +53,13 @@ public class TaskRandomWander : BTNode
         float waypointX = Random.Range(-waypointRadius, waypointRadius);
         Vector3 proposedWaypoint = new Vector3(waypointX + BTTransform.position.x, 1, waypointZ + BTTransform.position.z);
 
+        
         while (!TestPoint(proposedWaypoint))
         {
             waypointZ = Random.Range(-waypointRadius, waypointRadius);
             waypointX = Random.Range(-waypointRadius, waypointRadius);
             proposedWaypoint = new Vector3(waypointX + BTTransform.position.x, 1, waypointZ + BTTransform.position.z);
-        }
+        } 
         nextWaypointPos.Set(waypointX + BTTransform.position.x, 1, waypointZ + BTTransform.position.z);
     }
 

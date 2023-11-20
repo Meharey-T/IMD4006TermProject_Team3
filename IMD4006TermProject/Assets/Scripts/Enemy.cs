@@ -80,6 +80,7 @@ public class Enemy : MonoBehaviour
                 if (!Physics.Raycast(transform.position, directionToTarget, distanceToTarget, LayerMask.GetMask("Ground")))
                 {
                     seesPlayer = true;
+                    lastLocationSeen = playerObj.transform.position;
                 }
                 else seesPlayer = false;
             }
@@ -89,6 +90,7 @@ public class Enemy : MonoBehaviour
         {
             seesPlayer = false;
             sawPlayer = true;
+            lastLocationSeen = playerObj.transform.position;
         }
     }
 
