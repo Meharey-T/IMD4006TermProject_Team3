@@ -8,6 +8,8 @@ public class TaskCheckArea : BTNode
 {
     Transform BTTransform;
     int waypointRadius = 1;
+    bool setWayPoint = false;
+    Quaternion lookRotation;
 
     public TaskCheckArea(Transform transform)
     {
@@ -16,25 +18,34 @@ public class TaskCheckArea : BTNode
 
     protected override NodeState OnRun()
     {
+        Debug.Log("Running TaskCheckArea");
         //If we see or hear the player, we stop doing this right away
         if (BTTransform.GetComponent<Enemy>().seesPlayer || BTTransform.GetComponent<Enemy>().hearsPlayer)
         {
             state = NodeState.FAILURE;
         }
-
-        //Make a random point to turn towards
-        Vector3 turnToPoint = CreateTurnToPoint();
-        /*
-        Vector3 direction = (turnToPoint - BTTransform.position).normalized;
-        Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0f, direction.z));
-        BTTransform.rotation = Quaternion.Slerp(BTTransform.rotation, lookRotation, Time.deltaTime * 5f);
-        //turnCount++;
-        Debug.Log(turnCount);
-        */
-
-        //Turn towards it
-        BTTransform.LookAt(turnToPoint, Vector3.up);
-        state = NodeState.SUCCESS;
+        else if (!setWayPoint)
+        {
+            Vector3 turnToPoint = CreateTurnToPoint();
+            Vector3 direction = turnToPoint.normalized;
+            lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0f, direction.z));
+            state = NodeState.RUNNING;
+            setWayPoint = true;
+        }
+        else if (setWayPoint){
+            if(BTTransform.rotation != lookRotation)
+            {
+                BTTransform.rotation = Quaternion.Slerp(BTTransform.rotation, lookRotation, Time.deltaTime * 5f);
+                state = NodeState.RUNNING;
+            }
+            else
+            {
+                Debug.Log("finished turning");
+                setWayPoint = false;
+                state = NodeState.SUCCESS;
+            }
+            
+        }
         return state;
     }
 

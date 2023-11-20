@@ -59,7 +59,7 @@ public class TaskRandomWander : BTNode
             waypointX = Random.Range(-waypointRadius, waypointRadius);
             proposedWaypoint = new Vector3(waypointX + BTTransform.position.x, 1, waypointZ + BTTransform.position.z);
         }
-            nextWaypointPos.Set(waypointX + BTTransform.position.x, 1, waypointZ + BTTransform.position.z);
+        nextWaypointPos.Set(waypointX + BTTransform.position.x, 1, waypointZ + BTTransform.position.z);
     }
 
     private bool TestPoint(Vector3 proposedWaypoint)

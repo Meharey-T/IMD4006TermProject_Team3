@@ -18,7 +18,7 @@ public class CheckIfPlayerAudible : BTCondition
             Debug.Log("Heard player");
             return NodeState.SUCCESS;
         }
-        else if (!thisActor.hearsPlayer)
+        else if (!thisActor.hearsPlayer && !thisActor.heardPlayer)
         {
             Debug.Log("Can't hear player");
             return NodeState.FAILURE;

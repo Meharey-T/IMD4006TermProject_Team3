@@ -23,29 +23,29 @@ public class TaskPointWander : BTNode
 
     protected override NodeState OnRun()
     {
+        Debug.Log("Running TaskPointWander");
         float waypointDistance = Vector3.Distance(BTTransform.position, nextWaypointPos);
 
-        if(navigator.GetComponent<Enemy>().seesPlayer || navigator.GetComponent<Enemy>().hearsPlayer)
+        if (navigator.pathStatus == NavMeshPathStatus.PathInvalid)
+        {
+            NewPatrolPoint();
+        }
+        if (navigator.GetComponent<Enemy>().seesPlayer || navigator.GetComponent<Enemy>().hearsPlayer)
         {
             state = NodeState.FAILURE;
-        }
-
-        if(navigator.pathStatus == NavMeshPathStatus.PathInvalid)
-        {
-            NewPatrolPoint();
-        }
-
-        if (waypointDistance < 1)
-        {
-            Debug.Log("Reached waypoint");
-            state = NodeState.SUCCESS;
-            NewPatrolPoint();
         }
         else if (waypointDistance >= 1)
         {
             navigator.SetDestination(nextWaypointPos);
             state = NodeState.RUNNING;
         }
+        else if (waypointDistance < 1)
+        {
+            Debug.Log("Reached waypoint");
+            state = NodeState.SUCCESS;
+            NewPatrolPoint();
+        }
+        
         return state;
     }
 

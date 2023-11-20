@@ -45,7 +45,18 @@ public class EnemyBaseTree : BTree
                 //path to the last place they saw them first
                 new TaskCheckLastPlaceSeen(enemy, enemyMeshAgent),
                 //Then stop and look around
-                new TaskCheckArea(transform),
+                new Timer(1.5f, CheckAreaList),
+                new Timer(1.5f, CheckAreaList),
+                new Timer(1.5f, CheckAreaList),
+                new TaskClearDetection(enemy, enemyMeshAgent)
+            }),
+            new Sequence(new List<BTNode>
+            {
+                new CheckIfPlayerSeen(enemyMeshAgent, player),
+                //path to the last place they saw them first
+                new TaskCheckLastPlaceSeen(enemy, enemyMeshAgent),
+                //Then stop and look around
+                new Timer(1.5f, CheckAreaList),
                 new Timer(1.5f, CheckAreaList),
                 new Timer(1.5f, CheckAreaList),
                 new TaskClearDetection(enemy, enemyMeshAgent)
@@ -58,14 +69,14 @@ public class EnemyBaseTree : BTree
                 //Then have them go to the location they last heard the player
                 new TaskCheckOutSound(enemy, enemyMeshAgent),
                 //We might add a short task for them to spend a certain amount of time looking around
-                new TaskCheckArea(transform),
-                new Timer(1f, CheckAreaList),
-                new Timer(1f, CheckAreaList),
+                new Timer(1.5f, CheckAreaList),
+                new Timer(1.5f, CheckAreaList),
+                new Timer(1.5f, CheckAreaList),
                 new TaskClearDetection(enemy, enemyMeshAgent)
                 //new TaskCheckArea(transform)
             }),
             //Start idle patrol sequence
-            new TaskRandomWander(transform, waypointRadius, enemyMeshAgent),
+            new TaskRandomWander(transform, waypointRadius, enemyMeshAgent)
         });
         return root;
     }

@@ -18,6 +18,7 @@ public class WalkAction : FSMAction
         }
         player.currentSoundRadius = player.walkSoundRadius;
         player.gameObject.layer = 9;
+        player.soundRadius.gameObject.layer = 9;
         //Change player animation
         //Change player footstep sounds
     }

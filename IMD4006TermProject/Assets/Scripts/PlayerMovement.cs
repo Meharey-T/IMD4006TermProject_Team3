@@ -48,7 +48,7 @@ public class PlayerMovement : MonoBehaviour
 
     //Component references
     private Rigidbody rb;
-    private SphereCollider soundRadius;
+    public SphereCollider soundRadius;
 
     // Start is called before the first frame update
     void Start()

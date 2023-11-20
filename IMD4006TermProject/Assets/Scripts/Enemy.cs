@@ -120,7 +120,7 @@ public class Enemy : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         //If they exit the range of where they can currently hear the player, sets it accordingly
-        if (other.gameObject.tag == "player" && other.GetType() == typeof(SphereCollider))
+        if (other.gameObject.layer == 9 && other.GetType() == typeof(SphereCollider))
         {
             //They can no longer hear the player, and the place they last heard them stops changing
             hearsPlayer = false;

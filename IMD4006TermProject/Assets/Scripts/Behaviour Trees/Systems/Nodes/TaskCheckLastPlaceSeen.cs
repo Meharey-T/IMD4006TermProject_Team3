@@ -17,6 +17,7 @@ public class TaskCheckLastPlaceSeen : BTNode
 
     protected override NodeState OnRun()
     {
+        Debug.Log("Running TaskCheckLastPlaceSeen");
         float waypointDistance = Vector3.Distance(thisActor.transform.position, thisActor.lastLocationSeen);
 
         //Quickly abort this script if they hear or see the player; we want them to jump to the appropriate behaviours
@@ -24,19 +25,19 @@ public class TaskCheckLastPlaceSeen : BTNode
         {
             state = NodeState.FAILURE;
         }
-
+        else if (waypointDistance >= 2.5f)
+        {
+            agent.SetDestination(thisActor.lastLocationSeen);
+            state = NodeState.RUNNING;
+        }
         //If they arrive at the destination we want them to stop, go back to regular behaviours
-        if (waypointDistance < 1)
+        else if (waypointDistance < 2.5f)
         {
             state = NodeState.SUCCESS;
             thisActor.sawPlayer = false;
         }
         //If they haven't reached the waypoint yet, keep running
-        else if (waypointDistance >= 1)
-        {
-            agent.SetDestination(thisActor.lastLocationSeen);
-            state = NodeState.RUNNING;
-        }
+        
         return state;
     }
 

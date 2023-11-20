@@ -17,7 +17,7 @@ public class TaskClearDetection : BTNode
 
     protected override NodeState OnRun()
     {
-
+        Debug.Log("Running TaskClearDetection");
         thisActor.hearsPlayer = false;
         thisActor.seesPlayer = false;
         thisActor.sawPlayer = false;
