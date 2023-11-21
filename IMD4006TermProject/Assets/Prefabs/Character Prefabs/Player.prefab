@@ -122,7 +122,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3029518513293088732}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0.07133093, y: -0.0053635323, z: -0.074788496, w: -0.9946305}
   m_LocalPosition: {x: 0, y: 0.05, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -156,6 +156,14 @@ MonoBehaviour:
   groundedPlayer: 1
   turnSpeed: 1.5
   turnSmoothTime: 0.1
+  turnSmoothTimeSnappy: 0.05
+  turnSmoothTimeSlow: 0.5
+  sneakSoundRadius: 1
+  walkSoundRadius: 5
+  sprintSoundRadius: 9
+  currentSoundRadius: 5
+  soundRadius: {fileID: 0}
+  playerGeo: {fileID: 4016466097069799744}
 --- !u!114 &8233892006867537294
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -168,6 +176,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91d6b2a3f5a34074fb091a04c7e7ae3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startingPos: {x: 0, y: 0, z: 0}
   coinSet: {fileID: 11400000, guid: d5d554d024a4ebf46b647a5f3dfe2e0f, type: 2}
   enemySet: {fileID: 11400000, guid: 84c32e22a9bdcce4a8458a34eb520691, type: 2}
   trapObj: {fileID: 64218855568024014, guid: 9bd109f5cb357a54ea420748e9185be5, type: 3}
@@ -401,6 +410,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3801467074ff06c49bd5ef4fc477d600, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  materials: []
 --- !u!1 &3936022966842088751
 GameObject:
   m_ObjectHideFlags: 0
