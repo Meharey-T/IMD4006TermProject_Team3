@@ -8,11 +8,11 @@ FBXHeaderExtension:  {
 		Version: 1000
 		Year: 2023
 		Month: 11
-		Day: 15
-		Hour: 18
-		Minute: 20
-		Second: 16
-		Millisecond: 377
+		Day: 21
+		Hour: 14
+		Minute: 0
+		Second: 21
+		Millisecond: 307
 	}
 	Creator: "FBX SDK/FBX Plugins version 2020.2.3"
 	OtherFlags:  {
@@ -37,15 +37,15 @@ FBXHeaderExtension:  {
 			P: "Original|ApplicationVendor", "KString", "", "", "Autodesk"
 			P: "Original|ApplicationName", "KString", "", "", "Maya"
 			P: "Original|ApplicationVersion", "KString", "", "", "2022"
-			P: "Original|DateTime_GMT", "DateTime", "", "", "15/11/2023 23:20:16.376"
+			P: "Original|DateTime_GMT", "DateTime", "", "", "21/11/2023 19:00:21.307"
 			P: "Original|FileName", "KString", "", "", "C:\Users\warri\OneDrive - Carleton University\IMD4006A_Advanced_Game_Design_and_Development\Game4006\assets\coin.fbx"
 			P: "LastSaved", "Compound", "", ""
 			P: "LastSaved|ApplicationVendor", "KString", "", "", "Autodesk"
 			P: "LastSaved|ApplicationName", "KString", "", "", "Maya"
 			P: "LastSaved|ApplicationVersion", "KString", "", "", "2022"
-			P: "LastSaved|DateTime_GMT", "DateTime", "", "", "15/11/2023 23:20:16.376"
+			P: "LastSaved|DateTime_GMT", "DateTime", "", "", "21/11/2023 19:00:21.307"
 			P: "Original|ApplicationActiveProject", "KString", "", "", "C:\Users\warri\OneDrive - Carleton University\IMD4006A_Advanced_Game_Design_and_Development\Game4006\assets"
-			P: "Original|ApplicationNativeFile", "KString", "", "", "C:\Users\warri\OneDrive - Carleton University\IMD4006A_Advanced_Game_Design_and_Development\Game4006\scenes\collectables.0003.ma"
+			P: "Original|ApplicationNativeFile", "KString", "", "", "C:\Users\warri\OneDrive - Carleton University\IMD4006A_Advanced_Game_Design_and_Development\Game4006\scenes\collectables.0004.ma"
 		}
 	}
 }
@@ -80,7 +80,7 @@ GlobalSettings:  {
 
 Documents:  {
 	Count: 1
-	Document: 2498097356176, "", "Scene" {
+	Document: 1971767233648, "", "Scene" {
 		Properties70:  {
 			P: "SourceObject", "object", "", ""
 			P: "ActiveAnimStackName", "KString", "", "", "Take 001"
@@ -258,7 +258,7 @@ Definitions:  {
 ;------------------------------------------------------------------
 
 Objects:  {
-	Geometry: 2498088422672, "Geometry::", "Mesh" {
+	Geometry: 1971700898144, "Geometry::", "Mesh" {
 		Smoothness: 3
 		PreviewDivisionLevels: 2
 		RenderDivisionLevels: 2
@@ -450,7 +450,7 @@ Objects:  {
 			}
 		}
 	}
-	Model: 2497954465536, "Model::geo_coin", "Mesh" {
+	Model: 1971092476416, "Model::geo_coin", "Mesh" {
 		Version: 232
 		Properties70:  {
 			P: "RotationPivot", "Vector3D", "Vector", "",-1.19209289550781e-07,18.4945793100286,-1.78813934326223e-07
@@ -464,28 +464,28 @@ Objects:  {
 		Shading: T
 		Culling: "CullingOff"
 	}
-	Material: 2497950328832, "Material::coin_txt", "" {
+	Material: 1971124221888, "Material::gold_txt", "" {
 		Version: 102
 		ShadingModel: "phong"
 		MultiLayer: 0
 		Properties70:  {
 			P: "AmbientColor", "Color", "", "A",0,0,0
-			P: "DiffuseColor", "Color", "", "A",0.85699999332428,0.552321314811707,0.0762729868292809
+			P: "DiffuseColor", "Color", "", "A",0.85699999332428,0.600146770477295,0.198823988437653
 			P: "DiffuseFactor", "Number", "", "A",0.800000011920929
 			P: "TransparencyFactor", "Number", "", "A",1
 			P: "SpecularColor", "Color", "", "A",1,1,1
-			P: "ShininessExponent", "Number", "", "A",30
+			P: "ShininessExponent", "Number", "", "A",50
 			P: "ReflectionFactor", "Number", "", "A",0.5
 			P: "Emissive", "Vector3D", "Vector", "",0,0,0
 			P: "Ambient", "Vector3D", "Vector", "",0,0,0
-			P: "Diffuse", "Vector3D", "Vector", "",0.68560000487566,0.441857058433548,0.0610183903726695
+			P: "Diffuse", "Vector3D", "Vector", "",0.68560000487566,0.480117423536143,0.159059193120289
 			P: "Specular", "Vector3D", "Vector", "",1,1,1
-			P: "Shininess", "double", "Number", "",30
+			P: "Shininess", "double", "Number", "",50
 			P: "Opacity", "double", "Number", "",1
 			P: "Reflectivity", "double", "Number", "",0
 		}
 	}
-	AnimationStack: 2497220428544, "AnimStack::Take 001", "" {
+	AnimationStack: 1971760137312, "AnimStack::Take 001", "" {
 		Properties70:  {
 			P: "LocalStart", "KTime", "Time", "",1924423250
 			P: "LocalStop", "KTime", "Time", "",230930790000
@@ -493,7 +493,7 @@ Objects:  {
 			P: "ReferenceStop", "KTime", "Time", "",230930790000
 		}
 	}
-	AnimationLayer: 2498187146192, "AnimLayer::BaseLayer", "" {
+	AnimationLayer: 1971123976736, "AnimLayer::BaseLayer", "" {
 	}
 }
 
@@ -503,16 +503,16 @@ Objects:  {
 Connections:  {
 	
 	;Model::geo_coin, Model::RootNode
-	C: "OO",2497954465536,0
+	C: "OO",1971092476416,0
 	
 	;AnimLayer::BaseLayer, AnimStack::Take 001
-	C: "OO",2498187146192,2497220428544
+	C: "OO",1971123976736,1971760137312
 	
 	;Geometry::, Model::geo_coin
-	C: "OO",2498088422672,2497954465536
+	C: "OO",1971700898144,1971092476416
 	
-	;Material::coin_txt, Model::geo_coin
-	C: "OO",2497950328832,2497954465536
+	;Material::gold_txt, Model::geo_coin
+	C: "OO",1971124221888,1971092476416
 }
 ;Takes section
 ;----------------------------------------------------
