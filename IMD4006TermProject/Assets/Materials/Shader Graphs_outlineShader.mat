@@ -24,14 +24,17 @@ Material:
   m_Shader: {fileID: -6465566751694194690, guid: 71f9cbf783b3579428ecd3134202c5b8, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
-  m_ValidKeywords: []
+  m_ValidKeywords:
+  - _SURFACE_TYPE_TRANSPARENT
   m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: 3000
-  stringTagMap: {}
-  disabledShaderPasses: []
+  stringTagMap:
+    RenderType: Transparent
+  disabledShaderPasses:
+  - DepthOnly
   m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
@@ -50,9 +53,20 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _AlphaClip: 0
+    - _AlphaToMask: 0
+    - _Blend: 0
+    - _CastShadows: 1
+    - _Cull: 1
+    - _DstBlend: 10
     - _QueueControl: 0
     - _QueueOffset: 0
     - _Scale: 1.05
+    - _SrcBlend: 5
+    - _Surface: 1
+    - _ZTest: 4
+    - _ZWrite: 0
+    - _ZWriteControl: 0
     m_Colors:
     - _Color: {r: 4, g: 3.7057846, b: 0.43018842, a: 0}
   m_BuildTextureStacks: []

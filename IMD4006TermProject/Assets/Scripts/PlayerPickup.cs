@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//Note make sure you turn of collision for the players sphere collider and the pick up layer
 public class PlayerPickup : MonoBehaviour
 { //layer your player can pick up and move
 
@@ -12,11 +13,13 @@ public class PlayerPickup : MonoBehaviour
     [SerializeField] private Transform PickupTarget;
     [SerializeField] private float PickupRange;
     private Rigidbody CurrentObj;
+
+
     // Start is called before the first frame update
     void Start()
     {
         player = GetComponentInParent<Player>();
-
+        Renderer rend = GetComponent<Renderer>();
     }
 
     // Update is called once per frame
@@ -39,24 +42,33 @@ public class PlayerPickup : MonoBehaviour
 
             }
 
+
+
+
+
+
+
+
+
+
             // Vector3 mousePos  = Input.mousePosition;
             //raycaster to ceck what the player has selected
             // Ray CamRay = PlayerCamera.ScreenPointToRay(new Vector3(0.5F, 0.5F, 0F));
 
             //Rays from the camera 0 represents the bottom or left and 1 represents the top or right of the view).
-            Ray CamRay = PlayerCamera.ViewportPointToRay(new Vector3(0.5F, 0.65F, 0F));
-
+            // Ray CamRay = PlayerCamera.ViewportPointToRay(new Vector3(0.5F, 0.65F, 0F));
+            Ray CamRay = PlayerCamera.ViewportPointToRay(new Vector3(0.5F, 0.5F, 0F));
             //if so assign the rigid body we create to the target object + diable it's gravity
             //if (Physics.Raycast(CamRay, out RaycastHit HitInfo, PickupRange, PickupMask))
 
-            { 
+            {
                 //if (Physics.Raycast(PlayerCameraTransform.position, PlayerCameraTransform.forward, out RaycastHit HitInfo, PickupRange, PickupMask))
                 if (Physics.Raycast(CamRay, out RaycastHit HitInfo, PickupRange, PickupMask))
                 {
                     CurrentObj = HitInfo.rigidbody;
                     CurrentObj.useGravity = false;
                     CurrentObj.isKinematic = false;
-                   CurrentObj.drag = 5;
+                    CurrentObj.drag = 5;
                     Debug.Log(HitInfo);
 
                     if (CurrentObj.gameObject.tag == "Treasure")
@@ -96,7 +108,18 @@ public class PlayerPickup : MonoBehaviour
                         */
                         Debug.Log("this is treasure");
                     }
+
+
+
+
+
+
                 }
+
+
+
+
+
             }
         }
 
@@ -111,33 +134,18 @@ public class PlayerPickup : MonoBehaviour
         if (CurrentObj)
         {
 
-            Vector3 DirectionToPoint = PickupTarget.position - CurrentObj.position ;
-           float DistanceToPoint = DirectionToPoint.magnitude;
+            Vector3 DirectionToPoint = PickupTarget.position - CurrentObj.position;
+            float DistanceToPoint = DirectionToPoint.magnitude;
             CurrentObj.velocity = DirectionToPoint * 12f * DistanceToPoint;
 
-          //float lerpSpeed = 10f;
-           //Vector3 newPos = Vector3.Lerp(transform.position, PickupTarget.position, Time.deltaTime * lerpSpeed);
-          // CurrentObj.MovePosition(newPos);
+            //float lerpSpeed = 10f;
+            //Vector3 newPos = Vector3.Lerp(transform.position, PickupTarget.position, Time.deltaTime * lerpSpeed);
+            // CurrentObj.MovePosition(newPos);
 
         }
 
     }
 
 
-    private void OnMouseOver()
-    {
 
-        //print("you are hovering over treasure");
-
-
-        if (CurrentObj)
-        
-        {
-            print("you are aaaaaa treasure");
-
-
-        }
-
-
-    }
 }

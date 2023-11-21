@@ -18,7 +18,7 @@ public class PlayerTriggerHandle : MonoBehaviour
     {
         //Coin pickup
         if (other.gameObject.tag == "Treasure")
-        {/*
+        {
             Debug.Log("Found treasure");
             //Figure out what kind of treasure we just found, act accordingly
             player.coinCount += other.GetComponent<Treasure>().treasureStats.coinValue;
@@ -30,8 +30,8 @@ public class PlayerTriggerHandle : MonoBehaviour
             //Remove the coin from the scene
             other.GetComponent<Interactable>().Die();
             player.coinCountTxt.text = "Coin Count: " + player.coinCount;
-        */
-            }
+
+        }
 
 
         if (other.gameObject.tag == "Obstacle")
@@ -47,7 +47,7 @@ public class PlayerTriggerHandle : MonoBehaviour
             playerMovement.groundedPlayer = true;
         }
     }
-    
+
     private void OnTriggerExit(Collider other)
     {
         //Layer 7 is ground
