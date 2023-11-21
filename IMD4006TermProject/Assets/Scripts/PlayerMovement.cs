@@ -40,7 +40,8 @@ public class PlayerMovement : MonoBehaviour
     public float turnSmoothTimeSnappy = 0.05f;
     public float turnSmoothTimeSlow = 0.5f;
 
-    private float tiltSmoothVelocity;
+    private float tiltSmoothVelocityX;
+    private float tiltSmoothVelocityZ;
     [SerializeField] private float tiltSmoothTime;
 
     [Header("Sound Settings")]
@@ -125,8 +126,8 @@ public class PlayerMovement : MonoBehaviour
         //Rotate the player geometry based on the direction the character is moving
         float targetRotationX = -2.5f * currentSpeed;
         float targetRotationZ = Mathf.Atan2(direction.x, 0) * Mathf.Rad2Deg * 0.01f * currentSpeed;
-        playerGeo.transform.localEulerAngles = new Vector3(Mathf.SmoothDampAngle(playerGeo.transform.eulerAngles.x, targetRotationX, ref tiltSmoothVelocity, tiltSmoothTime),
-            0, Mathf.SmoothDampAngle(playerGeo.transform.eulerAngles.z, targetRotationZ, ref tiltSmoothVelocity, tiltSmoothTime));
+        playerGeo.transform.localEulerAngles = new Vector3(Mathf.SmoothDampAngle(playerGeo.transform.eulerAngles.x, targetRotationX, ref tiltSmoothVelocityX, tiltSmoothTime),
+            0, Mathf.SmoothDampAngle(playerGeo.transform.eulerAngles.z, targetRotationZ, ref tiltSmoothVelocityZ, tiltSmoothTime));
 
         //Handles moving in multiple directions
         transform.Translate(transform.forward * currentSpeed * Time.deltaTime, Space.World);
