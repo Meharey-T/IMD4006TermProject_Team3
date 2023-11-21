@@ -15,6 +15,9 @@ public class Enemy : MonoBehaviour
     public GameObject playerObj;
     public Vector3 startingPos;
 
+    public Animation idleAnimation;
+    public Animation walkingAnimation;
+
     //patrolling 
     public List<GameObject> Waypoints;
 

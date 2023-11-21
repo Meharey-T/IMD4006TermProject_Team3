@@ -17,6 +17,7 @@ public class PlayerTriggerHandle : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         //Coin pickup
+        /*
         if (other.gameObject.tag == "Treasure")
         {
             Debug.Log("Found treasure");
@@ -32,6 +33,7 @@ public class PlayerTriggerHandle : MonoBehaviour
             player.coinCountTxt.text = "Coin Count: " + player.coinCount;
 
         }
+        */
 
 
         if (other.gameObject.tag == "Obstacle")
