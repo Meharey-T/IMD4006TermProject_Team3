@@ -920,6 +920,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4389371388829973831, guid: 51f71465adbe9cf4691d1695234937e0, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6854961106889663275, guid: 51f71465adbe9cf4691d1695234937e0, type: 3}
+      propertyPath: m_Convex
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2967,6 +2975,10 @@ PrefabInstance:
       propertyPath: m_BackGroundColor.r
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2969555230874370300, guid: 9b2247beea61b504a8712748b7939d1e, type: 3}
+      propertyPath: m_Constraints
+      value: 80
+      objectReference: {fileID: 0}
     - target: {fileID: 3029518513293088732, guid: 9b2247beea61b504a8712748b7939d1e, type: 3}
       propertyPath: m_Name
       value: Player
@@ -2975,6 +2987,10 @@ PrefabInstance:
       propertyPath: baseSpeed
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 3974088492691103330, guid: 9b2247beea61b504a8712748b7939d1e, type: 3}
+      propertyPath: playerGeo
+      value: 
+      objectReference: {fileID: 1450094125}
     - target: {fileID: 3974088492691103330, guid: 9b2247beea61b504a8712748b7939d1e, type: 3}
       propertyPath: jumpAmount
       value: 18
@@ -7366,6 +7382,11 @@ Transform:
 Transform:
   m_CorrespondingSourceObject: {fileID: 7396834748986885475, guid: f80a7fc6c4c96e24f8f51bdd390bc17a, type: 3}
   m_PrefabInstance: {fileID: 1112776738}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1450094125 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4016466097069799744, guid: 9b2247beea61b504a8712748b7939d1e, type: 3}
+  m_PrefabInstance: {fileID: 479126552}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1477128844
 PrefabInstance:

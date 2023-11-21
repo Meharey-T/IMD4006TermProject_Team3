@@ -26,9 +26,10 @@ public class TaskPointWander : BTNode
         Debug.Log("Running TaskPointWander");
         float waypointDistance = Vector3.Distance(BTTransform.position, nextWaypointPos);
 
-        if (navigator.pathStatus == NavMeshPathStatus.PathInvalid)
+        if (navigator.GetComponent<Enemy>().seesPlayer || navigator.GetComponent<Enemy>().hearsPlayer ||
+            navigator.GetComponent<Enemy>().sawPlayer || navigator.GetComponent<Enemy>().heardPlayer)
         {
-            NewPatrolPoint();
+            state = NodeState.FAILURE;
         }
         if (navigator.GetComponent<Enemy>().seesPlayer || navigator.GetComponent<Enemy>().hearsPlayer)
         {

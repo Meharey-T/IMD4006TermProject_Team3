@@ -21,19 +21,15 @@ public class TaskRandomWander : BTNode
 
     protected override NodeState OnRun()
     {
+        Debug.Log("Doing Task RandomWander");
         float waypointDistance = Vector3.Distance(BTTransform.position, nextWaypointPos);
 
-        if (agent.GetComponent<Enemy>().seesPlayer || agent.GetComponent<Enemy>().hearsPlayer)
+        if (agent.GetComponent<Enemy>().seesPlayer || agent.GetComponent<Enemy>().hearsPlayer ||
+            agent.GetComponent<Enemy>().sawPlayer || agent.GetComponent<Enemy>().heardPlayer)
         {
             state = NodeState.FAILURE;
         }
-
-        if (agent.pathStatus == NavMeshPathStatus.PathInvalid)
-        {
-            NewPatrolPoint();
-        }
-
-        if (waypointDistance < 1)
+        else if (waypointDistance < 1)
         {
             Debug.Log("Reached waypoint");
             state = NodeState.SUCCESS;
@@ -44,6 +40,10 @@ public class TaskRandomWander : BTNode
             agent.SetDestination(nextWaypointPos);
             state = NodeState.RUNNING;
         }
+        if (agent.pathStatus == NavMeshPathStatus.PathInvalid)
+        {
+            NewPatrolPoint();
+        }
         return state;
     }
 
@@ -52,7 +52,6 @@ public class TaskRandomWander : BTNode
         float waypointZ = Random.Range(-waypointRadius, waypointRadius);
         float waypointX = Random.Range(-waypointRadius, waypointRadius);
         Vector3 proposedWaypoint = new Vector3(waypointX + BTTransform.position.x, 1, waypointZ + BTTransform.position.z);
-
         
         while (!TestPoint(proposedWaypoint))
         {

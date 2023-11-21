@@ -158,7 +158,7 @@ public class Player : MonoBehaviour
 
     public IEnumerator OnPlayerLoss()
     {
-        centralTxt.text = "You died";
+        centralTxt.text = "You got kicked out!";
         centralTxt.enabled = true;
         yield return new WaitForSeconds(2f);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);

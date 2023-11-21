@@ -21,7 +21,7 @@ public class TaskCheckOutSound : BTNode
         float waypointDistance = Vector3.Distance(thisActor.transform.position, thisActor.lastLocationHeard);
 
         //If we see the player, don't worry about what we heard, chase them
-        if (agent.GetComponent<Enemy>().seesPlayer)
+        if (agent.GetComponent<Enemy>().seesPlayer || agent.GetComponent<Enemy>().sawPlayer)
         {
             state = NodeState.FAILURE;
         }

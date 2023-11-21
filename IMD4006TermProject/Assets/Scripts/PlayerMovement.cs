@@ -49,6 +49,7 @@ public class PlayerMovement : MonoBehaviour
     //Component references
     private Rigidbody rb;
     public SphereCollider soundRadius;
+    [SerializeField] private GameObject playerGeo;
 
     // Start is called before the first frame update
     void Start()
@@ -84,7 +85,8 @@ public class PlayerMovement : MonoBehaviour
             this.transform.position = new Vector3(this.transform.position.x, 0, this.transform.position.z);
         }
     }
-
+    
+    //Failsafe to put the player back at the start position
     private void Reset()
     {
         if (Input.GetKeyDown("r"))
@@ -108,71 +110,23 @@ public class PlayerMovement : MonoBehaviour
         //Handles rotating if player is moving into the direction they're traveling to
         if (direction != Vector3.zero)
         {
-            //Try LookAt function ... player.LookAt(target transform, upward vector world)
-            float targetRotation = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + rotator.transform.eulerAngles.y;
-            //Debug.Log(targetRotation);
-            transform.eulerAngles = Vector3.up * Mathf.SmoothDampAngle(transform.eulerAngles.y, targetRotation, ref turnSmoothVelocity, turnSmoothTime);
+            //figures out the required y axis angle to turn towards the direction we're going to move in
+            float targetRotationY = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + rotator.transform.eulerAngles.y;
+            transform.eulerAngles = Vector3.up * Mathf.SmoothDampAngle(transform.eulerAngles.y, targetRotationY, ref turnSmoothVelocity, turnSmoothTime);
         }
         //Start calculating the walk speed
         targetSpeed = modalSpeed * direction.magnitude;
         currentSpeed = Mathf.SmoothDamp(currentSpeed, targetSpeed, ref speedSmoothVelocity, speedSmoothTime);
 
-       
+        //Rotate the player geometry based on the direction the character is moving
+        //float targetRotationX = (Mathf.Atan2(-direction.y, -direction.z) * Mathf.Rad2Deg) * currentSpeed;
+        float targetRotationX = -2.5f * currentSpeed;
+        float targetRotationZ = (Mathf.Atan2(-direction.x, 0) * Mathf.Rad2Deg) * 0.001f * currentSpeed;
+        playerGeo.transform.localEulerAngles = new Vector3(Mathf.SmoothDampAngle(playerGeo.transform.eulerAngles.x, targetRotationX, ref turnSmoothVelocity, turnSmoothTime),
+            0, Mathf.SmoothDampAngle(playerGeo.transform.eulerAngles.z, targetRotationZ, ref turnSmoothVelocity, turnSmoothTime));
+
         //Handles moving in multiple directions
-        ResolveDirectionalMovement(translationX, translationZ);
-    }
-
-    //Finishes movement based on which axes are active
-    void ResolveDirectionalMovement(float translationX, float translationZ)
-    {
-        //This block is forward motion, Z axis
-        //If Z is positive and no movement on X axis
-        if (translationZ > 0f && translationX == 0f)
-        {
-            transform.Translate(transform.forward * currentSpeed * Time.deltaTime, Space.World);
-        }
-        //If Z is positive and moving sideways
-        else if (translationZ > 0f && translationX != 0f)
-        {
-            transform.Translate(transform.forward * currentSpeed / 2 * Time.deltaTime, Space.World);
-        }
-        //If Z is negative and no sideways movement
-        if (translationZ < 0 && translationX == 0f)
-        {
-            transform.Translate(transform.forward* currentSpeed * Time.deltaTime, Space.World) ;
-        }
-        //If Z is negative and moving sideways
-        else if (translationZ < 0f && translationX != 0f)
-        {
-            transform.Translate(transform.forward * currentSpeed / 2 * Time.deltaTime, Space.World);
-        }
-
-        //Block for right-side motion, X axis
-        //If X is positive and no movement front or back
-        
-        if (translationX > 0f && translationZ == 0f)
-        {
-            transform.Translate(transform.forward * currentSpeed * Time.deltaTime, Space.World);
-        }
-        //If X is positive and yes movement front or back
-        
-        else  if (translationX > 0f && translationZ != 0f)
-        {
-            transform.Translate(transform.forward * currentSpeed / 2 * Time.deltaTime, Space.World);
-        }
-        
-        //If X is negative and no movement front or back
-        if (translationX < 0f && translationZ == 0f)
-        {
-            transform.Translate(transform.forward * currentSpeed * Time.deltaTime, Space.World);
-        }
-        //If X is negative and yes movement front or back
-        
-        else if (translationX < 0f && translationZ != 0f)
-        {
-            transform.Translate(transform.forward * currentSpeed / 2 * Time.deltaTime, Space.World);
-        }
-        
+        transform.Translate(transform.forward * currentSpeed * Time.deltaTime, Space.World);
     }
     
     void Turn()
