@@ -33,13 +33,18 @@ public class PlayerMovement : MonoBehaviour
 
     //Affects how fast the player turns, how they can turn
     [Header("Turning feel")]
-    private Vector2 turn = new Vector2(-180, 0);
     [SerializeField] private float turnSpeed;
+    private Vector2 turn = new Vector2(-180, 0);
     private float turnSmoothVelocity;
     [SerializeField] public float turnSmoothTime;
     public float turnSmoothTimeSnappy = 0.05f;
     public float turnSmoothTimeSlow = 0.5f;
 
+    private float tiltSmoothVelocityX;
+    private float tiltSmoothVelocityZ;
+    [SerializeField] private float tiltSmoothTime;
+
+    [Header("Sound Settings")]
     //Sound settings
     public float sneakSoundRadius = 1;
     public float walkSoundRadius = 5;
@@ -119,11 +124,10 @@ public class PlayerMovement : MonoBehaviour
         currentSpeed = Mathf.SmoothDamp(currentSpeed, targetSpeed, ref speedSmoothVelocity, speedSmoothTime);
 
         //Rotate the player geometry based on the direction the character is moving
-        //float targetRotationX = (Mathf.Atan2(-direction.y, -direction.z) * Mathf.Rad2Deg) * currentSpeed;
         float targetRotationX = -2.5f * currentSpeed;
-        float targetRotationZ = (Mathf.Atan2(-direction.x, 0) * Mathf.Rad2Deg) * 0.001f * currentSpeed;
-        playerGeo.transform.localEulerAngles = new Vector3(Mathf.SmoothDampAngle(playerGeo.transform.eulerAngles.x, targetRotationX, ref turnSmoothVelocity, turnSmoothTime),
-            0, Mathf.SmoothDampAngle(playerGeo.transform.eulerAngles.z, targetRotationZ, ref turnSmoothVelocity, turnSmoothTime));
+        float targetRotationZ = Mathf.Atan2(direction.x, 0) * Mathf.Rad2Deg * 0.01f * currentSpeed;
+        playerGeo.transform.localEulerAngles = new Vector3(Mathf.SmoothDampAngle(playerGeo.transform.eulerAngles.x, targetRotationX, ref tiltSmoothVelocityX, tiltSmoothTime),
+            0, Mathf.SmoothDampAngle(playerGeo.transform.eulerAngles.z, targetRotationZ, ref tiltSmoothVelocityZ, tiltSmoothTime));
 
         //Handles moving in multiple directions
         transform.Translate(transform.forward * currentSpeed * Time.deltaTime, Space.World);
