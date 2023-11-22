@@ -74,13 +74,18 @@ public class Player : MonoBehaviour
         {
             bool playerIsHeard = false;
             bool playerIsSeen = false;
+            bool playerWasSeen = false;
             //We have to iterate through all enemies
             for (int i = 0; i < enemySet.Items.Count; i++)
             {
                 //not using an else/if since these are not mutually exclusive
-                if (enemySet.Items[i].GetComponent<Enemy>().hearsPlayer)
+                if (enemySet.Items[i].GetComponent<Enemy>().hearsPlayer || enemySet.Items[i].GetComponent<Enemy>().heardPlayer)
                 {
                     playerIsHeard = true;
+                }
+                if (enemySet.Items[i].GetComponent<Enemy>().sawPlayer)
+                {
+                    playerWasSeen = true;
                 }
                 if (enemySet.Items[i].GetComponent<Enemy>().seesPlayer)
                 {
@@ -94,7 +99,7 @@ public class Player : MonoBehaviour
                 indicator.transform.GetComponent<RawImage>().texture = i_undetected;
             }
             //if at least one heard the player, we can set to heard
-            if (playerIsHeard)
+            if (playerIsHeard || playerWasSeen)
             {
                 indicator.transform.GetComponent<RawImage>().texture = i_alerted;
             }

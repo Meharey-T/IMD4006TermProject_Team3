@@ -29,8 +29,8 @@ public class Treasure : Interactable
 
         outlineShader.SetFloat("_Scale", (float)1.15);
 
-        print("you are hovering over treasure");
-        print(outlineShader);
+        //print("you are hovering over treasure");
+        //print(outlineShader);
 
     }
     private void OnMouseExit()
@@ -44,8 +44,8 @@ public class Treasure : Interactable
 
         outlineShader.SetFloat("_Scale", (float)1.05);
 
-        print("you are hovering over treasure");
-        print(outlineShader);
+        //print("you are hovering over treasure");
+        //print(outlineShader);
 
     }
 }

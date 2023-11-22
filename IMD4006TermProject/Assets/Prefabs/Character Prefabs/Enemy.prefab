@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 6342565627775331475}
   - component: {fileID: 1649365884774819529}
   - component: {fileID: 9102511834596531024}
-  - component: {fileID: 6165139771695763822}
+  - component: {fileID: 1414563925367775319}
   - component: {fileID: 6980516414668979213}
   - component: {fileID: 1085089678057271291}
   - component: {fileID: 8698764733734139346}
@@ -86,7 +86,18 @@ MonoBehaviour:
   enemyMeshAgent: {fileID: 8698764733734139346}
   playerObj: {fileID: 0}
   startingPos: {x: 0, y: 0, z: 0}
-  Waypoints: []
+  idleAnimation: {fileID: 0}
+  walkingAnimation: {fileID: 0}
+  Waypoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   seesPlayer: 0
   sawPlayer: 0
   lastLocationSeen: {x: 0, y: 0, z: 0}
@@ -120,7 +131,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca8ed7a9220361c4c930c67cc74feb18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &6165139771695763822
+--- !u!114 &1414563925367775319
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -129,7 +140,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5390299953698405908}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41a02ca8ddd55844fbd7fe2de35e906d, type: 3}
+  m_Script: {fileID: 11500000, guid: 1d3962d816182564ca71044bec855fc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!54 &6980516414668979213
@@ -178,8 +189,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 2.0092175, z: 1}
-  m_Center: {x: 0, y: 0.50460875, z: 0}
+  m_Size: {x: 1, y: 3.4232202, z: 1}
+  m_Center: {x: 0, y: 1.668304, z: 0}
 --- !u!195 &8698764733734139346
 NavMeshAgent:
   m_ObjectHideFlags: 0
