@@ -167,4 +167,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7b9645a3b3db294286b02d4fe556463, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  treasureStats: {fileID: 0}
+  treasureStats: {fileID: 11400000, guid: 82db71df64c34554483c2781fdca307a, type: 2}
