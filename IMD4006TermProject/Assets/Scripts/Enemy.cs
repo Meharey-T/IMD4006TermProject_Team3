@@ -16,9 +16,6 @@ public class Enemy : MonoBehaviour
     public GameObject playerObj;
     public Vector3 startingPos;
 
-    public Animation idleAnimation;
-    public Animation walkingAnimation;
-
     //patrolling 
     public List<GameObject> Waypoints;
 
@@ -55,13 +52,13 @@ public class Enemy : MonoBehaviour
     void Update()
     {
         StartCoroutine(FOVRoutine());
-        ResolveAngerLevel();
+        StartCoroutine(AngerCheck());
     }
 
     //Reduces call count as this kind of behaviour can be a little computationally expensive
     private IEnumerator FOVRoutine()
     {
-        WaitForSeconds wait = new WaitForSeconds(0.2f);
+        WaitForSeconds wait = new WaitForSeconds(0.3f);
 
         while (true)
         {
@@ -114,6 +111,17 @@ public class Enemy : MonoBehaviour
         }
         totalTreasure -= 25;
         treasureLeft = totalTreasure;
+    }
+
+    private IEnumerator AngerCheck()
+    {
+        WaitForSeconds wait = new WaitForSeconds(0.2f);
+
+        while (true)
+        {
+            yield return wait;
+            ResolveAngerLevel();
+        }
     }
 
     //Sets the anger state of the enemy based on how much treasure is left

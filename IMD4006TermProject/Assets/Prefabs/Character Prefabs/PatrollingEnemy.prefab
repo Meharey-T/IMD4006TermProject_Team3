@@ -8,6 +8,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1085089678057271291, guid: fc36094b6ad9c274a85ea013917130da, type: 3}
+      propertyPath: m_ExcludeLayers.m_Bits
+      value: 1527
+      objectReference: {fileID: 0}
+    - target: {fileID: 1085089678057271291, guid: fc36094b6ad9c274a85ea013917130da, type: 3}
+      propertyPath: m_IncludeLayers.m_Bits
+      value: 512
+      objectReference: {fileID: 0}
     - target: {fileID: 3244511995126677998, guid: fc36094b6ad9c274a85ea013917130da, type: 3}
       propertyPath: m_LocalPosition.x
       value: 13.26
@@ -48,6 +56,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4722832659016707104, guid: fc36094b6ad9c274a85ea013917130da, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5390299953698405908, guid: fc36094b6ad9c274a85ea013917130da, type: 3}
       propertyPath: m_Name
       value: PatrollingEnemy
@@ -59,6 +71,18 @@ PrefabInstance:
     - target: {fileID: 6342565627775331475, guid: fc36094b6ad9c274a85ea013917130da, type: 3}
       propertyPath: enemyMeshAgent
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6342565627775331475, guid: fc36094b6ad9c274a85ea013917130da, type: 3}
+      propertyPath: detectionRadius
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 6980516414668979213, guid: fc36094b6ad9c274a85ea013917130da, type: 3}
+      propertyPath: m_ExcludeLayers.m_Bits
+      value: 1527
+      objectReference: {fileID: 0}
+    - target: {fileID: 6980516414668979213, guid: fc36094b6ad9c274a85ea013917130da, type: 3}
+      propertyPath: m_IncludeLayers.m_Bits
+      value: 512
       objectReference: {fileID: 0}
     - target: {fileID: 8698764733734139346, guid: fc36094b6ad9c274a85ea013917130da, type: 3}
       propertyPath: m_BaseOffset
