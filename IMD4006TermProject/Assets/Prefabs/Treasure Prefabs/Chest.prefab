@@ -76,6 +76,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 96f9683dc40dd0942acf2ce2b6690d6f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5003403323488469646}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 96f9683dc40dd0942acf2ce2b6690d6f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5938795348913729435}
   m_SourcePrefab: {fileID: 100100000, guid: 96f9683dc40dd0942acf2ce2b6690d6f, type: 3}
 --- !u!1 &5381570200938794517 stripped
 GameObject:
@@ -156,3 +159,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   treasureStats: {fileID: 11400000, guid: 7a30b6d37e9862a44a149fec05f87b32, type: 2}
+--- !u!114 &5938795348913729435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5381570200938794517}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83440a0907079ea48898a581fafbf151, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameObjectRuntimeSet: {fileID: 11400000, guid: d5d554d024a4ebf46b647a5f3dfe2e0f, type: 2}

@@ -25,8 +25,9 @@ public class TaskFollowPatrol : BTNode
     protected override NodeState OnRun()
     {
         //If at some point we can see or hear the player, stop what we're doing and switch to that instead
-        if(waypointIndex == waypointList.Count)
+        if(waypointIndex == waypointList.Count || !waypointList[waypointIndex])
         {
+            waypointIndex = 0;
             state = NodeState.SUCCESS;
         }
         else if (agent.GetComponent<Enemy>().seesPlayer || agent.GetComponent<Enemy>().hearsPlayer

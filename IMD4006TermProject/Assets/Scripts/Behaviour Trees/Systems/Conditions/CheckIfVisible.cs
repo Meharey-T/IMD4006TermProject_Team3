@@ -20,12 +20,12 @@ public class CheckIfVisible : BTCondition
     {
         if (agent.GetComponent<Enemy>().seesPlayer)
         {
-            Debug.Log("Spotted player");
+            //Debug.Log("Spotted player");
             return NodeState.SUCCESS;
         }
         else if (!agent.GetComponent<Enemy>().seesPlayer)
         {
-            Debug.Log("Doesn't see player");
+            //Debug.Log("Doesn't see player");
             return NodeState.FAILURE;
         }
         return NodeState.FAILURE;
