@@ -17544,6 +17544,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 3974088492691103330, guid: 9b2247beea61b504a8712748b7939d1e, type: 3}
+      propertyPath: sprintSpeed
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7694030906715125391, guid: 9b2247beea61b504a8712748b7939d1e, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 650f9b13a58a0e24a948fe53182c6e5a, type: 3}
     - target: {fileID: 8233892006867537294, guid: 9b2247beea61b504a8712748b7939d1e, type: 3}
       propertyPath: indicator
       value: 
@@ -17600,6 +17608,38 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8870642308828433629, guid: 9b2247beea61b504a8712748b7939d1e, type: 3}
+      propertyPath: carpetSFX.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8870642308828433629, guid: 9b2247beea61b504a8712748b7939d1e, type: 3}
+      propertyPath: hardwoodSFX.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8870642308828433629, guid: 9b2247beea61b504a8712748b7939d1e, type: 3}
+      propertyPath: carpetSFX.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: d5ecdf865d1e7ac43a5544841bccabcc, type: 3}
+    - target: {fileID: 8870642308828433629, guid: 9b2247beea61b504a8712748b7939d1e, type: 3}
+      propertyPath: carpetSFX.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: d22f3a6eb80de7b45813c62828509100, type: 3}
+    - target: {fileID: 8870642308828433629, guid: 9b2247beea61b504a8712748b7939d1e, type: 3}
+      propertyPath: carpetSFX.Array.data[3]
+      value: 
+      objectReference: {fileID: 8300000, guid: 2ec3f0731af4eaa4c920fc636882205f, type: 3}
+    - target: {fileID: 8870642308828433629, guid: 9b2247beea61b504a8712748b7939d1e, type: 3}
+      propertyPath: hardwoodSFX.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 7284561a03535a94abc631a82562671a, type: 3}
+    - target: {fileID: 8870642308828433629, guid: 9b2247beea61b504a8712748b7939d1e, type: 3}
+      propertyPath: hardwoodSFX.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: 650f9b13a58a0e24a948fe53182c6e5a, type: 3}
+    - target: {fileID: 8870642308828433629, guid: 9b2247beea61b504a8712748b7939d1e, type: 3}
+      propertyPath: hardwoodSFX.Array.data[3]
+      value: 
+      objectReference: {fileID: 8300000, guid: 91791336c5738244cb69adbe67fbb217, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
