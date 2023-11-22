@@ -7,6 +7,9 @@ public class SneakAction : FSMAction
 {
     public override void Execute(BaseStateMachine stateMachine)
     {
+        stateMachine.GetComponent<TerrainState>().currSpeed = stateMachine.GetComponent<TerrainState>().GetSneak();
+        if (stateMachine.GetComponent<TerrainState>().currSpeed == stateMachine.GetComponent<TerrainState>().GetSneak())
+        { Debug.Log("I should be sneaking"); }
         PlayerMovement player = stateMachine.GetComponent<PlayerMovement>();
         player.setModalSpeed(player.getSneakSpeed());
         player.turnSmoothTime = player.turnSmoothTimeSnappy;

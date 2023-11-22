@@ -7,10 +7,15 @@ public class SprintKeyIsDown : Decision
 {
     public override bool Decide(BaseStateMachine stateMachine)
     {
+        TerrainState terraine = stateMachine.GetComponent<TerrainState>();
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
+            
+
+           terraine.PlayRunningSound();
             return true;
         }
+        
         return false;
     }
 }

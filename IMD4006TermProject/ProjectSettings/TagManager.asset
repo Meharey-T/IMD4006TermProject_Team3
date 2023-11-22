@@ -8,6 +8,8 @@ TagManager:
   - Enemy
   - Obstacle
   - Trap
+  - HardWood
+  - Carpet
   layers:
   - Default
   - TransparentFX

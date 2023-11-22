@@ -6,11 +6,13 @@ public class PlayerTriggerHandle : MonoBehaviour
 {
     private Player player;
     private PlayerMovement playerMovement;
+    private TerrainState terrain;
     public Material[] materials;
     private void Start()
     {
         player = GetComponentInParent<Player>();
         playerMovement = GetComponentInParent<PlayerMovement>();
+        terrain = GetComponentInParent<TerrainState>();
     }
 
     //Check for collisions
@@ -46,7 +48,10 @@ public class PlayerTriggerHandle : MonoBehaviour
         //Only the capsule collider should be able to trigger on a ground object
         if (other.gameObject.layer == 7)
         {
+            terrain.terrainTag = other.gameObject.tag;
             playerMovement.groundedPlayer = true;
+           
+
         }
     }
 

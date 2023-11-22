@@ -11,6 +11,8 @@ public class PressAnyKey : Decision
         {
             return true;
         }
+        TerrainState terraine = stateMachine.GetComponent<TerrainState>();
+        terraine.PlayIdleSound();
         return false;
     }
 }

@@ -19,6 +19,14 @@ public class WalkAction : FSMAction
         player.currentSoundRadius = player.walkSoundRadius;
         player.gameObject.layer = 9;
         player.soundRadius.gameObject.layer = 9;
+        TerrainState terraine = stateMachine.GetComponent<TerrainState>();
+
+        stateMachine.GetComponent<TerrainState>().currSpeed = stateMachine.GetComponent<TerrainState>().GetWalk();
+
+
+        //play sneak sfx
+        terraine.PlayWalkingSound();
+
         //Change player animation
         //Change player footstep sounds
     }

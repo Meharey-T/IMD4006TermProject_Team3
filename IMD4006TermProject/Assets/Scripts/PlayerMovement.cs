@@ -12,14 +12,27 @@ public class PlayerMovement : MonoBehaviour
 
     //How fast we run. Set to serialized for easy access in the inspector
     [Header("Movement speeds")]
+    //am setting to public to help keep things consistent in terrain state
     [SerializeField] private float baseSpeed;
     [SerializeField] private float sprintSpeed;
     [SerializeField] private float sneakSpeed;
+    /*
+    public enum Speed
+    {
+        idle,
+        walk,
+        run//,
+           //sneak,
+           // still
+
+    }
+    public Speed currSpeed;*/
 
     //Values for modifying movement speeds
     [Header("Smoothing settings")]
     private float speedSmoothVelocity;
     [SerializeField] private float speedSmoothTime;
+   
     private float modalSpeed;
     private float currentSpeed;
     private float targetSpeed;
@@ -50,6 +63,15 @@ public class PlayerMovement : MonoBehaviour
     public float walkSoundRadius = 5;
     public float sprintSoundRadius = 9;
     public float currentSoundRadius = 5;
+
+    [Header("Terrain Mulipier")]
+    //If player is on hardwood their steps are louder
+    [SerializeField] private float hardWoodMultiplier;
+    //If player is on carpet their steps are quieter
+    [SerializeField] private float carpetMultiplier;
+
+
+
 
     //Component references
     private Rigidbody rb;
@@ -131,6 +153,9 @@ public class PlayerMovement : MonoBehaviour
 
         //Handles moving in multiple directions
         transform.Translate(transform.forward * currentSpeed * Time.deltaTime, Space.World);
+        TerrainState terraine = GetComponent<TerrainState>();
+
+        //terraine.PlayWalkingSound();
     }
     
     void Turn()
@@ -176,4 +201,15 @@ public class PlayerMovement : MonoBehaviour
     {
         modalSpeed = speed;
     }
+/*
+    public Speed GetWalk()
+    {
+
+        return Speed.walk;
+    }
+    public Speed GetRun()
+    {
+
+        return Speed.run;
+    }*/
 }

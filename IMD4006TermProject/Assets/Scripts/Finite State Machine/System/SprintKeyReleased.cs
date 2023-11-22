@@ -9,6 +9,7 @@ public class SprintKeyReleased : Decision
     {
         if (Input.GetKeyUp(KeyCode.LeftShift))
         {
+          
             return true;
         }
         return false;
