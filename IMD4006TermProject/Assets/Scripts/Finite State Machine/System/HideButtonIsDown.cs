@@ -8,7 +8,7 @@ public class HideButtonIsDown : Decision
 {
     public override bool Decide(BaseStateMachine stateMachine)
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E) || (Input.GetKeyDown(KeyCode.Mouse0)))
         {
             if(stateMachine.GetComponent<Player>().inRangeOfHideable)
                 return true;

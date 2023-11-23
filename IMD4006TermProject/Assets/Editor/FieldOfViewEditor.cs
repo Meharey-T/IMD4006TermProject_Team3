@@ -8,6 +8,7 @@ public class FieldOfViewEditor : Editor
 {
     private void OnSceneGUI()
     {
+        /*
         Enemy fov = (Enemy)target;
         Handles.color = Color.white;
         Handles.DrawWireArc(fov.transform.position, Vector3.up, Vector3.forward, 360, fov.detectionRadius);
@@ -24,6 +25,7 @@ public class FieldOfViewEditor : Editor
             Handles.color = Color.green;
             Handles.DrawLine(fov.transform.position, fov.playerObj.transform.position);
         }
+        */
     }
 
     private Vector3 DirectionFromAngle(float eulerY, float angleInDegrees)

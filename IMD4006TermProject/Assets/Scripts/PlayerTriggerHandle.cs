@@ -20,7 +20,7 @@ public class PlayerTriggerHandle : MonoBehaviour
     {
         if (other.gameObject.tag == "Obstacle")
         {
-            Debug.Log("Hit an obstacle");
+            //Debug.Log("Hit an obstacle");
             player.OnPlayerLoseLife();
         }
     }
