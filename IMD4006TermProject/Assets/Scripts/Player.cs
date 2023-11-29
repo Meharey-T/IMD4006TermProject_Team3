@@ -15,7 +15,7 @@ using UnityEngine.UI;
 //Player script holds the model (stats) and main functionality for Player
 public class Player : MonoBehaviour
 {
-    [SerializeField] private Vector3 startingPos;
+    private Vector3 startingPos;
 
     //Reference to our manager objects/lists
     public GameObjectRuntimeSet coinSet;
@@ -52,6 +52,7 @@ public class Player : MonoBehaviour
         coinCountTxt.text = "Coin Count: 0";
         centralTxt.enabled = false;
         previousPosition = new Vector3(0, 0, 0);
+        startingPos = this.transform.position;
     }
 
     // Update is called once per frame

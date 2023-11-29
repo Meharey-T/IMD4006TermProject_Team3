@@ -12,12 +12,12 @@ using UnityEngine.AI;
 public class Enemy : MonoBehaviour
 {
     public GameObjectRuntimeSet coinSet;
+    public GameObjectRuntimeSet playerSet;
     public NavMeshAgent enemyMeshAgent;
     public GameObject playerObj;
     public Vector3 startingPos;
-
-    public Animation idleAnimation;
-    public Animation walkingAnimation;
+    Collider[] rangeChecks;
+    RaycastHit[] m_Results = new RaycastHit[1];
 
     //patrolling 
     public List<GameObject> Waypoints;
@@ -40,29 +40,29 @@ public class Enemy : MonoBehaviour
     public int totalTreasure = 0;
     public int treasureLeft;
 
+    WaitForSeconds wait = new WaitForSeconds(0.2f);
+
 
     // Start is called before the first frame update
     void Start()
     {
         enemyMeshAgent = GetComponent<NavMeshAgent>();
-        playerObj = GameObject.FindGameObjectWithTag("Player");
-        Debug.Log("The player's position is " + playerObj.transform.position);
+        playerObj = playerSet.Items[0].gameObject;
         startingPos = transform.position;
         CalculateTreasureOwned();
+        rangeChecks = new Collider[4];
     }
 
     // Update is called once per frame
     void Update()
     {
         StartCoroutine(FOVRoutine());
-        ResolveAngerLevel();
+        StartCoroutine(AngerCheck());
     }
 
     //Reduces call count as this kind of behaviour can be a little computationally expensive
     private IEnumerator FOVRoutine()
     {
-        WaitForSeconds wait = new WaitForSeconds(0.2f);
-
         while (true)
         {
             yield return wait;
@@ -75,10 +75,9 @@ public class Enemy : MonoBehaviour
     {
         //Physics.OverlapSphere gets all of the colliders around the source in a certain radius, and looks for specific collision layers
         //We're using it to check for players in a certain range
-        Collider[] rangeChecks = Physics.OverlapSphere(transform.position, detectionRadius, LayerMask.GetMask("Player"));
-
+        rangeChecks = Physics.OverlapSphere(transform.position, detectionRadius, LayerMask.GetMask("Player"));
         //If the length is more than 0, we got something
-        if(rangeChecks.Length != 0)
+        if (rangeChecks.Length != 0)
         {
             //
             Transform target = rangeChecks[0].transform;
@@ -87,8 +86,8 @@ public class Enemy : MonoBehaviour
             if (Vector3.Angle(transform.forward, directionToTarget) < viewAngle / 2)
             {
                 float distanceToTarget = Vector3.Distance(transform.position, target.position);
-
-                if (!Physics.Raycast(transform.position, directionToTarget, distanceToTarget, LayerMask.GetMask("Ground")))
+                int hits = Physics.RaycastNonAlloc(transform.position, directionToTarget, m_Results, distanceToTarget, LayerMask.GetMask("Ground"));
+                if (hits != 0)
                 {
                     seesPlayer = true;
                     lastLocationSeen = playerObj.transform.position;
@@ -96,6 +95,7 @@ public class Enemy : MonoBehaviour
                 else seesPlayer = false;
             }
             else seesPlayer = false;
+            rangeChecks[0] = null;
         }
         else if (seesPlayer)
         {
@@ -103,6 +103,7 @@ public class Enemy : MonoBehaviour
             sawPlayer = true;
             lastLocationSeen = playerObj.transform.position;
         }
+        
     }
 
     private void CalculateTreasureOwned()
@@ -114,6 +115,15 @@ public class Enemy : MonoBehaviour
         }
         totalTreasure -= 25;
         treasureLeft = totalTreasure;
+    }
+
+    private IEnumerator AngerCheck()
+    {
+        while (true)
+        {
+            yield return wait;
+            ResolveAngerLevel();
+        }
     }
 
     //Sets the anger state of the enemy based on how much treasure is left
