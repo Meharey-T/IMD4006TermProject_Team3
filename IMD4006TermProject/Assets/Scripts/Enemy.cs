@@ -51,13 +51,14 @@ public class Enemy : MonoBehaviour
         startingPos = transform.position;
         CalculateTreasureOwned();
         rangeChecks = new Collider[4];
+        StartCoroutine(FOVRoutine());
+        StartCoroutine(AngerCheck());
     }
 
     // Update is called once per frame
     void Update()
     {
-        StartCoroutine(FOVRoutine());
-        StartCoroutine(AngerCheck());
+        
     }
 
     //Reduces call count as this kind of behaviour can be a little computationally expensive
