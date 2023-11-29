@@ -161,12 +161,12 @@ Input.GetAxis("Horizontal") < 0)
         if (terrainTag == "Carpet")
         {
             TerrainType = FloorType.Carpet;
-            //Debug.Log("This is carpet");
+            Debug.Log("This is carpet");
         }
         else if (terrainTag == "HardWood")
         {
             TerrainType = FloorType.Hardwood;
-            //Debug.Log("This is hardwood");
+            Debug.Log("This is hardwood");
         }
 
         //Debug.Log(TerrainType);
@@ -277,11 +277,11 @@ Input.GetAxis("Horizontal") < 0)
             {
                 case FloorType.Carpet:
                     clip = carpetSFX[(int)Speed.sneak];
-                    //Debug.Log("carpetfloor");
+                    Debug.Log("carpetfloor");
                     break;
                 case FloorType.Hardwood:
                     clip = hardwoodSFX[(int)Speed.sneak];
-                    //Debug.Log("hardwoodfloor");
+                    Debug.Log("hardwoodfloor");
                     break;
 
 
