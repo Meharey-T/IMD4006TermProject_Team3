@@ -186,11 +186,11 @@ Input.GetAxis("Horizontal") < 0)
                 
                 case FloorType.Hardwood:
                     clip = hardwoodSFX[(int)Speed.walk];
-                    //Debug.Log("hardwoodfloor");
+                    Debug.Log("hardwoodfloor");
                     break;
                 case FloorType.Carpet:
                     clip = carpetSFX[(int)Speed.walk];
-                    //Debug.Log("carpetfloor");
+                    Debug.Log("carpetfloor");
                     break;
 
 
