@@ -26,13 +26,13 @@ public class TaskCheckOutSound : BTNode
             state = NodeState.FAILURE;
         }
         //If they reach the waypoint and don't see anything, go back to regular behaviours
-        else if (waypointDistance < 2.5f)
+        else if (waypointDistance < 4f)
         {
             state = NodeState.SUCCESS;
             thisActor.heardPlayer = false;
         }
         //If they haven't reached it, keep going
-        else if (waypointDistance >= 2.5f)
+        else if (waypointDistance >= 4f)
         {
             agent.SetDestination(thisActor.lastLocationHeard);
             state = NodeState.RUNNING;

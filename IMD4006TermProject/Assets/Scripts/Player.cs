@@ -67,73 +67,75 @@ public class Player : MonoBehaviour
         }
         UpdateLives();
         CheckDetection();
-        
     }
 
     void CheckDetection()
     {
-        //If the player is hiding, that's the level of detection we want to display
+        //If the player is hiding, we need to show the undetectable icon
         if(this.GetComponent<BaseStateMachine>().CurrentState.name != "Hiding")
         {
             indicator.transform.GetChild(1).gameObject.SetActive(false);
-            bool playerIsHeard = false;
-            bool playerWasHeard = false;
-            bool playerIsSeen = false;
-            bool playerWasSeen = false;
-            //We have to iterate through all enemies
-            for (int i = 0; i < enemySet.Items.Count; i++)
-            {
-                //not using an else/if since these are not mutually exclusive
-                if (enemySet.Items[i].GetComponent<Enemy>().hearsPlayer)
-                {
-                    playerIsHeard = true;
-                }
-                if (enemySet.Items[i].GetComponent<Enemy>().heardPlayer)
-                {
-                    playerWasHeard = true;
-                }
-                if (enemySet.Items[i].GetComponent<Enemy>().sawPlayer)
-                {
-                    playerWasSeen = true;
-                }
-                if (enemySet.Items[i].GetComponent<Enemy>().seesPlayer)
-                {
-                    playerIsSeen = true;
-                    break;
-                }
-            }
-            //If we've gone through the whole loop and nobody detects the player, we set to undetected
-            if(!playerIsSeen)
-            {
-                indicator.transform.GetChild(0).GetComponent<RawImage>().texture = i_unseen;
-            }
-            if (playerWasSeen)
-            {
-                indicator.transform.GetChild(0).GetComponent<RawImage>().texture = i_seen;
-            }
-            if (playerIsSeen)
-            {
-                indicator.transform.GetChild(0).GetComponent<RawImage>().texture = i_spotted;
-            }
-            //if at least one heard the player, we can set to heard
-            if (!playerIsHeard)
-            {
-                indicator.transform.GetChild(2).GetComponent<RawImage>().texture = i_unheard;
-            }
-            if (playerWasHeard)
-            {
-                indicator.transform.GetChild(2).GetComponent<RawImage>().texture = i_heard;
-            }
-            if (playerIsHeard)
-            {
-                indicator.transform.GetChild(2).GetComponent<RawImage>().texture = i_beingHeard;
-            }
         }
         else
         {
             indicator.transform.GetChild(1).gameObject.SetActive(true);
         }
-        
+        //Resets all of our detection states
+        bool playerIsHeard = false;
+        bool playerWasHeard = false;
+        bool playerIsSeen = false;
+        bool playerWasSeen = false;
+        //We have to iterate through all enemies
+        for (int i = 0; i < enemySet.Items.Count; i++)
+        {
+            //Check player seen status
+            if (enemySet.Items[i].GetComponent<Enemy>().hearsPlayer)
+            {
+                playerIsHeard = true;
+            }
+            else if (enemySet.Items[i].GetComponent<Enemy>().heardPlayer)
+            {
+                playerWasHeard = true;
+            }
+
+            //Check player heard status
+            if (enemySet.Items[i].GetComponent<Enemy>().seesPlayer)
+            {
+                playerIsSeen = true;
+            }
+            else if (enemySet.Items[i].GetComponent<Enemy>().sawPlayer)
+            {
+                playerWasSeen = true;
+            }
+            
+        }
+        //If we've gone through the whole loop and nobody detects the player, we set to undetected
+        if (!playerIsSeen && !playerWasSeen)
+        {
+            indicator.transform.GetChild(0).GetComponent<RawImage>().texture = i_unseen;
+        }
+        else if (playerWasSeen && !playerIsSeen)
+        {
+            indicator.transform.GetChild(0).GetComponent<RawImage>().texture = i_seen;
+        }
+        if (playerIsSeen)
+        {
+            indicator.transform.GetChild(0).GetComponent<RawImage>().texture = i_spotted;
+        }
+        //if at least one heard the player, we can set to heard
+        if (!playerIsHeard && !playerWasHeard)
+        {
+            indicator.transform.GetChild(2).GetComponent<RawImage>().texture = i_unheard;
+        }
+        else if (playerWasHeard && !playerIsHeard)
+        {
+            indicator.transform.GetChild(2).GetComponent<RawImage>().texture = i_heard;
+        }
+        else if (playerIsHeard)
+        {
+            indicator.transform.GetChild(2).GetComponent<RawImage>().texture = i_beingHeard;
+        }
+
     }
 
     void UpdateLives()

@@ -25,21 +25,21 @@ public class TaskFollowPatrol : BTNode
     protected override NodeState OnRun()
     {
         //If at some point we can see or hear the player, stop what we're doing and switch to that instead
-        if(waypointIndex == waypointList.Count || !waypointList[waypointIndex])
-        {
-            waypointIndex = 0;
-            state = NodeState.SUCCESS;
-        }
-        else if (agent.GetComponent<Enemy>().seesPlayer || agent.GetComponent<Enemy>().hearsPlayer
+        if (agent.GetComponent<Enemy>().seesPlayer || agent.GetComponent<Enemy>().hearsPlayer
             || agent.GetComponent<Enemy>().sawPlayer || agent.GetComponent<Enemy>().heardPlayer)
         {
             state = NodeState.FAILURE;
+        }
+        else if (waypointIndex == waypointList.Count || !waypointList[waypointIndex])
+        {
+            waypointIndex = 0;
+            state = NodeState.SUCCESS;
         }
         else if (waypointList[waypointIndex]){
             float waypointDistance = Vector3.Distance(BTTransform.position, waypointList[waypointIndex].transform.position);
             if (waypointDistance < 1) {
                 agent.SetDestination(waypointList[waypointIndex].transform.position);
-                Debug.Log("Reached waypoint");
+                //Debug.Log("Reached waypoint");
                 waypointIndex++;
                 state = NodeState.RUNNING;
             }

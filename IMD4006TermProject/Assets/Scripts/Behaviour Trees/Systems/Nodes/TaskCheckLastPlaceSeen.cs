@@ -25,13 +25,13 @@ public class TaskCheckLastPlaceSeen : BTNode
         {
             state = NodeState.FAILURE;
         }
-        else if (waypointDistance >= 2.5f)
+        else if (waypointDistance >= 4f)
         {
             agent.SetDestination(thisActor.lastLocationSeen);
             state = NodeState.RUNNING;
         }
         //If they arrive at the destination we want them to stop, go back to regular behaviours
-        else if (waypointDistance < 2.5f)
+        else if (waypointDistance < 4f)
         {
             state = NodeState.SUCCESS;
             thisActor.sawPlayer = false;

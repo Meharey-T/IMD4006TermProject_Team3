@@ -82,7 +82,8 @@ public class Enemy : MonoBehaviour
         {
             //
             Transform target = rangeChecks[0].transform;
-            Vector3 facePosition = new Vector3(transform.position.x, transform.position.y + 3.25f, transform.position.z);
+            //Vector3 facePosition = new Vector3(transform.position.x, transform.position.y + 3.25f, transform.position.z);
+            Vector3 facePosition = new Vector3(transform.position.x, transform.position.y + 0.3f, transform.position.z);
             Vector3 directionToTarget = (target.position - facePosition).normalized;
 
             if (Vector3.Angle(transform.forward, directionToTarget) < viewAngle / 2)
@@ -94,7 +95,20 @@ public class Enemy : MonoBehaviour
                     seesPlayer = true;
                     lastLocationSeen = playerObj.transform.position;
                 }
-                else seesPlayer = false;
+                else if (seesPlayer == true)
+                {
+                    seesPlayer = false;
+                    sawPlayer = true;
+                }
+                else
+                {
+                    seesPlayer = false;
+                }
+            }
+            else if (seesPlayer == true)
+            {
+                seesPlayer = false;
+                sawPlayer = true;
             }
             else seesPlayer = false;
             rangeChecks[0] = null;
