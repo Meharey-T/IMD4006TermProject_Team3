@@ -20,7 +20,7 @@ public class EnemyPatrollingBaseTree : BTree
 
         var CheckArea = new TaskCheckArea(transform);
         var CheckIfVisible = new CheckIfVisible(enemyMeshAgent, player);
-        var ChillOut = new TaskChillASecond();
+        var ChillOut = new TaskChillASecond(enemyMeshAgent);
 
         List<BTNode> CheckAreaList = new List<BTNode>();
         List<BTNode> CheckIfVisibleList = new List<BTNode>();
