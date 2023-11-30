@@ -82,7 +82,8 @@ public class Enemy : MonoBehaviour
         {
             //
             Transform target = rangeChecks[0].transform;
-            Vector3 directionToTarget = (target.position - transform.position).normalized;
+            Vector3 facePosition = new Vector3(transform.position.x, transform.position.y + 3.25f, transform.position.z);
+            Vector3 directionToTarget = (target.position - facePosition).normalized;
 
             if (Vector3.Angle(transform.forward, directionToTarget) < viewAngle / 2)
             {
