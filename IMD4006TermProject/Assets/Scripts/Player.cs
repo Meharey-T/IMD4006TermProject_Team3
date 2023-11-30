@@ -36,10 +36,12 @@ public class Player : MonoBehaviour
     [SerializeField] Texture i_health;
     [SerializeField] Texture i_hurt;
 
-    [SerializeField] Texture i_undetected;
-    [SerializeField] Texture i_alerted;
+    [SerializeField] Texture i_unseen;
+    [SerializeField] Texture i_seen;
     [SerializeField] Texture i_spotted;
-    [SerializeField] Texture i_undetectable;
+    [SerializeField] Texture i_unheard;
+    [SerializeField] Texture i_heard;
+    [SerializeField] Texture i_beingHeard;
 
     public bool inRangeOfHideable = false;
     public bool hiding = false;
@@ -73,16 +75,22 @@ public class Player : MonoBehaviour
         //If the player is hiding, that's the level of detection we want to display
         if(this.GetComponent<BaseStateMachine>().CurrentState.name != "Hiding")
         {
+            indicator.transform.GetChild(1).gameObject.SetActive(false);
             bool playerIsHeard = false;
+            bool playerWasHeard = false;
             bool playerIsSeen = false;
             bool playerWasSeen = false;
             //We have to iterate through all enemies
             for (int i = 0; i < enemySet.Items.Count; i++)
             {
                 //not using an else/if since these are not mutually exclusive
-                if (enemySet.Items[i].GetComponent<Enemy>().hearsPlayer || enemySet.Items[i].GetComponent<Enemy>().heardPlayer)
+                if (enemySet.Items[i].GetComponent<Enemy>().hearsPlayer)
                 {
                     playerIsHeard = true;
+                }
+                if (enemySet.Items[i].GetComponent<Enemy>().heardPlayer)
+                {
+                    playerWasHeard = true;
                 }
                 if (enemySet.Items[i].GetComponent<Enemy>().sawPlayer)
                 {
@@ -95,24 +103,35 @@ public class Player : MonoBehaviour
                 }
             }
             //If we've gone through the whole loop and nobody detects the player, we set to undetected
-            if(!playerIsHeard && !playerIsSeen)
+            if(!playerIsSeen)
             {
-                indicator.transform.GetComponent<RawImage>().texture = i_undetected;
+                indicator.transform.GetChild(0).GetComponent<RawImage>().texture = i_unseen;
             }
-            //if at least one heard the player, we can set to heard
-            if (playerIsHeard || playerWasSeen)
+            if (playerWasSeen)
             {
-                indicator.transform.GetComponent<RawImage>().texture = i_alerted;
+                indicator.transform.GetChild(0).GetComponent<RawImage>().texture = i_seen;
             }
-            //if at least one saw the player, we set to saw, overwrite heard
             if (playerIsSeen)
             {
-                indicator.transform.GetComponent<RawImage>().texture = i_spotted;
+                indicator.transform.GetChild(0).GetComponent<RawImage>().texture = i_spotted;
+            }
+            //if at least one heard the player, we can set to heard
+            if (!playerIsHeard)
+            {
+                indicator.transform.GetChild(2).GetComponent<RawImage>().texture = i_unheard;
+            }
+            if (playerWasHeard)
+            {
+                indicator.transform.GetChild(2).GetComponent<RawImage>().texture = i_heard;
+            }
+            if (playerIsHeard)
+            {
+                indicator.transform.GetChild(2).GetComponent<RawImage>().texture = i_beingHeard;
             }
         }
         else
         {
-            indicator.transform.GetComponent<RawImage>().texture = i_undetectable;
+            indicator.transform.GetChild(1).gameObject.SetActive(true);
         }
         
     }
