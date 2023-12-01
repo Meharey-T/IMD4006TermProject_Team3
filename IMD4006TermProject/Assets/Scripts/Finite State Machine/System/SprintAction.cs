@@ -19,6 +19,7 @@ public class SprintAction : FSMAction
         player.turnSmoothTime = player.turnSmoothTimeSlow;
         stateMachine.GetComponent<PlayerMovement>().currentSoundRadius = stateMachine.GetComponent<PlayerMovement>().sprintSoundRadius;
         player.gameObject.layer = 9;
+        player.consumingStamina = true;
         //Change player animation
         //Change player footstep sounds
         //terraine.currSpeed = terraine.GetRun();

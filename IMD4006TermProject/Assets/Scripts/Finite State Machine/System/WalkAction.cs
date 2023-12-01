@@ -22,7 +22,7 @@ public class WalkAction : FSMAction
         TerrainState terraine = stateMachine.GetComponent<TerrainState>();
 
         stateMachine.GetComponent<TerrainState>().currSpeed = stateMachine.GetComponent<TerrainState>().GetWalk();
-
+        player.consumingStamina = false;
 
         //play sneak sfx
         terraine.PlayWalkingSound();

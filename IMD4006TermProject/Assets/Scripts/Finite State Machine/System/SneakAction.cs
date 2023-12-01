@@ -17,6 +17,7 @@ public class SneakAction : FSMAction
         player.turnSmoothTime = player.turnSmoothTimeSnappy;
         stateMachine.GetComponent<PlayerMovement>().currentSoundRadius = stateMachine.GetComponent<PlayerMovement>().sneakSoundRadius;
         player.gameObject.layer = 9;
+        player.consumingStamina = false;
         //player.GetComponent<Player>().indicator.text = "";
         //Change player animation
         //Change player footstep sounds
