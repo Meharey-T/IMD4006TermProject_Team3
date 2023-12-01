@@ -17,7 +17,7 @@ public class Enemy : MonoBehaviour
     public GameObject playerObj;
     public Vector3 startingPos;
     Collider[] rangeChecks;
-    RaycastHit[] m_Results = new RaycastHit[1];
+    //RaycastHit[] m_Results = new RaycastHit[1];
 
     //patrolling 
     public List<GameObject> Waypoints;
@@ -83,14 +83,14 @@ public class Enemy : MonoBehaviour
             //
             Transform target = rangeChecks[0].transform;
             //Vector3 facePosition = new Vector3(transform.position.x, transform.position.y + 3.25f, transform.position.z);
-            Vector3 facePosition = new Vector3(transform.position.x, transform.position.y + 0.3f, transform.position.z);
-            Vector3 directionToTarget = (target.position - facePosition).normalized;
+            //Vector3 facePosition = new Vector3(transform.position.x, transform.position.y + 0.3f, transform.position.z);
+            Vector3 directionToTarget = (target.position - transform.position).normalized;
 
             if (Vector3.Angle(transform.forward, directionToTarget) < viewAngle / 2)
             {
                 float distanceToTarget = Vector3.Distance(transform.position, target.position);
-                int hits = Physics.RaycastNonAlloc(transform.position, directionToTarget, m_Results, distanceToTarget, LayerMask.GetMask("Ground"));
-                if (hits != 0)
+                //Physics.Raycast(transform.position, directionToTarget, distanceToTarget, LayerMask.GetMask("Ground"));
+                if (!Physics.Raycast(transform.position, directionToTarget, distanceToTarget, LayerMask.GetMask("Ground")))
                 {
                     seesPlayer = true;
                     lastLocationSeen = playerObj.transform.position;

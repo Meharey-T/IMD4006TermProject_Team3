@@ -173,7 +173,9 @@ public class Player : MonoBehaviour
         {
             enemy.transform.position = enemy.GetComponent<Enemy>().startingPos;
             enemy.GetComponent<Enemy>().seesPlayer = false;
+            enemy.GetComponent<Enemy>().sawPlayer = false;
             enemy.GetComponent<Enemy>().hearsPlayer = false;
+            enemy.GetComponent<Enemy>().heardPlayer = false;
         }
     }
 
