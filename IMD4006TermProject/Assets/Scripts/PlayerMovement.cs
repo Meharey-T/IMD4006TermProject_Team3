@@ -18,6 +18,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float sprintSpeed;
     [SerializeField] private float sneakSpeed;
 
+    //stats for sprinting - or not sprinting
     private int maxStamina = 150;
     private int currentStamina = 150;
     public bool consumingStamina = false;
