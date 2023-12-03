@@ -67,7 +67,7 @@ public class FadeObjectBlockingObject : MonoBehaviour
         foreach(Material material in objectFader.materials)
         {
             material.SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.SrcAlpha);
-            material.SetInt("DstBlend", (int)UnityEngine.Rendering.BlendMode.OneMinusSrcAlpha);
+            material.SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.OneMinusSrcAlpha);
             material.SetInt("_ZWrite", 0);
             material.SetInt("_Surface", 1);
 
@@ -135,7 +135,7 @@ public class FadeObjectBlockingObject : MonoBehaviour
         foreach (Material material in objectFader.materials)
         {
             material.SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.One);
-            material.SetInt("DstBlend", (int)UnityEngine.Rendering.BlendMode.Zero);
+            material.SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.Zero);
             material.SetInt("_ZWrite", 1);
             material.SetInt("_Surface", 0);
 
