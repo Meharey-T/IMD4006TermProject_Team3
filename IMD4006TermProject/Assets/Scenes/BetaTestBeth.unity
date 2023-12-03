@@ -5022,23 +5022,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8563207698558028255, guid: 20ea7a721a64e4348af6413209c8d778, type: 3}
   m_PrefabInstance: {fileID: 1465013441}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &256686037 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1003335555720960401, guid: 9b2247beea61b504a8712748b7939d1e, type: 3}
-  m_PrefabInstance: {fileID: 1048628910}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &256686043
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 256686037}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c8d5edacdf692c047b0e343cb4f25b16, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &259112479
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9613,6 +9596,28 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3029518513293088732, guid: 9b2247beea61b504a8712748b7939d1e, type: 3}
   m_PrefabInstance: {fileID: 1048628910}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &529635059
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 529635058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6ef79cb23508cf41bec27f0c53413a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 0
+  target: {fileID: 1048628912}
+  camera: {fileID: 1048628911}
+  fadedAlpha: 0.33
+  retainShadows: 1
+  targetPositionOffset: {x: 0, y: 1, z: 0}
+  fadeSpeed: 1
+  objectsBlockingView: []
 --- !u!1001 &537492825
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18138,10 +18143,20 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1003335555720960401, guid: 9b2247beea61b504a8712748b7939d1e, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 256686043}
+    - targetCorrespondingSourceObject: {fileID: 3029518513293088732, guid: 9b2247beea61b504a8712748b7939d1e, type: 3}
+      insertIndex: 9
+      addedObject: {fileID: 529635059}
   m_SourcePrefab: {fileID: 100100000, guid: 9b2247beea61b504a8712748b7939d1e, type: 3}
+--- !u!20 &1048628911 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 1993127460517857512, guid: 9b2247beea61b504a8712748b7939d1e, type: 3}
+  m_PrefabInstance: {fileID: 1048628910}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1048628912 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2959278362311645121, guid: 9b2247beea61b504a8712748b7939d1e, type: 3}
+  m_PrefabInstance: {fileID: 1048628910}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1048810856
 PrefabInstance:
   m_ObjectHideFlags: 0

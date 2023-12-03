@@ -1,59 +1,39 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 //Code from https://www.youtube.com/watch?v=mOqHVMS7-Nw
-public class ObjectFader : MonoBehaviour
+public class ObjectFader : MonoBehaviour, IEquatable<ObjectFader>
 {
-    public float fadeSpeed, fadeAmount;
-    float originalOpacity;
-    Material[] mats;
-    public bool doFade = false;
+    public List<Renderer> renderers = new List<Renderer>();
+    public Vector3 position;
+    public List<Material> materials = new List<Material>();
+    [HideInInspector]
+    public float initialAlpha;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
-        mats = GetComponent<MeshRenderer>().materials;
-        foreach(Material mat in mats)
+        position = transform.position;
+        if(renderers.Count == 0)
         {
-            originalOpacity = mat.color.a;
+            renderers.AddRange(GetComponentsInChildren<Renderer>());
         }
-        
+        foreach(Renderer renderer in renderers)
+        {
+            materials.AddRange(renderer.materials);
+        }
+
+        initialAlpha = materials[0].color.a;
     }
 
-    // Update is called once per frame
-    void Update()
+    public bool Equals(ObjectFader other)
     {
-        if (doFade)
-        {
-            FadeNow();
-        }
-        else
-        {
-            ResetFade();
-        }
+        return position.Equals(other.position);
     }
 
-    void FadeNow()
+    public override int GetHashCode()
     {
-        foreach (Material mat in mats)
-        {
-            Color currentColor = mat.color;
-            Color smoothColor = new Color(currentColor.r, currentColor.g, currentColor.b,
-                Mathf.Lerp(currentColor.a, fadeAmount, fadeSpeed * Time.deltaTime));
-            mat.color = smoothColor;
-        }
-        
-    }
-
-    void ResetFade()
-    {
-        foreach (Material mat in mats)
-        {
-            Color currentColor = mat.color;
-            Color smoothColor = new Color(currentColor.r, currentColor.g, currentColor.b,
-                Mathf.Lerp(currentColor.a, originalOpacity, fadeSpeed * Time.deltaTime));
-            mat.color = smoothColor;
-        }
+        return base.GetHashCode();
     }
 }

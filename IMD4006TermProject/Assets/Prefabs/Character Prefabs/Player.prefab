@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 1003335555720960401}
   serializedVersion: 2
   m_LocalRotation: {x: 0.10019948, y: -0, z: -0, w: 0.9949674}
-  m_LocalPosition: {x: 0, y: 1.5, z: -2.6}
+  m_LocalPosition: {x: 0, y: 1.6, z: -2.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -322,6 +322,7 @@ GameObject:
   - component: {fileID: 7605686264673151187}
   - component: {fileID: 8870642308828433629}
   - component: {fileID: 8717395456014033637}
+  - component: {fileID: 6402525080016869126}
   - component: {fileID: 7694030906715125391}
   m_Layer: 9
   m_Name: Player
@@ -363,9 +364,11 @@ MonoBehaviour:
   cam: {fileID: 7682791935692376751}
   rotator: {fileID: 3936022966842088751}
   turnMinMax: {x: -40, y: 85}
-  baseSpeed: 3
+  baseSpeed: 3.5
   sprintSpeed: 6
-  sneakSpeed: 1.5
+  sneakSpeed: 2
+  consumingStamina: 0
+  winded: 0
   speedSmoothTime: 0.1
   jumpAmount: 18
   gravityScale: 4
@@ -383,6 +386,7 @@ MonoBehaviour:
   carpetMultiplier: 0
   soundRadius: {fileID: 0}
   playerGeo: {fileID: 4016466097069799744}
+  staminaBar: {fileID: 0}
 --- !u!114 &8233892006867537294
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -536,6 +540,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameObjectRuntimeSet: {fileID: 11400000, guid: e5c5e5b1523d0cd489322f27271bcd69, type: 2}
+--- !u!114 &6402525080016869126
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3029518513293088732}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6ef79cb23508cf41bec27f0c53413a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 128
+  target: {fileID: 2959278362311645121}
+  mainCamera: {fileID: 1993127460517857512}
+  fadedAlpha: 0.33
+  retainShadows: 1
+  targetPositionOffset: {x: 0, y: 1, z: 0}
+  fadeSpeed: 1
+  objectsBlockingView: []
 --- !u!82 &7694030906715125391
 AudioSource:
   m_ObjectHideFlags: 0
