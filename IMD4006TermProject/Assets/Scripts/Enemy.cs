@@ -17,7 +17,8 @@ public class Enemy : MonoBehaviour
     public GameObject playerObj;
     public Vector3 startingPos;
     Collider[] rangeChecks;
-    //RaycastHit[] m_Results = new RaycastHit[1];
+    public float defaultSpeed = 3.5f;
+    //public int currentSpeed;
 
     //patrolling 
     public List<GameObject> Waypoints;
@@ -35,10 +36,12 @@ public class Enemy : MonoBehaviour
     public bool heardPlayer = false;
     public Vector3 lastLocationHeard;
 
-    private enum AngerLevel{INDIFFERENT, IRRITATED, ANGRY, FURIOUS};
-    private AngerLevel angerLevel;
+    //Handles their anger level
+    public enum AngerLevel{INDIFFERENT, IRRITATED, ANGRY, FURIOUS};
+    public AngerLevel angerLevel;
     public int totalTreasure = 0;
     public int treasureLeft;
+    public int i_angerLevel;
 
     WaitForSeconds wait = new WaitForSeconds(0.2f);
 
@@ -149,25 +152,25 @@ public class Enemy : MonoBehaviour
         if(treasureLeft > (totalTreasure / 4) * 3)
         {
             angerLevel = AngerLevel.INDIFFERENT;
-            enemyMeshAgent.speed = 3;
+            //enemyMeshAgent.speed = 3;
         }
         //If the treasure left is less than 75% but more than 50%
         else if (treasureLeft < (totalTreasure / 4) * 3 && treasureLeft > totalTreasure / 2)
         {
             angerLevel = AngerLevel.IRRITATED;
-            enemyMeshAgent.speed = 3.5f;
+            //enemyMeshAgent.speed = 3.5f;
         }
         //If the treasure left is less than 50% but more than 25%
         else if(treasureLeft < totalTreasure / 2 && treasureLeft > totalTreasure / 4)
         {
             angerLevel = AngerLevel.ANGRY;
-            enemyMeshAgent.speed = 4;
+            //enemyMeshAgent.speed = 4;
         }
         //If the treasure left is less than 25%
         else if(treasureLeft < totalTreasure / 4)
         {
             angerLevel = AngerLevel.FURIOUS;
-            enemyMeshAgent.speed = 4.5f;
+            //enemyMeshAgent.speed = 4.5f;
         }
     }
 
