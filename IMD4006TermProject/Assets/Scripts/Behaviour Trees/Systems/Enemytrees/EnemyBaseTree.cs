@@ -20,14 +20,6 @@ public class EnemyBaseTree : BTree
         player = transform.GetComponent<Enemy>().playerObj.GetComponent<Player>();
         enemy = transform.GetComponent<Enemy>();
 
-        var CheckArea = new TaskCheckArea(transform);
-        var CheckIfVisible = new CheckIfVisible(enemyMeshAgent, player);
-
-        List<BTNode> CheckAreaList = new List<BTNode>();
-        List<BTNode> CheckIfVisibleList = new List<BTNode>();
-        CheckAreaList.Add(CheckArea);
-        CheckIfVisibleList.Add(CheckIfVisible);
-
         //Start the behaviour tree
         BTNode root = new Selector(new List<BTNode>
         {
@@ -40,14 +32,14 @@ public class EnemyBaseTree : BTree
                 //Set a waypoint to pursue the player
                 new TaskChasePlayer(transform, enemyMeshAgent, player),
                 //Set this so that it looks around if chasing the player fails
-                new Inverter(CheckIfVisibleList),
+                new Inverter(new CheckIfVisible(enemyMeshAgent, player)),
                 new CheckIfPlayerSeen(enemyMeshAgent, player),
                 //path to the last place they saw them first
                 new TaskCheckLastPlaceSeen(enemy, enemyMeshAgent),
                 //Then stop and look around
-                new Timer(1.5f, CheckAreaList),
-                new Timer(1.5f, CheckAreaList),
-                new Timer(1.5f, CheckAreaList),
+                new Timer(1.5f, new TaskCheckArea(transform)),
+                new Timer(1.5f, new TaskCheckArea(transform)),
+                new Timer(1.5f, new TaskCheckArea(transform)),
                 new TaskClearDetection(enemy, enemyMeshAgent)
             }),
             new Sequence(new List<BTNode>
@@ -56,9 +48,9 @@ public class EnemyBaseTree : BTree
                 //path to the last place they saw them first
                 new TaskCheckLastPlaceSeen(enemy, enemyMeshAgent),
                 //Then stop and look around
-                new Timer(1.5f, CheckAreaList),
-                new Timer(1.5f, CheckAreaList),
-                new Timer(1.5f, CheckAreaList),
+                new Timer(1.5f, new TaskCheckArea(transform)),
+                new Timer(1.5f, new TaskCheckArea(transform)),
+                new Timer(1.5f, new TaskCheckArea(transform)),
                 new TaskClearDetection(enemy, enemyMeshAgent)
             }),
             //Check out sounds they've heard
@@ -69,9 +61,9 @@ public class EnemyBaseTree : BTree
                 //Then have them go to the location they last heard the player
                 new TaskCheckOutSound(enemy, enemyMeshAgent),
                 //We might add a short task for them to spend a certain amount of time looking around
-                new Timer(1.5f, CheckAreaList),
-                new Timer(1.5f, CheckAreaList),
-                new Timer(1.5f, CheckAreaList),
+                new Timer(1.5f, new TaskCheckArea(transform)),
+                new Timer(1.5f, new TaskCheckArea(transform)),
+                new Timer(1.5f, new TaskCheckArea(transform)),
                 new TaskClearDetection(enemy, enemyMeshAgent)
                 //new TaskCheckArea(transform)
             }),

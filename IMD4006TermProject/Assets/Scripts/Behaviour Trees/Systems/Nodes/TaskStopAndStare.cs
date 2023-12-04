@@ -18,12 +18,13 @@ public class TaskStopAndStare : BTNode
 
     protected override NodeState OnRun()
     {
-        Debug.Log("Running TaskCheckArea");
+        Debug.Log("Running TaskStopAndStare");
         //If we have heard or seen something, we want to stop and look at it for the duration of the timer
         if (thisActor.seesPlayer || thisActor.hearsPlayer)
         {
-            //lookRotation = player.transform.rotation;
-            thisActor.transform.LookAt(player.transform) ;
+            Vector3 direction = (player.transform.position - thisActor.transform.position).normalized;
+            lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0f, direction.z));
+            thisActor.transform.rotation = Quaternion.Slerp(thisActor.transform.rotation, lookRotation, Time.deltaTime * 5f);
             state = NodeState.RUNNING;
         }
         //If they stop hearing or seeing the player, they may follow up on it immediately instead of waiting

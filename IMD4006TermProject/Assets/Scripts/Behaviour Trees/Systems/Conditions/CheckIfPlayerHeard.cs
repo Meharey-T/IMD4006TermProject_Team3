@@ -3,17 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using BehaviourTree;
 
-public class CheckIfPlayerAudible : BTCondition
+public class CheckIfPlayerHeard : BTCondition
 {
     Enemy thisActor;
-    public CheckIfPlayerAudible(Enemy enemy)
+    public CheckIfPlayerHeard(Enemy enemy)
     {
         thisActor = enemy;
     }
 
     protected override NodeState OnRun()
     {
-        if (thisActor.hearsPlayer)
+        if (thisActor.heardPlayer)
         {
             //Debug.Log("Heard player");
             return NodeState.SUCCESS;

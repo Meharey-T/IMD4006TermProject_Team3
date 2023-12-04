@@ -18,25 +18,12 @@ public class EnemyPatrollingBaseTree : BTree
         enemy = transform.GetComponent<Enemy>();
         waypoints = enemy.Waypoints;
 
-        var CheckArea = new TaskCheckArea(transform);
-        var CheckIfVisible = new CheckIfVisible(enemyMeshAgent, player);
-        var ChillOut = new TaskChillASecond(enemyMeshAgent);
-        var StareAtPlayer = new TaskStopAndStare(player, enemy);
-
-        List<BTNode> CheckAreaList = new List<BTNode>();
-        List<BTNode> CheckIfVisibleList = new List<BTNode>();
-        List<BTNode> ChillOutList = new List<BTNode>();
-        List<BTNode> StareAtPlayerList = new List<BTNode>();
-        CheckAreaList.Add(CheckArea);
-        CheckIfVisibleList.Add(CheckIfVisible);
-        ChillOutList.Add(ChillOut);
-        StareAtPlayerList.Add(StareAtPlayer);
-
         //Start the behaviour tree
         BTNode root = new Selector(new List<BTNode>
         {
             //Options that are to be picked first should come first
-            //Start player chase sequence
+
+            ////CHASE PLAYER IF SPOTTED SEQUENCE
             new Sequence(new List<BTNode>
             {
                 //Start by checking if player is in range to be chased
@@ -48,18 +35,18 @@ public class EnemyPatrollingBaseTree : BTree
                     //Check how angry the enemy is
                     new CheckIfIndifferent(enemy),
                     //Stare at the player for 3 full seconds before acting if indifferent
-                    new Timer(3f, StareAtPlayerList),
+                    new Timer(2f, new TaskStopAndStare(player, enemy)),
                     //Set a waypoint to pursue the player
                     new TaskChasePlayer(transform, enemyMeshAgent, player),
                     //Set this so that it looks around if chasing the player fails
-                    new Inverter(CheckIfVisibleList),
+                    new Inverter(new CheckIfVisible(enemyMeshAgent, player)),
                     new CheckIfPlayerSeen(enemyMeshAgent, player),
                     //path to the last place they saw them first
                     new TaskCheckLastPlaceSeen(enemy, enemyMeshAgent),
                     //Then stop and look around
-                    new Timer(1.5f, CheckAreaList),
-                    new Timer(1.5f, CheckAreaList),
-                    new Timer(1.5f, CheckAreaList),
+                    new Timer(1.5f, new TaskCheckArea(transform)),
+                    new Timer(1.5f, new TaskCheckArea(transform)),
+                    new Timer(1.5f, new TaskCheckArea(transform)),
                     new TaskClearDetection(enemy, enemyMeshAgent)
                 }),
                 //If they're irritated
@@ -68,18 +55,18 @@ public class EnemyPatrollingBaseTree : BTree
                     //Check how angry the enemy is
                     new CheckIfIrritated(enemy),
                     //Stare at the player for 3 full seconds before acting if indifferent
-                    new Timer(1.5f, StareAtPlayerList),
+                    new Timer(1f, new TaskStopAndStare(player, enemy)),
                     //Set a waypoint to pursue the player
                     new TaskChasePlayer(transform, enemyMeshAgent, player),
                     //Set this so that it looks around if chasing the player fails
-                    new Inverter(CheckIfVisibleList),
+                    new Inverter(new CheckIfVisible(enemyMeshAgent, player)),
                     new CheckIfPlayerSeen(enemyMeshAgent, player),
                     //path to the last place they saw them first
                     new TaskCheckLastPlaceSeen(enemy, enemyMeshAgent),
                     //Then stop and look around
-                    new Timer(1.5f, CheckAreaList),
-                    new Timer(1.5f, CheckAreaList),
-                    new Timer(1.5f, CheckAreaList),
+                    new Timer(1.5f, new TaskCheckArea(transform)),
+                    new Timer(1.5f, new TaskCheckArea(transform)),
+                    new Timer(1.5f, new TaskCheckArea(transform)),
                     new TaskClearDetection(enemy, enemyMeshAgent)
                 }),
                 //By process of elimination, any more angry behaviours
@@ -88,47 +75,91 @@ public class EnemyPatrollingBaseTree : BTree
                     //Set a waypoint to pursue the player
                     new TaskChasePlayer(transform, enemyMeshAgent, player),
                     //Set this so that it looks around if chasing the player fails
-                    new Inverter(CheckIfVisibleList),
+                    new Inverter(new CheckIfVisible(enemyMeshAgent, player)),
                     new CheckIfPlayerSeen(enemyMeshAgent, player),
                     //path to the last place they saw them first
                     new TaskCheckLastPlaceSeen(enemy, enemyMeshAgent),
                     //Then stop and look around
-                    new Timer(1.5f, CheckAreaList),
-                    new Timer(1.5f, CheckAreaList),
-                    new Timer(1.5f, CheckAreaList),
+                    new Timer(1.5f, new TaskCheckArea(transform)),
+                    new Timer(1.5f, new TaskCheckArea(transform)),
+                    new Timer(1.5f, new TaskCheckArea(transform)),
                     new TaskClearDetection(enemy, enemyMeshAgent)
                 })
 
             }),
-            //If they don't see the player right now, have they seen them? Check out last place seen
+
+            ////INVESTIGATE SOUNDS SEQUENCE
+            new Sequence(new List<BTNode>
+            {
+                //Start by seeing if the enemy can currently hear the player
+                new CheckIfPlayerAudible(enemy),
+                //If they can, how angry are they?
+                new Sequence(new List<BTNode>
+                {
+                    new CheckIfIndifferent(enemy),
+                    new Timer(2f, new TaskStopAndStare(player, enemy)),
+                    //Then have them go to the location they last heard the player
+                    new TaskCheckOutSound(enemy, enemyMeshAgent),
+                    //Spend a few seconds looking around at the last place they were heard
+                    new Timer(1.5f, new TaskCheckArea(transform)),
+                    new Timer(1.5f, new TaskCheckArea(transform)),
+                    new Timer(1.5f, new TaskCheckArea(transform)),
+                    new TaskClearDetection(enemy, enemyMeshAgent)
+                }),
+                new Sequence(new List<BTNode>
+                {
+                    new CheckIfIrritated(enemy),
+                    new Timer(1f, new TaskStopAndStare(player, enemy)),
+                    //Then have them go to the location they last heard the player
+                    new TaskCheckOutSound(enemy, enemyMeshAgent),
+                    //Spend a few seconds looking around at the last place they were heard
+                    new Timer(1.5f, new TaskCheckArea(transform)),
+                    new Timer(1.5f, new TaskCheckArea(transform)),
+                    new Timer(1.5f, new TaskCheckArea(transform)),
+                    new TaskClearDetection(enemy, enemyMeshAgent)
+                }),
+                new Sequence(new List<BTNode>
+                {
+                    //Then have them go to the location they last heard the player
+                    new TaskCheckOutSound(enemy, enemyMeshAgent),
+                    //Spend a few seconds looking around at the last place they were heard
+                    new Timer(1.5f, new TaskCheckArea(transform)),
+                    new Timer(1.5f, new TaskCheckArea(transform)),
+                    new Timer(1.5f, new TaskCheckArea(transform)),
+                    new TaskClearDetection(enemy, enemyMeshAgent)
+                })
+
+            }),
+
+            ////INVESTIGATE LAST PLACE SEEN SEQUENCE
             new Sequence(new List<BTNode>
             {
                 new CheckIfPlayerSeen(enemyMeshAgent, player),
                 //path to the last place they saw them first
                 new TaskCheckLastPlaceSeen(enemy, enemyMeshAgent),
                 //Then stop and look around
-                new Timer(1.5f, CheckAreaList),
-                new Timer(1.5f, CheckAreaList),
-                new Timer(1.5f, CheckAreaList),
+                new Timer(1.5f, new TaskCheckArea(transform)),
+                new Timer(1.5f, new TaskCheckArea(transform)),
+                new Timer(1.5f, new TaskCheckArea(transform)),
                 new TaskClearDetection(enemy, enemyMeshAgent)
             }),
-            //If they don't see and haven't seen, can they or have they heard them? Check out last place heard
+
+            ////INVESTIGATE LAST PLACE HEARD SEQUENCE
             new Sequence(new List<BTNode>
             {
-                //Start by seeing if the enemy can currently hear the player
-                new CheckIfPlayerAudible(enemy),
-                //Then have them go to the location they last heard the player
+                new CheckIfPlayerHeard(enemy),
+                //path to the last place they saw them first
                 new TaskCheckOutSound(enemy, enemyMeshAgent),
-                //Spend a few seconds looking around at the last place they were heard
-                new Timer(1.5f, CheckAreaList),
-                new Timer(1.5f, CheckAreaList),
-                new Timer(1.5f, CheckAreaList),
+                //Then stop and look around
+                new Timer(1f, new TaskCheckArea(transform)),
+                new Timer(1f, new TaskCheckArea(transform)),
+                new Timer(1f, new TaskCheckArea(transform)),
                 new TaskClearDetection(enemy, enemyMeshAgent)
-                //new TaskCheckArea(transform)
             }),
-            //If no player detection conditions are true, by default go back to patrolling
+            
+            ////PATROL SEQUENCE
             new TaskFollowPatrol(transform, waypoints, enemyMeshAgent),
-            new Timer(3f, ChillOutList)
+            new Timer(3f, new TaskChillASecond(enemyMeshAgent))
         });
         return root;
     }

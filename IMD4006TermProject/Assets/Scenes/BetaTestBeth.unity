@@ -18051,7 +18051,7 @@ PrefabInstance:
       objectReference: {fileID: 1351967633}
     - target: {fileID: 6402525080016869126, guid: 9b2247beea61b504a8712748b7939d1e, type: 3}
       propertyPath: fadedAlpha
-      value: 0.5
+      value: 0.33
       objectReference: {fileID: 0}
     - target: {fileID: 8233892006867537294, guid: 9b2247beea61b504a8712748b7939d1e, type: 3}
       propertyPath: indicator
