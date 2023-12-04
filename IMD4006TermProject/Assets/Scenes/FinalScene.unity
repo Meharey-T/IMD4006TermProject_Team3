@@ -488,6 +488,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 172365273}
     m_Modifications:
+    - target: {fileID: 6252324697239624910, guid: e1cfded8cfcdd414d8e364034ec4cd22, type: 3}
+      propertyPath: m_Name
+      value: wallWindowClosed (1)
+      objectReference: {fileID: 0}
     - target: {fileID: 6741722079280678516, guid: e1cfded8cfcdd414d8e364034ec4cd22, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.1
@@ -527,10 +531,6 @@ PrefabInstance:
     - target: {fileID: 6741722079280678516, guid: e1cfded8cfcdd414d8e364034ec4cd22, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6252324697239624910, guid: e1cfded8cfcdd414d8e364034ec4cd22, type: 3}
-      propertyPath: m_Name
-      value: wallWindowClosed (1)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -17195,10 +17195,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 172365273}
     m_Modifications:
-    - target: {fileID: 832677744349341326, guid: c0b02e079d38e2240a227057c61dabd5, type: 3}
-      propertyPath: m_Name
-      value: wallDoor (7)
-      objectReference: {fileID: 0}
     - target: {fileID: 55612558171749428, guid: c0b02e079d38e2240a227057c61dabd5, type: 3}
       propertyPath: m_LocalPosition.x
       value: 72.19
@@ -17238,6 +17234,10 @@ PrefabInstance:
     - target: {fileID: 55612558171749428, guid: c0b02e079d38e2240a227057c61dabd5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 832677744349341326, guid: c0b02e079d38e2240a227057c61dabd5, type: 3}
+      propertyPath: m_Name
+      value: wallDoor (7)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -25112,6 +25112,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 172365273}
     m_Modifications:
+    - target: {fileID: 6252324697239624910, guid: e1cfded8cfcdd414d8e364034ec4cd22, type: 3}
+      propertyPath: m_Name
+      value: wallWindowClosed (2)
+      objectReference: {fileID: 0}
     - target: {fileID: 6741722079280678516, guid: e1cfded8cfcdd414d8e364034ec4cd22, type: 3}
       propertyPath: m_LocalPosition.x
       value: -25.41
@@ -25151,10 +25155,6 @@ PrefabInstance:
     - target: {fileID: 6741722079280678516, guid: e1cfded8cfcdd414d8e364034ec4cd22, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6252324697239624910, guid: e1cfded8cfcdd414d8e364034ec4cd22, type: 3}
-      propertyPath: m_Name
-      value: wallWindowClosed (2)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -28221,6 +28221,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 172365273}
     m_Modifications:
+    - target: {fileID: 6252324697239624910, guid: e1cfded8cfcdd414d8e364034ec4cd22, type: 3}
+      propertyPath: m_Name
+      value: wallWindowClosed (3)
+      objectReference: {fileID: 0}
     - target: {fileID: 6741722079280678516, guid: e1cfded8cfcdd414d8e364034ec4cd22, type: 3}
       propertyPath: m_LocalPosition.x
       value: 35.8
@@ -28260,10 +28264,6 @@ PrefabInstance:
     - target: {fileID: 6741722079280678516, guid: e1cfded8cfcdd414d8e364034ec4cd22, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6252324697239624910, guid: e1cfded8cfcdd414d8e364034ec4cd22, type: 3}
-      propertyPath: m_Name
-      value: wallWindowClosed (3)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -30657,6 +30657,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 172365273}
     m_Modifications:
+    - target: {fileID: 6252324697239624910, guid: e1cfded8cfcdd414d8e364034ec4cd22, type: 3}
+      propertyPath: m_Name
+      value: wallWindowClosed
+      objectReference: {fileID: 0}
     - target: {fileID: 6741722079280678516, guid: e1cfded8cfcdd414d8e364034ec4cd22, type: 3}
       propertyPath: m_LocalPosition.x
       value: 76.49749
@@ -30696,10 +30700,6 @@ PrefabInstance:
     - target: {fileID: 6741722079280678516, guid: e1cfded8cfcdd414d8e364034ec4cd22, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6252324697239624910, guid: e1cfded8cfcdd414d8e364034ec4cd22, type: 3}
-      propertyPath: m_Name
-      value: wallWindowClosed
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
