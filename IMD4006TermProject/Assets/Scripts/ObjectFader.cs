@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-//Code from https://www.youtube.com/watch?v=mOqHVMS7-Nw
+//Code from https://www.youtube.com/watch?v=vmLIy62Gsnk
 public class ObjectFader : MonoBehaviour, IEquatable<ObjectFader>
 {
     public List<Renderer> renderers = new List<Renderer>();

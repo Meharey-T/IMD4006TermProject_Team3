@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//Source: https://www.youtube.com/watch?v=vmLIy62Gsnk
+//Github: https://github.com/llamacademy/urp-fading-standard-shaders/tree/main
 public class FadeObjectBlockingObject : MonoBehaviour
 {
     [SerializeField] private LayerMask layerMask;

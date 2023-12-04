@@ -203,7 +203,7 @@ public class PlayerMovement : MonoBehaviour
     {
         
         float staminaPercent = (float)currentStamina / maxStamina;
-        Debug.Log(staminaPercent);
+        //Debug.Log(staminaPercent);
         staminaBar.fillAmount = staminaPercent;
     }
 
