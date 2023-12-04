@@ -41,7 +41,7 @@ public class TaskCheckOutSound : BTNode
         }
 
         //If we see the player, don't worry about what we heard, chase them
-        if (agent.GetComponent<Enemy>().seesPlayer || agent.GetComponent<Enemy>().sawPlayer)
+        if (agent.GetComponent<Enemy>().seesPlayer)
         {
             agent.speed = thisActor.defaultSpeed;
             state = NodeState.FAILURE;

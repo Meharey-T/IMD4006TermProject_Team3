@@ -36,6 +36,8 @@ public class Enemy : MonoBehaviour
     public bool heardPlayer = false;
     public Vector3 lastLocationHeard;
 
+    public bool hasStopped = false;
+
     //Handles their anger level
     public enum AngerLevel{INDIFFERENT, IRRITATED, ANGRY, FURIOUS};
     public AngerLevel angerLevel;

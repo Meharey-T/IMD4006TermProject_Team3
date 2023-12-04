@@ -25,6 +25,7 @@ public class TaskStopAndStare : BTNode
             Vector3 direction = (player.transform.position - thisActor.transform.position).normalized;
             lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0f, direction.z));
             thisActor.transform.rotation = Quaternion.Slerp(thisActor.transform.rotation, lookRotation, Time.deltaTime * 5f);
+            thisActor.hasStopped = true;
             state = NodeState.RUNNING;
         }
         //If they stop hearing or seeing the player, they may follow up on it immediately instead of waiting

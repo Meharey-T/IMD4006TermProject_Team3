@@ -176,6 +176,7 @@ public class Player : MonoBehaviour
             enemy.GetComponent<Enemy>().sawPlayer = false;
             enemy.GetComponent<Enemy>().hearsPlayer = false;
             enemy.GetComponent<Enemy>().heardPlayer = false;
+            enemy.GetComponent<Enemy>().hasStopped = false;
         }
     }
 
