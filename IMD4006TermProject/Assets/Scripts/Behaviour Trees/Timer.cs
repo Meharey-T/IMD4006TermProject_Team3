@@ -11,7 +11,7 @@ public class Timer : Decorator
     private bool m_UseFixedTime;
     private float m_TimeToWait;
 
-    public Timer(float timeToWait, List<BTNode> childNode, bool useFixedTime = false) :
+    public Timer(float timeToWait, BTNode childNode, bool useFixedTime = false) :
         base(childNode)
     {
         m_UseFixedTime = useFixedTime;
@@ -29,7 +29,12 @@ public class Timer : Decorator
 
         NodeState originalStatus = (children[0] as BTNode).Run();
 
-        if(EvaluationCount == 0)
+        if (originalStatus == NodeState.FAILURE)
+        {
+            return NodeState.FAILURE;
+        }
+
+        if (EvaluationCount == 0)
         {
             Debug.Log($"Starting timer for {m_TimeToWait}. Child node status is: {originalStatus}");
             m_StartTime = m_UseFixedTime ? Time.fixedTime : Time.time;
@@ -42,7 +47,6 @@ public class Timer : Decorator
             Debug.Log($"Timer complete - Child node status is: {originalStatus}");
             return NodeState.SUCCESS;
         }
-
         //Debug.Log($"Timer is {elapsedTime} out of {m_TimeToWait}. Child node status is: {originalStatus}");
         return NodeState.RUNNING;
     }

@@ -26,6 +26,7 @@ public class HideAction : FSMAction
         {
             stateMachine.GetComponent<Player>().hiding = true;
         }
+        player.consumingStamina = false;
         //Change player animation
     }
 }

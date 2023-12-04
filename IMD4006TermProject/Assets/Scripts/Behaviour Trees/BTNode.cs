@@ -30,6 +30,11 @@ public abstract class BTNode
         }
     }
 
+    protected BTNode(BTNode child)
+    {
+        _Attach(child);
+    }
+
     public virtual NodeState Run()
     {
         NodeState nodeState = OnRun();

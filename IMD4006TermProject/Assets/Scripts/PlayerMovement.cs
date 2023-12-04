@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 //Functionality for player movement, rotation, orientation, etc
 public class PlayerMovement : MonoBehaviour
@@ -16,6 +17,12 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float baseSpeed;
     [SerializeField] private float sprintSpeed;
     [SerializeField] private float sneakSpeed;
+
+    //stats for sprinting - or not sprinting
+    private int maxStamina = 150;
+    private int currentStamina = 150;
+    public bool consumingStamina = false;
+    public bool winded = false;
     /*
     public enum Speed
     {
@@ -70,13 +77,11 @@ public class PlayerMovement : MonoBehaviour
     //If player is on carpet their steps are quieter
     [SerializeField] private float carpetMultiplier;
 
-
-
-
     //Component references
     private Rigidbody rb;
     public SphereCollider soundRadius;
     [SerializeField] private GameObject playerGeo;
+    [SerializeField] private Image staminaBar;
 
     // Start is called before the first frame update
     void Start()
@@ -84,7 +89,7 @@ public class PlayerMovement : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         rb = GetComponent<Rigidbody>();
         soundRadius = this.GetComponentInChildren<SphereCollider>();
-        //jumpVector = new Vector3(0, jumpAmount, 0);
+        staminaBar.fillMethod = Image.FillMethod.Horizontal;
     }
 
     // Update is called once per frame
@@ -95,6 +100,7 @@ public class PlayerMovement : MonoBehaviour
         Reset();
         Jump();
         ResolveSoundRadius();
+        UpdateStaminaDisplay();
     }
 
     //Fixed update should be roughly the same no matter what your framerate is
@@ -102,6 +108,17 @@ public class PlayerMovement : MonoBehaviour
     {
         //Adds a higher downward force on the player, helps jump feel more snappy
         rb.AddForce(Physics.gravity * (gravityScale - 1) * rb.mass);
+        if(consumingStamina && (Input.GetAxisRaw("Vertical") != 0 || Input.GetAxisRaw("Horizontal") != 0) && currentStamina > 0){
+            currentStamina--;
+        }
+        else if(currentStamina <= 0 && !winded)
+        {
+            winded = true;
+        }
+        else if(currentStamina < maxStamina)
+        {
+            currentStamina++;
+        }
     }
 
     private void LateUpdate()
@@ -180,6 +197,21 @@ public class PlayerMovement : MonoBehaviour
     {
         //When we add more sound functionality we're going to put a multiplier on this base on the surface you're traveling over
         soundRadius.radius = currentSoundRadius;
+    }
+
+    private void UpdateStaminaDisplay()
+    {
+        
+        float staminaPercent = (float)currentStamina / maxStamina;
+        //Debug.Log(staminaPercent);
+        staminaBar.fillAmount = staminaPercent;
+    }
+
+    public IEnumerator CatchBreath()
+    {
+        WaitForSeconds wait = new WaitForSeconds(3f);
+        yield return wait;
+        winded = false;
     }
 
     public float getBaseSpeed()

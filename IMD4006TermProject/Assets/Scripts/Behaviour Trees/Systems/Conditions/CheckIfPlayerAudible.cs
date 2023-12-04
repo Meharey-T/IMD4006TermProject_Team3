@@ -13,17 +13,16 @@ public class CheckIfPlayerAudible : BTCondition
 
     protected override NodeState OnRun()
     {
-        if (thisActor.hearsPlayer || thisActor.heardPlayer)
+        if (thisActor.hearsPlayer)
         {
             //Debug.Log("Heard player");
             return NodeState.SUCCESS;
         }
-        else if (!thisActor.hearsPlayer && !thisActor.heardPlayer)
+        else
         {
             //Debug.Log("Can't hear player");
             return NodeState.FAILURE;
         }
-        return NodeState.FAILURE;
     }
 
     protected override void OnReset() { }
