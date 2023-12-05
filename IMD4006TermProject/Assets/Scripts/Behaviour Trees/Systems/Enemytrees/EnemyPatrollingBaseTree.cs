@@ -27,7 +27,7 @@ public class EnemyPatrollingBaseTree : BTree
             new Sequence(new List<BTNode>
             {
                 //Start by checking if player is in range to be chased
-                new CheckIfVisible(enemyMeshAgent, player),
+                new CheckIfVisible(enemyMeshAgent),
                 //If we can see the player, different behaviours based on enemy irritation
                 //If they're indifferent
                 new Sequence(new List<BTNode>
@@ -41,8 +41,8 @@ public class EnemyPatrollingBaseTree : BTree
                     //Set a waypoint to pursue the player
                     new TaskChasePlayer(transform, enemyMeshAgent, player),
                     //Set this so that it looks around if chasing the player fails
-                    new Inverter(new CheckIfVisible(enemyMeshAgent, player)),
-                    new CheckIfPlayerSeen(enemyMeshAgent, player),
+                    new Inverter(new CheckIfVisible(enemyMeshAgent)),
+                    new CheckIfPlayerSeen(enemyMeshAgent),
                     //path to the last place they saw them first
                     new TaskCheckLastPlaceSeen(enemy, enemyMeshAgent),
                     //Then stop and look around
@@ -63,8 +63,8 @@ public class EnemyPatrollingBaseTree : BTree
                     //Set a waypoint to pursue the player
                     new TaskChasePlayer(transform, enemyMeshAgent, player),
                     //Set this so that it looks around if chasing the player fails
-                    new Inverter(new CheckIfVisible(enemyMeshAgent, player)),
-                    new CheckIfPlayerSeen(enemyMeshAgent, player),
+                    new Inverter(new CheckIfVisible(enemyMeshAgent)),
+                    new CheckIfPlayerSeen(enemyMeshAgent),
                     //path to the last place they saw them first
                     new TaskCheckLastPlaceSeen(enemy, enemyMeshAgent),
                     //Then stop and look around
@@ -79,8 +79,8 @@ public class EnemyPatrollingBaseTree : BTree
                     //Set a waypoint to pursue the player
                     new TaskChasePlayer(transform, enemyMeshAgent, player),
                     //Set this so that it looks around if chasing the player fails
-                    new Inverter(new CheckIfVisible(enemyMeshAgent, player)),
-                    new CheckIfPlayerSeen(enemyMeshAgent, player),
+                    new Inverter(new CheckIfVisible(enemyMeshAgent)),
+                    new CheckIfPlayerSeen(enemyMeshAgent),
                     //path to the last place they saw them first
                     new TaskCheckLastPlaceSeen(enemy, enemyMeshAgent),
                     //Then stop and look around
@@ -144,7 +144,7 @@ public class EnemyPatrollingBaseTree : BTree
             ////INVESTIGATE LAST PLACE SEEN SEQUENCE
             new Sequence(new List<BTNode>
             {
-                new CheckIfPlayerSeen(enemyMeshAgent, player),
+                new CheckIfPlayerSeen(enemyMeshAgent),
                 //path to the last place they saw them first
                 new TaskCheckLastPlaceSeen(enemy, enemyMeshAgent),
                 //Then stop and look around

@@ -31,10 +31,6 @@ public class TaskPointWander : BTNode
         {
             state = NodeState.FAILURE;
         }
-        if (navigator.GetComponent<Enemy>().seesPlayer || navigator.GetComponent<Enemy>().hearsPlayer)
-        {
-            state = NodeState.FAILURE;
-        }
         else if (waypointDistance >= 1)
         {
             navigator.SetDestination(nextWaypointPos);

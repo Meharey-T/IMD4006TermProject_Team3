@@ -22,6 +22,7 @@ public class TaskChasePlayer : BTNode
 
     protected override NodeState OnRun()
     {
+        Debug.Log("Running TaskChasePlayer");
         float waypointDistance = Vector3.Distance(transform.position, player.transform.position);
         if (agent.speed == thisActor.defaultSpeed)
         {
@@ -63,8 +64,6 @@ public class TaskChasePlayer : BTNode
             // Debug.Log("going to new position");
             state = NodeState.RUNNING;
         }
-
-        
         return state;
     }
 

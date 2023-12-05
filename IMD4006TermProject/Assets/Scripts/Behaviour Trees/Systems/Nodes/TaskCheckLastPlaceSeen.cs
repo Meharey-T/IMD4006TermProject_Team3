@@ -43,9 +43,9 @@ public class TaskCheckLastPlaceSeen : BTNode
         //Quickly abort this script if they hear or see the player; we want them to jump to the appropriate behaviours
         if (thisActor.seesPlayer || thisActor.hearsPlayer)
         {
-            agent.speed = thisActor.defaultSpeed;
             state = NodeState.FAILURE;
         }
+        //If they haven't arrived at their destination yet, keep running
         else if (waypointDistance >= 4f)
         {
             agent.SetDestination(thisActor.lastLocationSeen);
@@ -56,10 +56,8 @@ public class TaskCheckLastPlaceSeen : BTNode
         {
             state = NodeState.SUCCESS;
             agent.speed = thisActor.defaultSpeed;
-            thisActor.sawPlayer = false;
+            //thisActor.sawPlayer = false;
         }
-        //If they haven't reached the waypoint yet, keep running
-        
         return state;
     }
 

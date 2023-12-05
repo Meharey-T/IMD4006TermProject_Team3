@@ -6,14 +6,11 @@ using UnityEngine.AI;
 
 public class CheckIfVisible : BTCondition
 {
-    Player player;
     NavMeshAgent agent;
-    Vector3 playerPos;
-    float distance;
-    public CheckIfVisible(NavMeshAgent checkingAgent, Player player)
+
+    public CheckIfVisible(NavMeshAgent checkingAgent)
     {
         agent = checkingAgent;
-        this.player = player;
     }
 
     protected override NodeState OnRun()
@@ -23,12 +20,11 @@ public class CheckIfVisible : BTCondition
             //Debug.Log("Spotted player");
             return NodeState.SUCCESS;
         }
-        else if (!agent.GetComponent<Enemy>().seesPlayer)
+        else
         {
             //Debug.Log("Doesn't see player");
             return NodeState.FAILURE;
         }
-        return NodeState.FAILURE;
     }
 
     protected override void OnReset() { }

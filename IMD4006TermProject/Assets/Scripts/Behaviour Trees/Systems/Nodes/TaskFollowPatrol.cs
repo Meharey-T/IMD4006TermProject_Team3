@@ -9,7 +9,6 @@ public class TaskFollowPatrol : BTNode
 {
 
     Transform BTTransform;
-    //Vector3 nextWaypointPos;
     NavMeshAgent agent;
     List<GameObject> waypointList;
     int waypointIndex;
