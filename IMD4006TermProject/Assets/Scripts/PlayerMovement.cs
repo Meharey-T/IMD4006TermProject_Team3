@@ -98,7 +98,6 @@ public class PlayerMovement : MonoBehaviour
         Move();
         Turn();
         Reset();
-        //Jump();
         ResolveSoundRadius();
         UpdateStaminaDisplay();
     }

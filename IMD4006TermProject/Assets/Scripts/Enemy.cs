@@ -90,15 +90,15 @@ public class Enemy : MonoBehaviour
         {
             //
             Transform target = rangeChecks[0].transform;
-            //Vector3 facePosition = new Vector3(transform.position.x, transform.position.y + 3.25f, transform.position.z);
+            Vector3 facePosition = new Vector3(transform.position.x, transform.position.y + 3.25f, transform.position.z + 0.3f);
             //Vector3 facePosition = new Vector3(transform.position.x, transform.position.y + 0.3f, transform.position.z);
-            Vector3 directionToTarget = (target.position - transform.position).normalized;
+            Vector3 directionToTarget = (target.position - facePosition).normalized;
 
             if (Vector3.Angle(transform.forward, directionToTarget) < viewAngle / 2)
             {
                 float distanceToTarget = Vector3.Distance(transform.position, target.position);
                 //Physics.Raycast(transform.position, directionToTarget, distanceToTarget, LayerMask.GetMask("Ground"));
-                if (!Physics.Raycast(transform.position, directionToTarget, distanceToTarget, LayerMask.GetMask("Ground")))
+                if (!Physics.Raycast(facePosition, directionToTarget, distanceToTarget, LayerMask.GetMask("Ground")))
                 {
                     seesPlayer = true;
                     lastLocationSeen = playerObj.transform.position;
@@ -181,10 +181,12 @@ public class Enemy : MonoBehaviour
 
     public IEnumerator GrabPlayer()
     {
+        Debug.Log("Grabbing player");
         WaitForSeconds waitTime = new WaitForSeconds(2f);
         yield return waitTime;
         if (playerInGrabRange)
         {
+            Debug.Log("Finishing grabbing player");
             playerObj.GetComponent<Player>().OnPlayerLoseLife();
         }
     }
@@ -225,8 +227,5 @@ public class Enemy : MonoBehaviour
             heardPlayer = true;
             lastLocationHeard = other.transform.position;
         }
-        
     }
-
-
 }

@@ -39,8 +39,9 @@ public class EnemyPatrollingBaseTree : BTree
                     //Stare at the player for 3 full seconds before acting if indifferent
                     new Timer(2f, new TaskStopAndStare(player, enemy)),
                     //Set a waypoint to pursue the player
-                    new TaskChasePlayer(transform, enemyMeshAgent, player),
+                    new TaskChasePlayer(transform, enemyMeshAgent, player)
                     //Set this so that it looks around if chasing the player fails
+                    /* put commas back when uncommenting
                     new Inverter(new CheckIfVisible(enemyMeshAgent)),
                     new CheckIfPlayerSeen(enemyMeshAgent),
                     //path to the last place they saw them first
@@ -50,6 +51,7 @@ public class EnemyPatrollingBaseTree : BTree
                     new Timer(1.5f, new TaskCheckArea(transform)),
                     new Timer(1.5f, new TaskCheckArea(transform)),
                     new TaskClearDetection(enemy, enemyMeshAgent)
+                    */
                 }),
                 //If they're irritated
                 new Sequence(new List<BTNode>
@@ -61,8 +63,9 @@ public class EnemyPatrollingBaseTree : BTree
                     //Stare at the player for 3 full seconds before acting if indifferent
                     new Timer(1f, new TaskStopAndStare(player, enemy)),
                     //Set a waypoint to pursue the player
-                    new TaskChasePlayer(transform, enemyMeshAgent, player),
+                    new TaskChasePlayer(transform, enemyMeshAgent, player)
                     //Set this so that it looks around if chasing the player fails
+                    /* put commas back when uncommenting
                     new Inverter(new CheckIfVisible(enemyMeshAgent)),
                     new CheckIfPlayerSeen(enemyMeshAgent),
                     //path to the last place they saw them first
@@ -72,13 +75,15 @@ public class EnemyPatrollingBaseTree : BTree
                     new Timer(1.5f, new TaskCheckArea(transform)),
                     new Timer(1.5f, new TaskCheckArea(transform)),
                     new TaskClearDetection(enemy, enemyMeshAgent)
+                    */
                 }),
                 //By process of elimination, any more angry behaviours
                 new Sequence(new List<BTNode>
                 {
                     //Set a waypoint to pursue the player
-                    new TaskChasePlayer(transform, enemyMeshAgent, player),
+                    new TaskChasePlayer(transform, enemyMeshAgent, player)
                     //Set this so that it looks around if chasing the player fails
+                    /* put commas back when uncommenting
                     new Inverter(new CheckIfVisible(enemyMeshAgent)),
                     new CheckIfPlayerSeen(enemyMeshAgent),
                     //path to the last place they saw them first
@@ -88,6 +93,7 @@ public class EnemyPatrollingBaseTree : BTree
                     new Timer(1.5f, new TaskCheckArea(transform)),
                     new Timer(1.5f, new TaskCheckArea(transform)),
                     new TaskClearDetection(enemy, enemyMeshAgent)
+                    */
                 })
 
             }),
