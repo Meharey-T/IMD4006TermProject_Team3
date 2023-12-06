@@ -18,7 +18,7 @@ public class TaskStopAndStare : BTNode
 
     protected override NodeState OnRun()
     {
-        Debug.Log("Running TaskStopAndStare");
+        //Debug.Log("Running TaskStopAndStare");
 
         Vector3 direction = (player.transform.position - thisActor.transform.position).normalized;
         lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0f, direction.z));

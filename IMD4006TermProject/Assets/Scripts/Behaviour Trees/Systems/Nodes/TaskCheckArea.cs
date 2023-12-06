@@ -18,7 +18,7 @@ public class TaskCheckArea : BTNode
 
     protected override NodeState OnRun()
     {
-        Debug.Log("Running TaskCheckArea");
+        //Debug.Log("Running TaskCheckArea");
         //If we see the player, we stop doing this right away
         if (BTTransform.GetComponent<Enemy>().seesPlayer)
         {

@@ -15,7 +15,7 @@ public class CheckIfIndifferent : BTCondition
     {
         if (thisActor.angerLevel == Enemy.AngerLevel.INDIFFERENT)
         {
-            Debug.Log("Returning indifferent, success");
+            //Debug.Log("Returning indifferent, success");
             return NodeState.SUCCESS;
         }
         else

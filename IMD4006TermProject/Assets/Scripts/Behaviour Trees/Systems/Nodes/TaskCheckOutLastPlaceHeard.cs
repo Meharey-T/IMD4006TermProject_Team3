@@ -17,7 +17,7 @@ public class TaskCheckOutLastPlaceHeard : BTNode
 
     protected override NodeState OnRun()
     {
-        Debug.Log("Running TaskCheckOutLastPlaceHeard");
+        //Debug.Log("Running TaskCheckOutLastPlaceHeard");
         float waypointDistance = Vector3.Distance(thisActor.transform.position, thisActor.lastLocationHeard);
 
         if (thisActor.angerLevel == Enemy.AngerLevel.INDIFFERENT)
@@ -44,7 +44,7 @@ public class TaskCheckOutLastPlaceHeard : BTNode
         if (agent.GetComponent<Enemy>().seesPlayer || agent.GetComponent<Enemy>().hearsPlayer ||
             agent.GetComponent<Enemy>().sawPlayer)
         {
-            Debug.Log("Detected player, aborting CheckOutLastPlaceHeard");
+            //Debug.Log("Detected player, aborting CheckOutLastPlaceHeard");
             state = NodeState.FAILURE;
         }
         //If they reach the waypoint and don't see anything, go back to regular behaviours

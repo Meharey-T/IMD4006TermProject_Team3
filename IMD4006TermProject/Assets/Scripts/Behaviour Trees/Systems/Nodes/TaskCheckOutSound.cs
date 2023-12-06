@@ -17,12 +17,12 @@ public class TaskCheckOutSound : BTNode
 
     protected override NodeState OnRun()
     {
-        Debug.Log("Running TaskCheckOutSound");
+        //Debug.Log("Running TaskCheckOutSound");
         float waypointDistance = Vector3.Distance(thisActor.transform.position, thisActor.lastLocationHeard);
 
         if (thisActor.angerLevel == Enemy.AngerLevel.INDIFFERENT)
         {
-            Debug.Log(thisActor.angerLevel);
+            //Debug.Log(thisActor.angerLevel);
             agent.speed = 3.5f;
         }
         else if (thisActor.angerLevel == Enemy.AngerLevel.IRRITATED)
@@ -43,7 +43,7 @@ public class TaskCheckOutSound : BTNode
         //If we see the player, don't worry about what we heard, chase them
         if (agent.GetComponent<Enemy>().seesPlayer)
         {
-            Debug.Log("Spotted player, aborting checkoutsound");
+            //Debug.Log("Spotted player, aborting checkoutsound");
             state = NodeState.FAILURE;
         }
         //If they reach the waypoint and don't see anything, go back to regular behaviours
@@ -51,14 +51,14 @@ public class TaskCheckOutSound : BTNode
         {
             agent.speed = thisActor.defaultSpeed;
             state = NodeState.SUCCESS;
-            Debug.Log("Finished checking location");
+            //Debug.Log("Finished checking location");
         }
         //If they haven't reached it, keep going
         else if (waypointDistance >= 4f)
         {
             agent.SetDestination(thisActor.lastLocationHeard);
             state = NodeState.RUNNING;
-            Debug.Log("Checking out sound");
+            //Debug.Log("Checking out sound");
         }
         return state;
     }

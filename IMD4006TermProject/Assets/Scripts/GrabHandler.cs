@@ -18,6 +18,7 @@ public class GrabHandler : MonoBehaviour
         {
             //Starting grab animation goes here?
             StartCoroutine(enemy.GrabPlayer());
+            Debug.Log("Initiating grab action");
             enemy.playerInGrabRange = true;
         }
     }

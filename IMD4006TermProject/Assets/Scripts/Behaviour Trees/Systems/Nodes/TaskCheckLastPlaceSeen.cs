@@ -17,12 +17,12 @@ public class TaskCheckLastPlaceSeen : BTNode
 
     protected override NodeState OnRun()
     {
-        Debug.Log("Running TaskCheckLastPlaceSeen");
+        //Debug.Log("Running TaskCheckLastPlaceSeen");
         float waypointDistance = Vector3.Distance(thisActor.transform.position, thisActor.lastLocationSeen);
 
         if (thisActor.angerLevel == Enemy.AngerLevel.INDIFFERENT)
         {
-                Debug.Log(thisActor.angerLevel);
+                //Debug.Log(thisActor.angerLevel);
                 agent.speed = 3.5f;
         }
         else if (thisActor.angerLevel == Enemy.AngerLevel.IRRITATED)
@@ -43,7 +43,7 @@ public class TaskCheckLastPlaceSeen : BTNode
         //Quickly abort this script if they hear or see the player; we want them to jump to the appropriate behaviours
         if (thisActor.seesPlayer || thisActor.hearsPlayer)
         {
-            Debug.Log("Detected player, aborting CheckLastPlaceSeen");
+            //Debug.Log("Detected player, aborting CheckLastPlaceSeen");
             state = NodeState.FAILURE;
         }
         //If they haven't arrived at their destination yet, keep running
