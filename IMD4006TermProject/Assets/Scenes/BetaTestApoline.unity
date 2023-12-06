@@ -15548,7 +15548,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7920994668321529817, guid: f80a7fc6c4c96e24f8f51bdd390bc17a, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7920994668321529817, guid: f80a7fc6c4c96e24f8f51bdd390bc17a, type: 3}
+      propertyPath: m_TagString
+      value: Carpet
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -18041,30 +18045,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3974088492691103330, guid: 9b2247beea61b504a8712748b7939d1e, type: 3}
-      propertyPath: staminaBar
-      value: 
-      objectReference: {fileID: 1351967633}
-    - target: {fileID: 6402525080016869126, guid: 9b2247beea61b504a8712748b7939d1e, type: 3}
-      propertyPath: fadedAlpha
-      value: 0.33
-      objectReference: {fileID: 0}
-    - target: {fileID: 8233892006867537294, guid: 9b2247beea61b504a8712748b7939d1e, type: 3}
-      propertyPath: indicator
-      value: 
-      objectReference: {fileID: 1767442992}
-    - target: {fileID: 8233892006867537294, guid: 9b2247beea61b504a8712748b7939d1e, type: 3}
-      propertyPath: centralTxt
-      value: 
-      objectReference: {fileID: 173199778}
-    - target: {fileID: 8233892006867537294, guid: 9b2247beea61b504a8712748b7939d1e, type: 3}
-      propertyPath: P_LivesCount
-      value: 
-      objectReference: {fileID: 2029112395}
-    - target: {fileID: 8233892006867537294, guid: 9b2247beea61b504a8712748b7939d1e, type: 3}
-      propertyPath: coinCountTxt
-      value: 
-      objectReference: {fileID: 173199779}
     - target: {fileID: 3029518513293088732, guid: 40ff1c46273af8c4d937dde0628ae643, type: 3}
       propertyPath: m_Name
       value: Player
@@ -18129,6 +18109,42 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8870642308828433629, guid: 40ff1c46273af8c4d937dde0628ae643, type: 3}
+      propertyPath: hardwoodSFX.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 83a563a5991ff7e45aaba67095c3868e, type: 3}
+    - target: {fileID: 8870642308828433629, guid: 40ff1c46273af8c4d937dde0628ae643, type: 3}
+      propertyPath: hardwoodSFX.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: d7d4b51d4b4e2e44f93bb061d042b963, type: 3}
+    - target: {fileID: 8870642308828433629, guid: 40ff1c46273af8c4d937dde0628ae643, type: 3}
+      propertyPath: hardwoodSFX.Array.data[3]
+      value: 
+      objectReference: {fileID: 8300000, guid: 7a6335f0e2c880a4c849cc4ac9c608a1, type: 3}
+    - target: {fileID: 3974088492691103330, guid: 9b2247beea61b504a8712748b7939d1e, type: 3}
+      propertyPath: staminaBar
+      value: 
+      objectReference: {fileID: 1351967633}
+    - target: {fileID: 6402525080016869126, guid: 9b2247beea61b504a8712748b7939d1e, type: 3}
+      propertyPath: fadedAlpha
+      value: 0.33
+      objectReference: {fileID: 0}
+    - target: {fileID: 8233892006867537294, guid: 9b2247beea61b504a8712748b7939d1e, type: 3}
+      propertyPath: indicator
+      value: 
+      objectReference: {fileID: 1767442992}
+    - target: {fileID: 8233892006867537294, guid: 9b2247beea61b504a8712748b7939d1e, type: 3}
+      propertyPath: centralTxt
+      value: 
+      objectReference: {fileID: 173199778}
+    - target: {fileID: 8233892006867537294, guid: 9b2247beea61b504a8712748b7939d1e, type: 3}
+      propertyPath: P_LivesCount
+      value: 
+      objectReference: {fileID: 2029112395}
+    - target: {fileID: 8233892006867537294, guid: 9b2247beea61b504a8712748b7939d1e, type: 3}
+      propertyPath: coinCountTxt
+      value: 
+      objectReference: {fileID: 173199779}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -30106,7 +30122,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7920994668321529817, guid: f80a7fc6c4c96e24f8f51bdd390bc17a, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7920994668321529817, guid: f80a7fc6c4c96e24f8f51bdd390bc17a, type: 3}
+      propertyPath: m_TagString
+      value: Carpet
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -37024,14 +37044,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 529635058}
     - target: {fileID: 6806690849381005727, guid: ab6c689e1066d36438a132dd0f3149e8, type: 3}
-      propertyPath: enemyMeshAgent
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 6806690849381005727, guid: ab6c689e1066d36438a132dd0f3149e8, type: 3}
-      propertyPath: detectionRadius
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 6806690849381005727, guid: ab6c689e1066d36438a132dd0f3149e8, type: 3}
       propertyPath: Waypoints.Array.data[0]
       value: 
       objectReference: {fileID: 1377740600}
@@ -37067,6 +37079,10 @@ PrefabInstance:
       propertyPath: Waypoints.Array.data[8]
       value: 
       objectReference: {fileID: 1377740600}
+    - target: {fileID: 8398858628203423374, guid: ab6c689e1066d36438a132dd0f3149e8, type: 3}
+      propertyPath: Loop
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -14,14 +14,16 @@ public class TerrainState : MonoBehaviour
         walk,
         run,
         sneak
-           // still
+         
 
     }
     public Speed currSpeed = Speed.walk;
 
     public enum FloorType {
         Hardwood,
-        Carpet
+        Carpet,
+        CobbleStone,
+        Crates
     }
     FloorType TerrainType;
     private bool isMoving;
