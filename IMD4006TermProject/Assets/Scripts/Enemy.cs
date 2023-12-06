@@ -22,6 +22,7 @@ public class Enemy : MonoBehaviour
 
     //patrolling 
     public List<GameObject> Waypoints;
+    //public int wayPointIndex;
 
     //Related to detection/seeing
     public bool seesPlayer = false;
@@ -36,6 +37,8 @@ public class Enemy : MonoBehaviour
     public bool heardPlayer = false;
     public Vector3 lastLocationHeard;
 
+    public bool hasStopped = false;
+
     //Handles their anger level
     public enum AngerLevel{INDIFFERENT, IRRITATED, ANGRY, FURIOUS};
     public AngerLevel angerLevel;
@@ -44,6 +47,8 @@ public class Enemy : MonoBehaviour
     public int i_angerLevel;
 
     WaitForSeconds wait = new WaitForSeconds(0.2f);
+
+    public bool playerInGrabRange;
 
 
     // Start is called before the first frame update
@@ -174,6 +179,16 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    public IEnumerator GrabPlayer()
+    {
+        WaitForSeconds waitTime = new WaitForSeconds(2f);
+        yield return waitTime;
+        if (playerInGrabRange)
+        {
+            playerObj.GetComponent<Player>().OnPlayerLoseLife();
+        }
+    }
+
      private void OnTriggerEnter(Collider other)
     {
         //Handles enemies running into traps
@@ -197,6 +212,7 @@ public class Enemy : MonoBehaviour
             heardPlayer = false;
             lastLocationHeard = other.transform.position;
         }
+        
       }
 
     private void OnTriggerExit(Collider other)
@@ -209,6 +225,7 @@ public class Enemy : MonoBehaviour
             heardPlayer = true;
             lastLocationHeard = other.transform.position;
         }
+        
     }
 
 

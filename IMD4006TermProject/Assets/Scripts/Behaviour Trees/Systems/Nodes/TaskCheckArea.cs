@@ -19,11 +19,12 @@ public class TaskCheckArea : BTNode
     protected override NodeState OnRun()
     {
         Debug.Log("Running TaskCheckArea");
-        //If we see or hear the player, we stop doing this right away
-        if (BTTransform.GetComponent<Enemy>().seesPlayer || BTTransform.GetComponent<Enemy>().hearsPlayer)
+        //If we see the player, we stop doing this right away
+        if (BTTransform.GetComponent<Enemy>().seesPlayer)
         {
             state = NodeState.FAILURE;
         }
+        //Otherwise we need to set up an initial turn direction
         else if (!setWayPoint)
         {
             Vector3 turnToPoint = CreateTurnToPoint();
@@ -32,19 +33,10 @@ public class TaskCheckArea : BTNode
             state = NodeState.RUNNING;
             setWayPoint = true;
         }
+        //If we've already set that, then we turn to it
         else if (setWayPoint){
-            if(BTTransform.rotation != lookRotation)
-            {
-                BTTransform.rotation = Quaternion.Slerp(BTTransform.rotation, lookRotation, Time.deltaTime * 5f);
-                state = NodeState.RUNNING;
-            }
-            else
-            {
-                Debug.Log("finished turning");
-                setWayPoint = false;
-                state = NodeState.SUCCESS;
-            }
-            
+            BTTransform.rotation = Quaternion.Slerp(BTTransform.rotation, lookRotation, Time.deltaTime * 5f);
+            state = NodeState.RUNNING;
         }
         return state;
     }

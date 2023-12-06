@@ -41,9 +41,8 @@ public class TaskCheckOutSound : BTNode
         }
 
         //If we see the player, don't worry about what we heard, chase them
-        if (agent.GetComponent<Enemy>().seesPlayer || agent.GetComponent<Enemy>().sawPlayer)
+        if (agent.GetComponent<Enemy>().seesPlayer)
         {
-            agent.speed = thisActor.defaultSpeed;
             state = NodeState.FAILURE;
         }
         //If they reach the waypoint and don't see anything, go back to regular behaviours
@@ -51,7 +50,7 @@ public class TaskCheckOutSound : BTNode
         {
             agent.speed = thisActor.defaultSpeed;
             state = NodeState.SUCCESS;
-            thisActor.heardPlayer = false;
+            //thisActor.heardPlayer = false;
         }
         //If they haven't reached it, keep going
         else if (waypointDistance >= 4f)

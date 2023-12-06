@@ -22,6 +22,7 @@ public class TaskClearDetection : BTNode
         thisActor.seesPlayer = false;
         thisActor.sawPlayer = false;
         thisActor.heardPlayer = false;
+        thisActor.hasStopped = false;
         state = NodeState.SUCCESS;
 
         return state;

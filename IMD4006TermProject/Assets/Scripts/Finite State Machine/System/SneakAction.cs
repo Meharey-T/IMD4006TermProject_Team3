@@ -18,6 +18,13 @@ public class SneakAction : FSMAction
         stateMachine.GetComponent<PlayerMovement>().currentSoundRadius = stateMachine.GetComponent<PlayerMovement>().sneakSoundRadius;
         player.gameObject.layer = 9;
         player.consumingStamina = false;
+
+        //Forward roll if we're sneaking
+        if (Input.GetButtonDown("Jump") && player.groundedPlayer && player.currentStamina >= 50)
+        {
+            player.rb.AddForce(player.transform.forward * player.jumpAmount * 1f, ForceMode.Impulse);
+            player.currentStamina -= 30;
+        }
         //player.GetComponent<Player>().indicator.text = "";
         //Change player animation
         //Change player footstep sounds

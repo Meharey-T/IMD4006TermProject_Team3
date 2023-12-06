@@ -23,7 +23,7 @@ public class TaskChillASecond : BTNode
         }
         else
         {
-            state = NodeState.SUCCESS;
+            state = NodeState.RUNNING;
         }
         return state;
     }

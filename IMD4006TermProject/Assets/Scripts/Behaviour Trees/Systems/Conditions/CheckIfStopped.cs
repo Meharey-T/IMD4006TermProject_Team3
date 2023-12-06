@@ -2,27 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using BehaviourTree;
-using UnityEngine.AI;
 
-public class CheckIfVisible : BTCondition
+public class CheckIfStopped : BTCondition
 {
-    NavMeshAgent agent;
-
-    public CheckIfVisible(NavMeshAgent checkingAgent)
+    Enemy thisActor;
+    public CheckIfStopped(Enemy enemy)
     {
-        agent = checkingAgent;
+        thisActor = enemy;
     }
 
     protected override NodeState OnRun()
     {
-        if (agent.GetComponent<Enemy>().seesPlayer)
+        Debug.Log(thisActor.hasStopped);
+        if (thisActor.hasStopped)
         {
-            //Debug.Log("Spotted player");
             return NodeState.SUCCESS;
         }
         else
         {
-            //Debug.Log("Doesn't see player");
             return NodeState.FAILURE;
         }
     }

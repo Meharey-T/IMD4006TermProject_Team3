@@ -27,20 +27,22 @@ public class EnemyPatrollingBaseTree : BTree
             new Sequence(new List<BTNode>
             {
                 //Start by checking if player is in range to be chased
-                new CheckIfVisible(enemyMeshAgent, player),
+                new CheckIfVisible(enemyMeshAgent),
                 //If we can see the player, different behaviours based on enemy irritation
                 //If they're indifferent
                 new Sequence(new List<BTNode>
                 {
                     //Check how angry the enemy is
                     new CheckIfIndifferent(enemy),
+                    //Check if they've already stopped before
+                    new Inverter(new CheckIfStopped(enemy)),
                     //Stare at the player for 3 full seconds before acting if indifferent
                     new Timer(2f, new TaskStopAndStare(player, enemy)),
                     //Set a waypoint to pursue the player
                     new TaskChasePlayer(transform, enemyMeshAgent, player),
                     //Set this so that it looks around if chasing the player fails
-                    new Inverter(new CheckIfVisible(enemyMeshAgent, player)),
-                    new CheckIfPlayerSeen(enemyMeshAgent, player),
+                    new Inverter(new CheckIfVisible(enemyMeshAgent)),
+                    new CheckIfPlayerSeen(enemyMeshAgent),
                     //path to the last place they saw them first
                     new TaskCheckLastPlaceSeen(enemy, enemyMeshAgent),
                     //Then stop and look around
@@ -54,13 +56,15 @@ public class EnemyPatrollingBaseTree : BTree
                 {
                     //Check how angry the enemy is
                     new CheckIfIrritated(enemy),
+                    //Check if they've already stopped before
+                    new Inverter(new CheckIfStopped(enemy)),
                     //Stare at the player for 3 full seconds before acting if indifferent
                     new Timer(1f, new TaskStopAndStare(player, enemy)),
                     //Set a waypoint to pursue the player
                     new TaskChasePlayer(transform, enemyMeshAgent, player),
                     //Set this so that it looks around if chasing the player fails
-                    new Inverter(new CheckIfVisible(enemyMeshAgent, player)),
-                    new CheckIfPlayerSeen(enemyMeshAgent, player),
+                    new Inverter(new CheckIfVisible(enemyMeshAgent)),
+                    new CheckIfPlayerSeen(enemyMeshAgent),
                     //path to the last place they saw them first
                     new TaskCheckLastPlaceSeen(enemy, enemyMeshAgent),
                     //Then stop and look around
@@ -75,8 +79,8 @@ public class EnemyPatrollingBaseTree : BTree
                     //Set a waypoint to pursue the player
                     new TaskChasePlayer(transform, enemyMeshAgent, player),
                     //Set this so that it looks around if chasing the player fails
-                    new Inverter(new CheckIfVisible(enemyMeshAgent, player)),
-                    new CheckIfPlayerSeen(enemyMeshAgent, player),
+                    new Inverter(new CheckIfVisible(enemyMeshAgent)),
+                    new CheckIfPlayerSeen(enemyMeshAgent),
                     //path to the last place they saw them first
                     new TaskCheckLastPlaceSeen(enemy, enemyMeshAgent),
                     //Then stop and look around
@@ -97,6 +101,9 @@ public class EnemyPatrollingBaseTree : BTree
                 new Sequence(new List<BTNode>
                 {
                     new CheckIfIndifferent(enemy),
+                    //Check if they've already stopped before
+                    new Inverter(new CheckIfStopped(enemy)),
+                    //Stop and stare for a moment before chasing
                     new Timer(2f, new TaskStopAndStare(player, enemy)),
                     //Then have them go to the location they last heard the player
                     new TaskCheckOutSound(enemy, enemyMeshAgent),
@@ -109,6 +116,9 @@ public class EnemyPatrollingBaseTree : BTree
                 new Sequence(new List<BTNode>
                 {
                     new CheckIfIrritated(enemy),
+                    //Check if they've already stopped before
+                    new Inverter(new CheckIfStopped(enemy)),
+                    //Stop and stare for a moment before chasing
                     new Timer(1f, new TaskStopAndStare(player, enemy)),
                     //Then have them go to the location they last heard the player
                     new TaskCheckOutSound(enemy, enemyMeshAgent),
@@ -134,7 +144,7 @@ public class EnemyPatrollingBaseTree : BTree
             ////INVESTIGATE LAST PLACE SEEN SEQUENCE
             new Sequence(new List<BTNode>
             {
-                new CheckIfPlayerSeen(enemyMeshAgent, player),
+                new CheckIfPlayerSeen(enemyMeshAgent),
                 //path to the last place they saw them first
                 new TaskCheckLastPlaceSeen(enemy, enemyMeshAgent),
                 //Then stop and look around

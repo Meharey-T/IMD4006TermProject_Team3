@@ -114,7 +114,7 @@ public class Player : MonoBehaviour
         {
             indicator.transform.GetChild(0).GetComponent<RawImage>().texture = i_unseen;
         }
-        else if (playerWasSeen && !playerIsSeen)
+        else if (!playerIsSeen && playerWasSeen)
         {
             indicator.transform.GetChild(0).GetComponent<RawImage>().texture = i_seen;
         }
@@ -127,7 +127,7 @@ public class Player : MonoBehaviour
         {
             indicator.transform.GetChild(2).GetComponent<RawImage>().texture = i_unheard;
         }
-        else if (playerWasHeard && !playerIsHeard)
+        else if ( !playerIsHeard && playerWasHeard)
         {
             indicator.transform.GetChild(2).GetComponent<RawImage>().texture = i_heard;
         }
@@ -172,10 +172,12 @@ public class Player : MonoBehaviour
         foreach (GameObject enemy in enemySet.Items)
         {
             enemy.transform.position = enemy.GetComponent<Enemy>().startingPos;
+            enemy.transform.rotation = new Quaternion(0, 0, 0, 1);
             enemy.GetComponent<Enemy>().seesPlayer = false;
             enemy.GetComponent<Enemy>().sawPlayer = false;
             enemy.GetComponent<Enemy>().hearsPlayer = false;
             enemy.GetComponent<Enemy>().heardPlayer = false;
+            enemy.GetComponent<Enemy>().hasStopped = false;
         }
     }
 

@@ -9,7 +9,6 @@ public class TaskFollowPatrol : BTNode
 {
 
     Transform BTTransform;
-    //Vector3 nextWaypointPos;
     NavMeshAgent agent;
     List<GameObject> waypointList;
     int waypointIndex;
@@ -30,6 +29,7 @@ public class TaskFollowPatrol : BTNode
         {
             Debug.Log("Detected player and aborting patrol");
             state = NodeState.FAILURE;
+            //waypointIndex = 0;
         }
         else if (waypointIndex == waypointList.Count || !waypointList[waypointIndex])
         {
