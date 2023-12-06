@@ -29,6 +29,7 @@ public class TaskFollowPatrol : BTNode
         {
             Debug.Log("Detected player and aborting patrol");
             state = NodeState.FAILURE;
+            //waypointIndex = 0;
         }
         else if (waypointIndex == waypointList.Count || !waypointList[waypointIndex])
         {

@@ -20,7 +20,7 @@ public class SneakAction : FSMAction
         player.consumingStamina = false;
 
         //Forward roll if we're sneaking
-        if (Input.GetButtonDown("Jump") && player.groundedPlayer && player.currentStamina >= 30)
+        if (Input.GetButtonDown("Jump") && player.groundedPlayer && player.currentStamina >= 50)
         {
             player.rb.AddForce(player.transform.forward * player.jumpAmount * 1f, ForceMode.Impulse);
             player.currentStamina -= 30;

@@ -28,7 +28,7 @@ public class WalkAction : FSMAction
         terraine.PlayWalkingSound();
 
         //jump if we're walking
-        if (Input.GetButtonDown("Jump") && player.groundedPlayer && player.currentStamina >= 30)
+        if (Input.GetButtonDown("Jump") && player.groundedPlayer && player.currentStamina >= 50)
         {
             player.rb.AddForce(Vector3.up * player.jumpAmount, ForceMode.Impulse);
             player.currentStamina -= 30;
