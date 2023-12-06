@@ -13,7 +13,7 @@ public class CheckIfStopped : BTCondition
 
     protected override NodeState OnRun()
     {
-        Debug.Log(thisActor.hasStopped);
+        Debug.Log("This actor has stopped: " + thisActor.hasStopped);
         if (thisActor.hasStopped)
         {
             return NodeState.SUCCESS;

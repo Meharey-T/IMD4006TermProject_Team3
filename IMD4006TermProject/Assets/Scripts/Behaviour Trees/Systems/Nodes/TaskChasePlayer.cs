@@ -44,6 +44,8 @@ public class TaskChasePlayer : BTNode
             }
         }
 
+        Debug.Log("This character sees player: " + thisActor.seesPlayer);
+
         //If we're basically on the player now
         if (waypointDistance < 1)
         {
@@ -60,7 +62,17 @@ public class TaskChasePlayer : BTNode
         //If we can still see the player but haven't reached them yet
         else if (waypointDistance >= 1 && thisActor.seesPlayer)
         {
-            agent.SetDestination(player.transform.position);
+            /*
+            if(player.transform.position.y > 0.3)
+            {
+                NavMesh hitpoint;
+                NavMesh.SamplePosition(player.transform.position, out NavMeshHit hitPoint, 1.5f, NavMesh.AllAreas);
+            }
+            else
+            { */
+                agent.SetDestination(player.transform.position);
+            //}
+           
             // Debug.Log("going to new position");
             state = NodeState.RUNNING;
         }
