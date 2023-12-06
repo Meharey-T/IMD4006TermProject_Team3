@@ -27,7 +27,7 @@ public class TaskFollowPatrol : BTNode
         if (agent.GetComponent<Enemy>().seesPlayer || agent.GetComponent<Enemy>().hearsPlayer
             || agent.GetComponent<Enemy>().sawPlayer || agent.GetComponent<Enemy>().heardPlayer)
         {
-            Debug.Log("Detected player and aborting patrol");
+            //Debug.Log("Detected player and aborting patrol");
             state = NodeState.FAILURE;
             //waypointIndex = 0;
         }

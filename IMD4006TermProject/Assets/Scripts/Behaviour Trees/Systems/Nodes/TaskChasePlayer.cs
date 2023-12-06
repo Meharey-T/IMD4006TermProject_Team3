@@ -22,7 +22,7 @@ public class TaskChasePlayer : BTNode
 
     protected override NodeState OnRun()
     {
-        Debug.Log("Running TaskChasePlayer");
+        //Debug.Log("Running TaskChasePlayer");
         float waypointDistance = Vector3.Distance(transform.position, player.transform.position);
         if (agent.speed == thisActor.defaultSpeed)
         {
@@ -44,6 +44,8 @@ public class TaskChasePlayer : BTNode
             }
         }
 
+        //Debug.Log("This character sees player: " + thisActor.seesPlayer);
+
         //If we're basically on the player now
         if (waypointDistance < 1)
         {
@@ -60,11 +62,38 @@ public class TaskChasePlayer : BTNode
         //If we can still see the player but haven't reached them yet
         else if (waypointDistance >= 1 && thisActor.seesPlayer)
         {
-            agent.SetDestination(player.transform.position);
+            //Check if the player is standing on something above the ground
+            if(player.transform.position.y > 0.3 && player.GetComponent<PlayerMovement>().groundedPlayer)
+            {
+                Debug.Log("Attempting to find the closest path to the player");
+                Vector3 closestNavPoint = FindNearestPathable();
+                agent.SetDestination(closestNavPoint);
+            }
+            else
+            { 
+                agent.SetDestination(player.transform.position);
+            }
+           
             // Debug.Log("going to new position");
             state = NodeState.RUNNING;
         }
         return state;
+    }
+
+    private Vector3 FindNearestPathable()
+    {
+        //Try to find a point near the player on the ground
+        Vector3 testPoint = new Vector3(player.transform.position.x, 0, player.transform.position.z) + Random.insideUnitSphere * 1.5f;
+        while (!TestPoint(testPoint))
+        {
+            testPoint = new Vector3(player.transform.position.x, 0, player.transform.position.z) + Random.insideUnitSphere * 1.5f;
+        }
+        return testPoint;
+    }
+    private bool TestPoint(Vector3 proposedWaypoint)
+    {
+        NavMeshHit hit;
+        return NavMesh.SamplePosition(proposedWaypoint, out hit, 1f, NavMesh.AllAreas);
     }
 
     protected override void OnReset() { }
