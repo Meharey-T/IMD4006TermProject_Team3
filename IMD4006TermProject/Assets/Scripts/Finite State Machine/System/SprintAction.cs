@@ -20,6 +20,13 @@ public class SprintAction : FSMAction
         stateMachine.GetComponent<PlayerMovement>().currentSoundRadius = stateMachine.GetComponent<PlayerMovement>().sprintSoundRadius;
         player.gameObject.layer = 9;
         player.consumingStamina = true;
+
+        //Jump if we're running
+        if (Input.GetButtonDown("Jump") && player.groundedPlayer && player.currentStamina >= 30)
+        {
+            player.rb.AddForce(Vector3.up * player.jumpAmount, ForceMode.Impulse);
+            player.currentStamina -= 30;
+        }
         //Change player animation
         //Change player footstep sounds
         //terraine.currSpeed = terraine.GetRun();

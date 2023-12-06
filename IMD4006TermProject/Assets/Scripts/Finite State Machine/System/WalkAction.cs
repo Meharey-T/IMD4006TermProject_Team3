@@ -27,6 +27,13 @@ public class WalkAction : FSMAction
         //play sneak sfx
         terraine.PlayWalkingSound();
 
+        //jump if we're walking
+        if (Input.GetButtonDown("Jump") && player.groundedPlayer && player.currentStamina >= 30)
+        {
+            player.rb.AddForce(Vector3.up * player.jumpAmount, ForceMode.Impulse);
+            player.currentStamina -= 30;
+        }
+
         //Change player animation
         //Change player footstep sounds
     }

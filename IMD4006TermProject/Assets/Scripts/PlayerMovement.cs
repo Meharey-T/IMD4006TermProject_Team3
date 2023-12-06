@@ -20,7 +20,7 @@ public class PlayerMovement : MonoBehaviour
 
     //stats for sprinting - or not sprinting
     private int maxStamina = 150;
-    private int currentStamina = 150;
+    public int currentStamina = 150;
     public bool consumingStamina = false;
     public bool winded = false;
     /*
@@ -46,7 +46,7 @@ public class PlayerMovement : MonoBehaviour
 
     //Affects our jump variables
     [Header("Jump feel")]
-    [SerializeField] private float jumpAmount;
+    [SerializeField] public float jumpAmount;
     [SerializeField] private float gravityScale;
     //Vector3 jumpVector;
     public bool groundedPlayer = true;
@@ -78,7 +78,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float carpetMultiplier;
 
     //Component references
-    private Rigidbody rb;
+    public Rigidbody rb;
     public SphereCollider soundRadius;
     [SerializeField] private GameObject playerGeo;
     [SerializeField] private Image staminaBar;
@@ -98,7 +98,7 @@ public class PlayerMovement : MonoBehaviour
         Move();
         Turn();
         Reset();
-        Jump();
+        //Jump();
         ResolveSoundRadius();
         UpdateStaminaDisplay();
     }
@@ -184,14 +184,7 @@ public class PlayerMovement : MonoBehaviour
         rotator.transform.rotation = Quaternion.Euler(-turn.y, turn.x, 0);
     }
 
-    void Jump()
-    {
-        //If player presses jump, jump
-        if (Input.GetButtonDown("Jump") && groundedPlayer)
-        {
-            rb.AddForce(Vector3.up * jumpAmount, ForceMode.Impulse);
-        }
-    }
+    
 
     private void ResolveSoundRadius()
     {
