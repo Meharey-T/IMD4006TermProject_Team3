@@ -178,6 +178,17 @@ public class Player : MonoBehaviour
             enemy.GetComponent<Enemy>().hearsPlayer = false;
             enemy.GetComponent<Enemy>().heardPlayer = false;
             enemy.GetComponent<Enemy>().hasStopped = false;
+            enemy.GetComponent<Enemy>().caughtPlayer = true;
+        }
+        StartCoroutine(ReactivateEnemies());
+    }
+
+    IEnumerator ReactivateEnemies()
+    {
+        yield return new WaitForSeconds(0.1f);
+        foreach (GameObject enemy in enemySet.Items)
+        {
+            enemy.GetComponent<Enemy>().caughtPlayer = false;
         }
     }
 

@@ -46,6 +46,7 @@ public class EnemyPatrollingBaseTree : BTree
                         }),
                         //Set a waypoint to pursue the player
                         new TaskChasePlayer(transform, enemyMeshAgent, player)
+                        //new Timer(0.1f, new TaskClearDetection(enemy, enemyMeshAgent))
                     }),
                     //If they're irritated
                     new Sequence(new List<BTNode>
@@ -61,12 +62,14 @@ public class EnemyPatrollingBaseTree : BTree
                             new TaskSetHasStoppedTrue(enemy)
                         }),
                         new TaskChasePlayer(transform, enemyMeshAgent, player)
+                        //new Timer(0.1f, new TaskClearDetection(enemy, enemyMeshAgent))
                     }),
                     //By process of elimination, any more angry behaviours
                     new Sequence(new List<BTNode>
                     {
                         //Set a waypoint to pursue the player
                         new TaskChasePlayer(transform, enemyMeshAgent, player)
+                        //new Timer(0.1f, new TaskClearDetection(enemy, enemyMeshAgent))
                     })
                 })
             }),
