@@ -192,7 +192,7 @@ public class Player : MonoBehaviour
         centralTxt.text = "You got kicked out!";
         centralTxt.enabled = true;
         yield return new WaitForSeconds(2f);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene(2);
     }
 
     public IEnumerator OnPlayerWon()
@@ -200,6 +200,6 @@ public class Player : MonoBehaviour
         centralTxt.text = "You won! \n You got " + coinCount + " coins!";
         centralTxt.enabled = true;
         yield return new WaitForSeconds(5f);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene(3);
     }
 }

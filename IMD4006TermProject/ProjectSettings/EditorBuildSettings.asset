@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/BetaTestApoline.unity
     guid: f685b5c291d3f76458edc77d427e692a
+  - enabled: 1
+    path: Assets/Scenes/Win.unity
+    guid: 912ba63ce2d29b34593100922cca1dbe
   m_configObjects: {}
