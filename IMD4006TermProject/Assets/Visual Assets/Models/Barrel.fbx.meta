@@ -3,7 +3,17 @@ guid: bd3c1b43c8e241b46981c2c37a39b760
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Aged Wood
+    second: {fileID: 2100000, guid: 72f4c09056523ee48ba7ee14bd59b066, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Rusted Metal Rivets
+    second: {fileID: 2100000, guid: f76238a3031825e47b867408c4d7f5a3, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

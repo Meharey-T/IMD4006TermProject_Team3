@@ -8,6 +8,7 @@ public class TaskCheckOutSound : BTNode
 {
     NavMeshAgent agent;
     Enemy thisActor;
+    Quaternion lookRotation;
 
     public TaskCheckOutSound(Enemy enemy, NavMeshAgent enemyMeshAgent)
     {
@@ -17,15 +18,17 @@ public class TaskCheckOutSound : BTNode
 
     protected override NodeState OnRun()
     {
-        Debug.Log("Running TaskCheckOutSound");
+        //Debug.Log("Running TaskCheckOutSound");
         float waypointDistance = Vector3.Distance(thisActor.transform.position, thisActor.lastLocationHeard);
 
+<<<<<<< HEAD
         if (agent.speed == thisActor.defaultSpeed)
         
         {
             agent.GetComponent<EnemySoundFX>().currState = agent.GetComponent<EnemySoundFX>().GetHearState();
             if (thisActor.angerLevel == Enemy.AngerLevel.INDIFFERENT)
             {
+                //Debug.Log(thisActor.angerLevel);
                 agent.speed = 3.5f;
                 //set the sound effect to indiffernt
   
@@ -49,11 +52,13 @@ public class TaskCheckOutSound : BTNode
             {
                 agent.speed = 6f;
             }
-        }
+
+        //Debug.Log("What in the world is happening???");
 
         //If we see the player, don't worry about what we heard, chase them
         if (agent.GetComponent<Enemy>().seesPlayer)
         {
+            //Debug.Log("Spotted player, aborting checkoutsound");
             state = NodeState.FAILURE;
         }
         //If they reach the waypoint and don't see anything, go back to regular behaviours
@@ -61,13 +66,17 @@ public class TaskCheckOutSound : BTNode
         {
             agent.speed = thisActor.defaultSpeed;
             state = NodeState.SUCCESS;
-            //thisActor.heardPlayer = false;
+            //Debug.Log("Finished checking location");
         }
         //If they haven't reached it, keep going
         else if (waypointDistance >= 4f)
         {
+            Vector3 direction = (thisActor.lastLocationHeard - thisActor.transform.position).normalized;
+            lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0f, direction.z));
+            thisActor.transform.rotation = Quaternion.Slerp(thisActor.transform.rotation, lookRotation, Time.deltaTime * 5f);
             agent.SetDestination(thisActor.lastLocationHeard);
             state = NodeState.RUNNING;
+            //Debug.Log("Checking out sound");
         }
         return state;
     }

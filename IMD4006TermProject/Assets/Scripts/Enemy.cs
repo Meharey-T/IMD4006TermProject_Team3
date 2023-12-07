@@ -46,7 +46,16 @@ public class Enemy : MonoBehaviour
     public int treasureLeft;
     public int i_angerLevel;
 
+    GameObject emojiTarget;
+    GameObject emojiPrefab;
+    Texture i_currentEmoji;
+    [SerializeField] Texture i_indifferent;
+    [SerializeField] Texture i_irritated;
+    [SerializeField] Texture i_angry;
+    [SerializeField] Texture i_furious;
+
     WaitForSeconds wait = new WaitForSeconds(0.2f);
+    WaitForSeconds grabTime = new WaitForSeconds(2f);
 
     public bool playerInGrabRange;
 
@@ -61,6 +70,7 @@ public class Enemy : MonoBehaviour
         rangeChecks = new Collider[4];
         StartCoroutine(FOVRoutine());
         StartCoroutine(AngerCheck());
+
     }
 
     // Update is called once per frame
@@ -90,15 +100,15 @@ public class Enemy : MonoBehaviour
         {
             //
             Transform target = rangeChecks[0].transform;
-            //Vector3 facePosition = new Vector3(transform.position.x, transform.position.y + 3.25f, transform.position.z);
+            Vector3 facePosition = new Vector3(transform.position.x, transform.position.y + 3.25f, transform.position.z + 0.3f);
             //Vector3 facePosition = new Vector3(transform.position.x, transform.position.y + 0.3f, transform.position.z);
-            Vector3 directionToTarget = (target.position - transform.position).normalized;
+            Vector3 directionToTarget = (target.position - facePosition).normalized;
 
             if (Vector3.Angle(transform.forward, directionToTarget) < viewAngle / 2)
             {
                 float distanceToTarget = Vector3.Distance(transform.position, target.position);
                 //Physics.Raycast(transform.position, directionToTarget, distanceToTarget, LayerMask.GetMask("Ground"));
-                if (!Physics.Raycast(transform.position, directionToTarget, distanceToTarget, LayerMask.GetMask("Ground")))
+                if (!Physics.Raycast(facePosition, directionToTarget, distanceToTarget, LayerMask.GetMask("Ground")))
                 {
                     seesPlayer = true;
                     lastLocationSeen = playerObj.transform.position;
@@ -157,36 +167,43 @@ public class Enemy : MonoBehaviour
         if(treasureLeft > (totalTreasure / 4) * 3)
         {
             angerLevel = AngerLevel.INDIFFERENT;
+            i_currentEmoji = i_indifferent;
             //enemyMeshAgent.speed = 3;
         }
         //If the treasure left is less than 75% but more than 50%
         else if (treasureLeft < (totalTreasure / 4) * 3 && treasureLeft > totalTreasure / 2)
         {
             angerLevel = AngerLevel.IRRITATED;
+            i_currentEmoji = i_irritated;
             //enemyMeshAgent.speed = 3.5f;
         }
         //If the treasure left is less than 50% but more than 25%
         else if(treasureLeft < totalTreasure / 2 && treasureLeft > totalTreasure / 4)
         {
             angerLevel = AngerLevel.ANGRY;
+            i_currentEmoji = i_angry;
             //enemyMeshAgent.speed = 4;
         }
         //If the treasure left is less than 25%
         else if(treasureLeft < totalTreasure / 4)
         {
             angerLevel = AngerLevel.FURIOUS;
+            i_currentEmoji = i_furious;
             //enemyMeshAgent.speed = 4.5f;
         }
     }
 
     public IEnumerator GrabPlayer()
     {
-        WaitForSeconds waitTime = new WaitForSeconds(2f);
-        yield return waitTime;
+        Debug.Log("Grabbing player");
+        yield return grabTime;
         if (playerInGrabRange)
         {
+            Debug.Log("Finishing grabbing player");
             playerObj.GetComponent<Player>().OnPlayerLoseLife();
         }
+        StopCoroutine(GrabPlayer());
+        playerInGrabRange = false;
     }
 
      private void OnTriggerEnter(Collider other)
@@ -194,7 +211,7 @@ public class Enemy : MonoBehaviour
         //Handles enemies running into traps
         if(other.gameObject.tag == "Trap")
         {
-         this.GetComponent<Interactable>().Die();
+            this.GetComponent<Interactable>().Die();
         }
 
         //Handles if they run into the player while they're not hiding
@@ -202,6 +219,7 @@ public class Enemy : MonoBehaviour
         if(other.gameObject.layer == 9 && other.GetType() == typeof(BoxCollider))
         {
             //Player will lose a life
+            Debug.Log("Player losing life the old fashioned way");
             other.GetComponentInParent<Player>().OnPlayerLoseLife();
         }
         //Handles if they fall into the radius of the player projected sound
@@ -212,8 +230,18 @@ public class Enemy : MonoBehaviour
             heardPlayer = false;
             lastLocationHeard = other.transform.position;
         }
-        
       }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.layer == 9 && other.GetType() == typeof(SphereCollider))
+        {
+            //Sets them to alert and sets a value to their location heard, allowing them to pursue the source of the sound
+            hearsPlayer = true;
+            heardPlayer = false;
+            lastLocationHeard = other.transform.position;
+        }
+    }
 
     private void OnTriggerExit(Collider other)
     {
@@ -225,8 +253,5 @@ public class Enemy : MonoBehaviour
             heardPlayer = true;
             lastLocationHeard = other.transform.position;
         }
-        
     }
-
-
 }
