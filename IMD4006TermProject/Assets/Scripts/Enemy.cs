@@ -46,6 +46,14 @@ public class Enemy : MonoBehaviour
     public int treasureLeft;
     public int i_angerLevel;
 
+    GameObject emojiTarget;
+    GameObject emojiPrefab;
+    Texture i_currentEmoji;
+    [SerializeField] Texture i_indifferent;
+    [SerializeField] Texture i_irritated;
+    [SerializeField] Texture i_angry;
+    [SerializeField] Texture i_furious;
+
     WaitForSeconds wait = new WaitForSeconds(0.2f);
     WaitForSeconds grabTime = new WaitForSeconds(2f);
 
@@ -62,6 +70,7 @@ public class Enemy : MonoBehaviour
         rangeChecks = new Collider[4];
         StartCoroutine(FOVRoutine());
         StartCoroutine(AngerCheck());
+
     }
 
     // Update is called once per frame
@@ -158,24 +167,28 @@ public class Enemy : MonoBehaviour
         if(treasureLeft > (totalTreasure / 4) * 3)
         {
             angerLevel = AngerLevel.INDIFFERENT;
+            i_currentEmoji = i_indifferent;
             //enemyMeshAgent.speed = 3;
         }
         //If the treasure left is less than 75% but more than 50%
         else if (treasureLeft < (totalTreasure / 4) * 3 && treasureLeft > totalTreasure / 2)
         {
             angerLevel = AngerLevel.IRRITATED;
+            i_currentEmoji = i_irritated;
             //enemyMeshAgent.speed = 3.5f;
         }
         //If the treasure left is less than 50% but more than 25%
         else if(treasureLeft < totalTreasure / 2 && treasureLeft > totalTreasure / 4)
         {
             angerLevel = AngerLevel.ANGRY;
+            i_currentEmoji = i_angry;
             //enemyMeshAgent.speed = 4;
         }
         //If the treasure left is less than 25%
         else if(treasureLeft < totalTreasure / 4)
         {
             angerLevel = AngerLevel.FURIOUS;
+            i_currentEmoji = i_furious;
             //enemyMeshAgent.speed = 4.5f;
         }
     }
