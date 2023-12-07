@@ -8,6 +8,7 @@ public class TaskCheckOutLastPlaceHeard : BTNode
 {
     NavMeshAgent agent;
     Enemy thisActor;
+    Quaternion lookRotation;
 
     public TaskCheckOutLastPlaceHeard(Enemy enemy, NavMeshAgent enemyMeshAgent)
     {
@@ -22,7 +23,6 @@ public class TaskCheckOutLastPlaceHeard : BTNode
 
         if (thisActor.angerLevel == Enemy.AngerLevel.INDIFFERENT)
         {
-            Debug.Log(thisActor.angerLevel);
             agent.speed = 3.5f;
         }
         else if (thisActor.angerLevel == Enemy.AngerLevel.IRRITATED)
@@ -57,6 +57,9 @@ public class TaskCheckOutLastPlaceHeard : BTNode
         //If they haven't reached it, keep going
         else if (waypointDistance >= 4f)
         {
+            Vector3 direction = (thisActor.lastLocationHeard - thisActor.transform.position).normalized;
+            lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0f, direction.z));
+            thisActor.transform.rotation = Quaternion.Slerp(thisActor.transform.rotation, lookRotation, Time.deltaTime * 5f);
             agent.SetDestination(thisActor.lastLocationHeard);
             state = NodeState.RUNNING;
         }

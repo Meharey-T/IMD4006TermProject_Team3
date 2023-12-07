@@ -8,6 +8,7 @@ public class TaskCheckLastPlaceSeen : BTNode
 {
     NavMeshAgent agent;
     Enemy thisActor;
+    Quaternion lookRotation;
 
     public TaskCheckLastPlaceSeen(Enemy enemy, NavMeshAgent enemyMeshAgent)
     {
@@ -49,6 +50,9 @@ public class TaskCheckLastPlaceSeen : BTNode
         //If they haven't arrived at their destination yet, keep running
         else if (waypointDistance >= 4f)
         {
+            Vector3 direction = (thisActor.lastLocationSeen - thisActor.transform.position).normalized;
+            lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0f, direction.z));
+            thisActor.transform.rotation = Quaternion.Slerp(thisActor.transform.rotation, lookRotation, Time.deltaTime * 5f);
             agent.SetDestination(thisActor.lastLocationSeen);
             state = NodeState.RUNNING;
         }

@@ -19,7 +19,7 @@ public class TaskStopAndStare : BTNode
     protected override NodeState OnRun()
     {
         //Debug.Log("Running TaskStopAndStare");
-
+        thisActor.enemyMeshAgent.ResetPath();
         Vector3 direction = (player.transform.position - thisActor.transform.position).normalized;
         lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0f, direction.z));
         thisActor.transform.rotation = Quaternion.Slerp(thisActor.transform.rotation, lookRotation, Time.deltaTime * 5f);

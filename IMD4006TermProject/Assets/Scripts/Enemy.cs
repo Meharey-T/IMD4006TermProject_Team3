@@ -47,6 +47,7 @@ public class Enemy : MonoBehaviour
     public int i_angerLevel;
 
     WaitForSeconds wait = new WaitForSeconds(0.2f);
+    WaitForSeconds grabTime = new WaitForSeconds(2f);
 
     public bool playerInGrabRange;
 
@@ -182,13 +183,14 @@ public class Enemy : MonoBehaviour
     public IEnumerator GrabPlayer()
     {
         Debug.Log("Grabbing player");
-        WaitForSeconds waitTime = new WaitForSeconds(2f);
-        yield return waitTime;
+        yield return grabTime;
         if (playerInGrabRange)
         {
             Debug.Log("Finishing grabbing player");
             playerObj.GetComponent<Player>().OnPlayerLoseLife();
         }
+        StopCoroutine(GrabPlayer());
+        playerInGrabRange = false;
     }
 
      private void OnTriggerEnter(Collider other)
@@ -196,7 +198,7 @@ public class Enemy : MonoBehaviour
         //Handles enemies running into traps
         if(other.gameObject.tag == "Trap")
         {
-         this.GetComponent<Interactable>().Die();
+            this.GetComponent<Interactable>().Die();
         }
 
         //Handles if they run into the player while they're not hiding
@@ -204,6 +206,7 @@ public class Enemy : MonoBehaviour
         if(other.gameObject.layer == 9 && other.GetType() == typeof(BoxCollider))
         {
             //Player will lose a life
+            Debug.Log("Player losing life the old fashioned way");
             other.GetComponentInParent<Player>().OnPlayerLoseLife();
         }
         //Handles if they fall into the radius of the player projected sound
@@ -214,8 +217,18 @@ public class Enemy : MonoBehaviour
             heardPlayer = false;
             lastLocationHeard = other.transform.position;
         }
-        
       }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.layer == 9 && other.GetType() == typeof(SphereCollider))
+        {
+            //Sets them to alert and sets a value to their location heard, allowing them to pursue the source of the sound
+            hearsPlayer = true;
+            heardPlayer = false;
+            lastLocationHeard = other.transform.position;
+        }
+    }
 
     private void OnTriggerExit(Collider other)
     {

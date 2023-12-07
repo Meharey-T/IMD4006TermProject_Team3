@@ -11,6 +11,7 @@ public class TaskChasePlayer : BTNode
     NavMeshAgent agent;
     Player player;
     Enemy thisActor;
+    Quaternion lookRotation;
 
     public TaskChasePlayer(Transform transform, NavMeshAgent enemyMeshAgent, Player player)
     {
@@ -62,15 +63,17 @@ public class TaskChasePlayer : BTNode
         //If we can still see the player but haven't reached them yet
         else if (waypointDistance >= 1 && thisActor.seesPlayer)
         {
+            Vector3 direction = (player.transform.position - thisActor.transform.position).normalized;
+            lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0f, direction.z));
+            thisActor.transform.rotation = Quaternion.Slerp(thisActor.transform.rotation, lookRotation, Time.deltaTime * 5f);
             //Check if the player is standing on something above the ground
-            if(player.transform.position.y > 0.3 && player.GetComponent<PlayerMovement>().groundedPlayer)
+            if (player.transform.position.y > 0.3 && player.GetComponent<PlayerMovement>().groundedPlayer)
             {
-                Debug.Log("Attempting to find the closest path to the player");
                 Vector3 closestNavPoint = FindNearestPathable();
                 agent.SetDestination(closestNavPoint);
             }
             else
-            { 
+            {
                 agent.SetDestination(player.transform.position);
             }
            
@@ -83,17 +86,26 @@ public class TaskChasePlayer : BTNode
     private Vector3 FindNearestPathable()
     {
         //Try to find a point near the player on the ground
+        
         Vector3 testPoint = new Vector3(player.transform.position.x, 0, player.transform.position.z) + Random.insideUnitSphere * 1.5f;
         while (!TestPoint(testPoint))
         {
             testPoint = new Vector3(player.transform.position.x, 0, player.transform.position.z) + Random.insideUnitSphere * 1.5f;
         }
         return testPoint;
+        /*
+        NavMeshHit hit;
+        if(NavMesh.FindClosestEdge(player.transform.position, out hit, NavMesh.AllAreas))
+        {
+            return hit.position;
+        }
+        return hit.position;
+        */
     }
     private bool TestPoint(Vector3 proposedWaypoint)
     {
         NavMeshHit hit;
-        return NavMesh.SamplePosition(proposedWaypoint, out hit, 1f, NavMesh.AllAreas);
+        return NavMesh.SamplePosition(proposedWaypoint, out hit, 5f, NavMesh.AllAreas);
     }
 
     protected override void OnReset() { }

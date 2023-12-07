@@ -17,9 +17,9 @@ public class GrabHandler : MonoBehaviour
         if (other.gameObject.layer == 9 && other.GetType() == typeof(BoxCollider))
         {
             //Starting grab animation goes here?
-            StartCoroutine(enemy.GrabPlayer());
             Debug.Log("Initiating grab action");
             enemy.playerInGrabRange = true;
+            StartCoroutine(enemy.GrabPlayer());
         }
     }
     private void OnTriggerExit(Collider other)
