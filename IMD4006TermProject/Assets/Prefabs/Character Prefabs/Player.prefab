@@ -367,6 +367,7 @@ MonoBehaviour:
   baseSpeed: 3.5
   sprintSpeed: 6
   sneakSpeed: 2
+  currentStamina: 150
   consumingStamina: 0
   winded: 0
   speedSmoothTime: 0.1
@@ -384,6 +385,7 @@ MonoBehaviour:
   currentSoundRadius: 5
   hardWoodMultiplier: 0
   carpetMultiplier: 0
+  rb: {fileID: 0}
   soundRadius: {fileID: 0}
   playerGeo: {fileID: 4016466097069799744}
   staminaBar: {fileID: 0}
@@ -518,14 +520,24 @@ MonoBehaviour:
   currSpeed: 0
   carpetSFX:
   - {fileID: 0}
-  - {fileID: 8300000, guid: d5ecdf865d1e7ac43a5544841bccabcc, type: 3}
-  - {fileID: 8300000, guid: d22f3a6eb80de7b45813c62828509100, type: 3}
-  - {fileID: 8300000, guid: 2ec3f0731af4eaa4c920fc636882205f, type: 3}
+  - {fileID: 8300000, guid: 69a5e3fd65fe0344ba521c3999cbd093, type: 3}
+  - {fileID: 8300000, guid: 7d460708c25986b409a79b3f1b7933bc, type: 3}
+  - {fileID: 8300000, guid: cffd91c388774ea45abaafafc131836c, type: 3}
   hardwoodSFX:
   - {fileID: 0}
-  - {fileID: 8300000, guid: 7284561a03535a94abc631a82562671a, type: 3}
-  - {fileID: 8300000, guid: 650f9b13a58a0e24a948fe53182c6e5a, type: 3}
-  - {fileID: 8300000, guid: 91791336c5738244cb69adbe67fbb217, type: 3}
+  - {fileID: 8300000, guid: 83a563a5991ff7e45aaba67095c3868e, type: 3}
+  - {fileID: 8300000, guid: d7d4b51d4b4e2e44f93bb061d042b963, type: 3}
+  - {fileID: 8300000, guid: 7a6335f0e2c880a4c849cc4ac9c608a1, type: 3}
+  cobblestoneSFX:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  crateSFX:
+  - {fileID: 0}
+  - {fileID: 8300000, guid: 83a563a5991ff7e45aaba67095c3868e, type: 3}
+  - {fileID: 8300000, guid: d7d4b51d4b4e2e44f93bb061d042b963, type: 3}
+  - {fileID: 8300000, guid: 7a6335f0e2c880a4c849cc4ac9c608a1, type: 3}
   terrainTag: 
 --- !u!114 &8717395456014033637
 MonoBehaviour:

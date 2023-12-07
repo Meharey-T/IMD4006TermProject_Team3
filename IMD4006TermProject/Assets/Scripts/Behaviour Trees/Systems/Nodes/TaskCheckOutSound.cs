@@ -21,20 +21,22 @@ public class TaskCheckOutSound : BTNode
         //Debug.Log("Running TaskCheckOutSound");
         float waypointDistance = Vector3.Distance(thisActor.transform.position, thisActor.lastLocationHeard);
 
-<<<<<<< HEAD
         if (agent.speed == thisActor.defaultSpeed)
-        
+
         {
-            agent.GetComponent<EnemySoundFX>().currState = agent.GetComponent<EnemySoundFX>().GetHearState();
+            //agent.GetComponent<EnemySoundFX>().currState = agent.GetComponent<EnemySoundFX>().GetHearState();
             if (thisActor.angerLevel == Enemy.AngerLevel.INDIFFERENT)
             {
+                //agent.GetComponent<EnemySoundFX>().hasAcknowledged = false;
                 //Debug.Log(thisActor.angerLevel);
                 agent.speed = 3.5f;
                 //set the sound effect to indiffernt
-  
-                Debug.Log("I hear you SFX is set indifferent");
-                agent.GetComponent<EnemySoundFX>().currEmotion = agent.GetComponent<EnemySoundFX>().GetIndifference();
-                agent.GetComponent<EnemySoundFX>().PlayCheckOutSoundSound();
+
+               //Debug.Log("I hear you SFX is set indifferent");
+               
+              //  agent.GetComponent<EnemySoundFX>().currEmotion = agent.GetComponent<EnemySoundFX>().GetIndifference();
+               // agent.GetComponent<EnemySoundFX>().PlayCheckOutSoundSound();
+               //agent.GetComponent<EnemySoundFX>().hasAcknowledged = true;
             }
             else if (thisActor.angerLevel == Enemy.AngerLevel.IRRITATED)
             {
@@ -52,7 +54,7 @@ public class TaskCheckOutSound : BTNode
             {
                 agent.speed = 6f;
             }
-
+        }
         //Debug.Log("What in the world is happening???");
 
         //If we see the player, don't worry about what we heard, chase them

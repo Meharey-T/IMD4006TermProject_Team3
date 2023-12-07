@@ -40,7 +40,7 @@ public class EnemySoundFX : MonoBehaviour
 
     AudioClip clip = null;
 
-    bool hasAcknowledged;
+   public bool hasAcknowledged;
     void Start()
     {
 
@@ -92,8 +92,11 @@ public class EnemySoundFX : MonoBehaviour
     }
     public void PlayCheckOutSoundSound()
     {
+       if( hasAcknowledged == true)
+        {
+            enemySoundSource.enabled = false;
 
-
+        }
         if (currState == EnemyState.Hear)
         {
             clip = null;
@@ -103,25 +106,36 @@ public class EnemySoundFX : MonoBehaviour
             {
 
 
-                /*  Enemy thisActor;
-            currEmotion = thisActor.AngerLevel;
-                
-                 * 
-                */
+             
                 case AngerLevel.INDIFFERENT:
                     clip = hearSFX[(int)1];
+                    Debug.Log("I hear you SFX Should play");
+                    break;
+                case AngerLevel.IRRITATED:
+                    clip = hearSFX[(int)1];
+                    Debug.Log("I hear you SFX Should play");
+                    break;
+                case AngerLevel.ANGRY:
+                    clip = hearSFX[(int)2];
+                    Debug.Log("I hear you SFX Should play");
+                    break;
+                case AngerLevel.FURIOUS:
+                    clip = hearSFX[(int)2];
                     Debug.Log("I hear you SFX Should play");
                     break;
 
 
 
             }
-            enemySoundSource.enabled = true;
+            if (!enemySoundSource.isPlaying && hasAcknowledged == false)
+            { Debug.Log("PlayingSFX");
+                enemySoundSource.enabled = true;
             enemySoundSource.clip = clip;
             enemySoundSource.volume = 1;
-            if (!enemySoundSource.isPlaying)
-            {
-            enemySoundSource.Play();
+               
+                enemySoundSource.Play();
+               
+                
            }
         }
         else
