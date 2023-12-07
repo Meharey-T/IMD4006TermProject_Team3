@@ -28,8 +28,8 @@ public class Player : MonoBehaviour
     //public TMPro.TextMeshProUGUI indicator;
     public GameObject P_LivesCount;
     public GameObject indicator;
-
-    [SerializeField]public  int coinCount = 0;
+    public bool winLose;
+    [SerializeField] public int coinCount = 0;
 
     int lives = 3;
 
@@ -62,7 +62,7 @@ public class Player : MonoBehaviour
     {
         if (Input.GetKeyDown("t"))
         {
-           SetTrap();
+            SetTrap();
             Debug.Log("setTrap");
         }
         UpdateLives();
@@ -72,7 +72,7 @@ public class Player : MonoBehaviour
     void CheckDetection()
     {
         //If the player is hiding, we need to show the undetectable icon
-        if(this.GetComponent<BaseStateMachine>().CurrentState.name != "Hiding")
+        if (this.GetComponent<BaseStateMachine>().CurrentState.name != "Hiding")
         {
             indicator.transform.GetChild(1).gameObject.SetActive(false);
         }
@@ -107,7 +107,7 @@ public class Player : MonoBehaviour
             {
                 playerWasSeen = true;
             }
-            
+
         }
         //If we've gone through the whole loop and nobody detects the player, we set to undetected
         if (!playerIsSeen && !playerWasSeen)
@@ -127,7 +127,7 @@ public class Player : MonoBehaviour
         {
             indicator.transform.GetChild(2).GetComponent<RawImage>().texture = i_unheard;
         }
-        else if ( !playerIsHeard && playerWasHeard)
+        else if (!playerIsHeard && playerWasHeard)
         {
             indicator.transform.GetChild(2).GetComponent<RawImage>().texture = i_heard;
         }
@@ -141,13 +141,13 @@ public class Player : MonoBehaviour
     void UpdateLives()
     {
         int livesMissing = 3 - lives;
-        for(int i = 0; i < 3; i++)
+        for (int i = 0; i < 3; i++)
         {
             P_LivesCount.transform.GetChild(i).GetComponentInChildren<RawImage>().texture = i_health;
         }
-        for(int i = livesMissing; i > 0; i--)
+        for (int i = livesMissing; i > 0; i--)
         {
-            P_LivesCount.transform.GetChild(3-i).GetComponentInChildren<RawImage>().texture = i_hurt;
+            P_LivesCount.transform.GetChild(3 - i).GetComponentInChildren<RawImage>().texture = i_hurt;
         }
     }
 
@@ -184,13 +184,18 @@ public class Player : MonoBehaviour
     private void SetTrap()
     {
         Instantiate(trapObj, (gameObject.transform.position), gameObject.transform.rotation);
-    
+
     }
 
+    public void SetWinLose ( bool iswinner)
+    {
+        winLose=iswinner;
+    }
     public IEnumerator OnPlayerLoss()
     {
         centralTxt.text = "You got kicked out!";
         centralTxt.enabled = true;
+        SetWinLose(false);
         yield return new WaitForSeconds(2f);
         SceneManager.LoadScene(2);
     }
@@ -199,6 +204,7 @@ public class Player : MonoBehaviour
     {
         centralTxt.text = "You won! \n You got " + coinCount + " coins!";
         centralTxt.enabled = true;
+        SetWinLose(true);
         yield return new WaitForSeconds(5f);
         SceneManager.LoadScene(3);
     }
