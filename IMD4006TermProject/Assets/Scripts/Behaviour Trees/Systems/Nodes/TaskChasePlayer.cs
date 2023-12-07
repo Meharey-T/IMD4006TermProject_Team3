@@ -47,21 +47,7 @@ public class TaskChasePlayer : BTNode
 
         //Debug.Log("This character sees player: " + thisActor.seesPlayer);
 
-        //If we're basically on the player now
-        if (waypointDistance < 1)
-        {
-            agent.speed = thisActor.defaultSpeed;
-            state = NodeState.SUCCESS;
-        }
-        //If at any point the enemy can no longer see the player, this function fails and we change behaviour
-        else if(!thisActor.seesPlayer)
-        {
-            thisActor.sawPlayer = true;
-            agent.speed = thisActor.defaultSpeed;
-            state = NodeState.FAILURE;
-        }
-        //If we can still see the player but haven't reached them yet
-        else if (waypointDistance >= 1 && thisActor.seesPlayer)
+        if (waypointDistance >= 1 && thisActor.seesPlayer)
         {
             Vector3 direction = (player.transform.position - thisActor.transform.position).normalized;
             lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0f, direction.z));
@@ -76,10 +62,25 @@ public class TaskChasePlayer : BTNode
             {
                 agent.SetDestination(player.transform.position);
             }
-           
+
             // Debug.Log("going to new position");
             state = NodeState.RUNNING;
         }
+        //If we're basically on the player now
+        else if (waypointDistance < 1)
+        {
+            agent.speed = thisActor.defaultSpeed;
+            state = NodeState.SUCCESS;
+        }
+        //If at any point the enemy can no longer see the player, this function fails and we change behaviour
+        else if(!thisActor.seesPlayer)
+        {
+            thisActor.sawPlayer = true;
+            agent.speed = thisActor.defaultSpeed;
+            state = NodeState.FAILURE;
+        }
+        //If we can still see the player but haven't reached them yet
+        
         return state;
     }
 

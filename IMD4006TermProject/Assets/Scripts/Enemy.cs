@@ -58,6 +58,7 @@ public class Enemy : MonoBehaviour
     WaitForSeconds grabTime = new WaitForSeconds(2f);
 
     public bool playerInGrabRange;
+    public bool caughtPlayer;
 
 
     // Start is called before the first frame update
@@ -214,27 +215,28 @@ public class Enemy : MonoBehaviour
             this.GetComponent<Interactable>().Die();
         }
 
-        //Handles if they run into the player while they're not hiding
-        //Only collides with the actual player geometry
-        if(other.gameObject.layer == 9 && other.GetType() == typeof(BoxCollider))
-        {
-            //Player will lose a life
-            Debug.Log("Player losing life the old fashioned way");
-            other.GetComponentInParent<Player>().OnPlayerLoseLife();
-        }
         //Handles if they fall into the radius of the player projected sound
-        if(other.gameObject.layer == 9 && other.GetType() == typeof(SphereCollider))
+        if (other.gameObject.layer == 9 && other.GetType() == typeof(SphereCollider) && !caughtPlayer)
         {
             //Sets them to alert and sets a value to their location heard, allowing them to pursue the source of the sound
             hearsPlayer = true;
             heardPlayer = false;
             lastLocationHeard = other.transform.position;
         }
+
+        //Handles if they run into the player while they're not hiding
+        //Only collides with the actual player geometry
+        if (other.gameObject.layer == 9 && other.GetType() == typeof(BoxCollider))
+        {
+            //Player will lose a life
+            Debug.Log("Player losing life the old fashioned way");
+            other.GetComponentInParent<Player>().OnPlayerLoseLife();
+        }
       }
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.layer == 9 && other.GetType() == typeof(SphereCollider))
+        if (other.gameObject.layer == 9 && other.GetType() == typeof(SphereCollider) && !caughtPlayer)
         {
             //Sets them to alert and sets a value to their location heard, allowing them to pursue the source of the sound
             hearsPlayer = true;
@@ -246,7 +248,7 @@ public class Enemy : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         //If they exit the range of where they can currently hear the player, sets it accordingly
-        if (other.gameObject.layer == 9 && other.GetType() == typeof(SphereCollider))
+        if (other.gameObject.layer == 9 && other.GetType() == typeof(SphereCollider) && !caughtPlayer)
         {
             //They can no longer hear the player, and the place they last heard them stops changing
             hearsPlayer = false;
