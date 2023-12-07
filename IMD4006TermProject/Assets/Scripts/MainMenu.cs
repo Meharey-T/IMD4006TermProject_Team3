@@ -7,20 +7,24 @@ public class MainMenu : MonoBehaviour
 {
     public GameObject menuPage;
     public Button playButton;
-    public Button optionsButton;
+    public Button controlsButton;
+    public Button creditsButton;
     public Button quitButton;
 
     public GameObject instructionsPage;
-    public Button backButton;
+    public GameObject creditsPage;
+    public Button controlsBackButton;
+    public Button creditsBackButton;
 
     void Start()
     {
       
         playButton.onClick.AddListener(PlayGame);
-        optionsButton.onClick.AddListener(OpenOptions);
+        controlsButton.onClick.AddListener(OpenOptions);
+        creditsButton.onClick.AddListener(OpenCredits);
         quitButton.onClick.AddListener(QuitGame);
-
-        backButton.onClick.AddListener(ReturnMainMenu);
+        controlsBackButton.onClick.AddListener(ReturnMainMenu);
+        creditsBackButton.onClick.AddListener(ReturnMainMenu);
 
     }
 
@@ -38,9 +42,17 @@ public class MainMenu : MonoBehaviour
 
 
     }
+    void OpenCredits()
+    {
+        menuPage.SetActive(false);
+        instructionsPage.SetActive(false);
+        creditsPage.SetActive(true);
+
+    }
     void ReturnMainMenu()
     {
         instructionsPage.SetActive(false);
+        creditsPage.SetActive(false);
         menuPage.SetActive(true);
     
 

@@ -21,14 +21,25 @@ public class TaskCheckOutSound : BTNode
         float waypointDistance = Vector3.Distance(thisActor.transform.position, thisActor.lastLocationHeard);
 
         if (agent.speed == thisActor.defaultSpeed)
+        
         {
+            agent.GetComponent<EnemySoundFX>().currState = agent.GetComponent<EnemySoundFX>().GetHearState();
             if (thisActor.angerLevel == Enemy.AngerLevel.INDIFFERENT)
             {
                 agent.speed = 3.5f;
+                //set the sound effect to indiffernt
+  
+                Debug.Log("I hear you SFX is set indifferent");
+                agent.GetComponent<EnemySoundFX>().currEmotion = agent.GetComponent<EnemySoundFX>().GetIndifference();
+                agent.GetComponent<EnemySoundFX>().PlayCheckOutSoundSound();
             }
             else if (thisActor.angerLevel == Enemy.AngerLevel.IRRITATED)
             {
                 agent.speed = 4f;
+                //set the sound effect to indiffernt
+                Debug.Log("I hear you SFX is set irritated");
+                agent.GetComponent<EnemySoundFX>().currEmotion = EnemySoundFX.AngerLevel.IRRITATED;
+
             }
             else if (thisActor.angerLevel == Enemy.AngerLevel.ANGRY)
             {

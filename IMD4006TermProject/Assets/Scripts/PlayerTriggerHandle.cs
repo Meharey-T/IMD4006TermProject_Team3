@@ -23,15 +23,30 @@ public class PlayerTriggerHandle : MonoBehaviour
             //Debug.Log("Hit an obstacle");
             player.OnPlayerLoseLife();
         }
+        //Layer 7 is ground
+       
     }
 
     private void OnTriggerStay(Collider other)
     {
         //Layer 7 is ground
         //Only the capsule collider should be able to trigger on a ground object
-        if (other.gameObject.layer == 7)
+        if (other.gameObject.layer == 11)
         {
             terrain.terrainTag = other.gameObject.tag;
+            Debug.Log("When checking this floor tag is:");
+            Debug.Log(other.gameObject.tag);
+   
+        }
+        if (other.gameObject.layer == 7 && other.gameObject.tag=="Crate")
+        {
+            terrain.terrainTag = other.gameObject.tag;
+            Debug.Log("When checking this floor tag is:");
+            Debug.Log(other.gameObject.tag);
+        }
+            if (other.gameObject.layer == 7)
+        {
+           
             playerMovement.groundedPlayer = true;
         }
     }

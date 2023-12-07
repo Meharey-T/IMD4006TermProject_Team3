@@ -23,7 +23,7 @@ public class TerrainState : MonoBehaviour
         Hardwood,
         Carpet,
         CobbleStone,
-        Crates
+        Crate
     }
     FloorType TerrainType;
     private bool isMoving;
@@ -31,8 +31,10 @@ public class TerrainState : MonoBehaviour
     [Header("FootSteps")]
     public List<AudioClip> carpetSFX;
     public List<AudioClip> hardwoodSFX;
+    public List<AudioClip> cobblestoneSFX;
+    public List<AudioClip> crateSFX;
 
-   private AudioSource footStepsSource;
+    private AudioSource footStepsSource;
 
     AudioClip clip = null;
     public string terrainTag;
@@ -64,98 +66,7 @@ Input.GetAxis("Horizontal") < 0)
         ////////////////////////////////////////////////currSpeed = GetSpeed();
 
     }
-        //if (pMovement.groundedPlayer && terrainCheck.collision.gameObject.layer == 8)
-        /*   if (pMovement.groundedPlayer)
-           {
-
-           footStepsSound.enabled = true;
-       }*/
-       /* if (Player.speed == walking)
-         {
-
-            switch (TerrainType)
-            {
-                case FloorType.Carpet:
-                   carpetWalk.enabled = true;
-                    Debug.Log("carpetfloor");
-                    break;
-                case FloorType.Hardwood:
-                    hardWoodWalk.enabled = true;
-                    Debug.Log("hardwoodfloor");
-                    break;
-
-
-
-            }
-    
-
-
-
-
-
-
-
-         }
-         else
-         {
-             footStepsSound.enabled == false;
-         }
-       */
-
-        
-/*
        
-
-
-    }*/
-/*
-    private void OnTriggerEnter(Collider other) {
-        //if (other.gameObject.layer == 7 && pMovement.groundedPlayer)
-
-       
-
-
-        if (other.gameObject.layer == 7)
-        {
-           
-            if (other.tag == "Carpet")
-            {
-                TerrainType = FloorType.Carpet;
-                Debug.Log("This is carpet");
-            }
-            else if (other.tag == "HardWood")
-            {
-                TerrainType = FloorType.Hardwood;
-                Debug.Log("This is hardwood");
-            }
-        }
-        
-        //we are walking
-       if (currSpeed== Speed.walk ) { 
-            //PlayWalkingSound();
-        }
-       //we are running
-       else if (currSpeed == Speed.run)
-        {
-            //PlayRunningSound();
-        }
-       //we are sneakkng
-     /*  else if (currSpeed == Speed.sneak)
-            {
-                PlaySneakingSound();
-            }
-     
-
-    }
-
-  public  float currSpeed() {
-        return pMovement.currentSoundRadius;
-
-
-    }
-
- 
-*/
 
 
     private FloorType GetTerrain()
@@ -169,6 +80,16 @@ Input.GetAxis("Horizontal") < 0)
         {
             TerrainType = FloorType.Hardwood;
             Debug.Log("This is hardwood");
+        }
+        if (terrainTag == "CobbleStone")
+        {
+            TerrainType = FloorType.CobbleStone;
+            Debug.Log("This is CobbleStone");
+        }
+        else if (terrainTag == "Crate")
+        {
+            TerrainType = FloorType.Crate;
+            Debug.Log("This is a crate");
         }
 
         //Debug.Log(TerrainType);
@@ -193,6 +114,14 @@ Input.GetAxis("Horizontal") < 0)
                 case FloorType.Carpet:
                     clip = carpetSFX[(int)Speed.walk];
                     Debug.Log("carpetfloor");
+                    break;
+                case FloorType.CobbleStone:
+                    clip = cobblestoneSFX[(int)Speed.walk];
+                    //Debug.Log("hardwoodfloor");
+                    break;
+                case FloorType.Crate:
+                    clip = crateSFX[(int)Speed.walk];
+                    //Debug.Log("hardwoodfloor");
                     break;
 
 
@@ -230,6 +159,14 @@ Input.GetAxis("Horizontal") < 0)
                     break;
                 case FloorType.Hardwood:
                     clip = hardwoodSFX[(int)Speed.run];
+                    //Debug.Log("hardwoodfloor");
+                    break;
+                case FloorType.CobbleStone:
+                    clip = cobblestoneSFX[(int)Speed.run];
+                    //Debug.Log("hardwoodfloor");
+                    break;
+                case FloorType.Crate:
+                    clip = crateSFX[(int)Speed.run];
                     //Debug.Log("hardwoodfloor");
                     break;
 
@@ -285,6 +222,14 @@ Input.GetAxis("Horizontal") < 0)
                     clip = hardwoodSFX[(int)Speed.sneak];
                     Debug.Log("hardwoodfloor");
                     break;
+                case FloorType.CobbleStone:
+                    clip = cobblestoneSFX[(int)Speed.sneak];
+                    //Debug.Log("hardwoodfloor");
+                    break;
+                case FloorType.Crate:
+                    clip = crateSFX[(int)Speed.sneak];
+                    //Debug.Log("hardwoodfloor");
+                    break;
 
 
 
@@ -333,3 +278,101 @@ Input.GetAxis("Horizontal") < 0)
 
 
 }
+
+
+
+
+
+
+//if (pMovement.groundedPlayer && terrainCheck.collision.gameObject.layer == 8)
+/*   if (pMovement.groundedPlayer)
+   {
+
+   footStepsSound.enabled = true;
+}*/
+/* if (Player.speed == walking)
+  {
+
+     switch (TerrainType)
+     {
+         case FloorType.Carpet:
+            carpetWalk.enabled = true;
+             Debug.Log("carpetfloor");
+             break;
+         case FloorType.Hardwood:
+             hardWoodWalk.enabled = true;
+             Debug.Log("hardwoodfloor");
+             break;
+
+
+
+     }
+
+
+
+
+
+
+
+
+  }
+  else
+  {
+      footStepsSound.enabled == false;
+  }
+*/
+
+
+/*
+       
+
+
+    }*/
+/*
+    private void OnTriggerEnter(Collider other) {
+        //if (other.gameObject.layer == 7 && pMovement.groundedPlayer)
+
+       
+
+
+        if (other.gameObject.layer == 7)
+        {
+           
+            if (other.tag == "Carpet")
+            {
+                TerrainType = FloorType.Carpet;
+                Debug.Log("This is carpet");
+            }
+            else if (other.tag == "HardWood")
+            {
+                TerrainType = FloorType.Hardwood;
+                Debug.Log("This is hardwood");
+            }
+        }
+        
+        //we are walking
+       if (currSpeed== Speed.walk ) { 
+            //PlayWalkingSound();
+        }
+       //we are running
+       else if (currSpeed == Speed.run)
+        {
+            //PlayRunningSound();
+        }
+       //we are sneakkng
+     /*  else if (currSpeed == Speed.sneak)
+            {
+                PlaySneakingSound();
+            }
+     
+
+    }
+
+  public  float currSpeed() {
+        return pMovement.currentSoundRadius;
+
+
+    }
+
+ 
+*/

@@ -10,6 +10,8 @@ TagManager:
   - Trap
   - HardWood
   - Carpet
+  - Crate
+  - CobbleStone
   layers:
   - Default
   - TransparentFX
@@ -22,7 +24,7 @@ TagManager:
   - Hiding
   - Player
   - PickUp
-  - 
+  - Tile
   - 
   - 
   - 
