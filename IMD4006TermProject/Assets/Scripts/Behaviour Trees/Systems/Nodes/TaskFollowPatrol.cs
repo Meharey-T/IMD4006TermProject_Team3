@@ -40,6 +40,7 @@ public class TaskFollowPatrol : BTNode
             float waypointDistance = Vector3.Distance(BTTransform.position, waypointList[waypointIndex].transform.position);
             if (waypointDistance < 1) {
                 agent.SetDestination(waypointList[waypointIndex].transform.position);
+                agent.GetComponent<Enemy>().enemyAnimator.animator.SetBool(agent.GetComponent<Enemy>().enemyAnimator.IfWalkingHash, true);
                 //Debug.Log("Reached waypoint");
                 waypointIndex++;
                 state = NodeState.RUNNING;
@@ -47,6 +48,8 @@ public class TaskFollowPatrol : BTNode
             //If we're not there yet, keep going
             else if (waypointDistance >= 1)
             {
+                agent.GetComponent<Enemy>().enemyAnimator.animator.SetBool(agent.GetComponent<Enemy>().enemyAnimator.IfWalkingHash, true);
+                //agent.GetComponent<Enemy>().enemyAnimator.animator.SetBool(agent.GetComponent<Enemy>().enemyAnimator.IfSprintingHash, false);
                 agent.SetDestination(waypointList[waypointIndex].transform.position);
                 state = NodeState.RUNNING;
             }

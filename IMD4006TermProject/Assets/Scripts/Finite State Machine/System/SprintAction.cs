@@ -26,8 +26,20 @@ public class SprintAction : FSMAction
         {
             player.rb.AddForce(Vector3.up * player.jumpAmount, ForceMode.Impulse);
             player.currentStamina -= 30;
+            player.playerAnimator.animator.SetBool(player.playerAnimator.IfJumpingHash, true);
         }
-        //Change player animation
+
+        if (player.groundedPlayer)
+        {
+            player.playerAnimator.animator.SetBool(player.playerAnimator.IfSprintingHash, true);
+            //Set all the other ones to false
+            player.playerAnimator.animator.SetBool(player.playerAnimator.IfSneakingHash, false);
+            player.playerAnimator.animator.SetBool(player.playerAnimator.IfHidingHash, false);
+            player.playerAnimator.animator.SetBool(player.playerAnimator.IfWalkingHash, false);
+            player.playerAnimator.animator.SetBool(player.playerAnimator.IfJumpingHash, false);
+            player.playerAnimator.animator.SetBool(player.playerAnimator.IfRollingHash, false);
+        }
+        //player.currentAnimation = player.animationLibrary.animationList[1];
         //Change player footstep sounds
         //terraine.currSpeed = terraine.GetRun();
         //; = stateMachine.GetComponent<TerrainState>().GetRun() ;

@@ -63,6 +63,8 @@ public class Enemy : MonoBehaviour
     public bool playerInGrabRange;
     public bool caughtPlayer;
 
+    public EnemyAnimator enemyAnimator;
+
 
     // Start is called before the first frame update
     void Start()
@@ -75,7 +77,7 @@ public class Enemy : MonoBehaviour
         StartCoroutine(FOVRoutine());
         StartCoroutine(AngerCheck());
         i_currentEmoji = i_indifferent;
-
+        enemyAnimator = GetComponent<EnemyAnimator>();
     }
 
     // Update is called once per frame

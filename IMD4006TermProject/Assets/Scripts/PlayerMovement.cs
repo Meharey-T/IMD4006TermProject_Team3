@@ -82,6 +82,7 @@ public class PlayerMovement : MonoBehaviour
     public SphereCollider soundRadius;
     [SerializeField] private GameObject playerGeo;
     [SerializeField] private Image staminaBar;
+    [SerializeField] public PlayerAnimator playerAnimator;
 
     // Start is called before the first frame update
     void Start()
@@ -90,6 +91,7 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         soundRadius = this.GetComponentInChildren<SphereCollider>();
         staminaBar.fillMethod = Image.FillMethod.Horizontal;
+        playerAnimator = GetComponent<PlayerAnimator>();
     }
 
     // Update is called once per frame

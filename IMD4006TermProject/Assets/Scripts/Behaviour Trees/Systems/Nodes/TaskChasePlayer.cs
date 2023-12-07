@@ -30,18 +30,22 @@ public class TaskChasePlayer : BTNode
             if (thisActor.angerLevel == Enemy.AngerLevel.INDIFFERENT)
             {
                 agent.speed = 3.5f;
+                thisActor.enemyAnimator.animator.SetBool(thisActor.enemyAnimator.IfWalkingHash, true);
             }
             else if (thisActor.angerLevel == Enemy.AngerLevel.IRRITATED)
             {
                 agent.speed = 4f;
+                thisActor.enemyAnimator.animator.SetBool(thisActor.enemyAnimator.IfWalkingHash, true);
             }
             else if (thisActor.angerLevel == Enemy.AngerLevel.ANGRY)
             {
                 agent.speed = 5f;
+                thisActor.enemyAnimator.animator.SetBool(thisActor.enemyAnimator.IfSprintingHash, true);
             }
             else if (thisActor.angerLevel == Enemy.AngerLevel.FURIOUS)
             {
                 agent.speed = 6f;
+                thisActor.enemyAnimator.animator.SetBool(thisActor.enemyAnimator.IfSprintingHash, true);
             }
         }
 
