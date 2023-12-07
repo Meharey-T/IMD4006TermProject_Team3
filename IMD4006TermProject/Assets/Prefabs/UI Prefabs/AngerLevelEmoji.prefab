@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7412262379218779254}
   - component: {fileID: 7475990426801558879}
-  - component: {fileID: 7102784160354564372}
+  - component: {fileID: 1467933736615944451}
   m_Layer: 0
   m_Name: AngerLevelEmoji
   m_TagString: Untagged
@@ -45,7 +45,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5578789155857107318}
   m_CullTransparentMesh: 1
---- !u!114 &7102784160354564372
+--- !u!114 &1467933736615944451
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -65,7 +65,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 175cc01e78280aa4990afa4aef0a0dcd, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

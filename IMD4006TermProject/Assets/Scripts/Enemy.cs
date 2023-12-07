@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 /*
  * When creating a new enemy for a scene please do the following:
@@ -46,13 +47,15 @@ public class Enemy : MonoBehaviour
     public int treasureLeft;
     public int i_angerLevel;
 
-    GameObject emojiTarget;
-    GameObject emojiPrefab;
-    Texture i_currentEmoji;
-    [SerializeField] Texture i_indifferent;
-    [SerializeField] Texture i_irritated;
-    [SerializeField] Texture i_angry;
-    [SerializeField] Texture i_furious;
+    [SerializeField] GameObject emojiTarget;
+    [SerializeField] GameObject emojiPrefab;
+    Sprite i_currentEmoji;
+    [SerializeField] Sprite i_indifferent;
+    [SerializeField] Sprite i_irritated;
+    [SerializeField] Sprite i_angry;
+    [SerializeField] Sprite i_furious;
+
+    public Transform camera;
 
     WaitForSeconds wait = new WaitForSeconds(0.2f);
     WaitForSeconds grabTime = new WaitForSeconds(2f);
@@ -71,6 +74,7 @@ public class Enemy : MonoBehaviour
         rangeChecks = new Collider[4];
         StartCoroutine(FOVRoutine());
         StartCoroutine(AngerCheck());
+        i_currentEmoji = i_indifferent;
 
     }
 
@@ -78,6 +82,11 @@ public class Enemy : MonoBehaviour
     void Update()
     {
         
+    }
+
+    private void LateUpdate()
+    {
+        emojiTarget.transform.LookAt(camera.position + camera.forward);
     }
 
     //Reduces call count as this kind of behaviour can be a little computationally expensive
@@ -192,6 +201,7 @@ public class Enemy : MonoBehaviour
             i_currentEmoji = i_furious;
             //enemyMeshAgent.speed = 4.5f;
         }
+        emojiPrefab.GetComponentInChildren<Image>().sprite = i_currentEmoji;
     }
 
     public IEnumerator GrabPlayer()
