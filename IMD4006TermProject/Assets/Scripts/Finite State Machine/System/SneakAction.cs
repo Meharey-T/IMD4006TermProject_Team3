@@ -44,7 +44,7 @@ public class SneakAction : FSMAction
         player.playerAnimator.animator.SetBool(player.playerAnimator.IfHidingHash, false);
         player.playerAnimator.animator.SetBool(player.playerAnimator.IfWalkingHash, false);
         player.playerAnimator.animator.SetBool(player.playerAnimator.IfSprintingHash, false);
-        //player.playerAnimator.animator.SetBool(player.playerAnimator.IfJumpingHash, false);
+        player.playerAnimator.animator.SetBool(player.playerAnimator.IfJumpingHash, false);
         //Change player footstep sounds
     }
 }

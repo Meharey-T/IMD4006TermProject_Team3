@@ -65,7 +65,6 @@ public class TaskCheckLastPlaceSeen : BTNode
         {
             state = NodeState.SUCCESS;
             agent.speed = thisActor.defaultSpeed;
-            //thisActor.sawPlayer = false;
         }
         return state;
     }

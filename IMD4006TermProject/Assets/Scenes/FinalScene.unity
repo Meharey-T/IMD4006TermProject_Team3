@@ -14742,6 +14742,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 529635058}
     - target: {fileID: 6806690849381005727, guid: ab6c689e1066d36438a132dd0f3149e8, type: 3}
+      propertyPath: mainCamera
+      value: 
+      objectReference: {fileID: 1847542371}
+    - target: {fileID: 6806690849381005727, guid: ab6c689e1066d36438a132dd0f3149e8, type: 3}
       propertyPath: enemyAnimator
       value: 
       objectReference: {fileID: 768251420}
@@ -23360,6 +23364,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 529635058}
     - target: {fileID: 6806690849381005727, guid: ab6c689e1066d36438a132dd0f3149e8, type: 3}
+      propertyPath: mainCamera
+      value: 
+      objectReference: {fileID: 1847542371}
+    - target: {fileID: 6806690849381005727, guid: ab6c689e1066d36438a132dd0f3149e8, type: 3}
       propertyPath: enemyAnimator
       value: 
       objectReference: {fileID: 787052155}
@@ -30634,7 +30642,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8627968276628479127, guid: 40ff1c46273af8c4d937dde0628ae643, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8627968276628479127, guid: 40ff1c46273af8c4d937dde0628ae643, type: 3}
       propertyPath: m_LocalPosition.z
@@ -36631,6 +36639,10 @@ PrefabInstance:
       propertyPath: playerObj
       value: 
       objectReference: {fileID: 529635058}
+    - target: {fileID: 6806690849381005727, guid: ab6c689e1066d36438a132dd0f3149e8, type: 3}
+      propertyPath: mainCamera
+      value: 
+      objectReference: {fileID: 1847542371}
     - target: {fileID: 6806690849381005727, guid: ab6c689e1066d36438a132dd0f3149e8, type: 3}
       propertyPath: enemyAnimator
       value: 
@@ -43418,6 +43430,10 @@ PrefabInstance:
       propertyPath: playerObj
       value: 
       objectReference: {fileID: 529635058}
+    - target: {fileID: 6806690849381005727, guid: ab6c689e1066d36438a132dd0f3149e8, type: 3}
+      propertyPath: mainCamera
+      value: 
+      objectReference: {fileID: 1847542371}
     - target: {fileID: 6806690849381005727, guid: ab6c689e1066d36438a132dd0f3149e8, type: 3}
       propertyPath: enemyAnimator
       value: 
@@ -61301,13 +61317,13 @@ PrefabInstance:
       value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 6806690849381005727, guid: ab6c689e1066d36438a132dd0f3149e8, type: 3}
-      propertyPath: camera
-      value: 
-      objectReference: {fileID: 1847542371}
-    - target: {fileID: 6806690849381005727, guid: ab6c689e1066d36438a132dd0f3149e8, type: 3}
       propertyPath: playerObj
       value: 
       objectReference: {fileID: 529635058}
+    - target: {fileID: 6806690849381005727, guid: ab6c689e1066d36438a132dd0f3149e8, type: 3}
+      propertyPath: mainCamera
+      value: 
+      objectReference: {fileID: 1847542371}
     - target: {fileID: 6806690849381005727, guid: ab6c689e1066d36438a132dd0f3149e8, type: 3}
       propertyPath: Waypoints.Array.data[0]
       value: 

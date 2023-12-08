@@ -42,7 +42,7 @@ public class WalkAction : FSMAction
         {
             player.playerAnimator.animator.SetBool(player.playerAnimator.IfWalkingHash, true);
             //Set all the other ones to false
-            player.playerAnimator.animator.SetBool(player.playerAnimator.IfSprintingHash, true);
+            player.playerAnimator.animator.SetBool(player.playerAnimator.IfSprintingHash, false);
             player.playerAnimator.animator.SetBool(player.playerAnimator.IfSneakingHash, false);
             player.playerAnimator.animator.SetBool(player.playerAnimator.IfHidingHash, false);
             player.playerAnimator.animator.SetBool(player.playerAnimator.IfRollingHash, false);

@@ -10,6 +10,7 @@ public class EnemyAnimator : MonoBehaviour
     public int IfSprintingHash;
     public int IfTurningLeftHash;
     public int IfTurningRightHash;
+    public int IfGrabbingHash;
 
     private void Start()
     {
@@ -19,6 +20,7 @@ public class EnemyAnimator : MonoBehaviour
         IfSprintingHash = Animator.StringToHash("IsRunning");
         IfTurningLeftHash = Animator.StringToHash("IsTurningLeft");
         IfTurningRightHash = Animator.StringToHash("IsTurningRight");
+        IfGrabbingHash = Animator.StringToHash("IsGrabbing");
     }
 
     private void Update()

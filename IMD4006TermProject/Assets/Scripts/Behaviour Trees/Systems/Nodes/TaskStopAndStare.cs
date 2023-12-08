@@ -23,15 +23,20 @@ public class TaskStopAndStare : BTNode
         //Debug.Log("Running TaskStopAndStare");
         thisActor.enemyMeshAgent.ResetPath();
         Vector3 direction = (player.transform.position - thisActor.transform.position).normalized;
-        if (direction.z < 0)
+        if (direction.x < 0)
         {
             thisActor.enemyAnimator.animator.SetBool(thisActor.enemyAnimator.IfTurningLeftHash, true);
             thisActor.enemyAnimator.animator.SetBool(thisActor.enemyAnimator.IfTurningRightHash, false);
         }
-        else if (direction.z > 0)
+        else if (direction.x > 0)
         {
             thisActor.enemyAnimator.animator.SetBool(thisActor.enemyAnimator.IfTurningRightHash, true);
             thisActor.enemyAnimator.animator.SetBool(thisActor.enemyAnimator.IfTurningLeftHash, false);
+        }
+        else if(direction.x == 0)
+        {
+            thisActor.enemyAnimator.animator.SetBool(thisActor.enemyAnimator.IfTurningLeftHash, false);
+            thisActor.enemyAnimator.animator.SetBool(thisActor.enemyAnimator.IfTurningRightHash, false);
         }
         lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0f, direction.z));
         thisActor.transform.rotation = Quaternion.Slerp(thisActor.transform.rotation, lookRotation, Time.deltaTime * 5f);

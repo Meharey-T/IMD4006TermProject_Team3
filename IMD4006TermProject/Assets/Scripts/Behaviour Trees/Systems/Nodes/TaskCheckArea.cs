@@ -31,15 +31,20 @@ public class TaskCheckArea : BTNode
         {
             Vector3 turnToPoint = CreateTurnToPoint();
             Vector3 direction = turnToPoint.normalized;
-            if (direction.z < 0)
+            if (direction.x < 0)
             {
                 thisActor.enemyAnimator.animator.SetBool(thisActor.enemyAnimator.IfTurningLeftHash, true);
                 thisActor.enemyAnimator.animator.SetBool(thisActor.enemyAnimator.IfTurningRightHash, false);
             }
-            else if (direction.z > 0)
+            else if (direction.x > 0)
             {
                 thisActor.enemyAnimator.animator.SetBool(thisActor.enemyAnimator.IfTurningRightHash, true);
                 thisActor.enemyAnimator.animator.SetBool(thisActor.enemyAnimator.IfTurningLeftHash, false);
+            }
+            else if (direction.x == 0)
+            {
+                thisActor.enemyAnimator.animator.SetBool(thisActor.enemyAnimator.IfTurningLeftHash, false);
+                thisActor.enemyAnimator.animator.SetBool(thisActor.enemyAnimator.IfTurningRightHash, false);
             }
             lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0f, direction.z));
             state = NodeState.RUNNING;
