@@ -44,9 +44,10 @@ public class SprintAction : FSMAction
         //Jump if we're running
         if (Input.GetButtonDown("Jump") && player.groundedPlayer && player.currentStamina >= 50)
         {
+            player.playerAnimator.animator.SetBool(player.playerAnimator.IfSprintingHash, false);
+            player.playerAnimator.animator.SetBool(player.playerAnimator.IfJumpingHash, true);
             player.rb.AddForce(Vector3.up * player.jumpAmount, ForceMode.Impulse);
             player.currentStamina -= 30;
-            player.playerAnimator.animator.SetBool(player.playerAnimator.IfJumpingHash, true);
         }
 
         
