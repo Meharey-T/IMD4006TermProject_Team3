@@ -51,6 +51,7 @@ public class PlayerMovement : MonoBehaviour
     //Vector3 jumpVector;
     public bool groundedPlayer = true;
     public bool isRolling = false;
+    public bool isJumping = false;
 
     //Affects how fast the player turns, how they can turn
     [Header("Turning feel")]
@@ -187,6 +188,13 @@ public class PlayerMovement : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
         isRolling = false;
+    }
+
+    public IEnumerator ResetJump()
+    {
+        yield return new WaitForSeconds(0.1f);
+        isJumping = false;
+
     }
 
     private void ResolveSoundRadius()

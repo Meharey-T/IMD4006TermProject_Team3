@@ -31,7 +31,7 @@ public class WalkAction : FSMAction
         //play sneak sfx
         terraine.PlayWalkingSound();
 
-        if (player.groundedPlayer)
+        if (player.groundedPlayer && !player.isJumping)
         {
             player.playerAnimator.animator.SetBool(player.playerAnimator.IfWalkingHash, true);
             //Set all the other ones to false
@@ -45,9 +45,12 @@ public class WalkAction : FSMAction
         //jump if we're walking
         if (Input.GetButtonDown("Jump") && player.groundedPlayer && player.currentStamina >= 50)
         {
-            player.rb.AddForce(Vector3.up * player.jumpAmount, ForceMode.Impulse);
-            player.currentStamina -= 30;
             player.playerAnimator.animator.SetBool(player.playerAnimator.IfJumpingHash, true);
+            player.playerAnimator.animator.SetBool(player.playerAnimator.IfWalkingHash, false);
+            player.rb.AddForce(Vector3.up * player.jumpAmount, ForceMode.Impulse);
+            player.isJumping = true;
+            player.currentStamina -= 30;
+            player.StartCoroutine(player.ResetJump());
         }
         
         colliders = player.GetComponentsInChildren<BoxCollider>();
