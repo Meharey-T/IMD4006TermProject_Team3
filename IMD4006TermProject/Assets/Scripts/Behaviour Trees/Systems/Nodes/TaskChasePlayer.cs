@@ -54,6 +54,16 @@ public class TaskChasePlayer : BTNode
         if (waypointDistance >= 1 && thisActor.seesPlayer)
         {
             Vector3 direction = (player.transform.position - thisActor.transform.position).normalized;
+            if(direction.z < 0)
+            {
+                thisActor.enemyAnimator.animator.SetBool(thisActor.enemyAnimator.IfTurningLeftHash, true);
+                thisActor.enemyAnimator.animator.SetBool(thisActor.enemyAnimator.IfTurningRightHash, false);
+            }
+            else if(direction.z > 0)
+            {
+                thisActor.enemyAnimator.animator.SetBool(thisActor.enemyAnimator.IfTurningRightHash, true);
+                thisActor.enemyAnimator.animator.SetBool(thisActor.enemyAnimator.IfTurningLeftHash, false);
+            }
             lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0f, direction.z));
             thisActor.transform.rotation = Quaternion.Slerp(thisActor.transform.rotation, lookRotation, Time.deltaTime * 5f);
             //Check if the player is standing on something above the ground
