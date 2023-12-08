@@ -49,6 +49,7 @@ public class TaskCheckLastPlaceSeen : BTNode
         }
 
         //Quickly abort this script if they hear or see the player; we want them to jump to the appropriate behaviours
+        //Also abort if the player was caught
         if (thisActor.seesPlayer || thisActor.hearsPlayer)
         {
             agent.ResetPath();
@@ -62,6 +63,11 @@ public class TaskCheckLastPlaceSeen : BTNode
         //If they haven't arrived at their destination yet, keep running
         else if (waypointDistance >= 4f)
         {
+            if(!agent.CalculatePath(thisActor.lastLocationSeen, agent.path))
+            {
+                thisActor.sawPlayer = false;
+                state = NodeState.FAILURE;
+            }
             if (thisActor.angerLevel == Enemy.AngerLevel.INDIFFERENT || thisActor.angerLevel == Enemy.AngerLevel.IRRITATED)
             {
                 thisActor.enemyAnimator.animator.SetBool(thisActor.enemyAnimator.IfWalkingHash, true);
@@ -81,8 +87,9 @@ public class TaskCheckLastPlaceSeen : BTNode
         //If they arrive at the destination we want them to stop, go back to regular behaviours
         else if (waypointDistance < 4f)
         {
-            state = NodeState.SUCCESS;
+            agent.ResetPath();
             agent.speed = thisActor.defaultSpeed;
+            state = NodeState.SUCCESS;
         }
         return state;
     }
