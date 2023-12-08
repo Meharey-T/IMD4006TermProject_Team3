@@ -22,7 +22,7 @@ public class PopUpMenu : MonoBehaviour
 
     void Start()
     {
-        Cursor.lockState = CursorLockMode.None;
+        
         pauseButton.onClick.AddListener(PauseGame);
         resumeButton.onClick.AddListener(PlayGame);
         controlsButton.onClick.AddListener(OpenOptions);
@@ -49,7 +49,7 @@ public void PlayGame()
         //continue the scene that was paused
 
         // SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-       
+        Cursor.lockState = CursorLockMode.Locked;
         menuPrefab.SetActive(false);
         menuPage.SetActive(false);
         instructionsPage.SetActive(false);
@@ -97,9 +97,8 @@ public void PlayGame()
     }
     public void QuitGame()
     {
-        Application.Quit();
-
-
+        Time.timeScale = 1;
+        SceneManager.LoadScene(0);
     }
 
 

@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: a4830613ef5a3e141ab1e6345ba54aa4, type: 2}
   m_LightingSettings: {fileID: 0}
 --- !u!196 &4
 NavMeshSettings:
@@ -3386,6 +3386,7 @@ GameObject:
   - component: {fileID: 127963251}
   - component: {fileID: 127963250}
   - component: {fileID: 127963249}
+  - component: {fileID: 127963252}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -3443,6 +3444,15 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!45 &127963252
+Skybox:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 127963248}
+  m_Enabled: 1
+  m_CustomSkybox: {fileID: 2100000, guid: f20c2c5d523fd2640b385f1b420aab81, type: 2}
 --- !u!1001 &128329414
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -31018,6 +31028,10 @@ PrefabInstance:
     - target: {fileID: 7682791935692376751, guid: 40ff1c46273af8c4d937dde0628ae643, type: 3}
       propertyPath: m_LocalPosition.y
       value: 1.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7735715436679535053, guid: 40ff1c46273af8c4d937dde0628ae643, type: 3}
+      propertyPath: m_RendererIndex
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 8233892006867537294, guid: 40ff1c46273af8c4d937dde0628ae643, type: 3}
       propertyPath: i_pleased
