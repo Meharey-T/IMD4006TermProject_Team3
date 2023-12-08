@@ -48,6 +48,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -5002904825797659642, guid: 1dcfde1e3fd438a4a997f5df96a803d1, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -5002904825797659642, guid: 1dcfde1e3fd438a4a997f5df96a803d1, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9891b6cb20fdcb14eaf0f064386e0472, type: 2}
     - target: {fileID: 919132149155446097, guid: 1dcfde1e3fd438a4a997f5df96a803d1, type: 3}
       propertyPath: m_Name
       value: potion01
@@ -60,6 +68,22 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Treasure
       objectReference: {fileID: 0}
+    - target: {fileID: 3687456553534897529, guid: 1dcfde1e3fd438a4a997f5df96a803d1, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3687456553534897529, guid: 1dcfde1e3fd438a4a997f5df96a803d1, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0490164be0911da4ca8b63eb03965335, type: 2}
+    - target: {fileID: 5321236513294518952, guid: 1dcfde1e3fd438a4a997f5df96a803d1, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5321236513294518952, guid: 1dcfde1e3fd438a4a997f5df96a803d1, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0490164be0911da4ca8b63eb03965335, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
