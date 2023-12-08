@@ -20,9 +20,15 @@ public class TaskCheckArea : BTNode
 
     protected override NodeState OnRun()
     {
-        //Debug.Log("Running TaskCheckArea");
+        thisActor.enemyAnimator.animator.SetBool(thisActor.enemyAnimator.IfWalkingHash, false);
+        thisActor.enemyAnimator.animator.SetBool(thisActor.enemyAnimator.IfSprintingHash, false);
+        //thisActor.enemyAnimator.animator.SetBool(thisActor.enemyAnimator.IfGrabbingHash, false);
         //If we see the player, we stop doing this right away
         if (BTTransform.GetComponent<Enemy>().seesPlayer)
+        {
+            state = NodeState.FAILURE;
+        }
+        else if (thisActor.caughtPlayer)
         {
             state = NodeState.FAILURE;
         }

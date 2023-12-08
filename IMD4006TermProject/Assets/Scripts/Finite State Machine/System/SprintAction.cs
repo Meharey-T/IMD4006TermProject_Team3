@@ -6,8 +6,8 @@ using UnityEngine;
 public class SprintAction : FSMAction
 {
     BoxCollider[] colliders;
-    Vector3 colliderSize = new Vector3(0, 0.7f, 0);
-    Vector3 colliderOffset = new Vector3(0.5f, 1.4f, 0.5f);
+    Vector3 colliderSize = new Vector3(0, 0.68f, 0);
+    Vector3 colliderOffset = new Vector3(0.5f, 1.35f, 0.5f);
 
     public override void Execute(BaseStateMachine stateMachine)
     {
@@ -15,10 +15,6 @@ public class SprintAction : FSMAction
         TerrainState terraine = stateMachine.GetComponent<TerrainState>();
         
         stateMachine.GetComponent<TerrainState>().currSpeed = stateMachine.GetComponent<TerrainState >().GetRun();
-        /*
-        if (stateMachine.GetComponent<TerrainState >().currSpeed == stateMachine.GetComponent <TerrainState>().GetRun())
-        { Debug.Log("I should be running"); }
-        */
         player.setModalSpeed(player.getSprintSpeed());
         player.turnSmoothTime = player.turnSmoothTimeSlow;
         stateMachine.GetComponent<PlayerMovement>().currentSoundRadius = stateMachine.GetComponent<PlayerMovement>().sprintSoundRadius;

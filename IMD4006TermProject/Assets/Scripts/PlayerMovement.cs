@@ -146,8 +146,6 @@ public class PlayerMovement : MonoBehaviour
         float translationZ = Input.GetAxisRaw("Vertical");
         float translationX = Input.GetAxisRaw("Horizontal");
 
-        //Debug.Log(translationZ + ", " + translationX);
-
         //Set player direction vector based on the axis they are moving in
         Vector3 direction = new Vector3(translationX, 0f, translationZ).normalized;
 
@@ -207,7 +205,6 @@ public class PlayerMovement : MonoBehaviour
     {
         
         float staminaPercent = (float)currentStamina / maxStamina;
-        //Debug.Log(staminaPercent);
         staminaBar.fillAmount = staminaPercent;
     }
 

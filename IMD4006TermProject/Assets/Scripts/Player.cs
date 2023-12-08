@@ -72,7 +72,6 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown("t"))
         {
             SetTrap();
-            Debug.Log("setTrap");
         }
         UpdateLives();
         CheckDetection();
@@ -160,9 +159,8 @@ public class Player : MonoBehaviour
     private void RecalculateTreasureStolen()
     {
         float treasurePercent = (float)coinCount / totalCoinCount;
-        //Debug.Log(staminaPercent);
         treasureBar.fillAmount = treasurePercent;
-        if(treasurePercent > totalCoinCount / 2)
+        if(coinCount > totalCoinCount / 2)
         {
             dragonImage.transform.GetChild(0).GetComponentInChildren<RawImage>().texture = i_pleased;
         }
@@ -191,11 +189,9 @@ public class Player : MonoBehaviour
 
     public void OnPlayerLoseLife()
     {
-        Debug.Log("Hit an Enemy");
         lives--;
         if (lives <= 0)
         {
-            Debug.Log("Player has lost a life");
             StartCoroutine(OnPlayerLoss());
         }
         else
@@ -218,7 +214,7 @@ public class Player : MonoBehaviour
             enemy.GetComponent<Enemy>().hasStopped = false;
             enemy.GetComponent<Enemy>().caughtPlayer = true;
         }
-        StartCoroutine(ReactivateEnemies());
+        //StartCoroutine(ReactivateEnemies());
     }
 
     IEnumerator ReactivateEnemies()

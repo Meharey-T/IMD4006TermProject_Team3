@@ -20,7 +20,6 @@ public class PlayerTriggerHandle : MonoBehaviour
     {
         if (other.gameObject.tag == "Obstacle")
         {
-            //Debug.Log("Hit an obstacle");
             player.OnPlayerLoseLife();
         }
         //Layer 7 is ground

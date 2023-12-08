@@ -3,17 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using BehaviourTree;
 
-public class CheckIfStopped : BTCondition
+public class CheckIfCaughtPlayer : BTCondition
 {
     Enemy thisActor;
-    public CheckIfStopped(Enemy enemy)
+    public CheckIfCaughtPlayer(Enemy enemy)
     {
         thisActor = enemy;
     }
 
     protected override NodeState OnRun()
     {
-        if (thisActor.hasStopped)
+        if (thisActor.caughtPlayer)
         {
             return NodeState.SUCCESS;
         }

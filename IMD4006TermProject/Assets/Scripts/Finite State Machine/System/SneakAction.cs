@@ -6,16 +6,12 @@ using UnityEngine;
 public class SneakAction : FSMAction
 {
     BoxCollider[] colliders;
-    Vector3 colliderSize = new Vector3(0, 0.7f, 0);
-    Vector3 colliderOffset = new Vector3(0.5f, 1.4f, 0.5f);
+    Vector3 colliderSize = new Vector3(0, 0.68f, 0);
+    Vector3 colliderOffset = new Vector3(0.5f, 1.35f, 0.5f);
 
     public override void Execute(BaseStateMachine stateMachine)
     {
         stateMachine.GetComponent<TerrainState>().currSpeed = stateMachine.GetComponent<TerrainState>().GetSneak();
-        /*
-        if (stateMachine.GetComponent<TerrainState>().currSpeed == stateMachine.GetComponent<TerrainState>().GetSneak())
-        { Debug.Log("I should be sneaking"); }
-        */
         PlayerMovement player = stateMachine.GetComponent<PlayerMovement>();
         player.setModalSpeed(player.getSneakSpeed());
         player.turnSmoothTime = player.turnSmoothTimeSnappy;

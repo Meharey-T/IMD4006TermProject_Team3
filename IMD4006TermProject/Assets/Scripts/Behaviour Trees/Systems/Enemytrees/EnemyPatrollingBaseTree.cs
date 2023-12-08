@@ -23,6 +23,13 @@ public class EnemyPatrollingBaseTree : BTree
         {
             //Options that are to be picked first should come first
 
+            ////CLEAR DETECTION AFTER CAPTURE SEQUENCE
+            new Sequence(new List<BTNode>
+            {
+                new CheckIfCaughtPlayer(enemy),
+                new Timer(0.05f, new TaskClearDetection(enemy, enemyMeshAgent))
+            }),
+
             ////CHASE PLAYER IF SPOTTED SEQUENCE
             new Sequence(new List<BTNode>
             {

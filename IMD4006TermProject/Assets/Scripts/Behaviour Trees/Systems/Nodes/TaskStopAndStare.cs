@@ -18,9 +18,15 @@ public class TaskStopAndStare : BTNode
 
     protected override NodeState OnRun()
     {
+        if (thisActor.caughtPlayer)
+        {
+            thisActor.GetComponent<NavMeshAgent>().ResetPath();
+            state = NodeState.FAILURE;
+        }
         thisActor.enemyAnimator.animator.SetBool(thisActor.enemyAnimator.IfWalkingHash, false);
         thisActor.enemyAnimator.animator.SetBool(thisActor.enemyAnimator.IfSprintingHash, false);
-        //Debug.Log("Running TaskStopAndStare");
+        //thisActor.enemyAnimator.animator.SetBool(thisActor.enemyAnimator.IfGrabbingHash, false);
+
         thisActor.enemyMeshAgent.ResetPath();
         Vector3 direction = (player.transform.position - thisActor.transform.position).normalized;
         if (direction.x < 0)

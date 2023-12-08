@@ -11,6 +11,7 @@ public class TaskPointWander : BTNode
     NavMeshAgent navigator;
     float waypointRadius;
     GameObject waypoint;
+    Enemy thisActor;
 
     public TaskPointWander(Transform transform, GameObject waypoint,  float waypointRadius, NavMeshAgent enemyAgent)
     {
@@ -19,15 +20,19 @@ public class TaskPointWander : BTNode
         BTTransform = transform;
         navigator = enemyAgent;
         this.waypoint = waypoint;
+        thisActor = navigator.GetComponent<Enemy>();
     }
 
     protected override NodeState OnRun()
     {
-        //Debug.Log("Running TaskPointWander");
         float waypointDistance = Vector3.Distance(BTTransform.position, nextWaypointPos);
 
-        if (navigator.GetComponent<Enemy>().seesPlayer || navigator.GetComponent<Enemy>().hearsPlayer ||
-            navigator.GetComponent<Enemy>().sawPlayer || navigator.GetComponent<Enemy>().heardPlayer)
+        if (thisActor.seesPlayer || thisActor.hearsPlayer ||
+            thisActor.sawPlayer || thisActor.heardPlayer)
+        {
+            state = NodeState.FAILURE;
+        }
+        else if (thisActor.caughtPlayer)
         {
             state = NodeState.FAILURE;
         }
@@ -38,7 +43,6 @@ public class TaskPointWander : BTNode
         }
         else if (waypointDistance < 1)
         {
-            //Debug.Log("Reached waypoint");
             state = NodeState.SUCCESS;
             NewPatrolPoint();
         }

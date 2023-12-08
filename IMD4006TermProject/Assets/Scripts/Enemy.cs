@@ -151,6 +151,10 @@ public class Enemy : MonoBehaviour
             sawPlayer = true;
             lastLocationSeen = playerObj.transform.position;
         }
+        else if(seesPlayer)
+        {
+            seesPlayer = false;
+        }
         
     }
 
@@ -210,14 +214,14 @@ public class Enemy : MonoBehaviour
 
     public IEnumerator GrabPlayer()
     {
-        Debug.Log("Grabbing player");
         enemyAnimator.animator.SetBool(enemyAnimator.IfGrabbingHash, true);
         enemyAnimator.animator.SetBool(enemyAnimator.IfWalkingHash, false);
         enemyAnimator.animator.SetBool(enemyAnimator.IfSprintingHash, false);
+        enemyAnimator.animator.SetBool(enemyAnimator.IfTurningLeftHash, false);
+        enemyAnimator.animator.SetBool(enemyAnimator.IfTurningRightHash, false);
         yield return grabTime;
         if (playerInGrabRange)
         {
-            Debug.Log("Finishing grabbing player");
             playerObj.GetComponent<Player>().OnPlayerLoseLife();
         }
         enemyAnimator.animator.SetBool(enemyAnimator.IfGrabbingHash, false);
