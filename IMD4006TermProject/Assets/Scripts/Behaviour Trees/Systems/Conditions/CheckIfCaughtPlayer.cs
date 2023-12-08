@@ -13,7 +13,6 @@ public class CheckIfCaughtPlayer : BTCondition
 
     protected override NodeState OnRun()
     {
-        //Debug.Log("This actor has stopped: " + thisActor.hasStopped);
         if (thisActor.caughtPlayer)
         {
             return NodeState.SUCCESS;

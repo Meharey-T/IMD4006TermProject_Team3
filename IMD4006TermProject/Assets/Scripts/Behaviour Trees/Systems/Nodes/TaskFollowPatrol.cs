@@ -53,7 +53,6 @@ public class TaskFollowPatrol : BTNode
             //If we've reached the current waypoint, succeed and move to the next one
             if (waypointDistance < 1) {
                 agent.SetDestination(waypointList[waypointIndex].transform.position);
-                //Debug.Log("Reached waypoint");
                 waypointIndex++;
                 state = NodeState.RUNNING;
             }

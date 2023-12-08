@@ -214,7 +214,6 @@ public class Enemy : MonoBehaviour
 
     public IEnumerator GrabPlayer()
     {
-        Debug.Log("Grabbing player");
         enemyAnimator.animator.SetBool(enemyAnimator.IfGrabbingHash, true);
         enemyAnimator.animator.SetBool(enemyAnimator.IfWalkingHash, false);
         enemyAnimator.animator.SetBool(enemyAnimator.IfSprintingHash, false);
@@ -223,7 +222,6 @@ public class Enemy : MonoBehaviour
         yield return grabTime;
         if (playerInGrabRange)
         {
-            Debug.Log("Finishing grabbing player");
             playerObj.GetComponent<Player>().OnPlayerLoseLife();
         }
         enemyAnimator.animator.SetBool(enemyAnimator.IfGrabbingHash, false);

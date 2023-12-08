@@ -25,7 +25,6 @@ public class TaskPointWander : BTNode
 
     protected override NodeState OnRun()
     {
-        //Debug.Log("Running TaskPointWander");
         float waypointDistance = Vector3.Distance(BTTransform.position, nextWaypointPos);
 
         if (thisActor.seesPlayer || thisActor.hearsPlayer ||
@@ -44,7 +43,6 @@ public class TaskPointWander : BTNode
         }
         else if (waypointDistance < 1)
         {
-            //Debug.Log("Reached waypoint");
             state = NodeState.SUCCESS;
             NewPatrolPoint();
         }

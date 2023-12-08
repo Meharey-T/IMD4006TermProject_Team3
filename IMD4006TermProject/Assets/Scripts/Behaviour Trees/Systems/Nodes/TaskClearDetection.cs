@@ -17,7 +17,6 @@ public class TaskClearDetection : BTNode
 
     protected override NodeState OnRun()
     {
-        Debug.Log("Running TaskClearDetection");
 
         //HEARD PLAYER
         //If this enemy hear the player, set their states and play their soundFX

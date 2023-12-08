@@ -71,11 +71,7 @@ public class EnemySoundFX : MonoBehaviour
 
                 case AngerLevel.INDIFFERENT:
                     clip = idleSFX[(int)1];
-                    Debug.Log("IdleSFX");
                     break;
-                
-
-
             }
             enemySoundSource.enabled = true;
             enemySoundSource.clip = clip;
@@ -118,7 +114,6 @@ public class EnemySoundFX : MonoBehaviour
         {
             clip = null;
             currEmotion = GetEmotion();
-            Debug.Log("We are in PlayCheckOutSoundSound, we do hearrrrr");
             switch (currEmotion)
             {
                 case AngerLevel.INDIFFERENT:
@@ -137,19 +132,12 @@ public class EnemySoundFX : MonoBehaviour
             }
             if (!enemySoundSource.isPlaying)
             {
-                Debug.Log("PlayingSFX");
                 enemySoundSource.enabled = true;
                 enemySoundSource.clip = clip;
                 enemySoundSource.volume = 1;
 
                 enemySoundSource.Play();
-                
             }
-
-
-           
-
-
         }
         else
         {
@@ -175,19 +163,15 @@ public class EnemySoundFX : MonoBehaviour
 
                 case AngerLevel.INDIFFERENT:
                     clip = hadSeenSFX[(int)1];
-                    Debug.Log("I see you SFX Should play");
                     break;
                 case AngerLevel.IRRITATED:
                     clip = hadSeenSFX[(int)1];
-                    Debug.Log("I hear you SFX Should play");
                     break;
                 case AngerLevel.ANGRY:
                     clip = hadSeenSFX[(int)2];
-                    Debug.Log("I hear you SFX Should play");
                     break;
                 case AngerLevel.FURIOUS:
                     clip = hadSeenSFX[(int)2];
-                    Debug.Log("I hear you SFX Should play");
                     break;
 
 
@@ -195,18 +179,14 @@ public class EnemySoundFX : MonoBehaviour
             }
             if (!enemySoundSource.isPlaying)
             {
-                Debug.Log("PlayingSAWSFX");
                 enemySoundSource.enabled = true;
                 enemySoundSource.clip = clip;
                 enemySoundSource.volume = 1;
 
                 enemySoundSource.Play();
-
             }
         }
-        
     }
-
 
     public void PlaySeeSound()
     {
@@ -219,32 +199,21 @@ public class EnemySoundFX : MonoBehaviour
             currEmotion = GetEmotion();
             switch (currEmotion)
             {
-
-
-
                 case AngerLevel.INDIFFERENT:
                     clip = seeSFX[(int)1];
-                    Debug.Log("I see you SFX Should play");
                     break;
                 case AngerLevel.IRRITATED:
                     clip = seeSFX[(int)1];
-                    Debug.Log("I hear you SFX Should play");
                     break;
                 case AngerLevel.ANGRY:
                     clip = seeSFX[(int)2];
-                    Debug.Log("I hear you SFX Should play");
                     break;
                 case AngerLevel.FURIOUS:
                     clip = seeSFX[(int)2];
-                    Debug.Log("I hear you SFX Should play");
                     break;
-
-
-
             }
             if (!enemySoundSource.isPlaying)
             {
-                Debug.Log("PlayingSaeSFX");
                 enemySoundSource.enabled = true;
                 enemySoundSource.clip = clip;
                 enemySoundSource.volume = 1;
@@ -256,19 +225,13 @@ public class EnemySoundFX : MonoBehaviour
 
     }
 
-
-
-
     //If you heard the player, say something
     public void PlayHearSound()
     {
-
-
         if (currState == EnemyState.Hear)
         {
             clip = null;
             currEmotion = GetEmotion();
-            Debug.Log("We are in PlayCheckOutSoundSound, we do hearrrrr");
             switch (currEmotion)
             {
                 case AngerLevel.INDIFFERENT:
@@ -287,7 +250,6 @@ public class EnemySoundFX : MonoBehaviour
             }
             if (!enemySoundSource.isPlaying)
             {
-                Debug.Log("PlayingSFX");
                 enemySoundSource.enabled = true;
                 enemySoundSource.clip = clip;
                 enemySoundSource.volume = 1;
@@ -295,22 +257,12 @@ public class EnemySoundFX : MonoBehaviour
                 enemySoundSource.Play();
 
             }
-
-
-
-
-
         }
         else
         {
             //PlayIdleSound();
         }
     }
-
-
-
-
-
 
     //Get the differen emotions and later set them to currEmotion in the TaskClearDetection
     public AngerLevel GetIndifference()
@@ -360,21 +312,6 @@ public class EnemySoundFX : MonoBehaviour
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /*
 
 
@@ -406,7 +343,6 @@ public void PlayIdleSound()
 
             case AngerLevel.INDIFFERENT:
                 clip = idleSFX[(int)1];
-                Debug.Log("IdleSFX");
                 break;
 
 
@@ -448,17 +384,15 @@ public void PlayCheckOutSoundSound()
 {
 
 
-    /*     Debug.Log("We are in PlayCheckOutSoundSound");
+    /*     
      if ( hasAcknowledged == true)
      {
          enemySoundSource.enabled = false;
-         Debug.Log("We are in PlayCheckOutSoundSound, has ackknowledge was true");
      }*/
   /*  if (currState == EnemyState.Hear)
     {
         clip = null;
         currEmotion = GetEmotion();
-        Debug.Log("We are in PlayCheckOutSoundSound, we do hearrrrr");
         switch (currEmotion)
         {
 
@@ -466,19 +400,15 @@ public void PlayCheckOutSoundSound()
 
             case AngerLevel.INDIFFERENT:
                 clip = hearSFX[(int)1];
-                Debug.Log("I hear you SFX Should play");
                 break;
             case AngerLevel.IRRITATED:
                 clip = hearSFX[(int)1];
-                Debug.Log("I hear you SFX Should play");
                 break;
             case AngerLevel.ANGRY:
                 clip = hearSFX[(int)2];
-                Debug.Log("I hear you SFX Should play");
                 break;
             case AngerLevel.FURIOUS:
                 clip = hearSFX[(int)2];
-                Debug.Log("I hear you SFX Should play");
                 break;
 
 
@@ -486,7 +416,6 @@ public void PlayCheckOutSoundSound()
         }
         if (!enemySoundSource.isPlaying)
         {
-            Debug.Log("PlayingSFX");
             enemySoundSource.enabled = true;
             enemySoundSource.clip = clip;
             enemySoundSource.volume = 1;
@@ -514,12 +443,9 @@ public void PlayCheckOutSoundSound()
 public void PlayCheckOutSawSound()
 {
 
-
-    Debug.Log("We are in PlayCheckOutSoundSound");
     /* if (hasAcknowledged == true)
      {
          enemySoundSource.enabled = false;
-         Debug.Log("We are in PlayCheckOutSoundSound, has ackknowledge was true");
      }*/
     //if (currState == EnemyState.HadSeen)
     // {
@@ -527,7 +453,6 @@ public void PlayCheckOutSawSound()
     /*
     clip = null;
     currEmotion = GetEmotion();
-    Debug.Log("sawwwwwwwwwwwwwwwwwwwwwwwwww");
     switch (currEmotion)
     {
 
@@ -535,19 +460,15 @@ public void PlayCheckOutSawSound()
 
         case AngerLevel.INDIFFERENT:
             clip = seeSFX[(int)1];
-            Debug.Log("I see you SFX Should play");
             break;
         case AngerLevel.IRRITATED:
             clip = seeSFX[(int)1];
-            Debug.Log("I hear you SFX Should play");
             break;
         case AngerLevel.ANGRY:
             clip = seeSFX[(int)2];
-            Debug.Log("I hear you SFX Should play");
             break;
         case AngerLevel.FURIOUS:
             clip = seeSFX[(int)2];
-            Debug.Log("I hear you SFX Should play");
             break;
 
 
@@ -555,7 +476,6 @@ public void PlayCheckOutSawSound()
     }
     if (!enemySoundSource.isPlaying)
     {
-        Debug.Log("PlayingSAWSFX");
         enemySoundSource.enabled = true;
         enemySoundSource.clip = clip;
         enemySoundSource.volume = 1;
@@ -564,8 +484,6 @@ public void PlayCheckOutSawSound()
 
     }
 
-
-    Debug.Log("Disabling ");
     sawSoundPlayed = true;
     // hasAcknowledged = true;
 

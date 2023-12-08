@@ -82,25 +82,19 @@ Input.GetAxis("Horizontal") < 0)
         {
 
             TerrainType = FloorType.Carpet;
-            //Debug.Log("This is carpet");
         }
         else if (terrainTag == "HardWood")
         {
             TerrainType = FloorType.Hardwood;
-            //Debug.Log("This is hardwood");
         }
         if (terrainTag == "CobbleStone")
         {
             TerrainType = FloorType.CobbleStone;
-            Debug.Log("This is CobbleStone");
         }
         else if (terrainTag == "Crate")
         {
             TerrainType = FloorType.Crate;
-            Debug.Log("This is a crate");
         }
-
-        //Debug.Log(TerrainType);
         return TerrainType;
 
 
@@ -121,22 +115,18 @@ Input.GetAxis("Horizontal") < 0)
                 case FloorType.Hardwood:
                     pMovement.currentSoundRadius= pMovement.walkSoundRadius * hardwoodMultiplier;
                     clip = hardwoodSFX[(int)Speed.walk];
-                    //Debug.Log("hardwoodfloor");
                     break;
                 case FloorType.Carpet:
                     pMovement.currentSoundRadius = pMovement.walkSoundRadius * carpetMultiplier;
                     clip = carpetSFX[(int)Speed.walk];
-                    //Debug.Log("carpetfloor");
                     break;
                 case FloorType.CobbleStone:
                     pMovement.currentSoundRadius = pMovement.walkSoundRadius * cobblestoneMultiplier;
                     clip = cobblestoneSFX[(int)Speed.walk];
-                    //Debug.Log("hardwoodfloor");
                     break;
                 case FloorType.Crate:
                     pMovement.currentSoundRadius = pMovement.walkSoundRadius * crateMultiplier;
                     clip = crateSFX[(int)Speed.walk];
-                    //Debug.Log("hardwoodfloor");
                     break;
 
 
@@ -173,22 +163,18 @@ Input.GetAxis("Horizontal") < 0)
 
                     clip = carpetSFX[(int)Speed.run];
                     pMovement.soundRadius.radius = pMovement.sprintSoundRadius * hardwoodMultiplier;
-                    //Debug.Log("carpetfloor");
                     break;
                 case FloorType.Hardwood:
                     pMovement.soundRadius.radius = pMovement.sprintSoundRadius * carpetMultiplier;
                     clip = hardwoodSFX[(int)Speed.run];
-                    //Debug.Log("hardwoodfloor");
                     break;
                 case FloorType.CobbleStone:
                     pMovement.soundRadius.radius = pMovement.sprintSoundRadius * cobblestoneMultiplier;
                     clip = cobblestoneSFX[(int)Speed.run];
-                    //Debug.Log("hardwoodfloor");
                     break;
                 case FloorType.Crate:
                     pMovement.currentSoundRadius = pMovement.sprintSoundRadius * crateMultiplier;
                     clip = crateSFX[(int)Speed.run];
-                    //Debug.Log("hardwoodfloor");
                     break;
 
 
@@ -312,22 +298,11 @@ Input.GetAxis("Horizontal") < 0)
      {
          case FloorType.Carpet:
             carpetWalk.enabled = true;
-             Debug.Log("carpetfloor");
              break;
          case FloorType.Hardwood:
              hardWoodWalk.enabled = true;
-             Debug.Log("hardwoodfloor");
              break;
-
-
-
      }
-
-
-
-
-
-
 
 
   }
@@ -356,12 +331,10 @@ Input.GetAxis("Horizontal") < 0)
             if (other.tag == "Carpet")
             {
                 TerrainType = FloorType.Carpet;
-                Debug.Log("This is carpet");
             }
             else if (other.tag == "HardWood")
             {
                 TerrainType = FloorType.Hardwood;
-                Debug.Log("This is hardwood");
             }
         }
         

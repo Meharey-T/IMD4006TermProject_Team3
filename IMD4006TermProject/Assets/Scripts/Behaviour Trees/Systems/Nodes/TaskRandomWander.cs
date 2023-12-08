@@ -21,7 +21,6 @@ public class TaskRandomWander : BTNode
 
     protected override NodeState OnRun()
     {
-        //Debug.Log("Doing Task RandomWander");
         float waypointDistance = Vector3.Distance(BTTransform.position, nextWaypointPos);
 
         if (agent.GetComponent<Enemy>().seesPlayer || agent.GetComponent<Enemy>().hearsPlayer ||
@@ -31,7 +30,6 @@ public class TaskRandomWander : BTNode
         }
         else if (waypointDistance < 1)
         {
-            //Debug.Log("Reached waypoint");
             state = NodeState.SUCCESS;
             NewPatrolPoint();
         }

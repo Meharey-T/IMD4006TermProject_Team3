@@ -18,7 +18,6 @@ public class TaskCheckOutSound : BTNode
 
     protected override NodeState OnRun()
     {
-        //Debug.Log("Running TaskCheckOutSound");
         float waypointDistance = Vector3.Distance(thisActor.transform.position, thisActor.lastLocationHeard);
         agent.GetComponent<Enemy>().enemyAnimator.animator.SetBool(agent.GetComponent<Enemy>().enemyAnimator.IfTurningRightHash, false);
         agent.GetComponent<Enemy>().enemyAnimator.animator.SetBool(agent.GetComponent<Enemy>().enemyAnimator.IfTurningLeftHash, false);
@@ -43,7 +42,6 @@ public class TaskCheckOutSound : BTNode
                 thisActor.enemyAnimator.animator.SetBool(thisActor.enemyAnimator.IfSprintingHash, false);
                 //set the sound effect to indiffernt
 
-                Debug.Log("I hear you SFX is set irritated");
                 agent.GetComponent<EnemySoundFX>().currEmotion = EnemySoundFX.AngerLevel.IRRITATED;
                 // check if had said something before
                 agent.GetComponent<EnemySoundFX>().hasHearSoundSaid();
@@ -97,7 +95,6 @@ public class TaskCheckOutSound : BTNode
             thisActor.transform.rotation = Quaternion.Slerp(thisActor.transform.rotation, lookRotation, Time.deltaTime * 5f);
             agent.SetDestination(thisActor.lastLocationHeard);
             state = NodeState.RUNNING;
-            //Debug.Log("Checking out sound");
         }
         return state;
     }

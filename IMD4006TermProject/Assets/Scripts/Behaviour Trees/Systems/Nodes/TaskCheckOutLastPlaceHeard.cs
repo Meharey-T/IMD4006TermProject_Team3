@@ -18,7 +18,6 @@ public class TaskCheckOutLastPlaceHeard : BTNode
 
     protected override NodeState OnRun()
     {
-        //Debug.Log("Running TaskCheckOutLastPlaceHeard");
         float waypointDistance = Vector3.Distance(thisActor.transform.position, thisActor.lastLocationHeard);
         thisActor.enemyAnimator.animator.SetBool(thisActor.enemyAnimator.IfTurningRightHash, false);
         thisActor.enemyAnimator.animator.SetBool(thisActor.enemyAnimator.IfTurningLeftHash, false);
@@ -48,8 +47,6 @@ public class TaskCheckOutLastPlaceHeard : BTNode
             thisActor.enemyAnimator.animator.SetBool(thisActor.enemyAnimator.IfSprintingHash, true);
             thisActor.enemyAnimator.animator.SetBool(thisActor.enemyAnimator.IfWalkingHash, false);
         }
-
-        //Debug.Log("What in the world is happening???");
 
         //If we see the player, don't worry about what we heard, chase them
         if (agent.GetComponent<Enemy>().seesPlayer || agent.GetComponent<Enemy>().hearsPlayer ||

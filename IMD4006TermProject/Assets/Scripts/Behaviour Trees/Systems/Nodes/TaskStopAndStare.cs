@@ -27,7 +27,6 @@ public class TaskStopAndStare : BTNode
         thisActor.enemyAnimator.animator.SetBool(thisActor.enemyAnimator.IfSprintingHash, false);
         //thisActor.enemyAnimator.animator.SetBool(thisActor.enemyAnimator.IfGrabbingHash, false);
 
-        //Debug.Log("Running TaskStopAndStare");
         thisActor.enemyMeshAgent.ResetPath();
         Vector3 direction = (player.transform.position - thisActor.transform.position).normalized;
         if (direction.x < 0)

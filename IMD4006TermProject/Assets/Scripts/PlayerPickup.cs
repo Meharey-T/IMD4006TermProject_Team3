@@ -54,12 +54,10 @@ public class PlayerPickup : MonoBehaviour
                     CurrentObj.useGravity = false;
                     CurrentObj.isKinematic = false;
                     CurrentObj.drag = 5;
-                    Debug.Log(HitInfo);
                     
                     if (CurrentObj.gameObject.tag == "Treasure")
                     {
 
-                        Debug.Log("Found treasure");
                         //Figure out what kind of treasure we just found, act accordingly
                         player.coinCount += CurrentObj.GetComponent<Treasure>().treasureStats.coinValue;
                         for(int i = 0; i < player.enemySet.Items.Count; i++)
@@ -68,7 +66,6 @@ public class PlayerPickup : MonoBehaviour
                         }
                         if (CurrentObj.GetComponent<Treasure>().treasureStats.finalChest)
                         {
-                            Debug.Log("Player has won");
                             StartCoroutine(player.OnPlayerWon());
                         }
                         //Remove the coin from the scene
@@ -76,19 +73,16 @@ public class PlayerPickup : MonoBehaviour
                         player.coinCountTxt.text = "Coin Count: " + player.coinCount;
 
                         /*
-                        Debug.Log("Found treasure");
                         //Figure out what kind of treasure we just found, act accordingly
                         //  this.coinCount += CurrentObj.GetComponent<Treasure>().treasureStats.coinValue;
                         if (CurrentObj.GetComponent<Treasure>().treasureStats.finalChest)
                         {
-                            Debug.Log("Player has won");
                             // StartCoroutine(OnPlayerWon());
                         }
                         //Remove the coin from the scene
                         CurrentObj.GetComponent<Interactable>().Die();
                         //  coinCountTxt.text = "Coin Count: " + coinCount;
                         */
-                        //Debug.Log("this is treasure");
                     }
 
 

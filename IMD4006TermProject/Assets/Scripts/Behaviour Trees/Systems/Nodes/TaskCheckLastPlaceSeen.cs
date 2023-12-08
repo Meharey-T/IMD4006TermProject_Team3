@@ -18,7 +18,6 @@ public class TaskCheckLastPlaceSeen : BTNode
 
     protected override NodeState OnRun()
     {
-        //Debug.Log("Running TaskCheckLastPlaceSeen");
         float waypointDistance = Vector3.Distance(thisActor.transform.position, thisActor.lastLocationSeen);
         thisActor.enemyAnimator.animator.SetBool(thisActor.enemyAnimator.IfTurningRightHash, false);
         thisActor.enemyAnimator.animator.SetBool(thisActor.enemyAnimator.IfTurningLeftHash, false);
@@ -48,8 +47,6 @@ public class TaskCheckLastPlaceSeen : BTNode
             thisActor.enemyAnimator.animator.SetBool(thisActor.enemyAnimator.IfSprintingHash, true);
             thisActor.enemyAnimator.animator.SetBool(thisActor.enemyAnimator.IfWalkingHash, false);
         }
-
-        //Debug.Log("What in the world is happening???");
 
         //Quickly abort this script if they hear or see the player; we want them to jump to the appropriate behaviours
         if (thisActor.seesPlayer || thisActor.hearsPlayer)

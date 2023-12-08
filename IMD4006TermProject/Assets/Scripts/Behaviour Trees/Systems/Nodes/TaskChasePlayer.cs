@@ -25,8 +25,6 @@ public class TaskChasePlayer : BTNode
     {
         thisActor.enemyAnimator.animator.SetBool(thisActor.enemyAnimator.IfTurningRightHash, false);
         thisActor.enemyAnimator.animator.SetBool(thisActor.enemyAnimator.IfTurningLeftHash, false);
-        //thisActor.enemyAnimator.animator.SetBool(thisActor.enemyAnimator.IfGrabbingHash, false);
-        //Debug.Log("Running TaskChasePlayer");
         float waypointDistance = Vector3.Distance(transform.position, player.transform.position);
         if (agent.speed == thisActor.defaultSpeed)
         {
@@ -55,8 +53,6 @@ public class TaskChasePlayer : BTNode
                 thisActor.enemyAnimator.animator.SetBool(thisActor.enemyAnimator.IfWalkingHash, false);
             }
         }
-
-        //Debug.Log("This character sees player: " + thisActor.seesPlayer);
 
         if (waypointDistance >= 1 && thisActor.seesPlayer)
         {

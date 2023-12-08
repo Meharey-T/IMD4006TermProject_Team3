@@ -15,10 +15,6 @@ public class SprintAction : FSMAction
         TerrainState terraine = stateMachine.GetComponent<TerrainState>();
         
         stateMachine.GetComponent<TerrainState>().currSpeed = stateMachine.GetComponent<TerrainState >().GetRun();
-        /*
-        if (stateMachine.GetComponent<TerrainState >().currSpeed == stateMachine.GetComponent <TerrainState>().GetRun())
-        { Debug.Log("I should be running"); }
-        */
         player.setModalSpeed(player.getSprintSpeed());
         player.turnSmoothTime = player.turnSmoothTimeSlow;
         stateMachine.GetComponent<PlayerMovement>().currentSoundRadius = stateMachine.GetComponent<PlayerMovement>().sprintSoundRadius;
