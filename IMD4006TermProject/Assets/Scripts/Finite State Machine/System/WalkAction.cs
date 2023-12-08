@@ -32,8 +32,18 @@ public class WalkAction : FSMAction
         {
             player.rb.AddForce(Vector3.up * player.jumpAmount, ForceMode.Impulse);
             player.currentStamina -= 30;
+            player.playerAnimator.animator.SetBool(player.playerAnimator.IfJumpingHash, true);
         }
-
+        if (player.groundedPlayer)
+        {
+            player.playerAnimator.animator.SetBool(player.playerAnimator.IfWalkingHash, true);
+            //Set all the other ones to false
+            player.playerAnimator.animator.SetBool(player.playerAnimator.IfSprintingHash, true);
+            player.playerAnimator.animator.SetBool(player.playerAnimator.IfSneakingHash, false);
+            player.playerAnimator.animator.SetBool(player.playerAnimator.IfHidingHash, false);
+            player.playerAnimator.animator.SetBool(player.playerAnimator.IfRollingHash, false);
+        }
+        //player.currentAnimation = player.animationLibrary.animationList[0];
         //Change player animation
         //Change player footstep sounds
     }

@@ -28661,6 +28661,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 8233892006867537294, guid: 40ff1c46273af8c4d937dde0628ae643, type: 3}
+      propertyPath: indicator
+      value: 
+      objectReference: {fileID: 1920656790}
+    - target: {fileID: 8233892006867537294, guid: 40ff1c46273af8c4d937dde0628ae643, type: 3}
+      propertyPath: centralTxt
+      value: 
+      objectReference: {fileID: 173199778}
+    - target: {fileID: 8233892006867537294, guid: 40ff1c46273af8c4d937dde0628ae643, type: 3}
+      propertyPath: P_LivesCount
+      value: 
+      objectReference: {fileID: 2029112395}
+    - target: {fileID: 8233892006867537294, guid: 40ff1c46273af8c4d937dde0628ae643, type: 3}
+      propertyPath: coinCountTxt
+      value: 
+      objectReference: {fileID: 173199779}
     - target: {fileID: 8627968276628479127, guid: 40ff1c46273af8c4d937dde0628ae643, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.8
@@ -52861,6 +52877,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 2263437137837363877, guid: 1ad8e7d22373f044ba936c48c30ddde5, type: 3}
   m_PrefabInstance: {fileID: 1918272718}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1920656790 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1870073476614994916, guid: 3cefce701ac49e241ad496f5b5fdb985, type: 3}
+  m_PrefabInstance: {fileID: 173199777}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1922063483
 PrefabInstance:

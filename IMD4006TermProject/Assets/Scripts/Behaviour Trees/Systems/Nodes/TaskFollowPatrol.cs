@@ -23,6 +23,8 @@ public class TaskFollowPatrol : BTNode
 
     protected override NodeState OnRun()
     {
+        agent.GetComponent<Enemy>().enemyAnimator.animator.SetBool(agent.GetComponent<Enemy>().enemyAnimator.IfTurningLeftHash, false);
+        agent.GetComponent<Enemy>().enemyAnimator.animator.SetBool(agent.GetComponent<Enemy>().enemyAnimator.IfTurningRightHash, false);
         //If at some point we can see or hear the player, stop what we're doing and switch to that instead
         if (agent.GetComponent<Enemy>().seesPlayer || agent.GetComponent<Enemy>().hearsPlayer
             || agent.GetComponent<Enemy>().sawPlayer || agent.GetComponent<Enemy>().heardPlayer)
@@ -37,6 +39,9 @@ public class TaskFollowPatrol : BTNode
             state = NodeState.SUCCESS;
         }
         else if (waypointList[waypointIndex]){
+            if (!agent.GetComponent<Enemy>().enemyAnimator.animator.GetBool(agent.GetComponent<Enemy>().enemyAnimator.IfWalkingHash)) {
+                agent.GetComponent<Enemy>().enemyAnimator.animator.SetBool(agent.GetComponent<Enemy>().enemyAnimator.IfWalkingHash, true);
+            }
             float waypointDistance = Vector3.Distance(BTTransform.position, waypointList[waypointIndex].transform.position);
             if (waypointDistance < 1) {
                 agent.SetDestination(waypointList[waypointIndex].transform.position);
@@ -47,6 +52,7 @@ public class TaskFollowPatrol : BTNode
             //If we're not there yet, keep going
             else if (waypointDistance >= 1)
             {
+                //agent.GetComponent<Enemy>().enemyAnimator.animator.SetBool(agent.GetComponent<Enemy>().enemyAnimator.IfSprintingHash, false);
                 agent.SetDestination(waypointList[waypointIndex].transform.position);
                 state = NodeState.RUNNING;
             }

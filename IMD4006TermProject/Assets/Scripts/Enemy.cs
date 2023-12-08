@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 /*
  * When creating a new enemy for a scene please do the following:
@@ -46,18 +47,23 @@ public class Enemy : MonoBehaviour
     public int treasureLeft;
     public int i_angerLevel;
 
-    GameObject emojiTarget;
-    GameObject emojiPrefab;
-    Texture i_currentEmoji;
-    [SerializeField] Texture i_indifferent;
-    [SerializeField] Texture i_irritated;
-    [SerializeField] Texture i_angry;
-    [SerializeField] Texture i_furious;
+    [SerializeField] GameObject emojiTarget;
+    [SerializeField] GameObject emojiPrefab;
+    Sprite i_currentEmoji;
+    [SerializeField] Sprite i_indifferent;
+    [SerializeField] Sprite i_irritated;
+    [SerializeField] Sprite i_angry;
+    [SerializeField] Sprite i_furious;
+
+    public Transform camera;
 
     WaitForSeconds wait = new WaitForSeconds(0.2f);
     WaitForSeconds grabTime = new WaitForSeconds(2f);
 
     public bool playerInGrabRange;
+    public bool caughtPlayer;
+
+    public EnemyAnimator enemyAnimator;
 
 
     // Start is called before the first frame update
@@ -70,13 +76,19 @@ public class Enemy : MonoBehaviour
         rangeChecks = new Collider[4];
         StartCoroutine(FOVRoutine());
         StartCoroutine(AngerCheck());
-
+        i_currentEmoji = i_indifferent;
+        enemyAnimator = GetComponent<EnemyAnimator>();
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    private void LateUpdate()
+    {
+        emojiTarget.transform.LookAt(camera.position + camera.forward);
     }
 
     //Reduces call count as this kind of behaviour can be a little computationally expensive
@@ -191,6 +203,7 @@ public class Enemy : MonoBehaviour
             i_currentEmoji = i_furious;
             //enemyMeshAgent.speed = 4.5f;
         }
+        emojiPrefab.GetComponentInChildren<Image>().sprite = i_currentEmoji;
     }
 
     public IEnumerator GrabPlayer()
@@ -214,27 +227,28 @@ public class Enemy : MonoBehaviour
             this.GetComponent<Interactable>().Die();
         }
 
-        //Handles if they run into the player while they're not hiding
-        //Only collides with the actual player geometry
-        if(other.gameObject.layer == 9 && other.GetType() == typeof(BoxCollider))
-        {
-            //Player will lose a life
-            Debug.Log("Player losing life the old fashioned way");
-            other.GetComponentInParent<Player>().OnPlayerLoseLife();
-        }
         //Handles if they fall into the radius of the player projected sound
-        if(other.gameObject.layer == 9 && other.GetType() == typeof(SphereCollider))
+        if (other.gameObject.layer == 9 && other.GetType() == typeof(SphereCollider) && !caughtPlayer)
         {
             //Sets them to alert and sets a value to their location heard, allowing them to pursue the source of the sound
             hearsPlayer = true;
             heardPlayer = false;
             lastLocationHeard = other.transform.position;
         }
+
+        //Handles if they run into the player while they're not hiding
+        //Only collides with the actual player geometry
+        if (other.gameObject.layer == 9 && other.GetType() == typeof(BoxCollider))
+        {
+            //Player will lose a life
+            Debug.Log("Player losing life the old fashioned way");
+            other.GetComponentInParent<Player>().OnPlayerLoseLife();
+        }
       }
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.layer == 9 && other.GetType() == typeof(SphereCollider))
+        if (other.gameObject.layer == 9 && other.GetType() == typeof(SphereCollider) && !caughtPlayer)
         {
             //Sets them to alert and sets a value to their location heard, allowing them to pursue the source of the sound
             hearsPlayer = true;
@@ -246,7 +260,7 @@ public class Enemy : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         //If they exit the range of where they can currently hear the player, sets it accordingly
-        if (other.gameObject.layer == 9 && other.GetType() == typeof(SphereCollider))
+        if (other.gameObject.layer == 9 && other.GetType() == typeof(SphereCollider) && !caughtPlayer)
         {
             //They can no longer hear the player, and the place they last heard them stops changing
             hearsPlayer = false;

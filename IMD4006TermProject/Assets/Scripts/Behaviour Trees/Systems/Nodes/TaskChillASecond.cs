@@ -23,6 +23,8 @@ public class TaskChillASecond : BTNode
         }
         else
         {
+            agent.GetComponent<Enemy>().enemyAnimator.animator.SetBool(agent.GetComponent<Enemy>().enemyAnimator.IfWalkingHash, false);
+            agent.GetComponent<Enemy>().enemyAnimator.animator.SetBool(agent.GetComponent<Enemy>().enemyAnimator.IfSprintingHash, false);
             state = NodeState.RUNNING;
         }
         return state;

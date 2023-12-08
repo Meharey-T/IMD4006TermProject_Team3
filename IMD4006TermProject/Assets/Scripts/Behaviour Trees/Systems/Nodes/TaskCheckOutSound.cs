@@ -30,17 +30,19 @@ public class TaskCheckOutSound : BTNode
                 //agent.GetComponent<EnemySoundFX>().hasAcknowledged = false;
                 //Debug.Log(thisActor.angerLevel);
                 agent.speed = 3.5f;
+                thisActor.enemyAnimator.animator.SetBool(thisActor.enemyAnimator.IfWalkingHash, true);
                 //set the sound effect to indiffernt
 
-               //Debug.Log("I hear you SFX is set indifferent");
-               
-              //  agent.GetComponent<EnemySoundFX>().currEmotion = agent.GetComponent<EnemySoundFX>().GetIndifference();
-               // agent.GetComponent<EnemySoundFX>().PlayCheckOutSoundSound();
-               //agent.GetComponent<EnemySoundFX>().hasAcknowledged = true;
+                //Debug.Log("I hear you SFX is set indifferent");
+
+                //  agent.GetComponent<EnemySoundFX>().currEmotion = agent.GetComponent<EnemySoundFX>().GetIndifference();
+                // agent.GetComponent<EnemySoundFX>().PlayCheckOutSoundSound();
+                //agent.GetComponent<EnemySoundFX>().hasAcknowledged = true;
             }
             else if (thisActor.angerLevel == Enemy.AngerLevel.IRRITATED)
             {
                 agent.speed = 4f;
+                thisActor.enemyAnimator.animator.SetBool(thisActor.enemyAnimator.IfWalkingHash, true);
                 //set the sound effect to indiffernt
                 Debug.Log("I hear you SFX is set irritated");
                 agent.GetComponent<EnemySoundFX>().currEmotion = EnemySoundFX.AngerLevel.IRRITATED;
@@ -49,10 +51,12 @@ public class TaskCheckOutSound : BTNode
             else if (thisActor.angerLevel == Enemy.AngerLevel.ANGRY)
             {
                 agent.speed = 5f;
+                thisActor.enemyAnimator.animator.SetBool(thisActor.enemyAnimator.IfSprintingHash, true);
             }
             else if (thisActor.angerLevel == Enemy.AngerLevel.FURIOUS)
             {
                 agent.speed = 6f;
+                thisActor.enemyAnimator.animator.SetBool(thisActor.enemyAnimator.IfSprintingHash, true);
             }
         }
         //Debug.Log("What in the world is happening???");

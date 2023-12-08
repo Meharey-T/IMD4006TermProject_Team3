@@ -30,40 +30,40 @@ public class TaskChasePlayer : BTNode
             if (thisActor.angerLevel == Enemy.AngerLevel.INDIFFERENT)
             {
                 agent.speed = 3.5f;
+                thisActor.enemyAnimator.animator.SetBool(thisActor.enemyAnimator.IfWalkingHash, true);
             }
             else if (thisActor.angerLevel == Enemy.AngerLevel.IRRITATED)
             {
                 agent.speed = 4f;
+                thisActor.enemyAnimator.animator.SetBool(thisActor.enemyAnimator.IfWalkingHash, true);
             }
             else if (thisActor.angerLevel == Enemy.AngerLevel.ANGRY)
             {
                 agent.speed = 5f;
+                thisActor.enemyAnimator.animator.SetBool(thisActor.enemyAnimator.IfSprintingHash, true);
             }
             else if (thisActor.angerLevel == Enemy.AngerLevel.FURIOUS)
             {
                 agent.speed = 6f;
+                thisActor.enemyAnimator.animator.SetBool(thisActor.enemyAnimator.IfSprintingHash, true);
             }
         }
 
         //Debug.Log("This character sees player: " + thisActor.seesPlayer);
 
-        //If we're basically on the player now
-        if (waypointDistance < 1)
-        {
-            agent.speed = thisActor.defaultSpeed;
-            state = NodeState.SUCCESS;
-        }
-        //If at any point the enemy can no longer see the player, this function fails and we change behaviour
-        else if(!thisActor.seesPlayer)
-        {
-            thisActor.sawPlayer = true;
-            agent.speed = thisActor.defaultSpeed;
-            state = NodeState.FAILURE;
-        }
-        //If we can still see the player but haven't reached them yet
-        else if (waypointDistance >= 1 && thisActor.seesPlayer)
+        if (waypointDistance >= 1 && thisActor.seesPlayer)
         {
             Vector3 direction = (player.transform.position - thisActor.transform.position).normalized;
+            if(direction.z < 0)
+            {
+                thisActor.enemyAnimator.animator.SetBool(thisActor.enemyAnimator.IfTurningLeftHash, true);
+                thisActor.enemyAnimator.animator.SetBool(thisActor.enemyAnimator.IfTurningRightHash, false);
+            }
+            else if(direction.z > 0)
+            {
+                thisActor.enemyAnimator.animator.SetBool(thisActor.enemyAnimator.IfTurningRightHash, true);
+                thisActor.enemyAnimator.animator.SetBool(thisActor.enemyAnimator.IfTurningLeftHash, false);
+            }
             lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0f, direction.z));
             thisActor.transform.rotation = Quaternion.Slerp(thisActor.transform.rotation, lookRotation, Time.deltaTime * 5f);
             //Check if the player is standing on something above the ground
@@ -76,10 +76,25 @@ public class TaskChasePlayer : BTNode
             {
                 agent.SetDestination(player.transform.position);
             }
-           
+
             // Debug.Log("going to new position");
             state = NodeState.RUNNING;
         }
+        //If we're basically on the player now
+        else if (waypointDistance < 1)
+        {
+            agent.speed = thisActor.defaultSpeed;
+            state = NodeState.SUCCESS;
+        }
+        //If at any point the enemy can no longer see the player, this function fails and we change behaviour
+        else if(!thisActor.seesPlayer)
+        {
+            thisActor.sawPlayer = true;
+            agent.speed = thisActor.defaultSpeed;
+            state = NodeState.FAILURE;
+        }
+        //If we can still see the player but haven't reached them yet
+        
         return state;
     }
 

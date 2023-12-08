@@ -17,7 +17,9 @@ public class TaskClearDetection : BTNode
 
     protected override NodeState OnRun()
     {
-        //Debug.Log("Running TaskClearDetection");
+        Debug.Log("Running TaskClearDetection");
+        agent.GetComponent<Enemy>().enemyAnimator.animator.SetBool(agent.GetComponent<Enemy>().enemyAnimator.IfWalkingHash, false);
+        agent.GetComponent<Enemy>().enemyAnimator.animator.SetBool(agent.GetComponent<Enemy>().enemyAnimator.IfSprintingHash, false);
         thisActor.hearsPlayer = false;
         thisActor.seesPlayer = false;
         thisActor.sawPlayer = false;
