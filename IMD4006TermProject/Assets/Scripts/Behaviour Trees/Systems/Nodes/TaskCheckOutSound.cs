@@ -74,6 +74,7 @@ public class TaskCheckOutSound : BTNode
         //If they reach the waypoint and don't see anything, go back to regular behaviours
         else if (waypointDistance < 4f)
         {
+            agent.ResetPath();
             agent.speed = thisActor.defaultSpeed;
             state = NodeState.SUCCESS;
         }

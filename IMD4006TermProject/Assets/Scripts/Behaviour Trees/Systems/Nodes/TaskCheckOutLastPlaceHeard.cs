@@ -63,13 +63,18 @@ public class TaskCheckOutLastPlaceHeard : BTNode
         //If they reach the waypoint and don't see anything, go back to regular behaviours
         else if (waypointDistance < 4f)
         {
+            agent.ResetPath();
             agent.speed = thisActor.defaultSpeed;
             state = NodeState.SUCCESS;
-            //thisActor.heardPlayer = false;
         }
         //If they haven't reached it, keep going
         else if (waypointDistance >= 4f)
         {
+            if (!agent.CalculatePath(thisActor.lastLocationHeard, agent.path))
+            {
+                thisActor.heardPlayer = false;
+                state = NodeState.FAILURE;
+            }
             if (thisActor.angerLevel == Enemy.AngerLevel.INDIFFERENT || thisActor.angerLevel == Enemy.AngerLevel.IRRITATED)
             {
                 thisActor.enemyAnimator.animator.SetBool(thisActor.enemyAnimator.IfWalkingHash, true);
