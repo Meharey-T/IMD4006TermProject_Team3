@@ -30620,6 +30620,10 @@ PrefabInstance:
       propertyPath: staminaBar
       value: 
       objectReference: {fileID: 1739279272}
+    - target: {fileID: 4051676036849364344, guid: 40ff1c46273af8c4d937dde0628ae643, type: 3}
+      propertyPath: m_Quality
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 8233892006867537294, guid: 40ff1c46273af8c4d937dde0628ae643, type: 3}
       propertyPath: indicator
       value: 

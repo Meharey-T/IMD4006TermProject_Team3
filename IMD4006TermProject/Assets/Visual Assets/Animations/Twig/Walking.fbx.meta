@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 3ef1e36cb7e5d464a9a6399223fbc5b6
+guid: ca91c9ccc658d7f44984c2185138368c
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -33,11 +33,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Sneaking Forward
-      takeName: Sneaking Forward
-      internalID: -2287618694362979029
-      firstFrame: 1
-      lastFrame: 45
+      name: mixamo.com
+      takeName: mixamo.com
+      internalID: -203655887218126122
+      firstFrame: 0
+      lastFrame: 31
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -60,7 +60,7 @@ ModelImporter:
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 1
+      additiveReferencePoseFrame: 0
     isReadable: 0
   meshes:
     lODScreenPercentages: []
