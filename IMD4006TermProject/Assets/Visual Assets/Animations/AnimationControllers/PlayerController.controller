@@ -408,9 +408,6 @@ AnimatorStateTransition:
   - m_ConditionMode: 1
     m_ConditionEvent: IfSneaking
     m_EventTreshold: 0
-  - m_ConditionMode: 1
-    m_ConditionEvent: IfMoving
-    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -78850479850840161}
   m_Solo: 0
@@ -712,7 +709,7 @@ AnimatorStateMachine:
     m_Position: {x: 420, y: 250, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 7006000935239569756}
-    m_Position: {x: 570, y: 20, z: 0}
+    m_Position: {x: 600, y: -10, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -9032973943172479255}
     m_Position: {x: 680, y: 200, z: 0}
