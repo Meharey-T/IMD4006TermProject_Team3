@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: DragonStatueStats
   m_EditorClassIdentifier: 
   treasureType: 0
-  coinValue: 0
+  coinValue: 35
   finalChest: 0

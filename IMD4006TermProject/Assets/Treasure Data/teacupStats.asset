@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: teacupStats
   m_EditorClassIdentifier: 
   treasureType: 0
-  coinValue: 0
+  coinValue: 5
   finalChest: 0
