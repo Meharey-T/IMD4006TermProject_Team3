@@ -9252,9 +9252,17 @@ PrefabInstance:
       value: PatrollingEnemy
       objectReference: {fileID: 0}
     - target: {fileID: 6806690849381005727, guid: ab6c689e1066d36438a132dd0f3149e8, type: 3}
+      propertyPath: camera
+      value: 
+      objectReference: {fileID: 1107610564}
+    - target: {fileID: 6806690849381005727, guid: ab6c689e1066d36438a132dd0f3149e8, type: 3}
       propertyPath: playerObj
       value: 
       objectReference: {fileID: 529635058}
+    - target: {fileID: 6806690849381005727, guid: ab6c689e1066d36438a132dd0f3149e8, type: 3}
+      propertyPath: mainCamera
+      value: 
+      objectReference: {fileID: 1107610564}
     - target: {fileID: 6806690849381005727, guid: ab6c689e1066d36438a132dd0f3149e8, type: 3}
       propertyPath: Waypoints.Array.size
       value: 10
@@ -9287,6 +9295,30 @@ PrefabInstance:
       propertyPath: Waypoints.Array.data[6]
       value: 
       objectReference: {fileID: 1155609974}
+    - target: {fileID: 9179448128271492072, guid: ab6c689e1066d36438a132dd0f3149e8, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9179448128271492072, guid: ab6c689e1066d36438a132dd0f3149e8, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9179448128271492072, guid: ab6c689e1066d36438a132dd0f3149e8, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9179448128271492072, guid: ab6c689e1066d36438a132dd0f3149e8, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9179448128271492072, guid: ab6c689e1066d36438a132dd0f3149e8, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9179448128271492072, guid: ab6c689e1066d36438a132dd0f3149e8, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -18201,30 +18233,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3974088492691103330, guid: 9b2247beea61b504a8712748b7939d1e, type: 3}
-      propertyPath: staminaBar
-      value: 
-      objectReference: {fileID: 1351967633}
-    - target: {fileID: 6402525080016869126, guid: 9b2247beea61b504a8712748b7939d1e, type: 3}
-      propertyPath: fadedAlpha
-      value: 0.33
-      objectReference: {fileID: 0}
-    - target: {fileID: 8233892006867537294, guid: 9b2247beea61b504a8712748b7939d1e, type: 3}
-      propertyPath: indicator
-      value: 
-      objectReference: {fileID: 1767442992}
-    - target: {fileID: 8233892006867537294, guid: 9b2247beea61b504a8712748b7939d1e, type: 3}
-      propertyPath: centralTxt
-      value: 
-      objectReference: {fileID: 173199778}
-    - target: {fileID: 8233892006867537294, guid: 9b2247beea61b504a8712748b7939d1e, type: 3}
-      propertyPath: P_LivesCount
-      value: 
-      objectReference: {fileID: 2029112395}
-    - target: {fileID: 8233892006867537294, guid: 9b2247beea61b504a8712748b7939d1e, type: 3}
-      propertyPath: coinCountTxt
-      value: 
-      objectReference: {fileID: 173199779}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -19342,6 +19350,11 @@ Transform:
 --- !u!20 &1107610560 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 1993127460517857512, guid: 40ff1c46273af8c4d937dde0628ae643, type: 3}
+  m_PrefabInstance: {fileID: 1048628910}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1107610564 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7682791935692376751, guid: 40ff1c46273af8c4d937dde0628ae643, type: 3}
   m_PrefabInstance: {fileID: 1048628910}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1114185425
@@ -22577,9 +22590,17 @@ PrefabInstance:
       value: PatrollingEnemy
       objectReference: {fileID: 0}
     - target: {fileID: 6806690849381005727, guid: ab6c689e1066d36438a132dd0f3149e8, type: 3}
+      propertyPath: camera
+      value: 
+      objectReference: {fileID: 1107610564}
+    - target: {fileID: 6806690849381005727, guid: ab6c689e1066d36438a132dd0f3149e8, type: 3}
       propertyPath: playerObj
       value: 
       objectReference: {fileID: 529635058}
+    - target: {fileID: 6806690849381005727, guid: ab6c689e1066d36438a132dd0f3149e8, type: 3}
+      propertyPath: mainCamera
+      value: 
+      objectReference: {fileID: 1107610564}
     - target: {fileID: 6806690849381005727, guid: ab6c689e1066d36438a132dd0f3149e8, type: 3}
       propertyPath: Waypoints.Array.size
       value: 10
@@ -22620,6 +22641,30 @@ PrefabInstance:
       propertyPath: Waypoints.Array.data[8]
       value: 
       objectReference: {fileID: 1691519411}
+    - target: {fileID: 9179448128271492072, guid: ab6c689e1066d36438a132dd0f3149e8, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9179448128271492072, guid: ab6c689e1066d36438a132dd0f3149e8, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9179448128271492072, guid: ab6c689e1066d36438a132dd0f3149e8, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9179448128271492072, guid: ab6c689e1066d36438a132dd0f3149e8, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9179448128271492072, guid: ab6c689e1066d36438a132dd0f3149e8, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9179448128271492072, guid: ab6c689e1066d36438a132dd0f3149e8, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -26165,9 +26210,17 @@ PrefabInstance:
       value: PatrollingEnemy
       objectReference: {fileID: 0}
     - target: {fileID: 6806690849381005727, guid: ab6c689e1066d36438a132dd0f3149e8, type: 3}
+      propertyPath: camera
+      value: 
+      objectReference: {fileID: 1107610564}
+    - target: {fileID: 6806690849381005727, guid: ab6c689e1066d36438a132dd0f3149e8, type: 3}
       propertyPath: playerObj
       value: 
       objectReference: {fileID: 529635058}
+    - target: {fileID: 6806690849381005727, guid: ab6c689e1066d36438a132dd0f3149e8, type: 3}
+      propertyPath: mainCamera
+      value: 
+      objectReference: {fileID: 1107610564}
     - target: {fileID: 6806690849381005727, guid: ab6c689e1066d36438a132dd0f3149e8, type: 3}
       propertyPath: Waypoints.Array.size
       value: 10
@@ -26212,6 +26265,30 @@ PrefabInstance:
       propertyPath: Waypoints.Array.data[9]
       value: 
       objectReference: {fileID: 1735178088}
+    - target: {fileID: 9179448128271492072, guid: ab6c689e1066d36438a132dd0f3149e8, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9179448128271492072, guid: ab6c689e1066d36438a132dd0f3149e8, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9179448128271492072, guid: ab6c689e1066d36438a132dd0f3149e8, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9179448128271492072, guid: ab6c689e1066d36438a132dd0f3149e8, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9179448128271492072, guid: ab6c689e1066d36438a132dd0f3149e8, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9179448128271492072, guid: ab6c689e1066d36438a132dd0f3149e8, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 460248743139008121, guid: ab6c689e1066d36438a132dd0f3149e8, type: 3}
     m_RemovedGameObjects:
@@ -37169,9 +37246,17 @@ PrefabInstance:
       value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 6806690849381005727, guid: ab6c689e1066d36438a132dd0f3149e8, type: 3}
+      propertyPath: camera
+      value: 
+      objectReference: {fileID: 1107610564}
+    - target: {fileID: 6806690849381005727, guid: ab6c689e1066d36438a132dd0f3149e8, type: 3}
       propertyPath: playerObj
       value: 
       objectReference: {fileID: 529635058}
+    - target: {fileID: 6806690849381005727, guid: ab6c689e1066d36438a132dd0f3149e8, type: 3}
+      propertyPath: mainCamera
+      value: 
+      objectReference: {fileID: 1107610564}
     - target: {fileID: 6806690849381005727, guid: ab6c689e1066d36438a132dd0f3149e8, type: 3}
       propertyPath: Waypoints.Array.data[0]
       value: 
@@ -37208,6 +37293,30 @@ PrefabInstance:
       propertyPath: Waypoints.Array.data[8]
       value: 
       objectReference: {fileID: 1377740600}
+    - target: {fileID: 9179448128271492072, guid: ab6c689e1066d36438a132dd0f3149e8, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9179448128271492072, guid: ab6c689e1066d36438a132dd0f3149e8, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9179448128271492072, guid: ab6c689e1066d36438a132dd0f3149e8, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9179448128271492072, guid: ab6c689e1066d36438a132dd0f3149e8, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9179448128271492072, guid: ab6c689e1066d36438a132dd0f3149e8, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9179448128271492072, guid: ab6c689e1066d36438a132dd0f3149e8, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

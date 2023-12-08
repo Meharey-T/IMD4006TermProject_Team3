@@ -9100,6 +9100,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 529635058}
     - target: {fileID: 6806690849381005727, guid: ab6c689e1066d36438a132dd0f3149e8, type: 3}
+      propertyPath: mainCamera
+      value: 
+      objectReference: {fileID: 2061196668}
+    - target: {fileID: 6806690849381005727, guid: ab6c689e1066d36438a132dd0f3149e8, type: 3}
       propertyPath: Waypoints.Array.size
       value: 10
       objectReference: {fileID: 0}
@@ -22337,6 +22341,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 529635058}
     - target: {fileID: 6806690849381005727, guid: ab6c689e1066d36438a132dd0f3149e8, type: 3}
+      propertyPath: mainCamera
+      value: 
+      objectReference: {fileID: 2061196668}
+    - target: {fileID: 6806690849381005727, guid: ab6c689e1066d36438a132dd0f3149e8, type: 3}
       propertyPath: Waypoints.Array.size
       value: 10
       objectReference: {fileID: 0}
@@ -26005,6 +26013,10 @@ PrefabInstance:
       propertyPath: playerObj
       value: 
       objectReference: {fileID: 529635058}
+    - target: {fileID: 6806690849381005727, guid: ab6c689e1066d36438a132dd0f3149e8, type: 3}
+      propertyPath: mainCamera
+      value: 
+      objectReference: {fileID: 2061196668}
     - target: {fileID: 6806690849381005727, guid: ab6c689e1066d36438a132dd0f3149e8, type: 3}
       propertyPath: Waypoints.Array.size
       value: 10
@@ -37017,6 +37029,10 @@ PrefabInstance:
       propertyPath: angerLevel
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6806690849381005727, guid: ab6c689e1066d36438a132dd0f3149e8, type: 3}
+      propertyPath: mainCamera
+      value: 
+      objectReference: {fileID: 2061196668}
     - target: {fileID: 6806690849381005727, guid: ab6c689e1066d36438a132dd0f3149e8, type: 3}
       propertyPath: Waypoints.Array.data[0]
       value: 

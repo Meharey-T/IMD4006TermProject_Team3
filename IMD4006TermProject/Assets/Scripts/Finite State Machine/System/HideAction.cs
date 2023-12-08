@@ -27,6 +27,16 @@ public class HideAction : FSMAction
             stateMachine.GetComponent<Player>().hiding = true;
         }
         player.consumingStamina = false;
+
+        //The horrible animation block
+        player.playerAnimator.animator.SetBool(player.playerAnimator.IfHidingHash, true);
+        //Set all the other ones to false
+        player.playerAnimator.animator.SetBool(player.playerAnimator.IfWalkingHash, false);
+        player.playerAnimator.animator.SetBool(player.playerAnimator.IfMovingHash, false);
+        player.playerAnimator.animator.SetBool(player.playerAnimator.IfSprintingHash, false);
+        player.playerAnimator.animator.SetBool(player.playerAnimator.IfSneakingHash, false);
+        player.playerAnimator.animator.SetBool(player.playerAnimator.IfJumpingHash, false);
+        player.playerAnimator.animator.SetBool(player.playerAnimator.IfRollingHash, false);
         //Change player animation
     }
 }

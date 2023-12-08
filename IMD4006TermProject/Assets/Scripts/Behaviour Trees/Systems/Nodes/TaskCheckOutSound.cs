@@ -28,18 +28,20 @@ public class TaskCheckOutSound : BTNode
             if (thisActor.angerLevel == Enemy.AngerLevel.INDIFFERENT)
             {
                 agent.speed = 3.5f;
-                //set the sound effect to indiffernt
-               // agent.GetComponent<EnemySoundFX>().currEmotion = agent.GetComponent<EnemySoundFX>().GetIndifference();
-             //  Debug.Log("I hear you SFX is set indifferent");
-               // check if had said something before
-              // agent.GetComponent<EnemySoundFX>().hasHearSoundSaid();
+                thisActor.enemyAnimator.animator.SetBool(thisActor.enemyAnimator.IfWalkingHash, true);
+              
 
-             
+
             }
             else if (thisActor.angerLevel == Enemy.AngerLevel.IRRITATED)
             {
                 agent.speed = 4f;
+
                 //set the sound effect to irritated
+
+                thisActor.enemyAnimator.animator.SetBool(thisActor.enemyAnimator.IfWalkingHash, true);
+                //set the sound effect to indiffernt
+
                 Debug.Log("I hear you SFX is set irritated");
                 agent.GetComponent<EnemySoundFX>().currEmotion = EnemySoundFX.AngerLevel.IRRITATED;
                 // check if had said something before
@@ -48,10 +50,12 @@ public class TaskCheckOutSound : BTNode
             else if (thisActor.angerLevel == Enemy.AngerLevel.ANGRY)
             {
                 agent.speed = 5f;
+                thisActor.enemyAnimator.animator.SetBool(thisActor.enemyAnimator.IfSprintingHash, true);
             }
             else if (thisActor.angerLevel == Enemy.AngerLevel.FURIOUS)
             {
                 agent.speed = 6f;
+                thisActor.enemyAnimator.animator.SetBool(thisActor.enemyAnimator.IfSprintingHash, true);
             }
         }
         //Debug.Log("What in the world is happening???");

@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: CoinPileStats
   m_EditorClassIdentifier: 
   treasureType: 0
-  coinValue: 0
+  coinValue: 10
+  finalChest: 0

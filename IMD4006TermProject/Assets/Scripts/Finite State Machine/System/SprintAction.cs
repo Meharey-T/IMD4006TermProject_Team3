@@ -5,6 +5,10 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "FSM/Actions/Sprint")]
 public class SprintAction : FSMAction
 {
+    BoxCollider[] colliders;
+    Vector3 colliderSize = new Vector3(0, 0.7f, 0);
+    Vector3 colliderOffset = new Vector3(0.5f, 1.4f, 0.5f);
+
     public override void Execute(BaseStateMachine stateMachine)
     {
         PlayerMovement player = stateMachine.GetComponent<PlayerMovement>();
@@ -20,14 +24,31 @@ public class SprintAction : FSMAction
         stateMachine.GetComponent<PlayerMovement>().currentSoundRadius = stateMachine.GetComponent<PlayerMovement>().sprintSoundRadius;
         player.gameObject.layer = 9;
         player.consumingStamina = true;
+        colliders = player.GetComponentsInChildren<BoxCollider>();
+        foreach (BoxCollider c in colliders){
+            c.center = colliderSize;
+            c.size = colliderOffset;
+        }
 
         //Jump if we're running
         if (Input.GetButtonDown("Jump") && player.groundedPlayer && player.currentStamina >= 50)
         {
             player.rb.AddForce(Vector3.up * player.jumpAmount, ForceMode.Impulse);
             player.currentStamina -= 30;
+            player.playerAnimator.animator.SetBool(player.playerAnimator.IfJumpingHash, true);
         }
-        //Change player animation
+
+        if (player.groundedPlayer)
+        {
+            player.playerAnimator.animator.SetBool(player.playerAnimator.IfSprintingHash, true);
+            //Set all the other ones to false
+            player.playerAnimator.animator.SetBool(player.playerAnimator.IfSneakingHash, false);
+            player.playerAnimator.animator.SetBool(player.playerAnimator.IfHidingHash, false);
+            player.playerAnimator.animator.SetBool(player.playerAnimator.IfWalkingHash, false);
+            player.playerAnimator.animator.SetBool(player.playerAnimator.IfJumpingHash, false);
+            player.playerAnimator.animator.SetBool(player.playerAnimator.IfRollingHash, false);
+        }
+        //player.currentAnimation = player.animationLibrary.animationList[1];
         //Change player footstep sounds
         //terraine.currSpeed = terraine.GetRun();
         //; = stateMachine.GetComponent<TerrainState>().GetRun() ;

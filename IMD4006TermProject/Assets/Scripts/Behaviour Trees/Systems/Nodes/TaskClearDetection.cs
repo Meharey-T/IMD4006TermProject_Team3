@@ -18,6 +18,7 @@ public class TaskClearDetection : BTNode
     protected override NodeState OnRun()
     {
         Debug.Log("Running TaskClearDetection");
+
         //HEARD PLAYER
         //If this enemy hear the player, set their states and play their soundFX
         if (thisActor.heardPlayer)
@@ -161,6 +162,10 @@ public class TaskClearDetection : BTNode
 
 
 
+
+
+        agent.GetComponent<Enemy>().enemyAnimator.animator.SetBool(agent.GetComponent<Enemy>().enemyAnimator.IfWalkingHash, false);
+        agent.GetComponent<Enemy>().enemyAnimator.animator.SetBool(agent.GetComponent<Enemy>().enemyAnimator.IfSprintingHash, false);
 
         thisActor.hearsPlayer = false;
         thisActor.seesPlayer = false;

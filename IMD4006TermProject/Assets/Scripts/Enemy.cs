@@ -55,19 +55,22 @@ public class Enemy : MonoBehaviour
     [SerializeField] Sprite i_angry;
     [SerializeField] Sprite i_furious;
 
-    public Transform camera;
+    public Transform mainCamera;
 
     WaitForSeconds wait = new WaitForSeconds(0.2f);
-    WaitForSeconds grabTime = new WaitForSeconds(2f);
+    WaitForSeconds grabTime = new WaitForSeconds(1.4f);
 
     public bool playerInGrabRange;
     public bool caughtPlayer;
+
+    public EnemyAnimator enemyAnimator;
 
 
     // Start is called before the first frame update
     void Start()
     {
         enemyMeshAgent = GetComponent<NavMeshAgent>();
+        enemyMeshAgent.speed = defaultSpeed;
         playerObj = playerSet.Items[0].gameObject;
         startingPos = transform.position;
         CalculateTreasureOwned();
@@ -75,7 +78,7 @@ public class Enemy : MonoBehaviour
         StartCoroutine(FOVRoutine());
         StartCoroutine(AngerCheck());
         i_currentEmoji = i_indifferent;
-
+        enemyAnimator = GetComponent<EnemyAnimator>();
     }
 
     // Update is called once per frame
@@ -86,7 +89,7 @@ public class Enemy : MonoBehaviour
 
     private void LateUpdate()
     {
-        emojiTarget.transform.LookAt(camera.position + camera.forward);
+        emojiTarget.transform.LookAt(mainCamera.position + mainCamera.forward);
     }
 
     //Reduces call count as this kind of behaviour can be a little computationally expensive
@@ -111,8 +114,9 @@ public class Enemy : MonoBehaviour
             //
             Transform target = rangeChecks[0].transform;
             Vector3 facePosition = new Vector3(transform.position.x, transform.position.y + 3.25f, transform.position.z + 0.3f);
+            Vector3 targetFacePosition = new Vector3(target.position.x, target.transform.position.y + 0.5f, target.transform.position.z);
             //Vector3 facePosition = new Vector3(transform.position.x, transform.position.y + 0.3f, transform.position.z);
-            Vector3 directionToTarget = (target.position - facePosition).normalized;
+            Vector3 directionToTarget = (targetFacePosition - facePosition).normalized;
 
             if (Vector3.Angle(transform.forward, directionToTarget) < viewAngle / 2)
             {
@@ -123,7 +127,7 @@ public class Enemy : MonoBehaviour
                     seesPlayer = true;
                     lastLocationSeen = playerObj.transform.position;
                 }
-                else if (seesPlayer == true)
+                else if (seesPlayer == true && !caughtPlayer)
                 {
                     seesPlayer = false;
                     sawPlayer = true;
@@ -133,7 +137,7 @@ public class Enemy : MonoBehaviour
                     seesPlayer = false;
                 }
             }
-            else if (seesPlayer == true)
+            else if (seesPlayer == true && !caughtPlayer)
             {
                 seesPlayer = false;
                 sawPlayer = true;
@@ -141,7 +145,7 @@ public class Enemy : MonoBehaviour
             else seesPlayer = false;
             rangeChecks[0] = null;
         }
-        else if (seesPlayer)
+        else if (seesPlayer && !caughtPlayer)
         {
             seesPlayer = false;
             sawPlayer = true;
@@ -207,12 +211,16 @@ public class Enemy : MonoBehaviour
     public IEnumerator GrabPlayer()
     {
         Debug.Log("Grabbing player");
+        enemyAnimator.animator.SetBool(enemyAnimator.IfGrabbingHash, true);
+        enemyAnimator.animator.SetBool(enemyAnimator.IfWalkingHash, false);
+        enemyAnimator.animator.SetBool(enemyAnimator.IfSprintingHash, false);
         yield return grabTime;
         if (playerInGrabRange)
         {
             Debug.Log("Finishing grabbing player");
             playerObj.GetComponent<Player>().OnPlayerLoseLife();
         }
+        enemyAnimator.animator.SetBool(enemyAnimator.IfGrabbingHash, false);
         StopCoroutine(GrabPlayer());
         playerInGrabRange = false;
     }
@@ -239,7 +247,6 @@ public class Enemy : MonoBehaviour
         if (other.gameObject.layer == 9 && other.GetType() == typeof(BoxCollider))
         {
             //Player will lose a life
-            Debug.Log("Player losing life the old fashioned way");
             other.GetComponentInParent<Player>().OnPlayerLoseLife();
         }
       }

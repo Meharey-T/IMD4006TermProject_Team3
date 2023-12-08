@@ -145,6 +145,7 @@ GameObject:
   - component: {fileID: 6487688474873646829}
   - component: {fileID: 8675276739017674079}
   - component: {fileID: 4019418787422751154}
+  - component: {fileID: 7393835845453554521}
   m_Layer: 6
   m_Name: GrabCollider
   m_TagString: Untagged
@@ -200,6 +201,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16fdb86648337d54686adb522c3c9135, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!54 &7393835845453554521
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8151282023399054676}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &464830180362753292
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -293,6 +321,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 0ba304cc51c1780418dcd40ce061107d, type: 3}
     - target: {fileID: 6342565627775331475, guid: fc36094b6ad9c274a85ea013917130da, type: 3}
+      propertyPath: enemyAnimator
+      value: 
+      objectReference: {fileID: 595716682110932118}
+    - target: {fileID: 6342565627775331475, guid: fc36094b6ad9c274a85ea013917130da, type: 3}
       propertyPath: i_indifferent
       value: 
       objectReference: {fileID: 21300000, guid: 175cc01e78280aa4990afa4aef0a0dcd, type: 3}
@@ -330,6 +362,9 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 209662915827973206}
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5390299953698405908, guid: fc36094b6ad9c274a85ea013917130da, type: 3}
+      insertIndex: 5
+      addedObject: {fileID: 595716682110932118}
     - targetCorrespondingSourceObject: {fileID: 5390299953698405908, guid: fc36094b6ad9c274a85ea013917130da, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8398858628203423374}
@@ -376,6 +411,24 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5390299953698405908, guid: fc36094b6ad9c274a85ea013917130da, type: 3}
   m_PrefabInstance: {fileID: 464830180362753292}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &595716682110932118
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5529674502576302872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eafa411b39cadf248b56ed8bdb17d25b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 0}
+  IfWalkingHash: 0
+  IfSprintingHash: 0
+  IfTurningLeftHash: 0
+  IfTurningRightHash: 0
+  IfGrabbingHash: 0
 --- !u!82 &8398858628203423374
 AudioSource:
   m_ObjectHideFlags: 0

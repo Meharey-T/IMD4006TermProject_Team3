@@ -7,6 +7,7 @@ using UnityEngine.AI;
 public class TaskCheckArea : BTNode
 {
     Transform BTTransform;
+    Enemy thisActor;
     int waypointRadius = 1;
     bool setWayPoint = false;
     Quaternion lookRotation;
@@ -14,6 +15,7 @@ public class TaskCheckArea : BTNode
     public TaskCheckArea(Transform transform)
     {
         BTTransform = transform;
+        thisActor = transform.GetComponent<Enemy>();
     }
 
     protected override NodeState OnRun()
@@ -29,6 +31,21 @@ public class TaskCheckArea : BTNode
         {
             Vector3 turnToPoint = CreateTurnToPoint();
             Vector3 direction = turnToPoint.normalized;
+            if (direction.x < 0)
+            {
+                thisActor.enemyAnimator.animator.SetBool(thisActor.enemyAnimator.IfTurningLeftHash, true);
+                thisActor.enemyAnimator.animator.SetBool(thisActor.enemyAnimator.IfTurningRightHash, false);
+            }
+            else if (direction.x > 0)
+            {
+                thisActor.enemyAnimator.animator.SetBool(thisActor.enemyAnimator.IfTurningRightHash, true);
+                thisActor.enemyAnimator.animator.SetBool(thisActor.enemyAnimator.IfTurningLeftHash, false);
+            }
+            else if (direction.x == 0)
+            {
+                thisActor.enemyAnimator.animator.SetBool(thisActor.enemyAnimator.IfTurningLeftHash, false);
+                thisActor.enemyAnimator.animator.SetBool(thisActor.enemyAnimator.IfTurningRightHash, false);
+            }
             lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0f, direction.z));
             state = NodeState.RUNNING;
             setWayPoint = true;
