@@ -5,6 +5,10 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "FSM/Actions/Walk")]
 public class WalkAction : FSMAction
 {
+    BoxCollider[] colliders;
+    Vector3 colliderSize = new Vector3(0, 0.7f, 0);
+    Vector3 colliderOffset = new Vector3(0.5f, 1.4f, 0.5f);
+
     public override void Execute(BaseStateMachine stateMachine)
     {
         PlayerMovement player = stateMachine.GetComponent<PlayerMovement>();
@@ -42,6 +46,12 @@ public class WalkAction : FSMAction
             player.playerAnimator.animator.SetBool(player.playerAnimator.IfSneakingHash, false);
             player.playerAnimator.animator.SetBool(player.playerAnimator.IfHidingHash, false);
             player.playerAnimator.animator.SetBool(player.playerAnimator.IfRollingHash, false);
+        }
+        colliders = player.GetComponentsInChildren<BoxCollider>();
+        foreach (BoxCollider c in colliders)
+        {
+            c.center = colliderSize;
+            c.size = colliderOffset;
         }
         //player.currentAnimation = player.animationLibrary.animationList[0];
         //Change player animation

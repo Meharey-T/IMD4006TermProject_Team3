@@ -5,6 +5,10 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "FSM/Actions/Sprint")]
 public class SprintAction : FSMAction
 {
+    BoxCollider[] colliders;
+    Vector3 colliderSize = new Vector3(0, 0.7f, 0);
+    Vector3 colliderOffset = new Vector3(0.5f, 1.4f, 0.5f);
+
     public override void Execute(BaseStateMachine stateMachine)
     {
         PlayerMovement player = stateMachine.GetComponent<PlayerMovement>();
@@ -20,6 +24,11 @@ public class SprintAction : FSMAction
         stateMachine.GetComponent<PlayerMovement>().currentSoundRadius = stateMachine.GetComponent<PlayerMovement>().sprintSoundRadius;
         player.gameObject.layer = 9;
         player.consumingStamina = true;
+        colliders = player.GetComponentsInChildren<BoxCollider>();
+        foreach (BoxCollider c in colliders){
+            c.center = colliderSize;
+            c.size = colliderOffset;
+        }
 
         //Jump if we're running
         if (Input.GetButtonDown("Jump") && player.groundedPlayer && player.currentStamina >= 50)
