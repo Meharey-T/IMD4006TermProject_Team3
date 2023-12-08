@@ -40,9 +40,6 @@ AnimatorStateTransition:
   - m_ConditionMode: 1
     m_ConditionEvent: IfJumping
     m_EventTreshold: 0
-  - m_ConditionMode: 1
-    m_ConditionEvent: IfMoving
-    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -9032973943172479255}
   m_Solo: 0
@@ -83,7 +80,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -9121621101649706817, guid: 1920c92596134ba47bac7fda74ef784b, type: 3}
+  m_Motion: {fileID: -9121621101649706817, guid: 6bd64302dcffebf41a3bf63e298c83f6, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -215,9 +212,6 @@ AnimatorStateTransition:
   - m_ConditionMode: 1
     m_ConditionEvent: IfJumping
     m_EventTreshold: 0
-  - m_ConditionMode: 2
-    m_ConditionEvent: IfMoving
-    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -9032973943172479255}
   m_Solo: 0
@@ -295,6 +289,9 @@ AnimatorStateTransition:
     m_EventTreshold: 0
   - m_ConditionMode: 1
     m_ConditionEvent: IfSneaking
+    m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: IfJumping
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 7006000935239569756}
@@ -527,6 +524,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 1
     m_ConditionEvent: IfMoving
     m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: IfJumping
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -8715267675028971840}
   m_Solo: 0
@@ -555,6 +555,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 1
     m_ConditionEvent: IfWalking
     m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: IfJumping
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -1764031065764174899}
   m_Solo: 0
@@ -577,7 +580,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Rolling
-  m_Speed: 2
+  m_Speed: 2.5
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -1477841332842209700}
@@ -591,7 +594,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -2341027594253812581, guid: ccee28ca660776b44bf7f5ac225447f2, type: 3}
+  m_Motion: {fileID: -2341027594253812581, guid: 5ba191d10f9597349b1b13ecd7ae628e, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -610,6 +613,9 @@ AnimatorStateTransition:
     m_EventTreshold: 0
   - m_ConditionMode: 1
     m_ConditionEvent: IfSprinting
+    m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: IfJumping
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -8715267675028971840}
@@ -747,7 +753,7 @@ AnimatorStateTransition:
     m_ConditionEvent: IfSneaking
     m_EventTreshold: 0
   - m_ConditionMode: 2
-    m_ConditionEvent: IfSprinting
+    m_ConditionEvent: IfJumping
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 5452302607702475389}
@@ -776,6 +782,9 @@ AnimatorStateTransition:
     m_EventTreshold: 0
   - m_ConditionMode: 1
     m_ConditionEvent: IfWalking
+    m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: IfJumping
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -1764031065764174899}
@@ -833,6 +842,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 1
     m_ConditionEvent: IfSprinting
     m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: IfJumping
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -8715267675028971840}
   m_Solo: 0
@@ -860,6 +872,9 @@ AnimatorStateTransition:
     m_EventTreshold: 0
   - m_ConditionMode: 1
     m_ConditionEvent: IfWalking
+    m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: IfJumping
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -1764031065764174899}
@@ -913,9 +928,6 @@ AnimatorStateTransition:
   m_Conditions:
   - m_ConditionMode: 1
     m_ConditionEvent: IfJumping
-    m_EventTreshold: 0
-  - m_ConditionMode: 1
-    m_ConditionEvent: IfMoving
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -9032973943172479255}
@@ -975,6 +987,9 @@ AnimatorStateTransition:
     m_EventTreshold: 0
   - m_ConditionMode: 1
     m_ConditionEvent: IfSprinting
+    m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: IfJumping
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -8715267675028971840}
@@ -1178,6 +1193,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 1
     m_ConditionEvent: IfMoving
     m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: IfJumping
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -1764031065764174899}
   m_Solo: 0
@@ -1265,6 +1283,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 2
     m_ConditionEvent: IfMoving
     m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: IfJumping
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 4935667770199273286}
   m_Solo: 0
@@ -1289,6 +1310,9 @@ AnimatorStateTransition:
   m_Conditions:
   - m_ConditionMode: 2
     m_ConditionEvent: IfMoving
+    m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: IfJumping
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 5452302607702475389}
