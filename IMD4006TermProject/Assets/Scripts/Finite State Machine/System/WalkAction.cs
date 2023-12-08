@@ -46,6 +46,7 @@ public class WalkAction : FSMAction
             player.playerAnimator.animator.SetBool(player.playerAnimator.IfSneakingHash, false);
             player.playerAnimator.animator.SetBool(player.playerAnimator.IfHidingHash, false);
             player.playerAnimator.animator.SetBool(player.playerAnimator.IfRollingHash, false);
+            player.playerAnimator.animator.SetBool(player.playerAnimator.IfJumpingHash, false);
         }
         colliders = player.GetComponentsInChildren<BoxCollider>();
         foreach (BoxCollider c in colliders)
