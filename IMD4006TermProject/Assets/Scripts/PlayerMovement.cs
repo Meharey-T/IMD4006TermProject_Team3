@@ -50,6 +50,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float gravityScale;
     //Vector3 jumpVector;
     public bool groundedPlayer = true;
+    public bool isRolling = false;
 
     //Affects how fast the player turns, how they can turn
     [Header("Turning feel")]
@@ -182,7 +183,11 @@ public class PlayerMovement : MonoBehaviour
         rotator.transform.rotation = Quaternion.Euler(-turn.y, turn.x, 0);
     }
 
-    
+    public IEnumerator ResetRoll()
+    {
+        yield return new WaitForSeconds(1f);
+        isRolling = false;
+    }
 
     private void ResolveSoundRadius()
     {

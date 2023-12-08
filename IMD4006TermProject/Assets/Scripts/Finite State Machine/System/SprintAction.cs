@@ -30,14 +30,6 @@ public class SprintAction : FSMAction
             c.size = colliderOffset;
         }
 
-        //Jump if we're running
-        if (Input.GetButtonDown("Jump") && player.groundedPlayer && player.currentStamina >= 50)
-        {
-            player.rb.AddForce(Vector3.up * player.jumpAmount, ForceMode.Impulse);
-            player.currentStamina -= 30;
-            player.playerAnimator.animator.SetBool(player.playerAnimator.IfJumpingHash, true);
-        }
-
         if (player.groundedPlayer)
         {
             player.playerAnimator.animator.SetBool(player.playerAnimator.IfSprintingHash, true);
@@ -48,6 +40,16 @@ public class SprintAction : FSMAction
             player.playerAnimator.animator.SetBool(player.playerAnimator.IfJumpingHash, false);
             player.playerAnimator.animator.SetBool(player.playerAnimator.IfRollingHash, false);
         }
+
+        //Jump if we're running
+        if (Input.GetButtonDown("Jump") && player.groundedPlayer && player.currentStamina >= 50)
+        {
+            player.rb.AddForce(Vector3.up * player.jumpAmount, ForceMode.Impulse);
+            player.currentStamina -= 30;
+            player.playerAnimator.animator.SetBool(player.playerAnimator.IfJumpingHash, true);
+        }
+
+        
         //player.currentAnimation = player.animationLibrary.animationList[1];
         //Change player footstep sounds
         //terraine.currSpeed = terraine.GetRun();

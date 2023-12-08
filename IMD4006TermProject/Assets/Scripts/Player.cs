@@ -30,6 +30,10 @@ public class Player : MonoBehaviour
     public GameObject indicator;
     public bool winLose;
     [SerializeField] public int coinCount = 0;
+    private int totalCoinCount;
+
+    [SerializeField] GameObject dragonImage;
+    [SerializeField] private Image treasureBar;
 
     int lives = 3;
 
@@ -43,6 +47,10 @@ public class Player : MonoBehaviour
     [SerializeField] Texture i_heard;
     [SerializeField] Texture i_beingHeard;
 
+    
+    [SerializeField] Texture i_unimpressed;
+    [SerializeField] Texture i_pleased;
+
     public bool inRangeOfHideable = false;
     public bool hiding = false;
     public Vector3 selectedHideable;
@@ -55,6 +63,7 @@ public class Player : MonoBehaviour
         centralTxt.enabled = false;
         previousPosition = new Vector3(0, 0, 0);
         startingPos = this.transform.position;
+        CalcTotalTreasureToSteal();
     }
 
     // Update is called once per frame
@@ -67,6 +76,7 @@ public class Player : MonoBehaviour
         }
         UpdateLives();
         CheckDetection();
+        RecalculateTreasureStolen();
     }
 
     void CheckDetection()
@@ -136,6 +146,30 @@ public class Player : MonoBehaviour
             indicator.transform.GetChild(2).GetComponent<RawImage>().texture = i_beingHeard;
         }
 
+    }
+
+    private void CalcTotalTreasureToSteal()
+    {
+        for (int i = 0; i < coinSet.Items.Count; i++)
+        {
+            //Go through all treasure and then subtract by final chest amount since it's not going to affect gameplay
+            totalCoinCount += coinSet.Items[i].GetComponent<Treasure>().treasureStats.coinValue;
+        }
+    }
+
+    private void RecalculateTreasureStolen()
+    {
+        float treasurePercent = (float)coinCount / totalCoinCount;
+        //Debug.Log(staminaPercent);
+        treasureBar.fillAmount = treasurePercent;
+        if(treasurePercent > totalCoinCount / 2)
+        {
+            dragonImage.transform.GetChild(0).GetComponentInChildren<RawImage>().texture = i_pleased;
+        }
+        else
+        {
+            dragonImage.transform.GetChild(0).GetComponentInChildren<RawImage>().texture = i_unimpressed;
+        }
     }
 
     void UpdateLives()

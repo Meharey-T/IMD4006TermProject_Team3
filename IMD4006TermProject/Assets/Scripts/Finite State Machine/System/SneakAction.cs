@@ -35,10 +35,15 @@ public class SneakAction : FSMAction
             player.rb.AddForce(player.transform.forward * player.jumpAmount * 1f, ForceMode.Impulse);
             player.currentStamina -= 30;
             player.playerAnimator.animator.SetBool(player.playerAnimator.IfRollingHash, true);
+            player.isRolling = true;
+            player.StartCoroutine(player.ResetRoll());
         }
         //player.GetComponent<Player>().indicator.text = "";
         //The horrible animation block
-
+        if (player.isRolling == false)
+        {
+            player.playerAnimator.animator.SetBool(player.playerAnimator.IfRollingHash, false);
+        }
         player.playerAnimator.animator.SetBool(player.playerAnimator.IfSneakingHash, true);
         //Set all the other ones to false
         player.playerAnimator.animator.SetBool(player.playerAnimator.IfHidingHash, false);
