@@ -218,7 +218,7 @@ public class Player : MonoBehaviour
             enemy.GetComponent<Enemy>().hasStopped = false;
             enemy.GetComponent<Enemy>().caughtPlayer = true;
         }
-        StartCoroutine(ReactivateEnemies());
+        //StartCoroutine(ReactivateEnemies());
     }
 
     IEnumerator ReactivateEnemies()

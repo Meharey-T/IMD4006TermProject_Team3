@@ -23,6 +23,9 @@ public class TaskChasePlayer : BTNode
 
     protected override NodeState OnRun()
     {
+        thisActor.enemyAnimator.animator.SetBool(thisActor.enemyAnimator.IfTurningRightHash, false);
+        thisActor.enemyAnimator.animator.SetBool(thisActor.enemyAnimator.IfTurningLeftHash, false);
+        //thisActor.enemyAnimator.animator.SetBool(thisActor.enemyAnimator.IfGrabbingHash, false);
         //Debug.Log("Running TaskChasePlayer");
         float waypointDistance = Vector3.Distance(transform.position, player.transform.position);
         if (agent.speed == thisActor.defaultSpeed)
@@ -31,21 +34,25 @@ public class TaskChasePlayer : BTNode
             {
                 agent.speed = 3.5f;
                 thisActor.enemyAnimator.animator.SetBool(thisActor.enemyAnimator.IfWalkingHash, true);
+                thisActor.enemyAnimator.animator.SetBool(thisActor.enemyAnimator.IfSprintingHash, false);
             }
             else if (thisActor.angerLevel == Enemy.AngerLevel.IRRITATED)
             {
                 agent.speed = 4f;
                 thisActor.enemyAnimator.animator.SetBool(thisActor.enemyAnimator.IfWalkingHash, true);
+                thisActor.enemyAnimator.animator.SetBool(thisActor.enemyAnimator.IfSprintingHash, false);
             }
             else if (thisActor.angerLevel == Enemy.AngerLevel.ANGRY)
             {
                 agent.speed = 5f;
                 thisActor.enemyAnimator.animator.SetBool(thisActor.enemyAnimator.IfSprintingHash, true);
+                thisActor.enemyAnimator.animator.SetBool(thisActor.enemyAnimator.IfWalkingHash, false);
             }
             else if (thisActor.angerLevel == Enemy.AngerLevel.FURIOUS)
             {
                 agent.speed = 6f;
                 thisActor.enemyAnimator.animator.SetBool(thisActor.enemyAnimator.IfSprintingHash, true);
+                thisActor.enemyAnimator.animator.SetBool(thisActor.enemyAnimator.IfWalkingHash, false);
             }
         }
 
@@ -63,16 +70,21 @@ public class TaskChasePlayer : BTNode
                 {
                     thisActor.enemyAnimator.animator.SetBool(thisActor.enemyAnimator.IfTurningLeftHash, true);
                     thisActor.enemyAnimator.animator.SetBool(thisActor.enemyAnimator.IfTurningRightHash, false);
+                    thisActor.enemyAnimator.animator.SetBool(thisActor.enemyAnimator.IfWalkingHash, false);
+                    thisActor.enemyAnimator.animator.SetBool(thisActor.enemyAnimator.IfSprintingHash, false);
                 }
                 else if (direction.x > 0)
                 {
                     thisActor.enemyAnimator.animator.SetBool(thisActor.enemyAnimator.IfTurningRightHash, true);
                     thisActor.enemyAnimator.animator.SetBool(thisActor.enemyAnimator.IfTurningLeftHash, false);
+                    thisActor.enemyAnimator.animator.SetBool(thisActor.enemyAnimator.IfWalkingHash, false);
+                    thisActor.enemyAnimator.animator.SetBool(thisActor.enemyAnimator.IfSprintingHash, false);
                 }
                 else if (direction.x == 0)
                 {
                     thisActor.enemyAnimator.animator.SetBool(thisActor.enemyAnimator.IfTurningLeftHash, false);
                     thisActor.enemyAnimator.animator.SetBool(thisActor.enemyAnimator.IfTurningRightHash, false);
+                    thisActor.enemyAnimator.animator.SetBool(thisActor.enemyAnimator.IfWalkingHash, true);
                 }
                 Vector3 closestNavPoint = FindNearestPathable();
                 agent.SetDestination(closestNavPoint);
@@ -109,6 +121,12 @@ public class TaskChasePlayer : BTNode
                 thisActor.sawPlayer = true;
             }
             agent.speed = thisActor.defaultSpeed;
+            agent.ResetPath();
+            state = NodeState.FAILURE;
+        }
+        else if (thisActor.caughtPlayer)
+        {
+            agent.ResetPath();
             state = NodeState.FAILURE;
         }
         //If we can still see the player but haven't reached them yet
@@ -126,14 +144,6 @@ public class TaskChasePlayer : BTNode
             testPoint = new Vector3(player.transform.position.x, 0, player.transform.position.z) + Random.insideUnitSphere * 1.5f;
         }
         return testPoint;
-        /*
-        NavMeshHit hit;
-        if(NavMesh.FindClosestEdge(player.transform.position, out hit, NavMesh.AllAreas))
-        {
-            return hit.position;
-        }
-        return hit.position;
-        */
     }
     private bool TestPoint(Vector3 proposedWaypoint)
     {
