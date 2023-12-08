@@ -181,6 +181,8 @@ public class Player : MonoBehaviour
         {
             for (int i = livesMissing; i > 0; i--)
             {
+                if (i<0)
+                { this.gameObject.layer = 8; }
                 P_LivesCount.transform.GetChild(3 - i).GetComponentInChildren<RawImage>().texture = i_hurt;
 
             }
@@ -193,6 +195,7 @@ public class Player : MonoBehaviour
         if (lives <= 0)
         {
             StartCoroutine(OnPlayerLoss());
+
         }
         else
         {
@@ -238,19 +241,25 @@ public class Player : MonoBehaviour
     }
     public IEnumerator OnPlayerLoss()
     {
+       this.gameObject.layer = 8;
         centralTxt.text = "You got kicked out!";
         centralTxt.enabled = true;
         SetWinLose(false);
+     
         yield return new WaitForSeconds(2f);
+
         SceneManager.LoadScene(2);
     }
 
     public IEnumerator OnPlayerWon()
     {
+        this.gameObject.layer = 8;
         centralTxt.text = "You won! \n You got " + coinCount + " coins!";
         centralTxt.enabled = true;
         SetWinLose(true);
+        
         yield return new WaitForSeconds(5f);
+
         SceneManager.LoadScene(3);
     }
 }
