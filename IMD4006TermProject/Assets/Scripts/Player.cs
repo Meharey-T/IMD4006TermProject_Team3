@@ -160,7 +160,7 @@ public class Player : MonoBehaviour
     {
         float treasurePercent = (float)coinCount / totalCoinCount;
         treasureBar.fillAmount = treasurePercent;
-        if(treasurePercent > totalCoinCount / 2)
+        if(coinCount > totalCoinCount / 2)
         {
             dragonImage.transform.GetChild(0).GetComponentInChildren<RawImage>().texture = i_pleased;
         }

@@ -27,7 +27,7 @@ public class EnemyPatrollingBaseTree : BTree
             new Sequence(new List<BTNode>
             {
                 new CheckIfCaughtPlayer(enemy),
-                new Timer(0.1f, new TaskClearDetection(enemy, enemyMeshAgent))
+                new Timer(0.05f, new TaskClearDetection(enemy, enemyMeshAgent))
             }),
 
             ////CHASE PLAYER IF SPOTTED SEQUENCE
