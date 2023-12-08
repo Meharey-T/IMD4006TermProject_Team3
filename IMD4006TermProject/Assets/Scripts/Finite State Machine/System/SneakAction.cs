@@ -5,6 +5,10 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "FSM/Actions/Sneak")]
 public class SneakAction : FSMAction
 {
+    BoxCollider[] colliders;
+    Vector3 colliderSize = new Vector3(0, 0.7f, 0);
+    Vector3 colliderOffset = new Vector3(0.5f, 1.4f, 0.5f);
+
     public override void Execute(BaseStateMachine stateMachine)
     {
         stateMachine.GetComponent<TerrainState>().currSpeed = stateMachine.GetComponent<TerrainState>().GetSneak();
@@ -18,6 +22,12 @@ public class SneakAction : FSMAction
         stateMachine.GetComponent<PlayerMovement>().currentSoundRadius = stateMachine.GetComponent<PlayerMovement>().sneakSoundRadius;
         player.gameObject.layer = 9;
         player.consumingStamina = false;
+
+        foreach (BoxCollider c in colliders)
+        {
+            c.center = colliderSize;
+            c.size = colliderOffset;
+        }
 
         //Forward roll if we're sneaking
         if (Input.GetButtonDown("Jump") && player.groundedPlayer && player.currentStamina >= 50)
