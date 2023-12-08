@@ -50,11 +50,7 @@ public class EnemySoundFX : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (enemy.sawPlayer)
-        {
-            hasSawSoundSaid();
 
-        }
     }
     //Getplayers current emotion
   private AngerLevel GetEmotion()

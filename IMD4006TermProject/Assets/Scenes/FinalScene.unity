@@ -30680,6 +30680,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8870642308828433629, guid: 40ff1c46273af8c4d937dde0628ae643, type: 3}
+      propertyPath: hardwoodSFX.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 4cf6580ce742c0b4f822b0723bcda68e, type: 3}
+    - target: {fileID: 8870642308828433629, guid: 40ff1c46273af8c4d937dde0628ae643, type: 3}
+      propertyPath: hardwoodSFX.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: 6e04e3bdb676e424792ea84b82abd4cb, type: 3}
+    - target: {fileID: 8870642308828433629, guid: 40ff1c46273af8c4d937dde0628ae643, type: 3}
+      propertyPath: hardwoodSFX.Array.data[3]
+      value: 
+      objectReference: {fileID: 8300000, guid: 4fa6091bb0b7a794bacda3916963c9ad, type: 3}
+    - target: {fileID: 8870642308828433629, guid: 40ff1c46273af8c4d937dde0628ae643, type: 3}
+      propertyPath: cobblestoneSFX.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 7284561a03535a94abc631a82562671a, type: 3}
+    - target: {fileID: 8870642308828433629, guid: 40ff1c46273af8c4d937dde0628ae643, type: 3}
+      propertyPath: cobblestoneSFX.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: b9b938772c8d0294c830489f5847fb81, type: 3}
+    - target: {fileID: 8870642308828433629, guid: 40ff1c46273af8c4d937dde0628ae643, type: 3}
+      propertyPath: cobblestoneSFX.Array.data[3]
+      value: 
+      objectReference: {fileID: 8300000, guid: 1216bb0f8131bcf429ec8cd1de9b9d24, type: 3}
     - target: {fileID: 8233892006867537294, guid: 9b2247beea61b504a8712748b7939d1e, type: 3}
       propertyPath: indicator
       value: 
