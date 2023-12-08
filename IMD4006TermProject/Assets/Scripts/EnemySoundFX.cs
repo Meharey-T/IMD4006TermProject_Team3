@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemySoundFX : MonoBehaviour
 {
 
-    [SerializeField] private GameObject Enemy;
+    [SerializeField] private Enemy enemy;
   
     public enum AngerLevel
     {
@@ -13,8 +13,6 @@ public class EnemySoundFX : MonoBehaviour
         IRRITATED, 
         ANGRY, 
         FURIOUS
-
-
     }
 
     public enum EnemyState
@@ -40,7 +38,9 @@ public class EnemySoundFX : MonoBehaviour
 
     AudioClip clip = null;
 
-   public bool hasAcknowledged;
+    private bool hearSoundPlayed=false;
+    private bool sawSoundPlayed = false;
+    public bool hasAcknowledged;
     void Start()
     {
 
@@ -50,9 +50,13 @@ public class EnemySoundFX : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-    }
+        if (enemy.sawPlayer)
+        {
+            hasSawSoundSaid();
 
+        }
+    }
+    //Getplayers current emotion
   private AngerLevel GetEmotion()
     {
         return currEmotion;
@@ -87,71 +91,509 @@ public class EnemySoundFX : MonoBehaviour
         }
         else
         {
-            //PlayIdleSound();
+            PlayIdleSound();
         }
     }
+
+    public void hasHearSoundSaid()
+    {
+        if (!hearSoundPlayed) {
+            PlayCheckOutSoundSound();
+        }
+
+    }
+
+  
+    public void hasSawSoundSaid()
+    {
+        if (!sawSoundPlayed)
+        {
+            PlayCheckOutSawSound();
+        }
+
+    }
+   
+    //If you heard the player, say something
     public void PlayCheckOutSoundSound()
     {
-       if( hasAcknowledged == true)
-        {
-            enemySoundSource.enabled = false;
+     
 
-        }
-        if (currState == EnemyState.Hear)
+        if (currState == EnemyState.HadHeard)
         {
             clip = null;
             currEmotion = GetEmotion();
-
+            Debug.Log("We are in PlayCheckOutSoundSound, we do hearrrrr");
             switch (currEmotion)
             {
-
-
-             
                 case AngerLevel.INDIFFERENT:
-                    clip = hearSFX[(int)1];
-                    Debug.Log("I hear you SFX Should play");
+                    clip = hadHeardSFX[(int)1];
                     break;
                 case AngerLevel.IRRITATED:
-                    clip = hearSFX[(int)1];
-                    Debug.Log("I hear you SFX Should play");
+                    clip = hadHeardSFX[(int)1];
                     break;
                 case AngerLevel.ANGRY:
-                    clip = hearSFX[(int)2];
-                    Debug.Log("I hear you SFX Should play");
+                    clip = hadHeardSFX[(int)2];
                     break;
                 case AngerLevel.FURIOUS:
-                    clip = hearSFX[(int)2];
-                    Debug.Log("I hear you SFX Should play");
+                    clip = hadHeardSFX[(int)2];
                     break;
 
-
-
             }
-            if (!enemySoundSource.isPlaying && hasAcknowledged == false)
-            { Debug.Log("PlayingSFX");
+            if (!enemySoundSource.isPlaying)
+            {
+                Debug.Log("PlayingSFX");
                 enemySoundSource.enabled = true;
-            enemySoundSource.clip = clip;
-            enemySoundSource.volume = 1;
-               
+                enemySoundSource.clip = clip;
+                enemySoundSource.volume = 1;
+
                 enemySoundSource.Play();
-               
                 
-           }
+            }
+
+
+           
+
+
         }
         else
         {
             //PlayIdleSound();
         }
     }
+
+
+
+    public void PlayCheckOutSawSound()
+    {
+
+
+        if (currState == EnemyState.HadSeen)
+        {
+
+            clip = null;
+            currEmotion = GetEmotion();
+            switch (currEmotion)
+            {
+
+
+
+                case AngerLevel.INDIFFERENT:
+                    clip = hadSeenSFX[(int)1];
+                    Debug.Log("I see you SFX Should play");
+                    break;
+                case AngerLevel.IRRITATED:
+                    clip = hadSeenSFX[(int)1];
+                    Debug.Log("I hear you SFX Should play");
+                    break;
+                case AngerLevel.ANGRY:
+                    clip = hadSeenSFX[(int)2];
+                    Debug.Log("I hear you SFX Should play");
+                    break;
+                case AngerLevel.FURIOUS:
+                    clip = hadSeenSFX[(int)2];
+                    Debug.Log("I hear you SFX Should play");
+                    break;
+
+
+
+            }
+            if (!enemySoundSource.isPlaying)
+            {
+                Debug.Log("PlayingSAWSFX");
+                enemySoundSource.enabled = true;
+                enemySoundSource.clip = clip;
+                enemySoundSource.volume = 1;
+
+                enemySoundSource.Play();
+
+            }
+        }
+        
+    }
+
+
+    public void PlaySeeSound()
+    {
+
+
+        if (currState == EnemyState.HadHeard)
+        {
+
+            clip = null;
+            currEmotion = GetEmotion();
+            switch (currEmotion)
+            {
+
+
+
+                case AngerLevel.INDIFFERENT:
+                    clip = seeSFX[(int)1];
+                    Debug.Log("I see you SFX Should play");
+                    break;
+                case AngerLevel.IRRITATED:
+                    clip = seeSFX[(int)1];
+                    Debug.Log("I hear you SFX Should play");
+                    break;
+                case AngerLevel.ANGRY:
+                    clip = seeSFX[(int)2];
+                    Debug.Log("I hear you SFX Should play");
+                    break;
+                case AngerLevel.FURIOUS:
+                    clip = seeSFX[(int)2];
+                    Debug.Log("I hear you SFX Should play");
+                    break;
+
+
+
+            }
+            if (!enemySoundSource.isPlaying)
+            {
+                Debug.Log("PlayingSaeSFX");
+                enemySoundSource.enabled = true;
+                enemySoundSource.clip = clip;
+                enemySoundSource.volume = 1;
+
+                enemySoundSource.Play();
+
+            }
+        }
+
+    }
+
+
+
+
+    //If you heard the player, say something
+    public void PlayHearSound()
+    {
+
+
+        if (currState == EnemyState.Hear)
+        {
+            clip = null;
+            currEmotion = GetEmotion();
+            Debug.Log("We are in PlayCheckOutSoundSound, we do hearrrrr");
+            switch (currEmotion)
+            {
+                case AngerLevel.INDIFFERENT:
+                    clip = hearSFX[(int)1];
+                    break;
+                case AngerLevel.IRRITATED:
+                    clip = hearSFX[(int)1];
+                    break;
+                case AngerLevel.ANGRY:
+                    clip = hearSFX[(int)2];
+                    break;
+                case AngerLevel.FURIOUS:
+                    clip = hearSFX[(int)2];
+                    break;
+
+            }
+            if (!enemySoundSource.isPlaying)
+            {
+                Debug.Log("PlayingSFX");
+                enemySoundSource.enabled = true;
+                enemySoundSource.clip = clip;
+                enemySoundSource.volume = 1;
+
+                enemySoundSource.Play();
+
+            }
+
+
+
+
+
+        }
+        else
+        {
+            //PlayIdleSound();
+        }
+    }
+
+
+
+
+
+
+    //Get the differen emotions and later set them to currEmotion in the TaskClearDetection
     public AngerLevel GetIndifference()
     {
 
         return AngerLevel.INDIFFERENT;
     }
+    public AngerLevel GetIrritated()
+    {
+
+        return AngerLevel.IRRITATED;
+    }
+    public AngerLevel GetAngry()
+    {
+
+        return AngerLevel.ANGRY;
+    }
+    public AngerLevel GetFurious()
+    {
+
+        return AngerLevel.FURIOUS;
+    }
+
+
+    //Get current State and later set them to currState in the TaskClearDetection
     public EnemyState GetHearState()
     {
 
         return EnemyState.Hear;
     }
+    public EnemyState GetSeeState()
+    {
+
+        return EnemyState.See;
+    }
+    public EnemyState GetHeardState()
+    {
+
+        return EnemyState.HadHeard;
+    }
+    public EnemyState GetSawState()
+    {
+
+        return EnemyState.HadSeen;
+    }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+
+
+// Update is called once per frame
+void Update()
+{
+    if (enemy.sawPlayer)
+    {
+        hasSawSoundSaid();
+
+    }
+}
+
+private AngerLevel GetEmotion()
+{
+    return currEmotion;
+}
+public void PlayIdleSound()
+{
+
+
+    if (currState == EnemyState.Idle)
+    {
+        clip = null;
+        currEmotion = GetEmotion();
+
+        switch (currEmotion)
+        {
+
+            case AngerLevel.INDIFFERENT:
+                clip = idleSFX[(int)1];
+                Debug.Log("IdleSFX");
+                break;
+
+
+
+        }
+        enemySoundSource.enabled = true;
+        enemySoundSource.clip = clip;
+        enemySoundSource.volume = 1;
+        if (!enemySoundSource.isPlaying)
+        {
+            enemySoundSource.Play();
+        }
+    }
+    else
+    {
+        PlayIdleSound();
+    }
+}
+
+public void hasHearSoundSaid()
+{
+    if (!hearSoundPlayed)
+    {
+        PlayCheckOutSoundSound();
+    }
+
+}
+
+
+public void hasSawSoundSaid()
+{
+    if (!sawSoundPlayed)
+    {
+        PlayCheckOutSawSound();
+    }
+
+}
+public void PlayCheckOutSoundSound()
+{
+
+
+    /*     Debug.Log("We are in PlayCheckOutSoundSound");
+     if ( hasAcknowledged == true)
+     {
+         enemySoundSource.enabled = false;
+         Debug.Log("We are in PlayCheckOutSoundSound, has ackknowledge was true");
+     }*/
+  /*  if (currState == EnemyState.Hear)
+    {
+        clip = null;
+        currEmotion = GetEmotion();
+        Debug.Log("We are in PlayCheckOutSoundSound, we do hearrrrr");
+        switch (currEmotion)
+        {
+
+
+
+            case AngerLevel.INDIFFERENT:
+                clip = hearSFX[(int)1];
+                Debug.Log("I hear you SFX Should play");
+                break;
+            case AngerLevel.IRRITATED:
+                clip = hearSFX[(int)1];
+                Debug.Log("I hear you SFX Should play");
+                break;
+            case AngerLevel.ANGRY:
+                clip = hearSFX[(int)2];
+                Debug.Log("I hear you SFX Should play");
+                break;
+            case AngerLevel.FURIOUS:
+                clip = hearSFX[(int)2];
+                Debug.Log("I hear you SFX Should play");
+                break;
+
+
+
+        }
+        if (!enemySoundSource.isPlaying)
+        {
+            Debug.Log("PlayingSFX");
+            enemySoundSource.enabled = true;
+            enemySoundSource.clip = clip;
+            enemySoundSource.volume = 1;
+
+            enemySoundSource.Play();
+
+        }
+
+
+
+        hearSoundPlayed = true;
+        hasAcknowledged = true;
+
+
+
+    }
+    else
+    {
+        //PlayIdleSound();
+    }
+}
+
+
+
+public void PlayCheckOutSawSound()
+{
+
+
+    Debug.Log("We are in PlayCheckOutSoundSound");
+    /* if (hasAcknowledged == true)
+     {
+         enemySoundSource.enabled = false;
+         Debug.Log("We are in PlayCheckOutSoundSound, has ackknowledge was true");
+     }*/
+    //if (currState == EnemyState.HadSeen)
+    // {
+    //
+    /*
+    clip = null;
+    currEmotion = GetEmotion();
+    Debug.Log("sawwwwwwwwwwwwwwwwwwwwwwwwww");
+    switch (currEmotion)
+    {
+
+
+
+        case AngerLevel.INDIFFERENT:
+            clip = seeSFX[(int)1];
+            Debug.Log("I see you SFX Should play");
+            break;
+        case AngerLevel.IRRITATED:
+            clip = seeSFX[(int)1];
+            Debug.Log("I hear you SFX Should play");
+            break;
+        case AngerLevel.ANGRY:
+            clip = seeSFX[(int)2];
+            Debug.Log("I hear you SFX Should play");
+            break;
+        case AngerLevel.FURIOUS:
+            clip = seeSFX[(int)2];
+            Debug.Log("I hear you SFX Should play");
+            break;
+
+
+
+    }
+    if (!enemySoundSource.isPlaying)
+    {
+        Debug.Log("PlayingSAWSFX");
+        enemySoundSource.enabled = true;
+        enemySoundSource.clip = clip;
+        enemySoundSource.volume = 1;
+
+        enemySoundSource.Play();
+
+    }
+
+
+    Debug.Log("Disabling ");
+    sawSoundPlayed = true;
+    // hasAcknowledged = true;
+
+
+
+    //}
+
+}
+*/
+
+
+/*
+
+
+public AngerLevel GetIndifference()
+{
+
+    return AngerLevel.INDIFFERENT;
+}
+public EnemyState GetHearState()
+{
+
+    return EnemyState.Hear;
+}
+
+
+}*/

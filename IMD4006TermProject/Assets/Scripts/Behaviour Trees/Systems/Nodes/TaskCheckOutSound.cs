@@ -27,26 +27,25 @@ public class TaskCheckOutSound : BTNode
             //agent.GetComponent<EnemySoundFX>().currState = agent.GetComponent<EnemySoundFX>().GetHearState();
             if (thisActor.angerLevel == Enemy.AngerLevel.INDIFFERENT)
             {
-                //agent.GetComponent<EnemySoundFX>().hasAcknowledged = false;
-                //Debug.Log(thisActor.angerLevel);
                 agent.speed = 3.5f;
                 thisActor.enemyAnimator.animator.SetBool(thisActor.enemyAnimator.IfWalkingHash, true);
-                //set the sound effect to indiffernt
+              
 
-                //Debug.Log("I hear you SFX is set indifferent");
 
-                //  agent.GetComponent<EnemySoundFX>().currEmotion = agent.GetComponent<EnemySoundFX>().GetIndifference();
-                // agent.GetComponent<EnemySoundFX>().PlayCheckOutSoundSound();
-                //agent.GetComponent<EnemySoundFX>().hasAcknowledged = true;
             }
             else if (thisActor.angerLevel == Enemy.AngerLevel.IRRITATED)
             {
                 agent.speed = 4f;
+
+                //set the sound effect to irritated
+
                 thisActor.enemyAnimator.animator.SetBool(thisActor.enemyAnimator.IfWalkingHash, true);
                 //set the sound effect to indiffernt
+
                 Debug.Log("I hear you SFX is set irritated");
                 agent.GetComponent<EnemySoundFX>().currEmotion = EnemySoundFX.AngerLevel.IRRITATED;
-
+                // check if had said something before
+                agent.GetComponent<EnemySoundFX>().hasHearSoundSaid();
             }
             else if (thisActor.angerLevel == Enemy.AngerLevel.ANGRY)
             {
@@ -77,6 +76,14 @@ public class TaskCheckOutSound : BTNode
         //If they haven't reached it, keep going
         else if (waypointDistance >= 4f)
         {
+            if (thisActor.angerLevel == Enemy.AngerLevel.INDIFFERENT || thisActor.angerLevel == Enemy.AngerLevel.IRRITATED)
+            {
+                thisActor.enemyAnimator.animator.SetBool(thisActor.enemyAnimator.IfWalkingHash, true);
+            }
+            else if (thisActor.angerLevel == Enemy.AngerLevel.ANGRY || thisActor.angerLevel == Enemy.AngerLevel.FURIOUS)
+            {
+                thisActor.enemyAnimator.animator.SetBool(thisActor.enemyAnimator.IfSprintingHash, true);
+            }
             Vector3 direction = (thisActor.lastLocationHeard - thisActor.transform.position).normalized;
             lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0f, direction.z));
             thisActor.transform.rotation = Quaternion.Slerp(thisActor.transform.rotation, lookRotation, Time.deltaTime * 5f);

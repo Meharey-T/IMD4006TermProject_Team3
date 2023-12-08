@@ -29,20 +29,20 @@ public class PlayerTriggerHandle : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        //Layer 7 is ground
+        //Layer 7 is ground level 11 is tile
+
         //Only the capsule collider should be able to trigger on a ground object
         if (other.gameObject.layer == 11)
         {
             terrain.terrainTag = other.gameObject.tag;
-            Debug.Log("When checking this floor tag is:");
-            Debug.Log(other.gameObject.tag);
+           
+          
    
         }
-        if (other.gameObject.layer == 7 && other.gameObject.tag=="Crate")
+        else if (other.gameObject.layer == 7 && other.gameObject.tag=="Crate")
         {
             terrain.terrainTag = other.gameObject.tag;
-            Debug.Log("When checking this floor tag is:");
-            Debug.Log(other.gameObject.tag);
+            
         }
             if (other.gameObject.layer == 7)
         {

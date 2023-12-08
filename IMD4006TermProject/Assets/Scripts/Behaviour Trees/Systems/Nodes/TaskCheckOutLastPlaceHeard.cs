@@ -61,6 +61,14 @@ public class TaskCheckOutLastPlaceHeard : BTNode
         //If they haven't reached it, keep going
         else if (waypointDistance >= 4f)
         {
+            if (thisActor.angerLevel == Enemy.AngerLevel.INDIFFERENT || thisActor.angerLevel == Enemy.AngerLevel.IRRITATED)
+            {
+                thisActor.enemyAnimator.animator.SetBool(thisActor.enemyAnimator.IfWalkingHash, true);
+            }
+            else if (thisActor.angerLevel == Enemy.AngerLevel.ANGRY || thisActor.angerLevel == Enemy.AngerLevel.FURIOUS)
+            {
+                thisActor.enemyAnimator.animator.SetBool(thisActor.enemyAnimator.IfSprintingHash, true);
+            }
             Vector3 direction = (thisActor.lastLocationHeard - thisActor.transform.position).normalized;
             lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0f, direction.z));
             thisActor.transform.rotation = Quaternion.Slerp(thisActor.transform.rotation, lookRotation, Time.deltaTime * 5f);

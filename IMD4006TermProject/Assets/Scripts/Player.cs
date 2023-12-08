@@ -145,9 +145,13 @@ public class Player : MonoBehaviour
         {
             P_LivesCount.transform.GetChild(i).GetComponentInChildren<RawImage>().texture = i_health;
         }
-        for (int i = livesMissing; i > 0; i--)
+        if (livesMissing > 0)
         {
-            P_LivesCount.transform.GetChild(3 - i).GetComponentInChildren<RawImage>().texture = i_hurt;
+            for (int i = livesMissing; i > 0; i--)
+            {
+                P_LivesCount.transform.GetChild(3 - i).GetComponentInChildren<RawImage>().texture = i_hurt;
+
+            }
         }
     }
 
