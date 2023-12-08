@@ -29,6 +29,13 @@ public class SneakAction : FSMAction
             c.size = colliderOffset;
         }
 
+        player.playerAnimator.animator.SetBool(player.playerAnimator.IfSneakingHash, true);
+        //Set all the other ones to false
+        player.playerAnimator.animator.SetBool(player.playerAnimator.IfHidingHash, false);
+        player.playerAnimator.animator.SetBool(player.playerAnimator.IfWalkingHash, false);
+        player.playerAnimator.animator.SetBool(player.playerAnimator.IfSprintingHash, false);
+        player.playerAnimator.animator.SetBool(player.playerAnimator.IfJumpingHash, false);
+
         //Forward roll if we're sneaking
         if (Input.GetButtonDown("Jump") && player.groundedPlayer && player.currentStamina >= 50)
         {
@@ -44,12 +51,7 @@ public class SneakAction : FSMAction
         {
             player.playerAnimator.animator.SetBool(player.playerAnimator.IfRollingHash, false);
         }
-        player.playerAnimator.animator.SetBool(player.playerAnimator.IfSneakingHash, true);
-        //Set all the other ones to false
-        player.playerAnimator.animator.SetBool(player.playerAnimator.IfHidingHash, false);
-        player.playerAnimator.animator.SetBool(player.playerAnimator.IfWalkingHash, false);
-        player.playerAnimator.animator.SetBool(player.playerAnimator.IfSprintingHash, false);
-        player.playerAnimator.animator.SetBool(player.playerAnimator.IfJumpingHash, false);
+        
         //Change player footstep sounds
     }
 }
