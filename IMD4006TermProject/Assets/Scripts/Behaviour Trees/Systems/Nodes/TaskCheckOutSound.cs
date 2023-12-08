@@ -27,24 +27,23 @@ public class TaskCheckOutSound : BTNode
             //agent.GetComponent<EnemySoundFX>().currState = agent.GetComponent<EnemySoundFX>().GetHearState();
             if (thisActor.angerLevel == Enemy.AngerLevel.INDIFFERENT)
             {
-                //agent.GetComponent<EnemySoundFX>().hasAcknowledged = false;
-                //Debug.Log(thisActor.angerLevel);
                 agent.speed = 3.5f;
                 //set the sound effect to indiffernt
+               // agent.GetComponent<EnemySoundFX>().currEmotion = agent.GetComponent<EnemySoundFX>().GetIndifference();
+             //  Debug.Log("I hear you SFX is set indifferent");
+               // check if had said something before
+              // agent.GetComponent<EnemySoundFX>().hasHearSoundSaid();
 
-               //Debug.Log("I hear you SFX is set indifferent");
-               
-              //  agent.GetComponent<EnemySoundFX>().currEmotion = agent.GetComponent<EnemySoundFX>().GetIndifference();
-               // agent.GetComponent<EnemySoundFX>().PlayCheckOutSoundSound();
-               //agent.GetComponent<EnemySoundFX>().hasAcknowledged = true;
+             
             }
             else if (thisActor.angerLevel == Enemy.AngerLevel.IRRITATED)
             {
                 agent.speed = 4f;
-                //set the sound effect to indiffernt
+                //set the sound effect to irritated
                 Debug.Log("I hear you SFX is set irritated");
                 agent.GetComponent<EnemySoundFX>().currEmotion = EnemySoundFX.AngerLevel.IRRITATED;
-
+                // check if had said something before
+                agent.GetComponent<EnemySoundFX>().hasHearSoundSaid();
             }
             else if (thisActor.angerLevel == Enemy.AngerLevel.ANGRY)
             {

@@ -3,11 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class TerrainState : MonoBehaviour
-{
+{ //get player sound collider 
+    //check player movement ... walk action sneak action 
    
     [SerializeField] private GameObject player;
     public PlayerMovement pMovement;
     public CapsuleCollider terrainCheck;
+    public SphereCollider soundRadius;
+    [SerializeField] public float hardwoodMultiplier = (float)1.1;
+    [SerializeField] public float cobblestoneMultiplier = (float)1;
+    [SerializeField] public float crateMultiplier = (float)1.1;
+    [SerializeField] public float carpetMultiplier = (float)0.5;
     public enum Speed
     {
         idle,
@@ -46,7 +52,8 @@ public class TerrainState : MonoBehaviour
         //pMovement.GetComponent<PlayerMovement>();
         terrainCheck = this.GetComponentInChildren<CapsuleCollider>();
         footStepsSource = GetComponent<AudioSource>();
-        
+        //soundRadius = this.GetComponentInChildren<SphereCollider>();
+       
     }
 
     // Update is called once per frame
@@ -73,6 +80,7 @@ Input.GetAxis("Horizontal") < 0)
     {
         if (terrainTag == "Carpet")
         {
+
             TerrainType = FloorType.Carpet;
             //Debug.Log("This is carpet");
         }
@@ -94,7 +102,10 @@ Input.GetAxis("Horizontal") < 0)
 
         //Debug.Log(TerrainType);
         return TerrainType;
-    }
+
+
+    }// Set sound radius based on the terrain. Use a floortype mulitplier and base it on the player speed
+     //play sound FX of walking
     public void PlayWalkingSound()
     {
 
@@ -108,18 +119,22 @@ Input.GetAxis("Horizontal") < 0)
             {
                 
                 case FloorType.Hardwood:
+                    pMovement.currentSoundRadius= pMovement.walkSoundRadius * hardwoodMultiplier;
                     clip = hardwoodSFX[(int)Speed.walk];
                     //Debug.Log("hardwoodfloor");
                     break;
                 case FloorType.Carpet:
+                    pMovement.currentSoundRadius = pMovement.walkSoundRadius * carpetMultiplier;
                     clip = carpetSFX[(int)Speed.walk];
                     //Debug.Log("carpetfloor");
                     break;
                 case FloorType.CobbleStone:
+                    pMovement.currentSoundRadius = pMovement.walkSoundRadius * cobblestoneMultiplier;
                     clip = cobblestoneSFX[(int)Speed.walk];
                     //Debug.Log("hardwoodfloor");
                     break;
                 case FloorType.Crate:
+                    pMovement.currentSoundRadius = pMovement.walkSoundRadius * crateMultiplier;
                     clip = crateSFX[(int)Speed.walk];
                     //Debug.Log("hardwoodfloor");
                     break;
@@ -139,8 +154,9 @@ Input.GetAxis("Horizontal") < 0)
             PlayIdleSound();
         }
     }
-   
-  
+
+    // Set sound radius based on the terrain. Use a floortype mulitplier and base it on the player speed
+    //play sound FX of running
 
     public void PlayRunningSound()
     {
@@ -154,18 +170,23 @@ Input.GetAxis("Horizontal") < 0)
             switch (TerrainType)
             {
                 case FloorType.Carpet:
+
                     clip = carpetSFX[(int)Speed.run];
+                    pMovement.soundRadius.radius = pMovement.sprintSoundRadius * hardwoodMultiplier;
                     //Debug.Log("carpetfloor");
                     break;
                 case FloorType.Hardwood:
+                    pMovement.soundRadius.radius = pMovement.sprintSoundRadius * carpetMultiplier;
                     clip = hardwoodSFX[(int)Speed.run];
                     //Debug.Log("hardwoodfloor");
                     break;
                 case FloorType.CobbleStone:
+                    pMovement.soundRadius.radius = pMovement.sprintSoundRadius * cobblestoneMultiplier;
                     clip = cobblestoneSFX[(int)Speed.run];
                     //Debug.Log("hardwoodfloor");
                     break;
                 case FloorType.Crate:
+                    pMovement.currentSoundRadius = pMovement.sprintSoundRadius * crateMultiplier;
                     clip = crateSFX[(int)Speed.run];
                     //Debug.Log("hardwoodfloor");
                     break;
@@ -175,7 +196,7 @@ Input.GetAxis("Horizontal") < 0)
             }
             footStepsSource.enabled = true;
             footStepsSource.clip = clip;
-            footStepsSource.volume = 1;
+            footStepsSource.volume = (float)1.5;
             if (!footStepsSource.isPlaying)
             {
                 footStepsSource.Play();
@@ -188,17 +209,8 @@ Input.GetAxis("Horizontal") < 0)
     }
 
 
-
-
-    /*
-    public Speed GetSpeed ()
-    {
-        Debug.Log("my curr speed isss" + (Speed)pMovement.currSpeed);
-        return (Speed)pMovement.currSpeed;
-    }
-
-    */
-
+    // Set sound radius based on the terrain. Use a floortype mulitplier and base it on the player speed
+    //play sound FX of sneaking
     public void PlaySneakingSound()
     {
         
@@ -215,20 +227,23 @@ Input.GetAxis("Horizontal") < 0)
             switch (TerrainType)
             {
                 case FloorType.Carpet:
+                    pMovement.currentSoundRadius = pMovement.sneakSoundRadius * carpetMultiplier;
                     clip = carpetSFX[(int)Speed.sneak];
-                    //Debug.Log("carpetfloor");
                     break;
                 case FloorType.Hardwood:
+                    pMovement.currentSoundRadius = pMovement.sneakSoundRadius * hardwoodMultiplier;
                     clip = hardwoodSFX[(int)Speed.sneak];
-                    //Debug.Log("hardwoodfloor");
+                    
                     break;
                 case FloorType.CobbleStone:
+                    pMovement.currentSoundRadius = pMovement.sneakSoundRadius * cobblestoneMultiplier;
                     clip = cobblestoneSFX[(int)Speed.sneak];
-                    //Debug.Log("hardwoodfloor");
+                   
                     break;
                 case FloorType.Crate:
+                    pMovement.currentSoundRadius = pMovement.sneakSoundRadius * crateMultiplier;
                     clip = crateSFX[(int)Speed.sneak];
-                    //Debug.Log("hardwoodfloor");
+                    
                     break;
 
 
@@ -254,8 +269,8 @@ Input.GetAxis("Horizontal") < 0)
     {
 
 
-           
-            footStepsSource.enabled=false;
+        pMovement.currentSoundRadius = 1;
+        footStepsSource.enabled=false;
             
         
     }

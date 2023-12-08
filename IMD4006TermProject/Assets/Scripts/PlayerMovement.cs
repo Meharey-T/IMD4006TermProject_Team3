@@ -72,10 +72,7 @@ public class PlayerMovement : MonoBehaviour
     public float currentSoundRadius = 5;
 
     [Header("Terrain Mulipier")]
-    //If player is on hardwood their steps are louder
-    [SerializeField] private float hardWoodMultiplier;
-    //If player is on carpet their steps are quieter
-    [SerializeField] private float carpetMultiplier;
+    
 
     //Component references
     public Rigidbody rb;
